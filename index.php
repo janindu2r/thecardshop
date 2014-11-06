@@ -1,6 +1,6 @@
 <?php
 
-echo "hello world\n";
+echo "hello world <br>" ;
 
 echo "online edit";
 
