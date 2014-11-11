@@ -13,31 +13,30 @@ Refer only to review DbConClass functionality in action
 try {
 $a = new DbCon(); // create object
 
-/*
 // run insert query, print return value
 $insert = array("reg_ID"=>"1", "email"=>"'janani@gmail.com'", "verified"=>"0", "password"=>"'janz'");	
 printf ($a->runInsertRecord('account', $insert). " -> Insert Query Result<br>");
 
 //directly run an insert query (runNonQuery Example)
-printf ($a->runNonQuery("insert into account values( 110, 'u3m', 'ja', 1)") . " -> Non Query Result<br>");
+printf ($a->runNonQuery("insert into account values( 2, 'something@gmail.com', 'pass', 0)") . " -> Non Query Result<br>");
 
-$insert = array("password"=>"'jnz'");
+$insert = array("password"=>"'upPass'");
 //create and run update query
-print ($a->runUpdateRecord('account', $insert, 'verified = 0'). " -> Update Query Result<br>");
+print ($a->runUpdateRecord('account', $insert, 'email = "something@gmail.com"'). " -> Update Query Result<br>");
 
 //directly run update query (runNonQuery Example)
 printf ($a->runNonQuery("update account set verified=0") . " -> Non Query Result<br>");
- 
-*/
+
+echo "<br>";
 
 //run select statement to get first row as an associative array
-$result = $a->getFirstRow("select * from account where reg_ID= 1");
+$result = $a->getFirstRow("select * from account where reg_ID= 2");
 if($result != 0)
 {
-	echo "The results from the first row from your query displayed in a table <br> <table>";
+	echo "The results from the first row from your query displayed in a table <br> <table  cellpadding='2' border='1'>";
 foreach ($result as $x=>$xval)
 	echo "<tr><td>". $x . "</td><td>" . $xval . "</td></tr>";
-echo "</table> <br><br>";
+echo "</table> <br>";
 }
 else
 	echo "Your query did not retrieve any results <br>";
@@ -53,7 +52,7 @@ else
 //run select statement to get a table, or return null , then loop through each row and echo the results inside html 
 $b = $a->getSelectTable("select * from account");
 		if($b){		
-		echo "<table cellpadding='10'>";
+		echo "Your Select Query Table <table cellpadding='2' border='1'>";
 		while ($row = $a->getEachRow($b)) {	
 				echo  "<tr><td>" . $row['reg_ID'] . "</td><td>" .$row['email'] . "</td><td>" . $row['password'] . "</td><td>" . 						$row['verified'] . "</td></tr>";
 			}
@@ -61,10 +60,22 @@ $b = $a->getSelectTable("select * from account");
 		}
 		else
 			echo "Query returned empty result set or is wrong.";
+
+
+			
+echo "<br>";			
+//run delete query and return if successful		
+	if($a->deleteRecords('account', 'email = "janani@gmail.com"'))
+		echo "Delete Query Sucessful";
+	else
+		echo "Delete Query Not Sucessful";	
+					
 } 
 catch(Exception $dbEx){
 	echo $dbEx->getMessage();
 }
+
+
 
 
 ?>

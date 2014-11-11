@@ -151,16 +151,17 @@ class DbCon
 	}
   
 	
-	/*-------- Delete realted functions  --------*/
-	
-	function deleteRecords($tableName)
+	/*-------- Delete function --------*/
+	/* Run delete query and return boolean success 
+	parameter: $tableName --> table to delete from
+	$whereClause --> Everything the sql condition must check (eg: field1 = value1 AND field2 = value2 OR field3 = value3)
+	*/
+	function deleteRecords($tableName, $whereClause)
 	{
-		
-		//DELETE FROM table_name
- //WHERE some_column = some_value
+		$result = $this->runNonQuery("DELETE FROM ". $tableName . " WHERE " . $whereClause);
+		return $result;
 	}
-  
-  
+   
 }
 
 ?>
