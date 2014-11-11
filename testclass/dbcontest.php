@@ -30,9 +30,30 @@ printf ($a->runNonQuery("update account set verified=0") . " -> Non Query Result
 */
  
 
-//delete query
-
+//run select statement to get first row as an associative array
+$result = $a->getFirstRow("select * from account where reg_ID= 1");
+if($result != 0)
+{
+	echo "The results from the first row from your query displayed in a table <br> <table>";
+foreach ($result as $x=>$xval)
+	echo "<tr><td>". $x . "</td><td>" . $xval . "</td></tr>";
+echo "</table> <br><br>";
 }
+else
+	echo "Your query did not retrieve any results <br>";
+
+//run select statement to get first column first row value
+$firstval =  $a->getScalar("select email from account") ;
+if($firstval)
+echo $firstval . " is the 1st column 1st row result from the select statement you ran <br>";
+else
+	echo "Your query did not retrieve any results <br><br>";
+
+
+
+
+
+} 
 catch(Exception $dbEx){
 	echo $dbEx->getMessage();
 }

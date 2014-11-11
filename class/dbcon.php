@@ -10,12 +10,12 @@ class DbCon
 {
 	private $con; 
 	
-	// Constructor - Create object method and setting up exception for connection errors */	
+	// Constructor - Create object method and throw exception for connection errors */	
 	function __construct() {
 		$this->con  = new mysqli("localhost", "root", "", "elitecomercio");
-		if (mysqli_connect_errno()){
-			  throw new Exception("Could not connect to the database \n". mysqli_connect_error());
-		 }	
+		if ($this->con->connect_errno != 0){
+			  throw new Exception("Could not connect to the database. \n". $this->con->connect_error);
+		}
 	} 
 	
 	// Destructor - Close Connection 
@@ -23,6 +23,64 @@ class DbCon
        $this->con->close();
 	}		   
      
+	
+	 
+	/*-------- General Query Result Return Functions --------*/
+	 
+	/* Pass sql string as parameter, run query, return affected rows */
+	function runNonQuery($sqlstring)
+	{
+		$result = $this->con->query($sqlstring);
+		if($result)
+			return $this->con->affected_rows;
+		else
+			return 0;
+	}
+	
+	/*Get first Row of a query and return it in an associative array
+	If no results were retrieved it will return 0 (null)
+	*/
+	function getFirstRow($sqlstring)
+	{
+		$result = $this->con->query($sqlstring);
+		if($result)
+			return  $result->fetch_assoc();	
+		else
+			return 0;
+	}
+	
+	/*Get first column first row value of a query and return it
+	If no results were retrieved it will return 0 (null)
+	*/
+	function getScalar($sqlstring)
+	{
+		$result = $this->con->query($sqlstring);
+		if($result)
+		{
+			$assoc =  $result->fetch_row();
+			return $assoc[0]; 	
+		}
+		else
+			return 0;
+	}
+	
+	function getSelectTable($sqlstring)
+	{
+	/*	$result = $this->con->multi_query($sqlstring);		
+		if($result = $this->con->store_result())
+		{
+			while ($row = $result->fetch_row()) {
+                printf("%s <br>", $row[0]);
+				$this->con->next_result();
+            }
+            $result->free();
+		}
+		else 
+			return 0; */
+	}
+	
+	
+	
 	 
 	/*-------- Insert related functions --------*/
 		
@@ -63,16 +121,6 @@ class DbCon
 			return $result;
 	}	
 	
-	/* Pass sql string as parameter, run query, return affected rows */
-	function runNonQuery($sqlstring)
-	{
-		$result = $this->con->query($sqlstring);
-		if($result)
-			return $this->con->affected_rows;
-		else
-			return 0;
-	}
-	
 	/*-------- Update realted functions --------*/
 	
 	
@@ -102,8 +150,9 @@ class DbCon
 	
 	/*-------- Delete realted functions  --------*/
 	
-	function getDeleteRecord()
+	function deleteRecords($tableName)
 	{
+		
 		//DELETE FROM table_name
  //WHERE some_column = some_value
 	}
