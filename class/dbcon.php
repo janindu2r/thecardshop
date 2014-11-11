@@ -21,9 +21,7 @@ class DbCon
 	// Destructor - Close Connection 
 	function __destruct() {
        $this->con->close();
-	}		   
-     
-	
+	}		        	
 	 
 	/*-------- General Query Result Return Functions --------*/
 	 
@@ -37,7 +35,7 @@ class DbCon
 			return 0;
 	}
 	
-	/*Get first Row of a query and return it in an associative array
+	/* Get first Row of a query and return it in an associative array
 	If no results were retrieved it will return 0 (null)
 	*/
 	function getFirstRow($sqlstring)
@@ -49,7 +47,7 @@ class DbCon
 			return 0;
 	}
 	
-	/*Get first column first row value of a query and return it
+	/* Get first column first row value of a query and return it
 	If no results were retrieved it will return 0 (null)
 	*/
 	function getScalar($sqlstring)
@@ -57,8 +55,8 @@ class DbCon
 		$result = $this->con->query($sqlstring);
 		if($result)
 		{
-			$assoc =  $result->fetch_row();
-			return $assoc[0]; 	
+			$row =  $result->fetch_row();
+			return $row[0]; 	
 		}
 		else
 			return 0;
@@ -66,10 +64,11 @@ class DbCon
 	
 	function getSelectTable($sqlstring)
 	{
-	/*	$result = $this->con->multi_query($sqlstring);		
-		if($result = $this->con->store_result())
+		/*
+	 	$result = $this->con->real_query($sqlstring);		
+		if($result)
 		{
-			while ($row = $result->fetch_row()) {
+			while ($row = $result->fetch_assoc()) {
                 printf("%s <br>", $row[0]);
 				$this->con->next_result();
             }
@@ -78,8 +77,6 @@ class DbCon
 		else 
 			return 0; */
 	}
-	
-	
 	
 	 
 	/*-------- Insert related functions --------*/
