@@ -27,8 +27,8 @@ print ($a->runUpdateRecord('account', $insert, 'verified = 0'). " -> Update Quer
 
 //directly run update query (runNonQuery Example)
 printf ($a->runNonQuery("update account set verified=0") . " -> Non Query Result<br>");
-*/
  
+*/
 
 //run select statement to get first row as an associative array
 $result = $a->getFirstRow("select * from account where reg_ID= 1");
@@ -45,14 +45,22 @@ else
 //run select statement to get first column first row value
 $firstval =  $a->getScalar("select email from account") ;
 if($firstval)
-echo $firstval . " is the 1st column 1st row result from the select statement you ran <br>";
+	echo $firstval . " is the 1st column 1st row result from the select statement you ran <br><br>";
 else
 	echo "Your query did not retrieve any results <br><br>";
 
 
-
-
-
+//run select statement to get a table, or return null , then loop through each row and echo the results inside html 
+$b = $a->getSelectTable("select * from account");
+		if($b){		
+		echo "<table cellpadding='10'>";
+		while ($row = $a->getEachRow($b)) {	
+				echo  "<tr><td>" . $row['reg_ID'] . "</td><td>" .$row['email'] . "</td><td>" . $row['password'] . "</td><td>" . 						$row['verified'] . "</td></tr>";
+			}
+		echo "</table>";
+		}
+		else
+			echo "Query returned empty result set or is wrong.";
 } 
 catch(Exception $dbEx){
 	echo $dbEx->getMessage();

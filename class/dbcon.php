@@ -55,29 +55,35 @@ class DbCon
 		$result = $this->con->query($sqlstring);
 		if($result)
 		{
-			$row =  $result->fetch_row();
-			return $row[0]; 	
+			$assoc =  $result->fetch_row();
+			return $assoc[0]; 	
 		}
 		else
 			return 0;
-	}
+	}	
 	
+	/*Run select sql statement, return mysqli_result object 
+	if the query is wrong or if there are no records to display the return would be 0 (null)
+	*/
 	function getSelectTable($sqlstring)
 	{
-		/*
-	 	$result = $this->con->real_query($sqlstring);		
-		if($result)
-		{
-			while ($row = $result->fetch_assoc()) {
-                printf("%s <br>", $row[0]);
-				$this->con->next_result();
-            }
-            $result->free();
-		}
-		else 
-			return 0; */
+	 	$result = $this->con->real_query($sqlstring);
+		$selectRes = $this->con->store_result();
+		if ($selectRes && $selectRes->num_rows > 0)	
+			return  $selectRes;
+		else if (!$selectRes)
+			return 0;
 	}
 	
+	/* Get each row of the mysqli result variable that's being passed as a reference parameter */
+	function getEachRow(&$msqliResult)
+	{
+		$row = $msqliResult->fetch_assoc() ;
+		if($row != null)
+			return $row;
+		else
+			return 0;
+	}	
 	 
 	/*-------- Insert related functions --------*/
 		
