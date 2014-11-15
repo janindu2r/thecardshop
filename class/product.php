@@ -6,13 +6,13 @@
 class product
 {
 	
-public $prod_Id, $pro_Name,$pro_Img, $pro_Price,$sell_Unit,$description,$stock;
+public $prodId, $proName,$proImg, $proPrice,$sell_Unit,$description,$stock;
 public $db;
 function __construct()
 {
 	try
 	{
-		$this->db = new dbcon();
+		$this->db = new DbCon();
 	}
 	catch(Exception $e)
 	{
@@ -26,24 +26,24 @@ function __construct()
 		$instance = new self();
 		$db = new DbCon();
 		$num = $db->getFirstRow("select * from products where product_ID =".$proid);
-	$instance->pro_Name = $num['product_fname'];
-	$instance->pro_Img = $num['default_img_loc'];
-	$instance->pro_Price = $num['price'];
-	$instance->sell_Unit = $num['selling_unit'];
+	$instance->proName = $num['product_fname'];
+	$instance->proImg = $num['default_img_loc'];
+	$instance->proPrice = $num['price'];
+	$instance->sellUnit = $num['selling_unit'];
 	$instance->description = $num['product_desc'];
 	return $instance;	
 	}
 	public static function addProduct(array $assArr)
 	{
 		$instance = new self();
-		$db = new dbcon();
+		$db = new DbCon();
 		$assArr = $db->runInsetRecord($table,$fields);
-		$instance->pro_Id = $assArr['product_id'];
-		$instance->pro_Name = $assArr['product_name'];
-		$instance->pro_Price = $assArr['product_price'];
+		$instance->proId = $assArr['product_id'];
+		$instance->proName = $assArr['product_name'];
+		$instance->proPrice = $assArr['product_price'];
 		$instance->description = $assArr['description'];
-		$instance->sell_Unit = $assArr['selling_unit'];
-		$instance->pro_Img = $assArr['product_img'];
+		$instance->sellUnit = $assArr['selling_unit'];
+		$instance->prodImg = $assArr['default_img_loc'];
 		return $instance;
 	}
 	
