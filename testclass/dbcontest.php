@@ -1,6 +1,7 @@
 <?php
 include('../class/dbcon.php');
 
+
 /** Database Test Class 
 created: 2014-11-11
 by : JK;
@@ -13,7 +14,7 @@ Refer only to review DbConClass functionality in action
 try {
 $a = new DbCon(); // create object
 
-/*
+
 // run insert query, print return value
 $insert = array("reg_ID"=>"1", "email"=>"'janani@gmail.com'", "verified"=>"0", "password"=>"'janz'");	
 printf ($a->runInsertRecord('account', $insert). " -> Insert Query Result<br>");
@@ -28,7 +29,6 @@ print ($a->runUpdateRecord('account', $insert, 'verified = 0'). " -> Update Quer
 //directly run update query (runNonQuery Example)
 printf ($a->runNonQuery("update account set verified=0") . " -> Non Query Result<br>");
  
-*/
 
 //run select statement to get first row as an associative array
 $result = $a->getFirstRow("select * from account where reg_ID= 1");
@@ -61,10 +61,20 @@ $b = $a->getSelectTable("select * from account");
 		}
 		else
 			echo "Query returned empty result set or is wrong.";
-} 
+			
+			
+			
+			/*$Osth = new something();
+$Osth->something2();*/
+
+}
+ 
 catch(Exception $dbEx){
 	echo $dbEx->getMessage();
 }
+
+
+
 
 
 ?>
