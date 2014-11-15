@@ -37,7 +37,9 @@ function __construct()
 	{
 		$instance = new self();
 		$db = new DbCon();
-		$assArr = $db->runInsetRecord($table,$fields);
+		$table = "";
+		$fields ="";
+		$assArr = $db->runInsertRecord($table,$fields);
 		$instance->proId = $assArr['product_id'];
 		$instance->proName = $assArr['product_name'];
 		$instance->proPrice = $assArr['product_price'];
