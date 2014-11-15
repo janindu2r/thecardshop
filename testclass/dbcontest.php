@@ -19,11 +19,11 @@ $a = new DbCon(); // create object
 =======
 >>>>>>> origin/master
 // run insert query, print return value
-$insert = array("reg_id"=>"1", "email"=>"'janani@gmail.com'", "verified"=>"0", "password"=>"'janz'");	
+$insert = array("reg_id"=>"1", "email"=>"'janani@gmail.com'", "verified"=>"0",  "display_name"=>"'disp_name'", "password"=>"'password'");	
 printf ($a->runInsertRecord('account', $insert). " -> Insert Query Result<br>");
 
 //directly run an insert query (runNonQuery Example)
-printf ($a->runNonQuery("insert into account values( 2, 'something@gmail.com', 'pass', 0)") . " -> Non Query Result<br>");
+printf ($a->runNonQuery("insert into account values( 2, 'something@gmail.com', 'usern', 'pass', 0)") . " -> Non Query Result<br>");
 
 $insert = array("password"=>"'upPass'");
 //create and run update query
@@ -39,7 +39,7 @@ echo "<br>";
 >>>>>>> origin/master
 
 //run select statement to get first row as an associative array
-$result = $a->getFirstRow("select * from account where reg_id= 2");
+$result = $a->getFirstRow("select * from account where reg_id= 1");
 if($result != 0)
 {
 	echo "The results from the first row from your query displayed in a table <br> <table  cellpadding='2' border='1'>";
@@ -63,7 +63,7 @@ $b = $a->getSelectTable("select * from account");
 		if($b){		
 		echo "Your Select Query Table <table cellpadding='2' border='1'>";
 		while ($row = $a->getEachRow($b)) {	
-				echo  "<tr><td>" . $row['reg_ID'] . "</td><td>" .$row['email'] . "</td><td>" . $row['password'] . "</td><td>" . 						$row['verified'] . "</td></tr>";
+				echo  "<tr><td>" . $row['reg_id'] . "</td><td>" .$row['email'] . "</td><td>" . $row['password'] . "</td><td>" . 						$row['verified'] . "</td></tr>";
 			}
 		echo "</table>";
 		}
