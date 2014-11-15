@@ -14,7 +14,7 @@ try {
 $a = new DbCon(); // create object
 
 // run insert query, print return value
-$insert = array("reg_ID"=>"1", "email"=>"'janani@gmail.com'", "verified"=>"0", "password"=>"'janz'");	
+$insert = array("reg_id"=>"1", "email"=>"'janani@gmail.com'", "verified"=>"0", "password"=>"'janz'");	
 printf ($a->runInsertRecord('account', $insert). " -> Insert Query Result<br>");
 
 //directly run an insert query (runNonQuery Example)
@@ -30,7 +30,7 @@ printf ($a->runNonQuery("update account set verified=0") . " -> Non Query Result
 echo "<br>";
 
 //run select statement to get first row as an associative array
-$result = $a->getFirstRow("select * from account where reg_ID= 2");
+$result = $a->getFirstRow("select * from account where reg_id= 2");
 if($result != 0)
 {
 	echo "The results from the first row from your query displayed in a table <br> <table  cellpadding='2' border='1'>";
