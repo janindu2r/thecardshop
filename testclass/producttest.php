@@ -13,15 +13,18 @@ echo $sampleProd->description."<br>";
 echo $sampleProd->proImg."<br>";
 
 //initializing associative array
- $arr = "";
-$sample2 = product::addProduct($arr);
-
+ 
+ $arr= array('product_id'=>'2','product_title'=>'biscuits','price'=>'300','selling_unit'=>'20','product_desc'=>'its nice');
+$addedProd = product::addProduct($arr);
+echo $addedProd->proName."<br>";
+echo $addedProd->proId."<br>";
 
 //inserting values to product table
-$arr= array('product_id'=>'2','product_title'=>'biscuits','price'=>'300','selling_unit'=>'20','product_desc'=>'its nice');
+
 //echo $sample2->$arr['pro_name']."<br>";
 
-echo $db->runInsertRecord('product',$arr)."<br>";
+echo $arr['product_title']."<br>";
+echo $arr['product_id']."<br>";
 
 
 ?>
