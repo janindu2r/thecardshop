@@ -161,7 +161,13 @@ class DbCon
 		$result = $this->runNonQuery("DELETE FROM ". $tableName . " WHERE " . $whereClause);
 		return $result;
 	}
-   
+	
+	/*-------- parameter validation --------*/
+	/* Pass input variable and return the value with escaped strings */
+   function escapeString($sqlPara)
+   {
+	   return $this->con->real_escape_string($sqlPara);
+   }
 }
 
 ?>
