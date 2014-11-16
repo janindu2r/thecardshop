@@ -69,6 +69,11 @@ echo "<br>";
 		echo "Delete Query Sucessful";
 	else
 		echo "Delete Query Not Sucessful";	
+
+//sample escape string 
+$varb = "Conon O'Brian %10 _134"; 
+echo "<br><br>Escape String that says <b>". $varb ."</b> <br>Result ->  ";
+echo $a->escapeString($varb) ;
 					
 } 
 catch(Exception $dbEx){

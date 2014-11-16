@@ -2,7 +2,7 @@
 /* Database Class 
 created: 2014-11-11
 by : JK;
-lastEdited: 2014-11-11
+lastEdited: 2014-11-16
 by: JK;
 */
 
@@ -165,8 +165,8 @@ class DbCon
 	/*-------- parameter validation --------*/
 	/* Pass input variable and return the value with escaped strings */
    function escapeString($sqlPara)
-   {
-	   return $this->con->real_escape_string($sqlPara);
+   { 
+	   return addcslashes($this->con->real_escape_string($sqlPara), '%_');
    }
 }
 
