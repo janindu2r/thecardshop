@@ -90,36 +90,54 @@ class User
 
 	function login($disp, $pass)
 	{
+		$query = sprintf("SELECT * FROM account WHERE display_name='%s' and password='%s'",mysql_real_escape_string($disp), mysql_real_escape_string($pass));
 
-		if($disp==this->getDispName() && $pass==this->getPassword())
+		$dbcon = new DbCon();
+		$result = $dbcon->getFirstRow($query);
+
+		if($result != 0)
 		{
-			return 1;
+			header('Location : profile.php');
 		}
 		else
-			return 0;
+		{
+			header('Location : login.php');
+		}
 
-		$query = sprintf("SELECT display_name FROM elitecomercio WHERE display_name='%s' and password='%s'",mysql_real_escape_string($disp), mysql_real_escape_string($pass));
+		$dbcon->__destruct();
 		 
 	}
 
-	function registration1($details)
+	function registration($tbl, $details)
 	{
 		$con = new DbCon();
 
-		$result = $con->runInsertRecord('account', $details);
+		$result = $con->runInsertRecord($tbl, $details);
 
 		if($result)
-			echo "Registration stage 1 complete";
+			header('Location:  confirm.php');
 		else
-			echo "Unable to complete registration";
+			header('Location:  registration.php');
+
+		$con->__destruct();
 	}
 
-	function registration2()
+	function updateDetails($details, $clause)
 	{
-		$con = new DbCon();
+		$dbcon = new DbCon();
+		$result = $dbcon->runUpdateRecord('user', $details, $clause);
 
+		if($result != 0)
+		{
+			header('Location : profile.php');
+		}
+		else
+		{
+			header('Location : update.php');
+		}
 
+		$dbcon->__destruct();
 	}
-}
+
 
 ?>
