@@ -13,5 +13,8 @@
 	$dpname = $_POST['uname'];
 	$pass = $_POST['password'];
 
+	$dpname = htmlspecialchars($dpname);
+	$pass = htmlspecialchars($pass);
+
 	$user->login($dpname, $pass);
 ?>

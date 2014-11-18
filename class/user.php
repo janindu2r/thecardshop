@@ -97,11 +97,19 @@ class User
 
 		if($result != 0)
 		{
-			header('Location : profile.php');
+			session_start();
+			$_SESSION['login_user'] = $disp;
+
+			//echo $_SESSION['login_user'];
+
+			header("Location : profile.php");
 		}
 		else
 		{
-			header('Location : login.php');
+			//$errorMessage = "Invalid Login";
+			session_start();
+			$_SESSION['login'] = '';
+			header("Location : login.php");
 		}
 
 		$dbcon->__destruct();
