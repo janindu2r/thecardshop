@@ -18,11 +18,14 @@ $insert = array("reg_id"=>"1", "email"=>"'janani@gmail.com'", "verified"=>"0",  
 printf ($a->runInsertRecord('account', $insert). " -> Insert Query Result<br>");
 
 //directly run an insert query (runNonQuery Example)
-printf ($a->runNonQuery("insert into account values( 3, 'something@gmail.com', 'usern', 'pass', 0)") . " -> Non Query Result<br>");
+printf ($a->runNonQuery("insert into account values( 2, 'something@gmail.com', 'usern', 'pass', 0)") . " -> Non Query Result<br>");
 
 $insert = array("password"=>"'upPass'");
 //create and run update query
 print ($a->runUpdateRecord('account', $insert, 'email = "something@gmail.com"'). " -> Update Query Result<br>");
+
+//run update query created by passed parameters
+print ($a->runUpdateOneValue('account', "password = 'SomePassWord'" , 'email = "something@gmail.com"'). " -> Update One Field Result<br>");
 
 //directly run update query (runNonQuery Example)
 printf ($a->runNonQuery("update account set verified=0") . " -> Non Query Result<br>");

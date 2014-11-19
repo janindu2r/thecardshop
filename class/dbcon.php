@@ -141,7 +141,17 @@ class DbCon
 		$result = $this->runNonQuery($this->getUpdateSql($tableName, $setValues, $whereClause));
 		return $result;	
 	}
-  
+	
+	/* Run update query and return if successful 
+	parameter: $updateField --> " fieldname = 'value' "
+	$whereClause --> Everything the sql condition must check (eg: field1 = value1 AND field2 = value2 OR field3 = value3)
+	 */
+	function runUpdateOneValue($tableName, $updateField, $whereClause){		
+		$sql = "UPDATE ". $tableName . " SET ".  $updateField . " WHERE " . $whereClause; 
+		$result = $this->runNonQuery($sql);
+		return $result;	
+	}
+ 
 	
 	/*-------- Delete function --------*/
 	/* Run delete query and return boolean success 
