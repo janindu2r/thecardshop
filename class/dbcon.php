@@ -2,7 +2,7 @@
 /* Database Class 
 created: 2014-11-11
 by : JK;
-lastEdited: 2014-11-16
+lastEdited: 2014-11-19
 by: JK;
 */
 
@@ -12,15 +12,17 @@ class DbCon
 	
 	// Constructor - Create object method and throw exception for connection errors */	
 	function __construct() {
-		$this->con  = new mysqli("localhost", "root", "", "elitecomercio");
-		if ($this->con->connect_errno != 0){
-			  throw new Exception("Could not connect to the database. \n". $this->con->connect_error);
+		try{
+		$this->con  = new PDO("mysql:host=localhost;dbname=elitecomercio", 'root', '');
+		}
+		catch(PDOException $pdoE){
+			 throw new Exception("Could not connect to the database. ". $pdoE->getMessage());
 		}
 	} 
 	
 	// Destructor - Close Connection 
 	function __destruct() {
-       $this->con->close();
+       unset($this->con);
 	}		        	
 	 
 	/*-------- General Query Result Return Functions --------*/
@@ -28,9 +30,10 @@ class DbCon
 	/* Pass sql string as parameter, run query, return affected rows */
 	function runNonQuery($sqlstring)
 	{
-		$result = $this->con->query($sqlstring);
-		if($result)
-			return $this->con->affected_rows;
+		$result = $this->con->prepare($sqlstring);
+		$sucess = $result->execute();
+		if($sucess)
+			return $result->rowCount();
 		else
 			return 0;
 	}
@@ -40,9 +43,10 @@ class DbCon
 	*/
 	function getFirstRow($sqlstring)
 	{
-		$result = $this->con->query($sqlstring);
-		if($result)
-			return  $result->fetch_assoc();	
+		$result = $this->con->prepare($sqlstring);
+		$sucess = $result->execute();
+		if($sucess)
+			return  $result->fetch(PDO::FETCH_ASSOC);	
 		else
 			return 0;
 	}
@@ -52,36 +56,24 @@ class DbCon
 	*/
 	function getScalar($sqlstring)
 	{
-		$result = $this->con->query($sqlstring);
-		if($result)
-		{
-			$assoc =  $result->fetch_row();
-			return $assoc[0]; 	
-		}
+		$result = $this->con->prepare($sqlstring);
+		$sucess = $result->execute();
+		if($sucess)
+			return $result->fetchColumn();	
 		else
 			return 0;
 	}	
 	
-	/*Run select sql statement, return mysqli_result object 
+	/*Run select sql statement, return associative arrays per each row
 	if the query is wrong or if there are no records to display the return would be 0 (null)
 	*/
 	function getSelectTable($sqlstring)
 	{
-	 	$result = $this->con->real_query($sqlstring);
-		$selectRes = $this->con->store_result();
-		if ($selectRes && $selectRes->num_rows > 0)	
-			return  $selectRes;
-		else if (!$selectRes)
-			return 0;
-	}
-	
-	/* Get each row of the mysqli result variable that's being passed as a reference parameter */
-	function getEachRow(&$msqliResult)
-	{
-		$row = $msqliResult->fetch_assoc() ;
-		if($row != null)
-			return $row;
-		else
+	 	$result = $this->con->prepare($sqlstring);
+		$sucess = $result->execute();
+		if ($sucess && $result->rowCount() > 0)	
+			return  $result;
+		else if (!$result)
 			return 0;
 	}	
 	 
@@ -119,7 +111,7 @@ class DbCon
 	{
 		$result = $this->runNonQuery($this->getInsertSql($tableName, $fields));
 		if($result)
-			return $this->con->insert_id; 
+			return $this->con->lastInsertId(); 
 		else
 			return $result;
 	}	
@@ -166,8 +158,10 @@ class DbCon
 	/* Pass input variable and return the value with escaped strings */
    function escapeString($sqlPara)
    { 
-	   return addcslashes($this->con->real_escape_string($sqlPara), '%_');
+	   return addcslashes($this->con->quote($sqlPara), '%_');
    }
+   
+   
 }
 
 ?>

@@ -4,7 +4,7 @@ include('../class/dbcon.php');
 /** Database Test Class 
 created: 2014-11-11
 by : JK;
-lastEdited: 2014-11-11
+lastEdited: 2014-11-19
 by: JK;
 
 Refer only to review DbConClass functionality in action
@@ -18,7 +18,7 @@ $insert = array("reg_id"=>"1", "email"=>"'janani@gmail.com'", "verified"=>"0",  
 printf ($a->runInsertRecord('account', $insert). " -> Insert Query Result<br>");
 
 //directly run an insert query (runNonQuery Example)
-printf ($a->runNonQuery("insert into account values( 2, 'something@gmail.com', 'usern', 'pass', 0)") . " -> Non Query Result<br>");
+printf ($a->runNonQuery("insert into account values( 3, 'something@gmail.com', 'usern', 'pass', 0)") . " -> Non Query Result<br>");
 
 $insert = array("password"=>"'upPass'");
 //create and run update query
@@ -53,7 +53,7 @@ else
 $b = $a->getSelectTable("select * from account");
 		if($b){		
 		echo "Your Select Query Table <table cellpadding='2' border='1'>";
-		while ($row = $a->getEachRow($b)) {	
+		foreach($b as $row) {	
 				echo  "<tr><td>" . $row['reg_id'] . "</td><td>" .$row['email'] . "</td><td>" . $row['password'] . "</td><td>" . 						$row['verified'] . "</td></tr>";
 			}
 		echo "</table>";
@@ -73,7 +73,11 @@ echo "<br>";
 //sample escape string 
 $varb = "Conon O'Brian %10 _134"; 
 echo "<br><br>Escape String that says <b>". $varb ."</b> <br>Result ->  ";
-echo $a->escapeString($varb) ;
+echo $a->escapeString($varb) ; 
+
+
+echo "<br>";	
+
 					
 } 
 catch(Exception $dbEx){
