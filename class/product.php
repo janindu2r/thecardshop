@@ -82,6 +82,7 @@ function __construct()
 	
 	function insertproduct($pId,$sId,$pTitle,$pTag,$cId,$pPrice,$pDesc,$pVartns,$pVirtual,$pTags,$pSelUnits,$pPoints,$nPoints,$pImg,$iStock,$cStock,$pDate,$pDel)
 	{
+		
 	$asscArry['product_id'] = $pId;	
 	$asscArry['product_title'] = $pTitle;
 	$asscArry['price'] = $pPrice;
@@ -147,13 +148,26 @@ function __destructor()
 echo "destroying the connection";	
 }
 
-
-	/*function updateProduct($pNum)
+//updating the details
+	function updateProduct(array $setValue,$wheres)
 	{
 	$db = new DbCon();	
-	$update = $db->runNonQuery("");	
+	$result = $db->runUpdateRecord('products',$setValue,$wheres);
+	return $result;	
 		
-	}*/
+	}
+	
+	
+	//inserting values
+	function insertProducts(array $field)
+	{
+		$db = new DbCon();
+		$insert = $db->runInsertRecord(" products ",$field);
+		return $insert;
+		
+	}
+	
 }
+
 
 ?>
