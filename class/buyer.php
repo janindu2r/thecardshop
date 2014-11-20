@@ -16,33 +16,33 @@
 			$bid = uniqid(BY, false);
 			$bid = md5($bid);
 
-			this->$buyerID = $bid;
-			this->$reputationPoints = 0;
+			$this->buyerID = $bid;
+			$this->reputationPoints = 0;
 		}
 
 		function getBuyerID()
 		{
-			return this->$buyerID;
+			return $this->buyerID;
 		}
 
 		function setBuyerName($name)
 		{
-			this->$buyerName = $name;
+			$this->buyerName = $name;
 		}
 
 		function getBuyerName()
 		{
-			return this->$buyerName;
+			return $this->buyerName;
 		}
 
 		function setReputationPoints($points)
 		{
-			this->$reputationPoints += $points;
+			$this-$reputationPoints += $points;
 		}
 
 		function getReputationPoints()
 		{
-			return this->$reputationPoints;
+			return $this->reputationPoints;
 		}
 
 		private function purchase()

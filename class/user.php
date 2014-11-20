@@ -25,7 +25,7 @@ class User
 
 	function setRegID($id)
 	{
-		this->$regID = $id;
+		$this->regID = $id;
 	}
 	function getRegID()
 	{
@@ -34,56 +34,56 @@ class User
 
 	function setDispName($name)
 	{
-		this->$dispName = $name;
+		$this->dispName = $name;
 	}
 	function getDispName()
 	{
-		return this->$dispName;
+		return $this->dispName;
 	}
 
 	function setPassword($pass)
 	{
-		this->$password = $pass;
+		$this->password = $pass;
 	}
 	function getPassword()
 	{
-		return this->$password;
+		return $this->password;
 	}
 
 	function setAddress($add)
 	{
-		this->$address = $add;
+		$this->address = $add;
 	}
 	function getAddress()
 	{
-		return this->$address;
+		return $this->address;
 	}
 
 	function setCountry($count)
 	{
-		this->$country = $count;
+		$this->country = $count;
 	}
 	function getCountry()
 	{
-		return this->$country;
+		return $this->country;
 	}
 
 	function setGender($gend)
 	{
-		this->$gender = $gend;
+		$this->gender = $gend;
 	}
 	function getGender()
 	{
-		return this->$gender;
+		return $this->gender;
 	}
 
 	function setDob($date)
 	{
-		this->$dob = $date;
+		$this->dob = $date;
 	}
 	function getDob()
 	{
-		return this->$dob;
+		return $this->dob;
 	}
 
 	//end of getters and setters
@@ -126,8 +126,6 @@ class User
 			header('Location:  confirm.php');
 		else
 			header('Location:  registration.php');
-
-		$con->__destruct();
 	}
 
 	function updateDetails($details, $clause)
@@ -143,8 +141,6 @@ class User
 		{
 			header('Location : update.php');
 		}
-
-		$dbcon->__destruct();
 	}
 
 

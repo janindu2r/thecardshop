@@ -15,8 +15,6 @@
 	$query = "select * from user where reg_id = $regid";
 	$details = $dbcon->getScalar($query);
 
-	$dbcon->__destruct();
-
 	return $details;
 
 ?>
