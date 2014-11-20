@@ -13,7 +13,8 @@ class DbCon
 	// Constructor - Create object method and throw exception for connection errors */	
 	function __construct() {
 		try{
-		$this->con  = new PDO("mysql:host=localhost;dbname=elitecomercio", 'root', '');
+		include('dbstring.php');	
+	//	$this->con  = new PDO("mysql:host=localhost;dbname=elitecomercio", 'root', '');				
 		}
 		catch(PDOException $pdoE){
 			 throw new Exception("Could not connect to the database. ". $pdoE->getMessage());
