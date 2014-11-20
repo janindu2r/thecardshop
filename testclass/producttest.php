@@ -27,9 +27,8 @@ echo $addedProd->prodId."<br>";*/
 /*echo $arr['product_title']."<br>";
 echo $arr['product_id']."<br>";*/
 
-$proclass = new product();
-$arr2 = $proclass->insertproduct('4','noodles','500',"'they are good'",'100','c:/newfolder','60','30','20','2014-11-21','1','2','0','sdss','6','food','s34','sw23');
-$addedProd = product::addProduct($arr2);
+$arr2 =  product::insertproduct('4','12',"noodles","'good'",'10','500',"'tasety'","3edd","2we","next",'60','2','0',"'c:/newfolder'",'30','20','2014-11-21','1');
+
 
 echo $arr2["product_id"]."<br>";
 echo $arr2["shop_id"]."<br>";

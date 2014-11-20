@@ -1,13 +1,13 @@
 
 <?php
+include('../class/dbcon.php');
 
 
-
-class product
+abstract class product
 {
 	
-public $prodId, $proName,$proTag,$proImg, $proPrice,$sell_Unit,$description,$inStock,$cuStock,$shopId,$catId,$variation,$tags,$virtual,$pPoints,$nPoints,$dates,$del;
-public $db;
+protected $prodId, $proName,$proTag,$proImg, $proPrice,$sell_Unit,$description,$inStock,$cuStock,$shopId,$catId,$variation,$tags,$virtual,$pPoints,$nPoints,$dates,$del;
+protected $db;
 
 function __construct()
 {
@@ -22,9 +22,9 @@ function __construct()
 	
 }
 
-	public static function selectProduct($proid)
+	protected function selectProduct($proid)
 	{
-		$instance = new self();
+		
 		$db = new DbCon();
 		$num = $db->getFirstRow("select * from products where product_id =".$proid);
 	$instance->proName = $num['product_title'];
@@ -34,9 +34,9 @@ function __construct()
 	$instance->description = $num['product_desc'];
 	return $instance;	
 	}
-	public static function addProduct(array $assArr)
+	private function addProduct(array $assArr)
 	{
-		$instance = new self();
+		
 		$db = new DbCon();
 		
        
@@ -47,26 +47,26 @@ function __construct()
 			if($new = 0)
 			{
 				
-		$instance->prodId = $assArr['product_id'];
-		$instance->proName = $assArr['product_title'];
-		$instance->proPrice = $assArr['price'];
-		$instance->description = $assArr['product_desc'];
-		$instance->sell_Unit = $assArr['selling_unit'];
-		$instance->proImg = $assArr['default_img_loc'];
-		$instance->inStock = $assArr['initial_stck'];
-		$instance->cuStock = $assArr['current_stck'];
-		$instance->catId = $assArr['category_id'];
-		$instance->dates = $assArr['date_added'];
-		$instance->del = $assArr['deleted'];
-		$instance->nPoints = $assArr['neg_rep_points'];
-		$instance->pPoints = $assArr['pos_rep_points'];
-		$instance->tags = $assArr['tags'];
-		$instance->shopId = $assArr['shop_id'];
-		$instance->proTag = $assArr['product_tag'];
-		$instance->variation = $assArr['variations'];
-		$instance->virtual = $assArr['virtual'];
+		$this->prodId = $assArr['product_id'];
+		$this->proName = $assArr['product_title'];
+		$this->proPrice = $assArr['price'];
+		$this->description = $assArr['product_desc'];
+		$this->sell_Unit = $assArr['selling_unit'];
+		$this->proImg = $assArr['default_img_loc'];
+		$this->inStock = $assArr['initial_stck'];
+		$this->cuStock = $assArr['current_stck'];
+		$this->catId = $assArr['category_id'];
+		$this->dates = $assArr['date_added'];
+		$this->del = $assArr['deleted'];
+		$this->nPoints = $assArr['neg_rep_points'];
+		$this->pPoints = $assArr['pos_rep_points'];
+		$this->tags = $assArr['tags'];
+		$this->shopId = $assArr['shop_id'];
+		$this->proTag = $assArr['product_tag'];
+		$this->variation = $assArr['variations'];
+		$this->virtual = $assArr['virtual'];
 		
-		return $instance;
+		
 		}
 		}
 		catch(Exception $e)
@@ -80,7 +80,7 @@ function __construct()
 	
 	//a costructor for addProduct method
 	
-	function insertproduct($pId,$sId,$pTitle,$pTag,$cId,$pPrice,$pDesc,$pVartns,$pVirtual,$pTags,$pSelUnits,$pPoints,$nPoints,$pImg,$iStock,$cStock,$pDate,$pDel)
+  function  insertProductArray($pId,$sId,$pTitle,$pTag,$cId,$pPrice,$pDesc,$pVartns,$pVirtual,$pTags,$pSelUnits,$pPoints,$nPoints,$pImg,$iStock,$cStock,$pDate,$pDel)
 	{
 		
 	$asscArry['product_id'] = $pId;	
@@ -102,7 +102,7 @@ function __construct()
 	
 	
 	
-	return $asscArry;
+	addProduct($asscArry);
 		
 		
 		
@@ -114,12 +114,12 @@ function __construct()
 	
 	
 	//viewing a selected product
-	  function viewProduct($prodctId)
-	{
+	abstract  function viewProduct();
+	/*{
 		
-		$db = new DbCon();
 		
-		$view = $db->getFirstRow("select * from products where product_id =".$prodctId);
+		
+		$view =$this->db->getFirstRow("select * from products where product_id =".$this->prodId);
 	
 		$this->prodId = $view["product_id"];
 		$this->proName = $view["product_title"];
@@ -129,15 +129,15 @@ function __construct()
 		$this->description = $view["product_desc"];
 		return $this;
 		
-	}
+	}*/
 	
 	//deleting a record
 	
-function deleteProduct($productId)
+protected function deleteProduct()
 {
 	//making an instance of the db class
-	$db = new DbCon();
-	$deleteRec = $db->runNonQuery("delete from products where product_id = ".$productId);
+	
+	$deleteRec = $this->db->runNonQuery("delete from products where product_id = ".$this->prodId);
 	
 	return $deleteRec;
 		
@@ -149,25 +149,202 @@ echo "destroying the connection";
 }
 
 //updating the details
-	function updateProduct(array $setValue,$wheres)
+	protected function updateProduct(array $setValue,$wheres)
 	{
-	$db = new DbCon();	
-	$result = $db->runUpdateRecord('products',$setValue,$wheres);
+		
+	$result = $this->db->runUpdateRecord('products',$setValue,$wheres);
 	return $result;	
 		
 	}
 	
 	
 	//inserting values
-	function insertProducts(array $field)
+	/*function insertProducts(array $field)
 	{
 		$db = new DbCon();
 		$insert = $db->runInsertRecord(" products ",$field);
 		return $insert;
 		
+	}*/
+	
+	function updating($settingValue,$where)
+	{
+	$db = new DbCon();
+	$x = $db->runUpdateOneValue('products',$settingValue,$where);
+		
+		
+		
 	}
 	
 }
+
+class physical extends product
+{
+
+private $width,$height,$length,$weight;
+ 
+
+//getters and setters
+
+function setWidth($newWidth)
+{
+	$this->width =  $newWidth;
+}
+function getWidth()
+{
+return $this->width;	
+}
+function setHeight($newHeight)
+{
+	$this->height =  $newHeight;
+}
+function getHeight()
+{
+return $this->height;	
+}
+
+function setLength($newLength)
+{
+	$this->length =  $newLength;
+}
+function getLength()
+{
+return $this->length;	
+}
+function setWeight($newWeight)
+{
+	$this->weight =  $newWeight;
+}
+function getWeight()
+{
+return $this->weight;	
+}
+
+
+
+//constructor to initialise
+
+
+function __constructor($asArray)
+{
+if($asArray == null)
+{
+selectPhysicalProduct();	
+	
+}
+else
+{
+addPhysicalProduct();	
+	
+}
+	
+	
+}
+
+//implementing the selectPhysicalProduct
+
+function selectPhysicalProduct($proId)
+{
+	$newProd = new physical();
+ $newProd->selectProduct($proId);
+  
+  $select = $db->getFirstRow("select * from physical where prod_id = ".$proId);
+ $this->width = $select['width'] ; 
+ $this->height = $select['height'];
+ $this->weight = $select['weight'];
+ $this->length = $select['length'];
+ return $select['product_id'];
+  return $select['product_title'];
+   return $select['shop_id'];
+    return $select['initial_stck'];
+ return $this->width;	
+  return $this->height;
+	return $this->weight;
+	return $this->length;
+}
+
+
+//inserting values to the table
+
+
+/*function insertPhysicalProducts($pId,$pName,$pTag,$pImg, $pPrice,$selUnit,$desc,$inStck,$cuStck,$sId,$caId,$variatn,$tag,$virtuals,$pPnts,$nPnts,$date,$dele,$widths,$heights,$lengths,$weights)
+{
+	
+$arrayPro = array('');
+	addProduct();
+	
+	
+	
+}
+
+//deleting a record
+
+protected function deletePhysicalProduct()
+{
+	$db = new DbCon();
+$val1 = $db->runNonQuery("delete from products where product_id = ".$this->prodId);	
+$val2 = deleteProduct();
+
+if(val1 && val2)
+{
+return true;	
+	
+}
+	else
+	{
+	return false;	
+	}
+}*/
+
+
+//viewing product
+
+function viewProduct()
+{
+//$db = new DbCon();
+		$view = $db->getFirstRow("select * from products where product_id = ".$this->prodId);
+	
+		$this->prodId = $view["product_id"];
+		$this->proName = $view["product_title"];
+		$this->proPrice = $view["price"];
+		$this->proImg = $view["default_img_loc"];
+		$this->sell_Unit = $view["selling_unit"];
+		$this->description = $view["product_desc"];
+		return $this;	
+	
+	
+}
+
+/*
+public  function updatePhysicalProduct()
+{
+	
+	
+	
+}*/
+
+//echo dimensions
+
+/*function outDimensions($pName,$wdth,$hght,$lngth,$wght)
+{
+	echo " name of the product: ".$pName."<br>";
+echo " length is:".$wdth."<br>";
+echo " height is:".$hght."<br>";
+echo " width is :".$lngth."<br>";
+echo " weight is:".$wght. "<br>";
+	
+	
+}*/
+	
+	
+	
+}
+
+
+
+
+
+
 
 
 ?>
