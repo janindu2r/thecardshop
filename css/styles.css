@@ -313,6 +313,9 @@
 
 /* CSS Page Wrapper */
 .wrapper{
-    min-height: 10em;
-    padding: 2em;
+    min-height: 20em;
+}
+
+#tempdiv {
+    padding:2em;
 }

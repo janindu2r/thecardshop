@@ -61,4 +61,5 @@
   			</div><!-- /.container-fluid -->
 		</nav>
 
-	</header>
+	</header><!-- Header end, Wrapper Start -->
+  <div class="wrapper">
