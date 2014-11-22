@@ -45,11 +45,11 @@ $title = 'Comercio' ;
 			  </div>
 
 			  <!-- Controls -->
-			  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+			  <a class="left carousel-control" href="#carousel" role="button" data-slide="prev">
 			    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
 			    <span class="sr-only">Previous</span>
 			  </a>
-			  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+			  <a class="right carousel-control" href="#carousel" role="button" data-slide="next">
 			    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 			    <span class="sr-only">Next</span>
 			  </a>
@@ -57,11 +57,15 @@ $title = 'Comercio' ;
 			</div>
 			<!-- featured content *************************************************************-->
 			<div class="features">
-				<div class="views">
-					Featured
-					<div class="greenLine">-</div>
-					views
-				</div>
+				<div class="container">
+<!-- 					<div class="views">
+						<strong>Change Views</strong>
+				        <div class="btn-group">
+				            <a href="#" id="list" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-th-list">
+				            </span>List</a> <a href="#" id="grid" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-th"></span>Grid</a>
+				        </div>
+					</div> -->
+				</div><!-- end of views-conatiner -->
 				<div class="products">
 				<div class="container">
 				    <div class="row">
@@ -539,10 +543,15 @@ $title = 'Comercio' ;
 <!-- end of middle content -->
 <script>
     $('.carousel').carousel({
-        interval: 3000
+        interval: 8000
     })
 </script>
-
+<script>
+$(document).ready(function() {
+    $('#list').click(function(event){event.preventDefault();$('#products .item').addClass('list-group-item');});
+    $('#grid').click(function(event){event.preventDefault();$('#products .item').removeClass('list-group-item');$('#products .item').addClass('grid-group-item');});
+});
+</script>
 <!-- include footer -->
 
 <?php include('footer.php');?>

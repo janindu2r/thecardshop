@@ -46,6 +46,10 @@
 	margin-top: 0px;
 }
 
+.views{
+	float:right;
+	padding: 10px;
+}
 
 /*ptoduct container css*/
 .thumbnail {
