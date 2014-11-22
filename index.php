@@ -12,12 +12,12 @@ $title = 'Comercio' ;
         <?php include('header.php');?>
 	
     <main><!-- carousel-for-new-deals-and-adverts -->
-		<div id="carousel" class="carousel slide" data-ride="carousel">
+		<div id="carousel" class="carousel slide" data-ride="carousel" data-interval="3000">
 			  <!-- Indicators -->
 			  <ol class="carousel-indicators">
-			    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-			    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-			    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+			    <li data-target="#carousel" data-slide-to="0" class="active"></li>
+			    <li data-target="#carousel" data-slide-to="1"></li>
+			    <li data-target="#carousel" data-slide-to="2"></li>
 			  </ol>
 
 			 
@@ -537,7 +537,11 @@ $title = 'Comercio' ;
 	</main>
 
 <!-- end of middle content -->
-
+<script>
+    $('.carousel').carousel({
+        interval: 3000
+    })
+</script>
 
 <!-- include footer -->
 
