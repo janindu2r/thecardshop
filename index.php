@@ -12,7 +12,7 @@ $title = 'Comercio' ;
         <?php include('header.php');?>
 	
     <main><!-- carousel-for-new-deals-and-adverts -->
-		<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+		<div id="carousel" class="carousel slide" data-ride="carousel">
 			  <!-- Indicators -->
 			  <ol class="carousel-indicators">
 			    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -20,21 +20,28 @@ $title = 'Comercio' ;
 			    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
 			  </ol>
 
-			  <!-- Wrapper for slides -->
+			 
+			<!-- Wrapper for slides -->
 			  <div class="carousel-inner" role="listbox">
 			    <div class="item active">
-			      <img src="img/first.svg" alt="...">
+			      <img src="img/first.jpg" alt="...">
 			      <div class="carousel-caption">
-			        ...
+			        
 			      </div>
 			    </div>
 			    <div class="item">
-			      <img src="second.svg" alt="...">
+			      <img src="img/second.jpg" alt="...">
 			      <div class="carousel-caption">
-			        ...
+			       
 			      </div>
 			    </div>
-			    ...
+			    <div class="item">
+			      <img src="img/third.jpg" alt="...">
+			      <div class="carousel-caption">
+			        
+			      </div>
+			    </div>
+			    
 			  </div>
 
 			  <!-- Controls -->

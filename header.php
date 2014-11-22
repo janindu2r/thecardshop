@@ -3,9 +3,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
         <title><?php echo $title ?></title>
 		<link rel="shortcut icon" href="/favicon.ico">  <!--absolute links -->
-		<link rel="stylesheet" type="text/css" href="/css/demo.css" />
 		<link rel="stylesheet" type="text/css" href="/css/styles.css" />
-		<link rel="stylesheet" type="text/css" href="/css/component.css" />
 		<script src="/js/modernizr.custom.js"></script>
 		<!-- Bootstrap -->
    		<link href="/css/bootstrap.css" rel="stylesheet">
@@ -14,10 +12,12 @@
 <body>
 	<header>
 		<div id="upper-header"> <!-- header for add my account and contacts -->
-			<p>Phone orders: 1-800-0000<span>|</span>Email us: office@shop.com</p>
+			<p class="upper-header-text">Phone orders: 1-800-0000<span>|</span>Email us: office@shop.com</p>
 		</div>
+		<hr class="colorgraph">
+		<div class="clearfix"></div>
 		<!-- navigation	menu -->
-		<nav class="navbar navbar-default" role="navigation">
+		<nav class="navbar navbar-default" role="navigation" style="margin-bottom:0;">
   			<div class="container-fluid">
 			    <!-- Brand and toggle get grouped for better mobile display -->
 			    <div class="navbar-header">
@@ -49,9 +49,18 @@
 		      <form class="navbar-form navbar-left" role="search">
 		        
 		        <div class="form-group">
-		          <input type="text" class="form-control" placeholder="Search">
+		            <div id="imaginary_container"> 
+		                <div class="input-group stylish-input-group">
+		                    <input type="text" class="form-control"  placeholder="Search" >
+		                    <span class="input-group-addon">
+		                        <button type="submit">
+		                            <span class="glyphicon glyphicon-search"></span>
+		                        </button>  
+		                    </span>
+		                </div>
+            		</div>
 		        </div>
-		        <button type="submit" class="btn btn-default">Submit</button>
+
 		      </form>
 		      <ul class="nav navbar-nav navbar-right">
 		      	<li class="active"><a href="#">Adi Purdila <span class="sr-only">(current)</span></a></li>
