@@ -1,20 +1,25 @@
-  </div>
+
 <!-- End of wrapper. Start of footer -->
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
 <div class="row" id="contact-bar-color">
-    <div class="container">
+
         <div class="contact-bar">
-            <div class="col-md-6 col-md-offset-3">
-                <div class="page-header">
+<!--             <div class="container"> -->
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <div class="">
                     <h1>For phone orders please call 1-800-0000.</h1>
                     <p>You can also email us at <span style="font-weight:bold;">office@shop.com</span>office@shop.com</p>
                 </div>
-            </div>           
-        </div>
+            </div>
+            <div class="col-md-4"></div>
+<!--             </div> end of container    -->       
+        </div> <!-- end of contact-bar --> 
 
-    </div>
+
 </div>
-
+</div><!-- end of container -->
 <footer>
    
     <div class="footer" id="footer">
@@ -61,8 +66,8 @@
                     <ul>
                         <li>
                             <div class="input-append newsletter-box text-center">
-                                <input type="text" class="full text-center" placeholder="Email ">
-                                <button class="btn  bg-gray" type="button"> Lorem ipsum <i class="fa fa-long-arrow-right"> </i> </button>
+                                <input type="text" class="form-control" placeholder="Email ">
+                                <button class="btn btn-primary" type="button">Subscribe</button>
                             </div>
                         </li>
                     </ul>
