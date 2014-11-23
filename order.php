@@ -1,7 +1,7 @@
 <!-- add session initiation and other similar necessary php stuff below -->
 <?php
 
-$title = '' ;  // page title
+$title = 'Order' ;  // page title
 
 
 ?>
@@ -11,6 +11,10 @@ $title = '' ;  // page title
 	<head>
         <?php include('header.php'); ?>
 <!---------------------------------------- Add Page Edits Below ------------------------------------------------->    
+
+Order details from the cart
+
+Pay button. Followed by payment processing which redirects to here with thank you message + order completed stuff
 
 
 <!---------------------------------------- End of page edits ---------------------------------------------------->

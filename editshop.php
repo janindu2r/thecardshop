@@ -1,7 +1,7 @@
 <!-- add session initiation and other similar necessary php stuff below -->
 <?php
-
-$title = '' ;  // page title
+$shopname = 'Shop Name';
+$title = 'Edit Shop Layout | '.$shopname    ;  // page title
 
 
 ?>
@@ -12,6 +12,8 @@ $title = '' ;  // page title
         <?php include('header.php'); ?>
 <!---------------------------------------- Add Page Edits Below ------------------------------------------------->    
 
+
+Same as registershop page, details already taken and displayed in text boxes to edit. 
 
 <!---------------------------------------- End of page edits ---------------------------------------------------->
 <?php include('footer.php'); //including the footer?>

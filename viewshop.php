@@ -1,7 +1,8 @@
 <!-- add session initiation and other similar necessary php stuff below -->
 <?php
 
-$title = '' ;  // page title
+$shopname = 'Your shop name';
+$title = $shopname.' | Comercio' ;  // page title
 
 
 ?>
@@ -11,6 +12,8 @@ $title = '' ;  // page title
 	<head>
         <?php include('header.php'); ?>
 <!---------------------------------------- Add Page Edits Below ------------------------------------------------->    
+
+Same layout as index page, few customizations available 
 
 
 <!---------------------------------------- End of page edits ---------------------------------------------------->

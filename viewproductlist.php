@@ -1,7 +1,8 @@
 <!-- add session initiation and other similar necessary php stuff below -->
 <?php
 
-$title = '' ;  // page title
+$shopname = 'Name of Shop';
+$title = 'Product List | '. $shopname  ;  // page title
 
 
 ?>
@@ -12,6 +13,8 @@ $title = '' ;  // page title
         <?php include('header.php'); ?>
 <!---------------------------------------- Add Page Edits Below ------------------------------------------------->    
 
+
+List products owned by this seller and give link to edit product page for each
 
 <!---------------------------------------- End of page edits ---------------------------------------------------->
 <?php include('footer.php'); //including the footer?>
