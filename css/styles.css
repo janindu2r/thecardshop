@@ -49,21 +49,25 @@
 .nav>li>a:hover, .nav>li>a:focus, .nav .open>a, .nav .open>a:hover, .nav .open>a:focus {
     background:#fff;
 }*/
+.cart-text{
+	padding:5px;
+	text-align: center;
+}
 .user-name-style{
 	padding:5px;
 	text-align: center;
 }
 .dropdown {
     background:#fff;
-    border:1px solid #ccc;
-    border-radius:4px;
+/*    border:1px solid #ccc;*/
+/*    border-radius:4px;*/
     width:auto;    
 }
 .dropdown-menu>li>a {
     color:#428bca;
 }
 .dropdown ul.dropdown-menu {
-    border-radius:4px;
+/*    border-radius:4px;*/
     box-shadow:none;
     margin-top:20px;
     width:300px;
