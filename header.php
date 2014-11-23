@@ -64,8 +64,23 @@
 
 		      </form>
 		      <ul class="nav navbar-nav navbar-right">
-		      	<li class="active"><a href="#">Adi Purdila <span class="sr-only">(current)</span></a></li>
-		        <li><a href="#">500.50</a></li>
+		      	<li class="dropdown">
+		      		<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user pull-left"></span><span class="user-name-style">Adi Purdila</span> <span class="sr-only">(current)</span></a>
+		      		<ul class="dropdown-menu">
+			            <li><a href="#">Account Settings <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
+			            <li class="divider"></li>
+			            <li><a href="#">User stats <span class="glyphicon glyphicon-stats pull-right"></span></a></li>
+			            <li class="divider"></li>
+			            <li><a href="#">Messages <span class="badge pull-right"> 42 </span></a></li>
+			            <li class="divider"></li>
+			            <li><a href="#">Favourites Snippets <span class="glyphicon glyphicon-heart pull-right"></span></a></li>
+			            <li class="divider"></li>
+			            <li><a href="#">Sign Out <span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
+          			</ul>
+		      	</li>
+		        <li>
+		        	<a href="#">500.50</a>
+		        </li>
 		      </ul>
 		    </div><!-- /.navbar-collapse -->
   			</div><!-- /.container-fluid -->

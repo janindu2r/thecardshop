@@ -1,7 +1,22 @@
   </div>
 <!-- End of wrapper. Start of footer -->
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="row" id="contact-bar-color">
+    <div class="container">
+        <div class="contact-bar">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="page-header">
+                    <h1>For phone orders please call 1-800-0000.</h1>
+                    <p>You can also email us at <span style="font-weight:bold;">office@shop.com</span>office@shop.com</p>
+                </div>
+            </div>           
+        </div>
+
+    </div>
+</div>
+
 <footer>
+   
     <div class="footer" id="footer">
         <div class="container">
             <div class="row">

@@ -107,11 +107,12 @@ $title = 'Comercio' ;
 				                                            </i><i class="fa fa-star"></i>
 				                                        </div>
 				                                    </div>
-				                                    <div class="separator clear-left">
-				                                        <p class="btn-add">
-				                                            <i class="fa fa-shopping-cart"></i><a href="http://www.jquery2dotnet.com" class="hidden-sm">Add to cart</a></p>
+				                                    <div class="separator clear-right">
+				                                        
 				                                        <p class="btn-details">
 				                                            <i class="fa fa-list"></i><a href="http://www.jquery2dotnet.com" class="hidden-sm">More details</a></p>
+				                                        <p class="btn-add">
+				                                            <i class="fa fa-shopping-cart"></i><a href="http://www.jquery2dotnet.com" class="hidden-sm">Add to cart</a></p>
 				                                    </div>
 				                                    <div class="clearfix">
 				                                    </div>
@@ -536,8 +537,10 @@ $title = 'Comercio' ;
 				    </div>
 				</div>
 
-								</div>
-							</div>
+			</div> <!-- end of products -->
+	</div><!--  end of features -->
+
+
 	</main>
 
 <!-- end of middle content -->
