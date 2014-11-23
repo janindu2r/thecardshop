@@ -264,7 +264,8 @@
 }
 #contact-bar-color{
 	height:auto;
-	background-color:#0dc3ea; 
+	background-color:#0dc3ea;
+	margin-top: 25px; 
 }
 
 .footer {

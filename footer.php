@@ -1,11 +1,12 @@
 
 <!-- End of wrapper. Start of footer -->
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <div class="clearfix">
+<footer>
+<div class="" id="contact-bar-color">
 
-<div class="row" id="contact-bar-color">
-
-        <div class="contact-bar">
-<!--             <div class="container"> -->
+        <div class="contact-bar" id="row">
+            <div class="container">
             <div class="col-md-4"></div>
             <div class="col-md-4">
                 <div class="">
@@ -13,14 +14,15 @@
                     <p>You can also email us at <span style="font-weight:bold;">office@shop.com</span>office@shop.com</p>
                 </div>
             </div>
-            <div class="col-md-4"></div>
-<!--             </div> end of container    -->       
+<!--div class="col-md-4"></div> -->
+            </div>       
         </div> <!-- end of contact-bar --> 
 
 
 </div>
 </div><!-- end of container -->
-<footer>
+  <div class="clearfix">
+
    
     <div class="footer" id="footer">
         <div class="container">
