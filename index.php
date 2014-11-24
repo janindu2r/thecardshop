@@ -1,16 +1,14 @@
 <?php
-//include classes and other related functions
 include('overhead.php');
-
 $title = 'Comercio' ; //define page title
 ?>
 
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta name="description" content="Blueprint: Blueprint: Google Grid Gallery" />
-		<meta name="keywords" content="google getting started gallery, image gallery, image grid, template, masonry" />
-		<meta name="author" content="Codrops" />
+		<meta name="description" content="Comercio, buy quality items, sell your items" />
+		<meta name="keywords" content="comercio, e-commerce, buy, sell" />
+		<meta name="author" content="EliteCoders" />
         <!-- include header -->
         <?php include('header.php');?>
 	

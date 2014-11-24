@@ -1,8 +1,7 @@
 <!-- add session initiation and other similar necessary php stuff below -->
 <?php
-
-// $title = 'Login' ;  // page title
-
+include('overhead.php');
+$title = 'Login' ;  // page title
 
 ?>
 <!---------------------------------------- Header Start, Do not touch ----------------------------------------- -->
@@ -21,11 +20,11 @@
                     <form role="form" action="javascript:;" method="post" id="login-form" autocomplete="off">
                         <div class="form-group">
                             <label for="email" class="sr-only">Email</label>
-                            <input type="email" name="email" id="email" class="form-control" placeholder="somebody@example.com">
+                            <input type="email" name="eid" id="email" class="form-control" placeholder="somebody@example.com">
                         </div>
                         <div class="form-group">
                             <label for="key" class="sr-only">Password</label>
-                            <input type="password" name="key" id="key" class="form-control" placeholder="Password">
+                            <input type="password" name="passwd" id="key" class="form-control" placeholder="Password">
                         </div>
                         <div class="checkbox">
                             <span class="character-checkbox" onclick="showPassword()"></span>

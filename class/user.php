@@ -8,13 +8,17 @@
 
 class User
 {
-	var $regID;
+	private $regID;
 	private $dispName;
 	private $password;
 	protected $address;
-	protected $country;
 	private $gender;
 	private $dob;
+	private $fname;
+	private $lname;
+	private $posrep;
+	private $negrep;
+	private $email;
 
 	/*function __construct(argument)
 	{
@@ -22,14 +26,19 @@ class User
 	}`*/
 
 	//start of getters and setters
-
+	
+	function getprofile()   //used in header.php 
+	{
+		return $this->fname.' '.$this->lname;
+	}
+	
 	function setRegID($id)
 	{
 		$this->regID = $id;
 	}
 	function getRegID()
 	{
-		return this->$regID;
+		return $this->regID;
 	}
 
 	function setDispName($name)
@@ -90,30 +99,27 @@ class User
 
 	function login($disp, $pass)
 	{
-		$query = sprintf("SELECT * FROM account WHERE display_name='%s' and password='%s'",mysql_real_escape_string($disp), mysql_real_escape_string($pass));
-
+		$query = sprintf("SELECT * FROM account WHERE display_name='%s' and password='%s' and verified = 1",$disp, $pass);		
 		$dbcon = new DbCon();
-		$result = $dbcon->getFirstRow($query);
-
+		$result= $dbcon->getFirstRow($query);
 		if($result != 0)
 		{
-			session_start();
-			$_SESSION['login_user'] = $disp;
-
-			//echo $_SESSION['login_user'];
-
-			header("Location : profile.php");
+			$this->regID = $result['reg_id'];
+			$this->dispName = $result['display_name'];
+			$this->password = $result['password'];
+			$this->email = $result['email'];
+			$udetails = $dbcon->getFirstRow("select * from user where reg_id =".$this->regID);
+			$this->fname = $udetails['fname'];
+			$this->lname = $udetails['lname'];
+			return 1;			
+			//initiate rest of the variables
 		}
 		else
 		{
-			//$errorMessage = "Invalid Login";
-			session_start();
-			$_SESSION['login'] = '';
-			header("Location : login.php");
+			//handle return on index.php (redirect to login page)
+			return 0;
 		}
 
-		$dbcon->__destruct();
-		 
 	}
 
 	function registration($tbl, $details)
@@ -142,6 +148,8 @@ class User
 			header('Location : update.php');
 		}
 	}
-
+	
+	
+}
 
 ?>

@@ -85,8 +85,9 @@
 
 		      </form>
 		      <ul class="nav navbar-nav navbar-right">
+              <?php if($logged) { ?>
 		      	<li class="dropdown">
-		      		<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user pull-left"></span><span class="user-name-style"><?php echo $u_name; ?></span> <span class="sr-only">(current)</span></a>
+		      		<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user pull-left"></span><span class="user-name-style"> <?php echo $user->getprofile() ?></span> <span class="sr-only">(current)</span></a>
 		      		<ul class="dropdown-menu">
 			            <li><a href="#">Account Settings <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
 			            <li class="divider"></li>
@@ -96,12 +97,13 @@
 			            <li class="divider"></li>
 			            <li><a href="#">Favourites Snippets <span class="glyphicon glyphicon-heart pull-right"></span></a></li>
 			            <li class="divider"></li>
-			            <li><a href="#">Sign Out <span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
+			            <li><a href="/index.php?logout=1">Sign Out <span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
           			</ul>
 		      	</li>
 		        <li>
 		        	<a href="/login.php"><i class="fa fa-shopping-cart"></i><span class="cart-text">$500.50</span></a>
 		        </li>
+                <?php } else { ?>
 		        <!-- **********************Modal window for Login *********************-->
 		        <li>
 		        	<a href="javascript:;" class="forget" data-toggle="modal" data-target=".login-modal">Login</a>
@@ -112,12 +114,12 @@
 						          
 						          <div class="modal-header">
 						            <button type="button" class="close" data-dismiss="modal">x</button>
-						            <h3>Login to MyWebsite.com</h3>
+						            <h3>Login to Comercio</h3>
 						          </div>
 						          
 						          <div class="modal-body">
-						            <form method="post" action='' name="login_form">
-						              <p><input type="text" class="span3" name="eid" id="email" placeholder="Email"></p>
+						            <form method="post" action="" name="login_form">
+						              <p><input type="text" class="span3" name="eid" id="email" placeholder="User Name or Email"></p>
 						              <p><input type="password" class="span3" name="passwd" placeholder="Password"></p>
 						              <p><button type="submit" class="btn btn-primary">Sign in</button>
 						                <a href="#">Forgot Password?</a>
@@ -126,14 +128,14 @@
 						          </div>
 						          <div class="modal-footer">
 						            New To Comercio?
-						            <a href="#" class="btn btn-primary">Register</a>
+						            <a href="/register.php" class="btn btn-primary">Register</a>
 						          </div>
 						        </div>
 							</div> <!-- /.modal-content -->
 						</div> <!-- /.modal-dialog -->
 					</div> <!-- /.modal -->
 
-		        </li>
+		        </li> <?php } ?>
 		      </ul>
 		    </div><!-- /.navbar-collapse -->
   			</div><!-- /.container-fluid -->
