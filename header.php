@@ -6,6 +6,13 @@
 		<link rel="stylesheet" type="text/css" href="/css/styles.css" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
+		<script type="text/javascript">
+		 	// $(document).ready(function(){
+ 	  //   	$(".btn").click(function(){
+		 	//         $("#myModal").modal('show');
+		 	//     });
+		 	// });
+		// </script>
 		<!-- Bootstrap -->
    		<link href="/css/bootstrap.css" rel="stylesheet">
 	</head>
@@ -28,7 +35,7 @@
 			        <span class="icon-bar"></span>
 			        <span class="icon-bar"></span>
 			      </button>
-			      <a class="navbar-brand" href="#">Commercio</a>
+			      <a class="navbar-brand" href="/index.php">Commercio</a>
    	 		</div>
 
 		    <!-- Collect the nav links, forms, and other content for toggling -->
@@ -49,7 +56,7 @@
 		      </ul>
 		      <ul class="nav navbar-nav">
 		        <li class="nav-dropdown">
-		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Tempory Nav<span class="caret"></span></a>
 		          <ul class="dropdown-menu" role="menu">
 		            <li><a href="#">Action</a></li>
 		            <li><a href="#">Another action</a></li>
@@ -57,7 +64,7 @@
 		            <li class="divider"></li>
 		            <li><a href="#">Separated link</a></li>
 		            <li class="divider"></li>
-		            <li><a href="#">One more separated link</a></li>
+		            <li><a href="#">View Product</a></li>
 		          </ul>
 		        </li>
 		      </ul>
@@ -93,7 +100,39 @@
           			</ul>
 		      	</li>
 		        <li>
-		        	<a href="#"><i class="fa fa-shopping-cart"></i><span class="cart-text">$500.50</span></a>
+		        	<a href="/login.php"><i class="fa fa-shopping-cart"></i><span class="cart-text">$500.50</span></a>
+		        </li>
+		        <!-- **********************Modal window for Login *********************-->
+		        <li>
+		        	<a href="javascript:;" class="forget" data-toggle="modal" data-target=".login-modal">Login</a>
+					<div class="modal fade login-modal" tabindex="-1" role="dialog" aria-labelledby="myForgetModalLabel" aria-hidden="true">
+						<div class="modal-dialog modal-sm">
+							<div class="modal-content">
+						        <!-- <div class="modal hide" id="myModal"> -->
+						          
+						          <div class="modal-header">
+						            <button type="button" class="close" data-dismiss="modal">x</button>
+						            <h3>Login to MyWebsite.com</h3>
+						          </div>
+						          
+						          <div class="modal-body">
+						            <form method="post" action='' name="login_form">
+						              <p><input type="text" class="span3" name="eid" id="email" placeholder="Email"></p>
+						              <p><input type="password" class="span3" name="passwd" placeholder="Password"></p>
+						              <p><button type="submit" class="btn btn-primary">Sign in</button>
+						                <a href="#">Forgot Password?</a>
+						              </p>
+						            </form>
+						          </div>
+						          <div class="modal-footer">
+						            New To Comercio?
+						            <a href="#" class="btn btn-primary">Register</a>
+						          </div>
+						        </div>
+							</div> <!-- /.modal-content -->
+						</div> <!-- /.modal-dialog -->
+					</div> <!-- /.modal -->
+
 		        </li>
 		      </ul>
 		    </div><!-- /.navbar-collapse -->
