@@ -1,5 +1,8 @@
 <?php
-$title = 'Comercio' ; 
+//include classes and other related functions
+include('overhead.php');
+
+$title = 'Comercio' ; //define page title
 ?>
 
 <!DOCTYPE html>

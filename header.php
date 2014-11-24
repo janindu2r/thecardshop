@@ -79,7 +79,7 @@
 		      </form>
 		      <ul class="nav navbar-nav navbar-right">
 		      	<li class="dropdown">
-		      		<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user pull-left"></span><span class="user-name-style">Adi Purdila</span> <span class="sr-only">(current)</span></a>
+		      		<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user pull-left"></span><span class="user-name-style"><?php echo $u_name; ?></span> <span class="sr-only">(current)</span></a>
 		      		<ul class="dropdown-menu">
 			            <li><a href="#">Account Settings <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
 			            <li class="divider"></li>
