@@ -28,7 +28,7 @@ print ($a->runUpdateRecord('account', $insert, 'email = "something@gmail.com"').
 print ($a->runUpdateOneValue('account', "password = 'SomePassWord'" , 'email = "something@gmail.com"'). " -> Update One Field Result<br>");
 
 //directly run update query (runNonQuery Example)
-printf ($a->runNonQuery("update account set verified=0") . " -> Non Query Result<br>");
+printf ($a->runNonQuery("update account set verified=1") . " -> Non Query Result<br>");
 
 echo "<br>";
 

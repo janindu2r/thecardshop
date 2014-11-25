@@ -99,7 +99,7 @@ class User
 
 	function login($disp, $pass)
 	{
-		$query = sprintf("SELECT * FROM account WHERE display_name='%s' and password='%s' and verified = 1",$disp, $pass);		
+		$query = sprintf("SELECT * FROM account WHERE  (display_name='%s' or email='%s') and password='%s' and verified = 1",$disp, $disp, $pass);		
 		$dbcon = new DbCon();
 		$result= $dbcon->getFirstRow($query);
 		if($result != 0)
