@@ -1,11 +1,11 @@
-<!-- add session initiation and other similar necessary php stuff below -->
+add session initiation and other similar necessary php stuff below -->
 <?php
 
 $title = 'Sign Up' ;  // page title
 
 
 ?>
-<!---------------------------------------- Header Start, Do not touch ----------------------------------------- -->
+<!-- -------------------------------------- Header Start, Do not touch ----------------------------------------- -->
 <!DOCTYPE html>
 <html>
 	<head>
@@ -16,14 +16,14 @@ $title = 'Sign Up' ;  // page title
 		</style>
 
         <?php include('header.php'); ?>
-<!---------------------------------------- Add Page Edits Below ----------------------------------------------- --> 
-		   
-	
-REgistration form<br><br>
+<!-- -------------------------------------- Add Page Edits Below ----------------------------------------------- --> 
 
+<div class="RegWrapper" id="SignUpWrapper">
 <div class="container">
+
     <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-4 well well-sm">
+
+        <div class="col-xs-12 col-sm-12 col-md-6 well well-sm col-md-offset-3" id="signUpFormContainer">
             <legend><i class="glyphicon glyphicon-globe"></i> Sign up!</legend>
             <form action="scripts/reg.php" method="post" class="form" role="form">
             <div class="row">
@@ -85,4 +85,5 @@ REgistration form<br><br>
 
 <!---------------------------------------- End of page edits ---------------------------------------------------->
 <?php include('footer.php'); //including the footer?>
-<!-- End of page -->
+</div> <!-- end of the wrapper -->
+<!-- End of page

@@ -473,3 +473,18 @@
 .btn-custom:focus {
     color: #fff;
 }
+
+
+
+/* --------------------------------------------------------------
+            Rgister page styles
+------------------------------------------------------------------*/
+
+#signUpFormContainer{
+    margin-top: 50px;
+}
+
+#SignUpWrapper{
+    background-color: #e5e5e5;
+    
+}
