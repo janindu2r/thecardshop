@@ -127,11 +127,11 @@ class User
 		$con = new DbCon();
 
 		$result = $con->runInsertRecord($tbl, $details);
-
+/*
 		if($result)
 			header('Location:  confirm.php');
 		else
-			header('Location:  registration.php');
+			header('Location:  registration.php');*/
 	}
 
 	function updateDetails($details, $clause)

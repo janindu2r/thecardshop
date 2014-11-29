@@ -46,19 +46,19 @@ $title = 'Sign Up' ;  // page title
                 <div class="col-xs-4 col-md-4">
                     <select class="form-control" name="month">
                         <option value="Month">Month</option>
-                        <option value="Month">01</option>
+                        <option value="01">01</option>
                     </select>
                 </div>
                 <div class="col-xs-4 col-md-4">
                     <select class="form-control" name="day">
                         <option value="Day">Day</option>
-                        <option value="Day">01</option>
+                        <option value="01">01</option>
                     </select>
                 </div>
                 <div class="col-xs-4 col-md-4">
                     <select class="form-control" name="year">
                         <option value="Year">Year</option>
-                        <option value="Year">1990</option>
+                        <option value="1990">1990</option>
                     </select>
                 </div>
             </div>
