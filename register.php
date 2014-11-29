@@ -63,11 +63,11 @@ $title = 'Sign Up' ;  // page title
                 </div>
             </div>
             <label class="radio-inline">
-                <input type="radio" name="gender" id="inlineCheckbox1" value="male" />
+                <input type="radio" name="gender" id="inlineCheckbox1" value="M" />
                 Male
             </label>
             <label class="radio-inline">
-                <input type="radio" name="gender" id="inlineCheckbox2" value="female" />
+                <input type="radio" name="gender" id="inlineCheckbox2" value="F" />
                 Female
             </label>
             <br /><br/>

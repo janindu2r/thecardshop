@@ -9,47 +9,42 @@
 	include('../class/user.php');
 
 	$user = new User();
-
+/*
 	$id = uniqid(cid, false);
 	$id = md5($id);
 
-	$db = new DbCon();
+
 	$string = "select * from user where reg_ID = $id";
 	$idCheck = $db->getScalar($string);
+*/
+	$db = new DbCon();
 
-	if($idCheck == 0)
-	{
-		$regDetail['regID'] = $id;
-		$regDetail['email'] = $_POST["email"];
-		$emailCheck = $_POST["reenteremail"];
+//	if($idCheck == 0)
+//	{
+		//$regDetail['reg_id'] = 1;
+		$regDetail['email'] = $db->escapeString($_POST["email"]);
+		$emailCheck = $db->escapeString($_POST["reenteremail"]);
 
-		$regDetail['dispname'] = $_POST["firstname"] . " " . $_POST["lastname"];
-		$regDetail['password'] = $_POST["pass"];
-		$passwordCheck = $_POST["repassword"];
+		$regDetail['display_name'] = "'". $_POST["firstname"] . " " . $_POST["lastname"] . "'";
+		$regDetail['password'] = $db->escapeString($_POST["password"]);
+		$passwordCheck = $db->escapeString($_POST["repassword"]);
 
 		$regDetail['verified'] = 0;
 
-		$regDetailed['reg_ID'] = $id;
-		$regDetailed['fname'] = $_POST["firstname"];
-		$regDetailed['lname'] = $_POST["lastname"];
-		$regDetailed['gender'] = $_POST["gender"];
-		$regDetailed['currency'] = 'SLR';
-		$date = $_POST["year"] . "-" . $_POST["month"] . "-" . $_POST["day"];
-		$regDetailed['dob'] = $date;
-		$regDetailed['billing_add1'] = $_POST["billing_add1"];
-		$regDetailed['billing_add2'] = $_POST["billing_add2"];
-		$regDetailed['billing_add3'] = $_POST["billing_add3"];
-		$regDetailed['postal'] = $_POST["postal"];
-		$regDetailed['pos_points'] = 0;
-		$regDetailed['neg_points'] = 0;
-
-
-		$user->registration('account', $regDetail);
+		//$regDetailed['reg_ID'] = 1;
+		$regDetailed['fname'] = $db->escapeString($_POST["firstname"]);
+		$regDetailed['lname'] = $db->escapeString($_POST["lastname"]);
+		$regDetailed['gender'] = $db->escapeString($_POST["gender"]);
+		$regDetailed['currency'] = "'". 'SLR' . "'";
+		$date = "'". $_POST["year"] . "-" . $_POST["month"] . "-" . $_POST["day"] . "'";
+		$regDetailed['date_of_birth'] = $date;
+		$regDetailed['deflt_billin_addl1'] = $db->escapeString($_POST["add1"]);
+		$regDetailed['deflt_billin_addl2'] = $db->escapeString($_POST["add2"]);
+		$regDetailed['deflt_billin_addl3'] = $db->escapeString($_POST["add3"]);
+		$regDetailed['postal_code'] = $_POST["postal"];
+		$regDetailed['pos_rep_pnts'] = 0;
+		$regDetailed['neg_rep_pnts'] = 0;
 		
-		$user->registration('user', $regDetailed);
-
-		header('Location: ../index.php');
-			/*
 		if($passwordCheck==$regDetail['password'] && $emailCheck==$regDetail['email'])
 		{
 			$user->registration('account', $regDetail);
@@ -61,14 +56,13 @@
 		else
 		{
 			header('Location: ../register.php');
-			echo "data mismatch";
 		}
-		*/
-	}
-	else
-	{
-		header('Location:  ../registration.php');
-		echo "error";
-	}
+		
+//	}
+//	else
+//	{
+//		header('Location:  ../registration.php');
+//		echo "error";
+//	}
 
 ?>
