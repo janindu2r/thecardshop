@@ -1,9 +1,11 @@
 <!-- add session initiation and other similar necessary php stuff below -->
 <?php
 include('overhead.php');
+$logged = 2;
+if($_SESSION){
+	header('location: /index.php');
+}
 $title = 'Login' ;  // page title
-
-$logged = 3;
 
 ?>
 <!---------------------------------------- Header Start, Do not touch ----------------------------------------- -->
@@ -19,7 +21,7 @@ $logged = 3;
     	    <div class="col-md-12">
         	    <div class="form-wrap">
                 <h1>Log in with your email account</h1>
-                    <form role="form" action="javascript:;" method="post" id="login-form" autocomplete="off">
+                    <form role="form" action="/index.php" method="post" id="login-form" autocomplete="off">
                         <div class="form-group">
                             <label for="email" class="sr-only">Email</label>
                             <input type="email" name="eid" id="email" class="form-control" placeholder="somebody@example.com">

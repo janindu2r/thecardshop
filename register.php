@@ -1,16 +1,18 @@
 <?php
+
 include('overhead.php');
-$title = 'Sign Up' ;  // page title
+$logged = 2;
+if($_SESSION){
+	header('location: /index.php');
+}
 
-$logged = 3;
-
+$title = 'Sign Up' ;  // page title	
 ?>
 <!-- -------------------------------------- Header Start, Do not touch ----------------------------------------- -->
 <!DOCTYPE html>
 <html>
 	<head>
 		<style>
-			body { padding-top:30px; }
 			.form-control { margin-bottom: 10px; }
 		</style>
 
