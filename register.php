@@ -1,8 +1,8 @@
-add session initiation and other similar necessary php stuff below -->
 <?php
-
+include('overhead.php');
 $title = 'Sign Up' ;  // page title
 
+$logged = 3;
 
 ?>
 <!-- -------------------------------------- Header Start, Do not touch ----------------------------------------- -->
@@ -12,7 +12,6 @@ $title = 'Sign Up' ;  // page title
 		<style>
 			body { padding-top:30px; }
 			.form-control { margin-bottom: 10px; }
-
 		</style>
 
         <?php include('header.php'); ?>

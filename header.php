@@ -86,7 +86,7 @@
 
 		      </form>
 		      <ul class="nav navbar-nav navbar-right">
-              <?php if($logged) { ?>
+              <?php if($logged == 1) { ?>
 		      	<li class="dropdown">
 		      		<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user pull-left"></span><span class="user-name-style"> <?php echo $user->getprofile() ?></span> <span class="sr-only">(current)</span></a>
 		      		<ul class="dropdown-menu">
@@ -104,7 +104,7 @@
 		        <li>
 		        	<a href="/login.php"><i class="fa fa-shopping-cart"></i><span class="cart-text">$500.50</span></a>
 		        </li>
-                <?php } else { ?>
+                <?php } else if($logged == 0) { ?>
 		        <!-- **********************Modal window for Login *********************-->
 		        <li>
 		        	<a href="javascript:;" class="forget" data-toggle="modal" data-target=".login-modal">Login</a>

@@ -3,6 +3,8 @@
 include('overhead.php');
 $title = 'Login' ;  // page title
 
+$logged = 3;
+
 ?>
 <!---------------------------------------- Header Start, Do not touch ----------------------------------------- -->
 <!DOCTYPE html>
