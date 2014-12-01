@@ -68,7 +68,7 @@
 /*    border-radius:4px;*/
     box-shadow:none;
     margin-top:20px;
-    width:300px;
+    width:500px;
 }
 .dropdown ul.dropdown-menu:before {
     content: "";
@@ -488,3 +488,10 @@
     background-color: #e5e5e5;
     
 }
+
+
+
+/* --------------------------------------------------------------
+            Cart DropDown styles
+------------------------------------------------------------------*/
+
