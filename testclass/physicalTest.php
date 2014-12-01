@@ -1,7 +1,7 @@
 <?php
 
 include('../class/physical.php');
-include('../class/ProductClass.php');
+include('../class/product.php');
 
 
 
@@ -22,7 +22,7 @@ else
 echo "coudnt delete";*/
 
 $phyView = new physical();
-$result = $phyView->viewProduct(1);
+$result = $phyView->viewProducts(1);
 echo $result->shipCst ."<br>";
 echo $result->multiByq ."<br>";
 

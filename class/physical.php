@@ -1,8 +1,8 @@
 <?php
-include('../class/ProductClass.php');
+include('../class/product.php');
 include('../class/dbcon.php');
 
-class physical extends ProductClass
+class physical extends product
 {
 public $width,$height,$length,$weight,$shipCst,$multiByq;
 

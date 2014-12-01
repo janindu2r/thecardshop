@@ -1,6 +1,6 @@
 <?php
 //include('../class/dbcon.php');
-include('../class/ProductClass.php');
+include('../class/product.php');
 
 
 /*
@@ -88,13 +88,13 @@ echo $inserted;
 
 //view
 
-$object = new ProductClass();
+$object = new product();
 $success = $object->viewProducts(1000000);
 echo $success->prodId."<br>";
 echo $success->proName."<br>";
 
 //deleting a record
-$delRecord = new ProductClass();
+$delRecord = new product();
 $success = $delRecord->deleteProduct(1000000);
 if($success == 1)
 {
@@ -107,7 +107,7 @@ echo"we coudnt remove record"."<br>";
 
 
 //updating the details
-$update = new ProductClass();
+$update = new product();
 $values = array( "product_desc" =>"'bad'");
 
 $pUpdate = $update->updateProduct($values,'product_id = "1000000"');
