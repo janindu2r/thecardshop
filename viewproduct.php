@@ -7,7 +7,7 @@ $viewfrom = 'Comercio';  // Or Shop Name
 $title = $prodtitle. ' | '. $viewfrom ;  // page title
 
 $prodID = 1000001;
-$varid = 1 ; $varval = 'Blue';
+$varid = 1 ; $varval = 'Red';
 $variation = 1;
 
 ?>
@@ -18,28 +18,7 @@ $variation = 1;
         <?php include('header.php'); ?>
 <!---------------------------------------- Add Page Edits Below ------------------------------------------------->    
 
-<<<<<<< HEAD
-product page
-<br><br>
 
-<?php
-echo $_POST["pro_ID"]."<br>";
-echo $_POST["pro_name"]."<br>";
-echo $_POST["description"]."<br>";
-echo $_POST["pro_price"]."<br>";
-echo $_POST["sel_unit"]."<br>";
-echo $_POST["stock"]."<br>";
-
-include('..comercio/class/ProductClass');
-
-$anthr = new ProductClass();
-$anthr.viewProduct();
-
-
-?>
-=======
-product page 
->>>>>>> origin/master
 <a href="cart.php">Add to cart button</a> 
 back to shop/home button
 
@@ -72,7 +51,14 @@ if viewer is  seller link to editproduct.php
                         data: cartObj,
                         cache: false,
                         success: function(result){
-                            $('#sth1').html(result);
+							var cItem = JSON.parse(result);
+							if(cItem.success == 1)
+							{
+								var nItem = cItem.itemAr;
+								$('#sth1').html( nItem['prodTitle'] + '' + nItem['prodDesc'] );					
+							} 
+							else
+							  $('#sth1').html('Failed'); 
                         }
                     });
                 });
