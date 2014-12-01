@@ -11,7 +11,7 @@ class CartProd{
 	protected $db;
 	protected $productId;
 	protected $quantity;
-	protected $addDateTime;
+	protected $addDateTime;		
 	
 	function __construct()
     {
@@ -35,6 +35,19 @@ class CartProd{
 		$simProd['added_datetime'] = $this->db->escapeString($this->addDateTime);
 		$sucess = $this->db->runInsertRecord('cart_products', $simProd);
 		return $sucess;
+	}
+	
+	function getDetails()
+	{
+	/*	$sql = "select price, virtual from products where product_id = ".$this->productId;
+		$result = $this->db->getFirstRow($sql);
+		
+		$this->price = $result['price'];
+		$bool = boolval($result['virtual']);
+		$this->hasShipping = !$bool;
+		
+		
+		//getScalar($sqlstring); */
 	}
 	
 }
