@@ -15,7 +15,23 @@ $title = $prodtitle. ' | '. $viewfrom ;  // page title
 <!---------------------------------------- Add Page Edits Below ------------------------------------------------->    
 
 product page
+<br><br>
 
+<?php
+echo $_POST["pro_ID"]."<br>";
+echo $_POST["pro_name"]."<br>";
+echo $_POST["description"]."<br>";
+echo $_POST["pro_price"]."<br>";
+echo $_POST["sel_unit"]."<br>";
+echo $_POST["stock"]."<br>";
+
+include('..comercio/class/ProductClass');
+
+$anthr = new ProductClass();
+$anthr.viewProduct();
+
+
+?>
 <a href="cart.php">Add to cart button</a> 
 back to shop/home button
 

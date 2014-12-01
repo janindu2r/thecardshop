@@ -1,52 +1,24 @@
 <?php
-include('../class/product.php');
+include('../class/ProductClass.php');
+include('../class/dbcon.php');
 
-class physical extends product
+class physical extends ProductClass
 {
-private $width,$height,$length,$weight;
+public $width,$height,$length,$weight,$shipCst,$multiByq;
 
 
-//getters and setters
 
-function setWidth($newWidth)
+function __construct()
 {
-	$this->width =  $newWidth;
+	parent::__construct();
+	
+	
 }
-function getWidth()
-{
-return $this->width;	
-}
-function setHeight($newHeight)
-{
-	$this->height =  $newHeight;
-}
-function getHeight()
-{
-return $this->height;	
-}
-
-function setLength($newLength)
-{
-	$this->length =  $newLength;
-}
-function getLength()
-{
-return $this->length;	
-}
-function setWeight($newWeight)
-{
-	$this->weight =  $newWeight;
-}
-function getWeight()
-{
-return $this->weight;	
-}
-
 
 
 //constructor to initialise
 
-
+/*now
 function __constructor($asArray)
 {
 if($asArray == null)
@@ -61,7 +33,8 @@ addPhysicalProduct();
 }
 	
 	
-}
+}*/
+/*
 
 //implementing the selectPhysicalProduct
 
@@ -83,10 +56,10 @@ function selectPhysicalProduct($proId)
 	return $this->weight;
 	return $this->length;
 }
-
+*/
 
 //inserting values to the table
-
+/*
 
 function insertPhysicalProducts($pId,$pName,$pTag,$pImg, $pPrice,$selUnit,$desc,$inStck,$cuStck,$sId,$caId,$variatn,$tag,$virtuals,$pPnts,$nPnts,$date,$dele,$widths,$heights,$lengths,$weights)
 {
@@ -100,10 +73,10 @@ $arrayPro = array('');
 
 //deleting a record
 
-protected function deletePhysicalProduct()
+public function deletePhysicalProduct()
 {
-	$db = new DbCon();
-$val1 = $db->runNonQuery("delete from products where product_id = ".$this->prodId);	
+	
+$val1 = $this->db->runNonQuery("delete from products where product_id = ".$this->prodId);	
 $val2 = deleteProduct();
 
 if(val1 && val2)
@@ -115,29 +88,30 @@ return true;
 	{
 	return false;	
 	}
-}
+}*/
 
 
 //viewing product
 
-function viewProduct()
+public function viewProducts($proID)
 {
-$db = new DbCon();
-		$view = $this->db->getFirstRow("select * from products where product_id = ".$this->prodId);
+
+		$view = $this->db->getFirstRow("select * from physical where prod_id = ".$proID);
 	
-		$this->prodId = $view["product_id"];
-		$this->proName = $view["product_title"];
-		$this->proPrice = $view["price"];
-		$this->proImg = $view["default_img_loc"];
-		$this->sell_Unit = $view["selling_unit"];
-		$this->description = $view["product_desc"];
-		return $this;	
+		$this->prodId = $view['prod_id'];
+		$this->width = $view['width'];
+		$this->height = $view['height'];
+		$this->length = $view['length'];
+		$this->weight = $view['weight'];
+		$this->shipCst = $view['shipping_cost'];
+		$this->multiByq = $view['multiply_byq'];
+		return $this;
 	
 	
 }
 
 
-protected function updatePhysicalProduct()
+public function updatePhysicalProduct()
 {
 	
 	

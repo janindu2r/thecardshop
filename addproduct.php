@@ -12,7 +12,13 @@ $title = 'Add New Product' ;  // page title
         <?php include('header.php'); ?>
 <!---------------------------------------- Add Page Edits Below ------------------------------------------------->    
 
-Add Product Form 
+Add Product Form
+<?php include('addItems.php'); ?>
+
+ 
+
+
+?>
 
 Submit will add data and redirect to viewproduct.php
 

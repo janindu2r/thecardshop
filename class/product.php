@@ -25,7 +25,7 @@ function __construct()
 	protected function selectProduct($proid)
 	{
 		
-		$db = new DbCon();
+		//$db = new DbCon();
 		$num = $db->getFirstRow("select * from products where product_id =".$proid);
 	$instance->proName = $num['product_title'];
 	$instance->proImg = $num['default_img_loc'];
@@ -52,7 +52,7 @@ function __construct()
 		$this->proPrice = $assArr['price'];
 		$this->description = $assArr['product_desc'];
 		$this->sell_Unit = $assArr['selling_unit'];
-		$this->proImg = $assArr['default_img_loc'];
+		
 		$this->inStock = $assArr['initial_stck'];
 		$this->cuStock = $assArr['current_stck'];
 		$this->catId = $assArr['category_id'];
@@ -65,7 +65,7 @@ function __construct()
 		$this->proTag = $assArr['product_tag'];
 		$this->variation = $assArr['variations'];
 		$this->virtual = $assArr['virtual'];
-		
+		return $this;
 		
 		}
 		}

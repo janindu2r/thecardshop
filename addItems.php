@@ -6,7 +6,7 @@
 </head>
 
 <body>
-<form name="addproduct" method="post" action="">
+<form name="addproduct" method="post" action= "viewproduct.php" enctype = "multipart/form-data" >
 Product ID <input type="text" name="pro_ID" /><br /><br />
 
 Product name<input type="text" name="pro_name" /><br /><br />

@@ -1,8 +1,9 @@
 <?php
-include('../class/dbcon.php');
-include('../class/product.php');
+//include('../class/dbcon.php');
+include('../class/ProductClass.php');
 
 
+/*
 //selecting product details from db
 $sampleProd = product::selectProduct(1);
 echo $sampleProd->prodId ."<br>";
@@ -26,7 +27,7 @@ echo $addedProd->prodId."<br>";*/
 
 /*echo $arr['product_title']."<br>";
 echo $arr['product_id']."<br>";*/
-
+/*bim
 $arr2 =  product::insertproduct('4','12',"noodles","'good'",'10','500',"'tasety'","3edd","2we","next",'60','2','0',"'c:/newfolder'",'30','20','2014-11-21','1');
 
 
@@ -72,26 +73,51 @@ echo "successfully updated"."<br>";
 	
 }
 else
-echo "coudnt update try again"."<br>";
+echo "coudnt update try again"."<br>";*/
 
 
-
+/*
 //calling the inserting function
-$insertProd = new product();
- //$arr3 = "o";
- $arr3= array(" product_id " => ' 10 '," product_title " => "' biscuits '"," price " => ' 300 '," product_desc " => "' its nice '"," selling_unit " => ' 20 '," default_img_loc " => "' c:/newfolder '"," initial_stck " => ' 30 '," current_stck " => ' 20 '," category_id " => ' 12 '," date_added " => ' 2014-09-21 '," deleted "=> ' 0 '," neg_rep_points " => ' 0 '," pos_rep_points " => ' 10 '," tags " => "' eee '"," shop_id " => ' 3 '," product_tag " => "' sweets '"," variations " => " se3 "," virtua l" => " 2we ");
-$inserted = $insertProd->insertProducts($arr3);
-if($inserted == 1)
+$insertProd = new ProductClass();
+ $arr3 = "o";
+ $arr3= array(" product_id " => ' 10 '," shop_id " => ' 9 '," product_title " => "' biscuits '", " product_tag " => "' sweets '"  ," category_id "  => ' 12 '  ," price " => ' 300 '," product_desc " => "' its nice '"," variations " => " se3 ", " virtual" => " 2we "  ," selling_unit " => ' 20 ', " pos_rep_points " => ' 10 ' , " neg_rep_points " => ' 0 '," initial_stck " => ' 30 '," current_stck " => ' 20 '," date_added " => ' 2014-09-21 '," deleted "=> ' 0 ');
+$inserted = $insertProd->addProduct($arr3);
+
+echo $inserted;
+*/
+
+//view
+
+$object = new ProductClass();
+$success = $object->viewProducts(1000000);
+echo $success->prodId."<br>";
+echo $success->proName."<br>";
+
+//deleting a record
+$delRecord = new ProductClass();
+$success = $delRecord->deleteProduct(1000000);
+if($success == 1)
 {
-echo "records added to the database"."<br>";	
+echo "yeah we removed"."<br>";
+//calling the destructor
+$delRecord->__destructor();
+}
+else
+echo"we coudnt remove record"."<br>";
+
+
+//updating the details
+$update = new ProductClass();
+$values = array( "product_desc" =>"'bad'");
+
+$pUpdate = $update->updateProduct($values,'product_id = "1000000"');
+if($pUpdate == 1)
+{
+echo "successfully updated"."<br>";	
 	
 }
 else
-{
-echo "we coudnt add the records"."<br>";
-
-}
-echo $arr3[' product_id '];
+echo "coudnt update try again"."<br>";
 
 
 ?>
