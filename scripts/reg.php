@@ -29,6 +29,8 @@
 		$passwordCheck = $db->escapeString(md5($_POST["repassword"]);
 		$regDetail['verified'] = 0;
 
+		$user->setDispName($regDetail['display_name']);
+
 		//$regDetailed['reg_ID'] = 1;
 		$regDetailed['fname'] = $db->escapeString($_POST["firstname"]);
 		$regDetailed['lname'] = $db->escapeString($_POST["lastname"]);

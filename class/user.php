@@ -8,17 +8,17 @@
 
 class User
 {
-	private $regID;
-	private $dispName;
-	private $password;
+	protected $regID;
+	protected $dispName;
+	protected $password;
 	protected $address;
-	private $gender;
-	private $dob;
-	private $fname;
-	private $lname;
-	private $posrep;
-	private $negrep;
-	private $email;
+	protected $gender;
+	protected $dob;
+	protected $fname;
+	protected $lname;
+	protected $posrep;
+	protected $negrep;
+	protected $email;
 
 	/*function __construct(argument)
 	{
@@ -41,11 +41,11 @@ class User
 		return $this->regID;
 	}
 
-	function setDispName($name)
+	public function setDispName($name)
 	{
 		$this->dispName = $name;
 	}
-	function getDispName()
+	public function getDispName()
 	{
 		return $this->dispName;
 	}
