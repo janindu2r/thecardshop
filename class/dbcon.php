@@ -81,7 +81,7 @@ class DbCon
 	/*-------- Insert related functions --------*/
 		
 	/* Private Function : create insert sql statement  */
-    private function getInsertSql($tableName, $fields) 
+    public function getInsertSql($tableName, $fields) 
 	{	
 		$dbfields ="";
 		$dbvalues = "";	

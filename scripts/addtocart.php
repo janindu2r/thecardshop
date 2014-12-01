@@ -12,17 +12,24 @@ if($_POST)
     $variation = intval( $_POST['variation']);
 	$prodId = $_POST['prodId'];
 	$qty = $_POST['quantity'];
+	$prodDesc = '';
     if($variation)
     {
 		$cartItm = new CartVar();
-		$ok = $cartItm->addVariationProd($prodId, $qty, $_POST['variationId'], $_POST['variationVal']);
+		$varVal = $_POST['variationVal'];
+		$varId = $_POST['variationId'];
+		$prodDesc = 'Color : '. $varVal;
+		$ok = $cartItm->addVariationProd($prodId, $qty, $varId, $varVal);
 		if($ok)
 		{
-			echo 'Added To Cart';
-            //return a confirmation about success and then the thumbnail item
+			$asso['prodTitle'] = 'JK Title';
+			$asso['prodDesc'] = $prodDesc;
+			$asso['prodPrice'] = '400';
+			$asso['prdShip'] = '200';				
+			echo json_encode(array('success' => $ok, 'itemAr' => $asso));
 		}
         else
-            echo "Error. Try Again";
+            echo json_encode(array('success' => $ok));
 
 
     }
@@ -35,7 +42,7 @@ if($_POST)
             //return a confirmation about success and then the thumbnail item
 		}
         else
-            echo "Error. Try Again";
+             echo json_encode(array('success' => $ok));
 
     }
     
