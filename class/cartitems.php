@@ -6,14 +6,17 @@ lastEdited: 2014-12-01
 by: JK;
 */
 
-class CartProd extends Cart{
+class CartProd{
+	protected $userId;
+	protected $db;
 	protected $productId;
 	protected $quantity;
 	protected $addDateTime;
 	
 	function __construct()
     {
-        parent::__construct() ;
+		$this->db = new DbCon();
+		$this->userId = $_SESSION['user']->getRegID();
         $this->addDateTime = date("Y-m-d H:i:s");
 	}
 	
