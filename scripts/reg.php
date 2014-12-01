@@ -22,12 +22,13 @@
 //	if($idCheck == 0)
 //	{
 		//$regDetail['reg_id'] = 1;
+		
 		$regDetail['email'] = $db->escapeString($_POST["email"]);
 		$emailCheck = $db->escapeString($_POST["reenteremail"]);
-
-		$regDetail['display_name'] = "'". $_POST["firstname"] . " " . $_POST["lastname"] . "'";
-		$regDetail['password'] = $db->escapeString($_POST["password"]);
-		$passwordCheck = $db->escapeString($_POST["repassword"]);
+		$regDetail['display_name'] = $db->escapeString($_POST["uname"]);
+		//$regDetail['display_name'] = "'". $_POST["firstname"] . " " . $_POST["lastname"] . "'";
+		$regDetail['password'] = $db->escapeString(md5($_POST["password"]));
+		$passwordCheck = $db->escapeString(md5($_POST["repassword"]);
 
 		$regDetail['verified'] = 0;
 

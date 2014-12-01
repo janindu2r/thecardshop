@@ -36,6 +36,7 @@ $title = 'Sign Up' ;  // page title
                     <input class="form-control" name="lastname" placeholder="Last Name" type="text" required />
                 </div>
             </div>
+            <input class="form-control" name="uname" placeholder="Username" type="text" />
             <input class="form-control" name="email" placeholder="Your Email" type="email" />
             <input class="form-control" name="reenteremail" placeholder="Re-enter Email" type="email" />
             <input class="form-control" name="password" placeholder="Password" type="password" />
