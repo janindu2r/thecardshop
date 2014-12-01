@@ -2,6 +2,8 @@
 //Including all the class files 
 include '/class/dbcon.php';
 include '/class/user.php';
+include '/class/cartitems.php';
+include '/class/cart.php';
 
 $logged = 0; //boolean variable to check if logged in or not
 $user = new User();

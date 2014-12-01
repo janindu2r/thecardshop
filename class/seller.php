@@ -4,7 +4,7 @@
 	Author : Aslam
 	Created : 2014-11-18
 */
-
+	
 	class Seller extends User
 	{
 		var $sellerID;
