@@ -22,21 +22,19 @@
 //	if($idCheck == 0)
 //	{
 		//$regDetail['reg_id'] = 1;
-		
 		$regDetail['email'] = $db->escapeString($_POST["email"]);
 		$emailCheck = $db->escapeString($_POST["reenteremail"]);
 		$regDetail['display_name'] = $db->escapeString($_POST["uname"]);
 		//$regDetail['display_name'] = "'". $_POST["firstname"] . " " . $_POST["lastname"] . "'";
 		$regDetail['password'] = $db->escapeString(md5($_POST["password"]));
 		$passwordCheck = $db->escapeString(md5($_POST["repassword"]);
-
 		$regDetail['verified'] = 0;
 
 		//$regDetailed['reg_ID'] = 1;
 		$regDetailed['fname'] = $db->escapeString($_POST["firstname"]);
 		$regDetailed['lname'] = $db->escapeString($_POST["lastname"]);
 		$regDetailed['gender'] = $db->escapeString($_POST["gender"]);
-		$regDetailed['currency'] = "'". 'SLR' . "'";
+		
 		$date = "'". $_POST["year"] . "-" . $_POST["month"] . "-" . $_POST["day"] . "'";
 		$regDetailed['date_of_birth'] = $date;
 		$regDetailed['deflt_billin_addl1'] = $db->escapeString($_POST["add1"]);
