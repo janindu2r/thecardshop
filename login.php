@@ -24,7 +24,7 @@ $title = 'Login' ;  // page title
                     <form role="form" action="/index.php" method="post" id="login-form" autocomplete="off">
                         <div class="form-group">
                             <label for="email" class="sr-only">Email</label>
-                            <input type="email" name="eid" id="email" class="form-control" placeholder="Username/Email">
+                            <input type="text" name="eid" id="email" class="form-control" placeholder="Username/Email">
                         </div>
                         <div class="form-group">
                             <label for="key" class="sr-only">Password</label>
