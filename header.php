@@ -101,7 +101,7 @@
 			            <li><a href="/index.php?logout=1">Sign Out <span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
           			</ul>
 		      	</li>
-		        <li class="dropdown">
+		        <li class="dropdown-cart">
 		        	<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-shopping-cart"></i><span class="cart-text">$500.50</span></a>
 		        		<ul class="dropdown-menu">
 								<div class="row">
