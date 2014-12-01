@@ -1,7 +1,6 @@
 <?php 
-include('../class/dbcon.php');
 
- class product
+class Product
 {
 public $prodId, $proName,$proTag, $proPrice,$sell_Unit,$description,$inStock,$cuStock,$shopId,$catId,$variation,$virtual,$pPoints,$nPoints,$dates,$del;
 public $db;
@@ -18,16 +17,14 @@ function __construct()
 	}
 	
 }
-//declaring abstract methods
 
- function initializeProduct(array $prodArray)
+ public function initializeProduct(array $prodArray)
  {
 	 	$this->prodId = $prodArray['product_id'];
 		$this->proName = $prodArray['product_title'];
 		$this->proPrice = $prodArray['price'];
 		$this->description =$prodArray['product_desc']; //and so on
-		$this->sell_Unit = $prodArray['selling_unit'];
-		
+		$this->sell_Unit = $prodArray['selling_unit'];		
 		$this->inStock = $prodArray['initial_stck'];
 		$this->cuStock =$prodArray['current_stck'];
 		$this->catId = $prodArray['category_id'];
@@ -35,7 +32,6 @@ function __construct()
 		$this->del = $prodArray['deleted'];
 		$this->nPoints = $prodArray['neg_rep_points'];
 		$this->pPoints = $prodArray['pos_rep_points'];
-		
 		$this->shopId = $prodArray['shop_id'];
 		$this->proTag =$prodArray['product_tag'];
 		$this->variation = $prodArray['variations'];
@@ -45,9 +41,9 @@ function __construct()
  
  public function returnProduct($productID)
  {
-	 $selectArray = $this->db->getFirstRow("select * from products where product_id = ".$productID);
-	 
-	 initializeProduct($selectArray);
+	 $selectArray = $this->db->getFirstRow("select * from products where product_id = ".$productID);	 
+	 $arr =  $this->initializeProduct($selectArray);
+	 return $arr;
  }
 
  public function addProduct(array $assArryProd)
@@ -60,7 +56,6 @@ function __construct()
 		{
 		$this->initializeProduct($assArryProd);		
 		return $this;
-			
 		}
 		
 	}
@@ -95,17 +90,14 @@ function __construct()
  }
 
  public function deleteProduct($pId)
- {
-	 
-	 	$deleteRec = $this->db->runNonQuery("delete from products where product_id = ".$pId);
-	
-	return $deleteRec;
-	 
+ { 
+	$deleteRec = $this->db->runNonQuery("delete from products where product_id = ".$pId);
+	return $deleteRec;	 
  }
- //destructor
-function __destructor()
-{
-echo "destroying the connection";	
+ 
+//destructor
+function __destructor(){
+//echo "destroying the connection";	
 }
 
  public function updateProduct(array $setValue,$wheres)

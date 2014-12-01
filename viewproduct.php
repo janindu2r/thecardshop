@@ -2,13 +2,18 @@
 <?php
 include('overhead.php');
 
-$prodtitle = 'Product Title';
+$prodID = 1000000; //GET variable from url. Or post variable
+$viewProd = new Product();
+$viewProd = $viewProd->returnProduct($prodID);
+
+
+$prodtitle = $viewProd->proName ;
 $viewfrom = 'Comercio';  // Or Shop Name
 $title = $prodtitle. ' | '. $viewfrom ;  // page title
 
-$prodID = 1000001;
+//vartiation 
 $varid = 1 ; $varval = 'Red';
-$variation = 1;
+$variation = 0;
 
 ?>
 <!---------------------------------------- Header Start, Do not touch ------------------------------------------->
@@ -37,13 +42,13 @@ if viewer is  seller link to editproduct.php
             {
                 $('#additemtocart').click(function() {
                     var cartObj = {};
-                    cartObj['prodId'] = '<?php echo $prodID?>';
-                    cartObj['variation'] = '<?php echo $variation?>';
+                    cartObj['prodId'] = '<?php echo $viewProd->prodId ?>';
+                    cartObj['variation'] = '<?php echo $viewProd->variation ?>';
                     <?php if($variation) { ?>
                     cartObj['variationId'] = '<?php echo $varid ;//echo variation ID?>';
                     cartObj['variationVal'] = '<?php echo $varval; //echo variation value name  ?>';
                     <?php } ?>
-                    cartObj['quantity'] = '<?php echo 2 ;//echo quantity ?>';
+                    cartObj['quantity'] = '<?php echo 2 ;//echo quantity taken from text box ?>';
 
                     $.ajax({
                         type: "POST",
@@ -51,14 +56,19 @@ if viewer is  seller link to editproduct.php
                         data: cartObj,
                         cache: false,
                         success: function(result){
-							var cItem = JSON.parse(result);
+						// $('#sth1').html(result);
+	//			/*		
+						var cItem = JSON.parse(result);
 							if(cItem.success == 1)
 							{
 								var nItem = cItem.itemAr;
-								$('#sth1').html( nItem['prodTitle'] + '' + nItem['prodDesc'] );					
+								
+								var cartDiv = 'Product Title :' + nItem['prodTitle'] + ' | Product Description :' + 
+								nItem['prodDesc'] + '| Cost :' + nItem['totalCost'] 
+								$('#sth1').html(cartDiv);					
 							} 
 							else
-							  $('#sth1').html('Failed'); 
+							  $('#sth1').html('Failed'); //*/
                         }
                     });
                 });

@@ -1,8 +1,6 @@
 <?php
-include('../class/product.php');
-include('../class/dbcon.php');
 
-class physical extends product
+class Physical extends Product
 {
 public $width,$height,$length,$weight,$shipCst,$multiByq;
 
@@ -10,10 +8,24 @@ public $width,$height,$length,$weight,$shipCst,$multiByq;
 
 function __construct()
 {
-	parent::__construct();
-	
-	
+	parent::__construct();	
 }
+
+
+public function selectPhysicalProduct($proID)
+{		
+		$this->returnProduct($proID);
+		$view = $this->db->getFirstRow("select * from physical where prod_id = ".$this->prodId);
+		$this->width = $view['width'];
+		$this->height = $view['height'];
+		$this->length = $view['length'];
+		$this->weight = $view['weight'];
+		$this->shipCst = $view['shipping_cost'];
+		$this->multiByq = $view['multiply_byq'];
+		return $this;	
+}
+
+
 
 
 //constructor to initialise
@@ -92,24 +104,6 @@ return true;
 
 
 //viewing product
-
-public function viewProducts($proID)
-{
-
-		$view = $this->db->getFirstRow("select * from physical where prod_id = ".$proID);
-	
-		$this->prodId = $view['prod_id'];
-		$this->width = $view['width'];
-		$this->height = $view['height'];
-		$this->length = $view['length'];
-		$this->weight = $view['weight'];
-		$this->shipCst = $view['shipping_cost'];
-		$this->multiByq = $view['multiply_byq'];
-		return $this;
-	
-	
-}
-
 
 public function updatePhysicalProduct()
 {
