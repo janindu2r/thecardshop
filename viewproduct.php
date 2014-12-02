@@ -62,11 +62,22 @@ if viewer is  seller link to editproduct.php
 							if(cItem.success == 1)
 							{
 								var nItem = cItem.itemAr;
-								
-								var cartDiv = 'Product Title :' + nItem['prodTitle'] + ' | Product Description :' + 
-								nItem['prodDesc'] + '| Cost :' + nItem['totalCost'] 
-								$('#sth1').html(cartDiv);					
-							} 
+								var cartDiv = '<div class="row"> <div class="col-xs-2"><img class="img-responsive" src="/content/products/prodthumbnail/'+
+                                    nItem['imageLoc']+ '.jpg"> </div><div class="col-xs-4"> <h4 class="product-name"><strong>' +
+                                    nItem['prodTitle'] + '</strong></h4><h4><small>' +
+                                    nItem['prodDesc'] + '</small></h4> </div> <div class="col-xs-6"> <div class="col-xs-6 text-right"> <h6><strong>' +
+                                    nItem ['prodPrice'] + '<span class="text-muted">x</span></strong></h6> </div> <div class="col-xs-4">' +
+                                    '<input type="text" class="form-control input-sm" value="' +  cartObj['quantity'] + '"> </div> ' +
+                                    '<div class="col-xs-2"> <button type="button" class="btn btn-link btn-xs"> <span class="glyphicon glyphicon-trash"> </span> ' +
+                                    '</button> </div> </div> </div> <hr>' ;
+								$("#portable-cart").append(cartDiv);
+                                $('#sth1').html('Item Added To Cart');
+                                var getTotal = document.getElementById("portable-total-a");
+                                var total = parseFloat(getTotal.innerHTML) + parseFloat( nItem ['totalCost'])
+                                total = total.toFixed(2);
+                                $('#portable-total-b').html(total);
+                                $('#portable-total-a').html(total);
+							}
 							else
 							  $('#sth1').html('Failed'); //*/
                         }

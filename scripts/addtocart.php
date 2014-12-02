@@ -37,14 +37,17 @@ if($_POST)
 		if($ok)
 		{
 			$asso['prodTitle'] = $ok->cProduct->proName;
-			$asso['prodDesc'] = '';
-			$asso['prodPrice'] = $ok->cProduct->proPrice;
-			$uprice = floatval($ok->cProduct->proPrice);
+            $uprice = floatval($ok->cProduct->proPrice);
+			$asso['prodPrice'] = $uprice;
 			$multiply = $ok->cProduct->multiByq;
 			$shipping = floatval($ok->cProduct->shipCst);
 			if($multiply)
 				$shipping = $shipping * floatval($qty) ;
-			$asso['totalCost'] =  ($uprice * $qty) + $shipping;						
+			$asso['totalCost'] =  ($uprice * $qty) + $shipping;
+            $asso['imageLoc'] = $prodId;
+            $asso['prodDesc'] = 'Shipping Cost $ '. $shipping . ' $' ;
+
+            $asso['prodDesc'] .= '</table>';
 			echo json_encode(array('success' => '1', 'itemAr' => $asso)); 
 		}
         else
