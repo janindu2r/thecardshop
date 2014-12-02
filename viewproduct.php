@@ -25,6 +25,9 @@ $title = $prodtitle. ' | '. $viewfrom ;  // page title
 
 
 ?>
+
+
+
 <!---------------------------------------- Header Start, Do not touch ------------------------------------------->
 <!DOCTYPE html>
 <html>

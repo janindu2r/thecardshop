@@ -25,9 +25,11 @@ public function selectPhysicalProduct($proID)
 		return $this;	
 }
 
+//deleting a record
 
+public function deletePhyProducts()
 
-
+{}
 //constructor to initialise
 
 /*now
@@ -105,12 +107,12 @@ return true;
 
 //viewing product
 
-public function updatePhysicalProduct()
+/*public function updatePhysicalProduct()
 {
 	
 	
 	
-}
+}*/
 
 //echo dimensions
 
