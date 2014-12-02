@@ -27,8 +27,10 @@ if($_POST)
 	$dpname = htmlspecialchars($dpname);
 	$pass = htmlspecialchars($pass);
 	$logged = $user->login($dpname, $pass);
-	if($logged)
-		$_SESSION['user'] = $user;
+	if($logged) {
+        $_SESSION['user'] = $user;
+       // $_SESSION['cart'] = new Cart();
+    }
 	else
 		header('location: /login.php');	//redirect to login page with error name
 }
@@ -36,5 +38,6 @@ if($_POST)
 if ($_SESSION) {
 	$logged = 1; 
 	$user = $_SESSION['user'];
+    $cart =  new Cart(); // = $_SESSION['cart'];
 }
 ?>

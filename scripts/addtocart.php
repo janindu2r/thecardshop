@@ -33,9 +33,11 @@ if($_POST)
     }
     else{
 		$cartItm = new CartProd();
-		$ok = $cartItm->addToCartTable($prodId, $qty);	
+		$ok = $cartItm->addToCartTable($prodId, $qty);
 		if($ok)
 		{
+           echo json_encode(array('success' => '1', 'itemAr' => $ok->getSimplePortableCartHtml(), 'totalCost' =>  number_format($ok->calculateFullItemPrice(),2,'.','') ));
+          /*
 			$asso['prodTitle'] = $ok->cProduct->proName;
             $uprice = floatval($ok->cProduct->proPrice);
 			$asso['prodPrice'] = $uprice;
@@ -48,7 +50,7 @@ if($_POST)
             $asso['prodDesc'] = 'Shipping Cost $ '. $shipping ;
 
             $asso['prodDesc'] .= '</table>';
-			echo json_encode(array('success' => '1', 'itemAr' => $asso)); 
+			echo json_encode(array('success' => '1', 'itemAr' => $asso)); */
 		}
         else
              echo json_encode(array('success' => '0'));

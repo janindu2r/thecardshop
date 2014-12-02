@@ -103,7 +103,7 @@
 		      	</li>
 		        <li class="dropdown-cart">
 		        	<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-shopping-cart"></i><span class="cart-text">$
-                            <lable id="portable-total-a">500.50</lable></span></a>
+                            <lable id="portable-total-a"><?php echo  number_format($cart->cartTotal, 2, '.', ''); ?></lable></span></a>
 		        		<ul class="dropdown-menu">
 								<div class="row">
 									<div class="col-xs-12">
@@ -123,7 +123,21 @@
 												</div>
 											</div>
 											<div class="panel-body" id="portable-cart">
-												<div class="row">
+                                                <div class="row">
+                                                    <div class="text-center">
+                                                        <div class="col-xs-9">
+                                                            <h6 class="text-right">Added items?</h6>
+                                                        </div>
+                                                        <div class="col-xs-3">
+                                                            <button type="button" class="btn btn-default btn-sm btn-block">
+                                                                Update cart
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <hr>
+                                                <?php echo $cart->getCompleteCartPrint() ?>
+										<!--		<div class="row">
 													<div class="col-xs-2"><img class="img-responsive" src="http://placehold.it/100x70">
 													</div>
 													<div class="col-xs-4">
@@ -164,24 +178,12 @@
 														</div>
 													</div>
 												</div>
-												<hr>
-											<!--	<div class="row">
-													<div class="text-center">
-														<div class="col-xs-9">
-															<h6 class="text-right">Added items?</h6>
-														</div>
-														<div class="col-xs-3">
-															<button type="button" class="btn btn-default btn-sm btn-block">
-																Update cart
-															</button>
-														</div>
-													</div>
-												</div> -->
+												<hr> -->
 											</div>
 											<div class="panel-footer">
 												<div class="row text-center">
 													<div class="col-xs-9">
-														<h4 class="text-right">Total <strong>$<label id="portable-total-b">50.00</label></strong></h4>
+														<h4 class="text-right">Total <strong>$<label id="portable-total-b"><?php echo number_format($cart->cartTotal, 2, '.', '') ?></label></strong></h4>
 													</div>
 													<div class="col-xs-3">
 														<button type="button" class="btn btn-success btn-block">

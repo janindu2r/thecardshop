@@ -71,8 +71,8 @@ class DbCon
 	function getSelectTable($sqlstring)
 	{
 	 	$result = $this->con->prepare($sqlstring);
-		$sucess = $result->execute();
-		if ($sucess && $result->rowCount() > 0)	
+		$success = $result->execute();
+		if ($success && $result->rowCount() > 0)
 			return  $result;
 		else if (!$result)
 			return 0;

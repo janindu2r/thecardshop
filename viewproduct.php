@@ -2,6 +2,9 @@
 <?php
 include('overhead.php');
 
+
+//don't show add to cart if seller is same as product shop owner, instead show edit product. Also don't show quantity box
+
 $prodID = 1000000;
 //vartiation
 $varid = 1 ; $varval = 'Red';
@@ -46,11 +49,11 @@ if viewer is  seller link to editproduct.php
         <?php } ?>
 
 
-            input quantity box
+            input quantity box <br><br><br><br><br>
 
 
         <input type="button" id="additemtocart" value="Add To Cart">
-        <div id="sth1"></div>
+        <div id="cart-success-message-id"></div>
 
 
 
@@ -78,7 +81,7 @@ if viewer is  seller link to editproduct.php
 						var cItem = JSON.parse(result);
 							if(cItem.success == 1)
 							{
-								var nItem = cItem.itemAr;
+							/*	var nItem = cItem.itemAr;
 								var cartDiv = '<div class="row"> <div class="col-xs-2"><img class="img-responsive" src="/content/products/prodthumbnail/'+
                                     nItem['imageLoc']+ '.jpg"> </div><div class="col-xs-4"> <h4 class="product-name"><strong>' +
                                     nItem['prodTitle'] + '</strong></h4><h4><small>' +
@@ -86,17 +89,17 @@ if viewer is  seller link to editproduct.php
                                     nItem ['prodPrice'] + '<span class="text-muted">x</span></strong></h6> </div> <div class="col-xs-4">' +
                                     '<input type="text" class="form-control input-sm" value="' +  cartObj['quantity'] + '"> </div> ' +
                                     '<div class="col-xs-2"> <button type="button" class="btn btn-link btn-xs"> <span class="glyphicon glyphicon-trash"> </span> ' +
-                                    '</button> </div> </div> </div> <hr>' ;
-								$("#portable-cart").append(cartDiv);
-                                $('#sth1').html('Item Added To Cart');
+                                    '</button> </div> </div> </div> <hr>' ; */
+								$("#portable-cart").append(cItem.itemAr);
+                                $('#cart-success-message-id').html('Item Added To Cart');
                                 var getTotal = document.getElementById("portable-total-a");
-                                var total = parseFloat(getTotal.innerHTML) + parseFloat( nItem ['totalCost'])
+                                var total = parseFloat(getTotal.innerHTML) + parseFloat(cItem.totalCost);
                                 total = total.toFixed(2);
                                 $('#portable-total-b').html(total);
                                 $('#portable-total-a').html(total);
 							}
 							else
-							  $('#sth1').html('Failed'); //*/
+							  $('#cart-success-message-id').html('Failed'); //*/
                         }
                     });
                 });

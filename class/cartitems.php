@@ -25,15 +25,13 @@ class CartProd{
 	{
 		$this->cProduct =  $this->cProduct->returnProduct($prodId);
 		$this->quantity = $qty;
-		
-		if($this->cProduct->virtual)
-			$xgsgjgjjj = 1; //initialize virtual object
-		else
-		{
-			$shipping= new Physical();
-			$shipping= $shipping->selectPhysicalProduct($this->cProduct->prodId);
-			$this->cProduct = $shipping;
-		}
+
+        if(!$this->cProduct->virtual)
+        {
+            $shipping= new Physical();
+            $shipping= $shipping->selectPhysicalProduct($this->cProduct->prodId);
+            $this->cProduct = $shipping;
+        }
 		
 	}
 		
@@ -51,10 +49,46 @@ class CartProd{
 			return 0; 
 	}
 	
-	function getDetails()
+	function makeSimpleCartItem($prodId, $qty, $addedDnT)
 	{
-	
-	}
+        $this->cartProdIni($prodId, $qty);
+        $this->addDateTime = $addedDnT;
+        return $this;
+    }
+
+
+    function getSimplePortableCartHtml()
+    {
+        $shipping = $this->calculateShippingCost();
+        $itemHtml = '<div class="row"> <div class="col-xs-2"> <img class="img-responsive" src="/content/products/prodthumbnail/' ;
+        $itemHtml .=  $this->cProduct->prodId.'.jpg"> </div><div class="col-xs-4"> <h4 class="product-name"><strong>' ;
+        $itemHtml .= $this->cProduct->proName.'</strong></h4><h4><small> Shipping Cost $ '. number_format($shipping, 2, '.', '') ;
+        $itemHtml .= '</small></h4> </div> <div class="col-xs-6"> <div class="col-xs-6 text-right"> <h6><strong>';
+        $itemHtml .= $this->cProduct->proPrice . '<span class="text-muted">x</span></strong></h6> </div> <div class="col-xs-4">' ;
+        $itemHtml .= '<input type="text" class="form-control input-sm" value="'. $this->quantity. '"> </div> ' ;
+        $itemHtml .= '<div class="col-xs-2"> <button type="button" class="btn btn-link btn-xs"> <span class="glyphicon glyphicon-trash"> </span> ' ;
+        $itemHtml .= '</button> </div> </div> </div> <hr>' ;
+
+        return $itemHtml;
+    }
+
+    function calculateShippingCost()
+    {
+        $shipping = 0;
+        if(!$this->cProduct->virtual)
+        {
+            $shipping= floatval($this->cProduct->shipCst);
+            if($this->cProduct->multiByq)
+                $shipping = $shipping * floatval($this->quantity) ;
+        }
+        return round($shipping,2);
+    }
+
+    function calculateFullItemPrice()
+    {
+        $fullPrc =  (floatval($this->cProduct->proPrice) * floatval($this->quantity)) +   $this->calculateShippingCost();
+        return  round($fullPrc,2);
+    }
 	
 }
 
@@ -83,13 +117,23 @@ class CartVar extends CartProd{
 		$varProd['variation_value'] = $this->db->escapeString($this->variationValue);
         $varProd['quantity'] = $this->db->escapeString($this->quantity);
 		$varProd['added_datetime'] = $this->db->escapeString($this->addDateTime);
-        $sucess = $this->db->runInsertRecord('cart_variation', $varProd);
-		return $sucess;
+        $success = $this->db->runInsertRecord('cart_variation', $varProd);
+		return $success;
 	}
-	
-	function getPortableVariationItem()
-	{
-	}
+
+
+    function makeVariationCartItem($prodId,$varId, $varVal,$qty, $addedDnT)
+    {
+            $this->cartProdIni($prodId, $qty);
+            $this->variationIni($varId, $varVal);
+            $this->addDateTime = $addedDnT;
+            return $this;
+    }
+
+    function getPortableVariationItem()
+    {
+
+    }
 		
 }
 
