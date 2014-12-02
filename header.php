@@ -102,7 +102,8 @@
           			</ul>
 		      	</li>
 		        <li class="dropdown-cart">
-		        	<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-shopping-cart"></i><span class="cart-text">$500.50</span></a>
+		        	<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-shopping-cart"></i><span class="cart-text">$
+                            <lable id="portable-total-a">500.50</lable></span></a>
 		        		<ul class="dropdown-menu">
 								<div class="row">
 									<div class="col-xs-12">
@@ -121,7 +122,7 @@
 													</div>
 												</div>
 											</div>
-											<div class="panel-body">
+											<div class="panel-body" id="portable-cart">
 												<div class="row">
 													<div class="col-xs-2"><img class="img-responsive" src="http://placehold.it/100x70">
 													</div>
@@ -164,7 +165,7 @@
 													</div>
 												</div>
 												<hr>
-												<div class="row">
+											<!--	<div class="row">
 													<div class="text-center">
 														<div class="col-xs-9">
 															<h6 class="text-right">Added items?</h6>
@@ -175,12 +176,12 @@
 															</button>
 														</div>
 													</div>
-												</div>
+												</div> -->
 											</div>
 											<div class="panel-footer">
 												<div class="row text-center">
 													<div class="col-xs-9">
-														<h4 class="text-right">Total <strong>$50.00</strong></h4>
+														<h4 class="text-right">Total <strong>$<label id="portable-total-b">50.00</label></strong></h4>
 													</div>
 													<div class="col-xs-3">
 														<button type="button" class="btn btn-success btn-block">

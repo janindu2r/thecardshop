@@ -15,27 +15,43 @@ if($_POST)
     if($variation)
     {
 		$cartItm = new CartVar();
-		$ok = $cartItm->addVariationProd($prodId, $qty, $_POST['variationId'], $_POST['variationVal']);
-		if($ok)
+		$varVal = $_POST['variationVal'];
+		$varId = $_POST['variationId'];
+		$ok = $cartItm->addVariationProd($prodId, $qty, $varId, $varVal);
+        if($ok)
 		{
-			echo 'Added To Cart';
-            //return a confirmation about success and then the thumbnail item
+			$asso['prodTitle'] = 'JK Title';
+			$asso['prodDesc'] = 'Color : '. $varVal;
+			$asso['prodPrice'] = '400';
+			$asso['prdShip'] = '200';				
+			echo json_encode(array('success' => '1', 'itemAr' => $asso));
 		}
         else
-            echo "Error. Try Again";
+            echo json_encode(array('success' => '0')); 
 
 
     }
     else{
 		$cartItm = new CartProd();
-		$ok = $cartItm->addToCartTable($prodId, $qty);
+		$ok = $cartItm->addToCartTable($prodId, $qty);	
 		if($ok)
 		{
-			echo 'Added To Cart';
-            //return a confirmation about success and then the thumbnail item
+			$asso['prodTitle'] = $ok->cProduct->proName;
+            $uprice = floatval($ok->cProduct->proPrice);
+			$asso['prodPrice'] = $uprice;
+			$multiply = $ok->cProduct->multiByq;
+			$shipping = floatval($ok->cProduct->shipCst);
+			if($multiply)
+				$shipping = $shipping * floatval($qty) ;
+			$asso['totalCost'] =  ($uprice * $qty) + $shipping;
+            $asso['imageLoc'] = $prodId;
+            $asso['prodDesc'] = 'Shipping Cost $ '. $shipping . ' $' ;
+
+            $asso['prodDesc'] .= '</table>';
+			echo json_encode(array('success' => '1', 'itemAr' => $asso)); 
 		}
         else
-            echo "Error. Try Again";
+             echo json_encode(array('success' => '0'));
 
     }
     

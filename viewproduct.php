@@ -2,13 +2,18 @@
 <?php
 include('overhead.php');
 
-$prodtitle = 'Product Title';
+$prodID = 1000000; //GET variable from url. Or post variable
+$viewProd = new Product();
+$viewProd = $viewProd->returnProduct($prodID);
+
+
+$prodtitle = $viewProd->proName ;
 $viewfrom = 'Comercio';  // Or Shop Name
 $title = $prodtitle. ' | '. $viewfrom ;  // page title
 
-$prodID = 1000001;
-$varid = 1 ; $varval = 'Blue';
-$variation = 1;
+//vartiation 
+$varid = 1 ; $varval = 'Red';
+$variation = 0;
 
 ?>
 <!---------------------------------------- Header Start, Do not touch ------------------------------------------->
@@ -18,28 +23,7 @@ $variation = 1;
         <?php include('header.php'); ?>
 <!---------------------------------------- Add Page Edits Below ------------------------------------------------->    
 
-<<<<<<< HEAD
-product page
-<br><br>
 
-<?php
-echo $_POST["pro_ID"]."<br>";
-echo $_POST["pro_name"]."<br>";
-echo $_POST["description"]."<br>";
-echo $_POST["pro_price"]."<br>";
-echo $_POST["sel_unit"]."<br>";
-echo $_POST["stock"]."<br>";
-
-include('..comercio/class/ProductClass');
-
-$anthr = new ProductClass();
-$anthr.viewProduct();
-
-
-?>
-=======
-product page 
->>>>>>> origin/master
 <a href="cart.php">Add to cart button</a> 
 back to shop/home button
 
@@ -58,13 +42,13 @@ if viewer is  seller link to editproduct.php
             {
                 $('#additemtocart').click(function() {
                     var cartObj = {};
-                    cartObj['prodId'] = '<?php echo $prodID?>';
-                    cartObj['variation'] = '<?php echo $variation?>';
+                    cartObj['prodId'] = '<?php echo $viewProd->prodId ?>';
+                    cartObj['variation'] = '<?php echo $viewProd->variation ?>';
                     <?php if($variation) { ?>
                     cartObj['variationId'] = '<?php echo $varid ;//echo variation ID?>';
                     cartObj['variationVal'] = '<?php echo $varval; //echo variation value name  ?>';
                     <?php } ?>
-                    cartObj['quantity'] = '<?php echo 2 ;//echo quantity ?>';
+                    cartObj['quantity'] = '<?php echo 2 ;//echo quantity taken from text box ?>';
 
                     $.ajax({
                         type: "POST",
@@ -72,7 +56,30 @@ if viewer is  seller link to editproduct.php
                         data: cartObj,
                         cache: false,
                         success: function(result){
-                            $('#sth1').html(result);
+						// $('#sth1').html(result);
+	//			/*		
+						var cItem = JSON.parse(result);
+							if(cItem.success == 1)
+							{
+								var nItem = cItem.itemAr;
+								var cartDiv = '<div class="row"> <div class="col-xs-2"><img class="img-responsive" src="/content/products/prodthumbnail/'+
+                                    nItem['imageLoc']+ '.jpg"> </div><div class="col-xs-4"> <h4 class="product-name"><strong>' +
+                                    nItem['prodTitle'] + '</strong></h4><h4><small>' +
+                                    nItem['prodDesc'] + '</small></h4> </div> <div class="col-xs-6"> <div class="col-xs-6 text-right"> <h6><strong>' +
+                                    nItem ['prodPrice'] + '<span class="text-muted">x</span></strong></h6> </div> <div class="col-xs-4">' +
+                                    '<input type="text" class="form-control input-sm" value="' +  cartObj['quantity'] + '"> </div> ' +
+                                    '<div class="col-xs-2"> <button type="button" class="btn btn-link btn-xs"> <span class="glyphicon glyphicon-trash"> </span> ' +
+                                    '</button> </div> </div> </div> <hr>' ;
+								$("#portable-cart").append(cartDiv);
+                                $('#sth1').html('Item Added To Cart');
+                                var getTotal = document.getElementById("portable-total-a");
+                                var total = parseFloat(getTotal.innerHTML) + parseFloat( nItem ['totalCost'])
+                                total = total.toFixed(2);
+                                $('#portable-total-b').html(total);
+                                $('#portable-total-a').html(total);
+							}
+							else
+							  $('#sth1').html('Failed'); //*/
                         }
                     });
                 });

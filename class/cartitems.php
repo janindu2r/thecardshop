@@ -8,46 +8,52 @@ by: JK;
 
 class CartProd{
 	protected $userId;
-	protected $db;
-	protected $productId;
+	public $cProduct;
 	protected $quantity;
-	protected $addDateTime;		
+	protected $addDateTime;	
+	protected $db;	
 	
 	function __construct()
-    {
+    {		
 		$this->db = new DbCon();
 		$this->userId = $_SESSION['user']->getRegID();
         $this->addDateTime = date("Y-m-d H:i:s");
+		$this->cProduct = new Product();		
 	}
 	
 	function cartProdIni($prodId, $qty)
 	{
-		$this->productId = $prodId;
+		$this->cProduct =  $this->cProduct->returnProduct($prodId);
 		$this->quantity = $qty;
+		
+		if($this->cProduct->virtual)
+			$xgsgjgjjj = 1; //initialize virtual object
+		else
+		{
+			$shipping= new Physical();
+			$shipping= $shipping->selectPhysicalProduct($this->cProduct->prodId);
+			$this->cProduct = $shipping;
+		}
+		
 	}
 		
 	function addToCartTable($prodId, $qty)
 	{
 		$this->cartProdIni($prodId, $qty);
 		$simProd['user_id'] = $this->db->escapeString($this->userId);
-		$simProd['prod_id'] = $this->db->escapeString($this->productId);
+		$simProd['prod_id'] = $this->db->escapeString($this->cProduct->prodId);
 		$simProd['quantity'] = $this->db->escapeString($this->quantity);
 		$simProd['added_datetime'] = $this->db->escapeString($this->addDateTime);
 		$sucess = $this->db->runInsertRecord('cart_products', $simProd);
-		return $sucess;
+		if ($sucess)
+			return $this;
+		else
+			return 0; 
 	}
 	
 	function getDetails()
 	{
-	/*	$sql = "select price, virtual from products where product_id = ".$this->productId;
-		$result = $this->db->getFirstRow($sql);
-		
-		$this->price = $result['price'];
-		$bool = boolval($result['virtual']);
-		$this->hasShipping = !$bool;
-		
-		
-		//getScalar($sqlstring); */
+	
 	}
 	
 }
@@ -72,7 +78,7 @@ class CartVar extends CartProd{
 		$this->cartProdIni($prodId, $qty);
 		$this->variationIni($varId, $varVal);
 		$varProd['user_id'] =  $this->db->escapeString($this->userId);
-		$varProd['product_id'] = $this->db->escapeString($this->productId);
+		$varProd['product_id'] = $this->db->escapeString($this->cProduct->prodId);
 		$varProd['variation_id'] = $this->db->escapeString($this->variationId);
 		$varProd['variation_value'] = $this->db->escapeString($this->variationValue);
         $varProd['quantity'] = $this->db->escapeString($this->quantity);
