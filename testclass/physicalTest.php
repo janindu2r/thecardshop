@@ -1,5 +1,5 @@
 <?php
-
+include('../class/dbcon.php');
 include('../class/physical.php');
 include('../class/product.php');
 

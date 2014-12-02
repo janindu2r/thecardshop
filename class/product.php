@@ -1,9 +1,9 @@
 <?php 
-include('../class/dbcon.php');
+
 
  class product
 {
-public $prodId, $proName,$proTag, $proPrice,$sell_Unit,$description,$inStock,$cuStock,$shopId,$catId,$variation,$virtual,$pPoints,$nPoints,$dates,$del;
+public $prodId, $proName,$proTag, $proPrice,$sellUnit,$description,$inStock,$cuStock,$shopId,$catId,$variation,$virtual,$pPoints,$nPoints,$dates,$del;
 public $db;
 
 function __construct()
@@ -23,23 +23,23 @@ function __construct()
  function initializeProduct(array $prodArray)
  {
 	 	$this->prodId = $prodArray['product_id'];
+		$this->shopId = $prodArray['shop_id'];
 		$this->proName = $prodArray['product_title'];
+		$this->proTag =$prodArray['product_tag'];
+		$this->catId = $prodArray['category_id'];
 		$this->proPrice = $prodArray['price'];
-		$this->description =$prodArray['product_desc']; //and so on
-		$this->sell_Unit = $prodArray['selling_unit'];
+		$this->description =$prodArray['product_desc'];
+		$this->variation = $prodArray['variations'];
+		$this->virtual = $prodArray['virtual']; //and so on
+		$this->sellUnit = $prodArray['selling_unit'];
+		$this->pPoints = $prodArray['pos_rep_points'];
+		$this->nPoints = $prodArray['neg_rep_points'];
 		
 		$this->inStock = $prodArray['initial_stck'];
 		$this->cuStock =$prodArray['current_stck'];
-		$this->catId = $prodArray['category_id'];
+		
 		$this->dates = $prodArray['date_added'];
 		$this->del = $prodArray['deleted'];
-		$this->nPoints = $prodArray['neg_rep_points'];
-		$this->pPoints = $prodArray['pos_rep_points'];
-		
-		$this->shopId = $prodArray['shop_id'];
-		$this->proTag =$prodArray['product_tag'];
-		$this->variation = $prodArray['variations'];
-		$this->virtual = $prodArray['virtual'];
 		return $this;
  }
  
@@ -56,12 +56,14 @@ function __construct()
 	$new = $this->db->runInsertRecord("products",$assArryProd);
 	try
 	{
-		if($new == 0)
+		if($new == 1)
 		{
 		$this->initializeProduct($assArryProd);		
 		return $this;
 			
 		}
+		else
+		return 0;
 		
 	}
 	catch(Exception $e)
@@ -72,28 +74,30 @@ function __construct()
 	 
  }
 
- public function insertValues($pId,$sId,$pTitle,$pTag,$cId,$pPrice,$pDesc,$pVartns,$pVirtual,$pSelUnits,$pPoints,$nPoints,$iStock,$cStock,$pDate,$pDel)
+ public function insertValues($pId,$sId,$pTitle,$pTag,$cId,$pPrice,$pDesc,$pVartns,$pVirtual,$pSelUnits,$iStock,$cStock,$pDate,$pDel)
  {
-	 $asscArry['product_id'] = $pId;	
-	$asscArry['product_title'] = $pTitle;
-	$asscArry['price'] = $pPrice;
-	$asscArry['product_desc'] = $pDesc;
-	$asscArry['selling_unit'] = $pSelUnits;
-	$asscArry['default_img_loc'] = $pImg;
-	$asscArry['initial_stck'] = $iStock;
-	$asscArry['current_stck'] = $cStock;
-	$asscArry['category_id'] = $cId;
-	$asscArry['date_added'] = $pDate;
-	$asscArry['deleted'] = $pDel;
-	$asscArry['tags'] = $pTags;
-	$asscArry['shop_id'] = $sId;
-	$asscArry['product_tag'] = $pTag;
-	$asscArry['variations'] = $pVartns;
-	$asscArry['virtual'] = $pVirtual;
-	addProduct($asscArry);
+	 $asscArry['product_id'] = $this->db->escapeString($pId);
+	 $asscArry['shop_id'] = $this->db->escapeString($sId);	
+	$asscArry['product_title'] = $this->db->escapeString($pTitle);
+	$asscArry['product_tag'] = $this->db->escapeString($pTag);
+	$asscArry['category_id'] = $this->db->escapeString($cId);
+	$asscArry['price'] = $this->db->escapeString($pPrice);
+	$asscArry['product_desc'] = $this->db->escapeString($pDesc);
+	$asscArry['variations'] = $this->db->escapeString($pVartns);
+	$asscArry['virtual'] = $this->db->escapeString($pVirtual);
+	$asscArry['selling_unit'] =$this->db->escapeString($pSelUnits);
+	$asscArry['pos_rep_points'] = 0;
+	$asscArry['neg_rep_points'] = 0;
+	$asscArry['initial_stck'] = $this->db->escapeString($iStock);
+	$asscArry['current_stck'] =$this->db->escapeString($cStock);
+	
+	$asscArry['date_added'] = $this->db->escapeString($pDate);
+	$asscArry['deleted'] = $this->db->escapeString($pDel);
+	
+	return $this->addProduct($asscArry);
 	 
  }
-
+//delete method
  public function deleteProduct($pId)
  {
 	 
@@ -105,7 +109,7 @@ function __construct()
  //destructor
 function __destructor()
 {
-echo "destroying the connection";	
+	
 }
 
  public function updateProduct(array $setValue,$wheres)
@@ -114,7 +118,7 @@ echo "destroying the connection";
 	$result = $this->db->runUpdateRecord('products',$setValue,$wheres);
 	return $result; 
  }
-
+//viewing products
 public function viewProducts($pId)
 {
 $view = $this->db->getFirstRow("select * from products where product_id  = ".$pId);
@@ -129,7 +133,7 @@ $this->prodId = $view['product_id'];
 		$this->description = $view['product_desc'];
 		$this->variation = $view['variations'];
 		$this->virtual = $view['virtual'];
-		$this->sell_Unit =$view['selling_unit'];
+		$this->sellUnit =$view['selling_unit'];
 		$this->pPoints = $view['pos_rep_points'];
 		$this->nPoints = $view['neg_rep_points'];
 		$this->inStock = $view['initial_stck'];
