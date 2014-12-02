@@ -179,18 +179,14 @@
 												</div>
 											</div>
 											<div class="panel-body" id="portable-cart">
-                                                <div class="row">
+                                                <!-- <div class="row">
                                                     <div class="text-center">
                                                         <div class="col-xs-9">
                                                             <h6 class="text-right">Added items?</h6>
                                                         </div>
-                                                        <div class="col-xs-3">
-                                                            <button type="button" class="btn btn-default btn-sm btn-block">
-                                                                Update cart
-                                                            </button>
-                                                        </div>
+                                                        
                                                     </div>
-                                                </div>
+                                                </div> -->
                                                 <hr>
                                                 <?php echo $cart->getCompleteCartPrint() ?>
 										<!--		<div class="row">
@@ -238,7 +234,12 @@
 											</div>
 											<div class="panel-footer">
 												<div class="row text-center">
-													<div class="col-xs-9">
+													<div class="col-xs-3">
+                                                            <button type="button" class="btn btn-default btn-block">
+                                                                Update cart
+                                                            </button>
+                                                        </div>
+													<div class="col-xs-6">
 														<h4 class="text-right">Total <strong>$<label id="portable-total-b"><?php echo number_format($cart->cartTotal, 2, '.', '') ?></label></strong></h4>
 													</div>
 													<div class="col-xs-3">
