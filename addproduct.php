@@ -13,7 +13,14 @@ $title = 'Add New Product' ;  // page title
 <!---------------------------------------- Add Page Edits Below ------------------------------------------------->    
 
 Add Product Form
-<?php include('addItems.php'); ?>
+<?php include('addItems.php');
+
+
+
+
+?>
+
+
 
  
 

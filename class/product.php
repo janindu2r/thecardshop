@@ -1,5 +1,11 @@
 <?php 
+/*
+product class
 
+ last-Edited-on 2014-12-2
+ by bmla
+
+*/
 class Product
 {
 public $prodId, $proName,$proTag, $proPrice,$sellUnit,$description,$inStock,$cuStock,$shopId,$catId,$variation,$virtual,$pPoints,$nPoints,$dates,$del;
@@ -114,7 +120,7 @@ function __destructor()
 //viewing products
 public function viewProducts($pId)
 {
-$view = $this->db->getFirstRow("select * from products where product_id  = ".$pId);
+$view = $this->db->getFirstRow("select * from products where product_id  = ".$pId."and deleted = 0");
 
 $this->prodId = $view['product_id'];	
 	

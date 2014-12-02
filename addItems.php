@@ -6,8 +6,8 @@
 </head>
 
 <body>
-<form name="addproduct" method="post" action= "viewproduct.php" enctype = "multipart/form-data" >
-Product ID <input type="text" name="pro_ID" /><br /><br />
+<form name="addproduct" method="POST " action= ""  
+Product ID <input type="text" name=" pro_ID " /><br /><br />
 
 Product name<input type="text" name="pro_name" /><br /><br />
 
@@ -15,7 +15,7 @@ Product description<textarea name="description" rows="3" cols="35"></textarea><b
 Product price<input type="text" name="pro_price" /><br /><br />
 Selling unit<input type="text" name="sel_unit" /><br /><br />
 Stock<input type="text" name="stock" /><br /><br />
-Product image <input type="file" name="filetoupload" id="filetoupload" /><br /><br />
+
 <input type="submit" name="submit" value="add product" />
 <input type="reset" name="reset" value="back" /><br /><br />
 
@@ -23,6 +23,7 @@ Product image <input type="file" name="filetoupload" id="filetoupload" /><br /><
 
 
 </form>
+
 
 </body>
 </html>
