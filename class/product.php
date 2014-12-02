@@ -1,8 +1,4 @@
 <?php 
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/master
 
 class Product
 {
@@ -27,35 +23,19 @@ function __construct()
 	 	$this->prodId = $prodArray['product_id'];
 		$this->shopId = $prodArray['shop_id'];
 		$this->proName = $prodArray['product_title'];
+		$this->description =$prodArray['product_desc'];	
 		$this->proTag =$prodArray['product_tag'];
 		$this->catId = $prodArray['category_id'];
 		$this->proPrice = $prodArray['price'];
-<<<<<<< HEAD
-		$this->description =$prodArray['product_desc'];
 		$this->variation = $prodArray['variations'];
-		$this->virtual = $prodArray['virtual']; //and so on
+		$this->virtual = $prodArray['virtual'];
 		$this->sellUnit = $prodArray['selling_unit'];
 		$this->pPoints = $prodArray['pos_rep_points'];
 		$this->nPoints = $prodArray['neg_rep_points'];
-		
-=======
-		$this->description =$prodArray['product_desc']; //and so on
-		$this->sell_Unit = $prodArray['selling_unit'];		
->>>>>>> origin/master
 		$this->inStock = $prodArray['initial_stck'];
-		$this->cuStock =$prodArray['current_stck'];
-		
+		$this->cuStock =$prodArray['current_stck'];		
 		$this->dates = $prodArray['date_added'];
 		$this->del = $prodArray['deleted'];
-<<<<<<< HEAD
-=======
-		$this->nPoints = $prodArray['neg_rep_points'];
-		$this->pPoints = $prodArray['pos_rep_points'];
-		$this->shopId = $prodArray['shop_id'];
-		$this->proTag =$prodArray['product_tag'];
-		$this->variation = $prodArray['variations'];
-		$this->virtual = $prodArray['virtual'];
->>>>>>> origin/master
 		return $this;
  }
  
@@ -118,18 +98,12 @@ function __construct()
 	$deleteRec = $this->db->runNonQuery("delete from products where product_id = ".$pId);
 	return $deleteRec;	 
  }
-<<<<<<< HEAD
- //destructor
+
+
 function __destructor()
 {
-	
-=======
- 
-//destructor
-function __destructor(){
-//echo "destroying the connection";	
->>>>>>> origin/master
 }
+	
 
  public function updateProduct(array $setValue,$wheres)
  {
