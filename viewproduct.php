@@ -2,7 +2,16 @@
 <?php
 include('overhead.php');
 
-$prodID = 1000000; //GET variable from url. Or post variable
+$prodID = 1000000;
+//vartiation
+$varid = 1 ; $varval = 'Red';
+$variation = 0;
+
+
+if($_GET){
+    $prodID  = $_GET['product'];
+}
+
 $viewProd = new Product();
 $viewProd = $viewProd->returnProduct($prodID);
 
@@ -11,9 +20,6 @@ $prodtitle = $viewProd->proName ;
 $viewfrom = 'Comercio';  // Or Shop Name
 $title = $prodtitle. ' | '. $viewfrom ;  // page title
 
-//vartiation 
-$varid = 1 ; $varval = 'Red';
-$variation = 0;
 
 ?>
 <!---------------------------------------- Header Start, Do not touch ------------------------------------------->
@@ -31,6 +37,17 @@ if viewer is  seller link to editproduct.php
 
 <!-- form Select quantity and submit to add to cart page-->
 <br>
+        <h1> <?php echo $prodtitle ; ?>  </h1>
+
+        <?php if($variation) { ?>
+
+            combo boxes to select variations
+
+        <?php } ?>
+
+
+            input quantity box
+
 
         <input type="button" id="additemtocart" value="Add To Cart">
         <div id="sth1"></div>

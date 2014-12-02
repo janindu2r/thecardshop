@@ -45,7 +45,7 @@ if($_POST)
 				$shipping = $shipping * floatval($qty) ;
 			$asso['totalCost'] =  ($uprice * $qty) + $shipping;
             $asso['imageLoc'] = $prodId;
-            $asso['prodDesc'] = 'Shipping Cost $ '. $shipping . ' $' ;
+            $asso['prodDesc'] = 'Shipping Cost $ '. $shipping ;
 
             $asso['prodDesc'] .= '</table>';
 			echo json_encode(array('success' => '1', 'itemAr' => $asso)); 
