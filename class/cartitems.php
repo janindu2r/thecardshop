@@ -99,7 +99,6 @@ class CartVar extends CartProd{
     function __construct()
     {
         parent::__construct();
-
     }
 
 	function variationIni($varId, $varVal)

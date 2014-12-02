@@ -2,19 +2,18 @@
 
 class Physical extends Product
 {
-    public $width,$height,$length,$weight,$shipCst,$multiByq;
-    public $varNameValues = array();
-    public $varIdNames = array();
+public $width,$height,$length,$weight,$shipCst,$multiByq;
 
 
-    function __construct()
-    {
-        parent::__construct();
-    }
+
+function __construct()
+{
+	parent::__construct();	
+}
 
 
-    public function selectPhysicalProduct($proID)
-    {
+public function selectPhysicalProduct($proID)
+{		
 		$this->returnProduct($proID);
 		$view = $this->db->getFirstRow("select * from physical where prod_id = ".$this->prodId);
 		$this->width = $view['width'];
@@ -24,30 +23,8 @@ class Physical extends Product
 		$this->shipCst = $view['shipping_cost'];
 		$this->multiByq = $view['multiply_byq'];
 		return $this;	
-    }
+}
 
-    public function getAllVariations($pmProdId)
-    {
-        $this->selectPhysicalProduct($pmProdId);
-        if($this->variation) {
-            $sqlVar = 'select * from variations where prod_id = ' . $this->prodId . ' order by variation_id';
-            $varItems = $this->db->getSelectTable($sqlVar);
-            if ($varItems) {
-                foreach ($varItems as $row) {
-                    $this->varIdNames[$row['variation_id']] = $row['var_name'];
-                    $this->varNameValues[$row['var_name']] = array();
-                    $sqlVarV = 'select variation_value from variation_values where prod_id = ' . $this->prodId . ' and variation_id = ' . $row['variation_id'] . ' order by variation_value';
-                    $varValueList = $this->db->getSelectTable($sqlVarV);
-                    if ($varValueList) {
-                        foreach ($varValueList as $itm) {
-                            array_push($this->varNameValues[$row['var_name']], $itm['variation_value']);
-                        }
-                    }
-                }
-            }
-        }
-        return $this->varNameValues;
-    }
 
 
 
