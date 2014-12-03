@@ -1,20 +1,10 @@
 <?php
-/*
-created by :bmla
-last edit:3-12-14
 
-*/
 class Physical extends Product
-
 {
-<<<<<<< HEAD
-	
-public $width,$height,$length,$weight,$shipCst,$multiByq;
-=======
     public $width,$height,$length,$weight,$shipCst,$multiByq;
     public $varNameValues = array();
     public $varIdNames = array();
->>>>>>> origin/master
 
 
     function __construct()
@@ -60,10 +50,6 @@ public $width,$height,$length,$weight,$shipCst,$multiByq;
     }
 
 
-<<<<<<< HEAD
-public function deletePhyProducts($pID)
-
-=======
 
 //constructor to initialise
 
@@ -71,46 +57,72 @@ public function deletePhyProducts($pID)
 function __constructor($asArray)
 {
 if($asArray == null)
->>>>>>> origin/master
+{
+selectPhysicalProduct();	
+	
+}
+else
+{
+addPhysicalProduct();	
+	
+}
+	
+	
+}*/
+/*
+
+//implementing the selectPhysicalProduct
+
+function selectPhysicalProduct($proId)
+{
+  selectProduct($proId);
+  $db = new DbCon();
+  $select = $db->getFirstRow("select * from physical where prod_id = ".$proId);
+ $this->width = $select['width'] ; 
+ $this->height = $select['height'];
+ $this->weight = $select['weight'];
+ $this->length = $select['length'];
+ return $select['product_id'];
+  return $select['product_title'];
+   return $select['shop_id'];
+    return $select['initial_stck'];
+ return $this->width;	
+  return $this->height;
+	return $this->weight;
+	return $this->length;
+}
+*/
+
+//inserting values to the table
+/*
+
+function insertPhysicalProducts($pId,$pName,$pTag,$pImg, $pPrice,$selUnit,$desc,$inStck,$cuStck,$sId,$caId,$variatn,$tag,$virtuals,$pPnts,$nPnts,$date,$dele,$widths,$heights,$lengths,$weights)
 {
 	
-		$delete = $this->db->runNonQuery("delete from physical where prod_id = ".$pID);
-	return $delete;
+$arrayPro = array('');
+	addProduct();
 	
 	
 	
+}
+
+//deleting a record
+
+public function deletePhysicalProduct()
+{
 	
-	}
-	public function initialize(array $assPhy)
-	{   
-	$this->prodId = $assPhy['prod_id'];
-	$this->height = $assPhy['height'];
-	$this->length = $assPhy['length'];
-	$this->weight = $assPhy['weight'];
-	$this->width = $assPhy['width'];
-	$this->shipCst = $assPhy['shipping_cost'];
-	$this->multiByq = $assPhy['multiply_byq'];
-	return $this;
-		
-		
-	}
-	//inserting data
+$val1 = $this->db->runNonQuery("delete from products where product_id = ".$this->prodId);	
+$val2 = deleteProduct();
+
+if(val1 && val2)
+{
+return true;	
 	
-	public function insertValue($pPid,$pWidth,$pLength,$pHeight,$pWeight,$shipCost,$multi)
+}
+	else
 	{
-		$assArry['prod_id'] = $this->db->escapeString($pPid);
-	$assArry['width'] = $this->db->escapeString($pWidth);	
-	$assArry['length'] = $this->db->escapeString($pLength);
-	$assArry['height'] = $this->db->escapeString($pHeight);
-	$assArry['weight'] = $this->db->escapeString($pWeight);
-	$assArry['shipping_cost'] = $this->db->escapeString($shipCost);
-	$assArry['multiply_byq'] = $this->db->escapeString($multi);
-	return $this->addProduct($assArry);	
-		
+	return false;	
 	}
-<<<<<<< HEAD
-	public function addProduct(array $assc)
-=======
 }*/
 
 
@@ -119,46 +131,22 @@ if($asArray == null)
 public function updatePhysicalProduct()
 {
 	
->>>>>>> origin/master
 	
-	{
-		
-		$add = $this->db->runInsertRecord("physical",$assc);
-	try
-	{
-		if($add == 1)
-		{
-		$this->initialize($assc);		
-		return $this;
-		}
-		else
-		return 0;
-		
-	}
-	catch(Exception $e)
-	{
-	  echo $e->getMessage();	
-	}
-		
-		
-	}
-	//update physical products
 	
-<<<<<<< HEAD
-	public function updateProduct(array $value,$whereAs)
-	{
-		$pResult = $this->db->runUpdateRecord("physical",$value,$whereAs);
-		return $pResult;
-		
-		
-		
-	}
-=======
 }
 
 //echo dimensions
->>>>>>> origin/master
 
+/*function outDimensions($pName,$wdth,$hght,$lngth,$wght)
+{
+	echo " name of the product: ".$pName."<br>";
+echo " length is:".$wdth."<br>";
+echo " height is:".$hght."<br>";
+echo " width is :".$lngth."<br>";
+echo " weight is:".$wght. "<br>";
+	
+	
+}*/
 	
 	
 	
