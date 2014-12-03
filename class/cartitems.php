@@ -76,6 +76,18 @@ class CartProd{
             } else
                 return 0;
     }
+
+    function deleteItem($prodId)
+    {
+        $var = $this->db->deleteRecords('cart_products', 'user_id = ' . $this->userId . '  and prod_id = ' . $prodId);
+        if($var)
+        {
+            return 1;
+        }
+        else
+            return 0;
+
+    }
 	
 	function makeSimpleCartItem($prodId, $qty, $addedDnT)
 	{
@@ -88,14 +100,16 @@ class CartProd{
     function getSimplePortableCartHtml()
     {
         $shipping = $this->calculateShippingCost();
+
         $itemHtml = '<div class="row"> <div class="col-xs-2"> <img class="img-responsive" src="/content/products/prodthumbnail/' ;
         $itemHtml .=  $this->cProduct->prodId.'.jpg"> </div><div class="col-xs-4"> <h4 class="product-name"><strong>' ;
         $itemHtml .= $this->cProduct->proName.'</strong></h4><h4><small> Shipping $'. number_format($shipping, 2, '.', '') ;
         $itemHtml .= '</small></h4> </div> <div class="col-xs-6"> <div class="col-xs-6 text-right"> <h6><strong>';
         $itemHtml .= $this->cProduct->proPrice . '<span class="text-muted">x</span></strong></h6> </div> <div class="col-xs-4">' ;
-        $itemHtml .= '<input type="number" class="form-control input-sm output-qty-cart" id="0-'. $this->cProduct->prodId.'" value="'. $this->quantity. '"> </div> ' ;
-        $itemHtml .= '<div class="col-xs-2"> <button type="button" class="btn btn-link btn-xs"> <span class="glyphicon glyphicon-trash"> </span> ' ;
-        $itemHtml .= '</button> </div> </div> </div> <hr>' ;
+        $itemHtml .= '<input type="number" class="form-control input-sm output-qty-cart" id="0-'. $this->cProduct->prodId.'" value="';
+        $itemHtml .= $this->quantity. '" min="1" max="999"> </div> ' ;
+        $itemHtml .= '<div class="col-xs-2"> <button type="button" class="btn btn-link btn-xs delete-cart-itm" id="0-'. $this->cProduct->prodId ;
+        $itemHtml .= '"><span class="glyphicon glyphicon-trash"> </span> </button> </div> </div> </div> <hr>' ;
         return $itemHtml;
     }
 
@@ -117,7 +131,7 @@ class CartProd{
         $fullPrc =  (floatval($this->cProduct->proPrice) * floatval($this->quantity)) +   $this->calculateShippingCost();
         return  round($fullPrc,2);
     }
-	
+
 }
 
 class CartVar extends CartProd{	

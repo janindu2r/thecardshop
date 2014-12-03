@@ -44,10 +44,34 @@ $(document).on("change", '.output-qty-cart',function(){
                 if(cItem.success == 1)
                     $("#update-portable-cart").click();
                 else
-                    alert('Cart Update Failed. Try Again!');
+                    alert('Quantity Update Failed. Try Again!');
             },
             error:function() {
-                alert('Cart Update Failed. Try Again!');
+                alert('Quantity Update Failed. Try Again!');
+            }
+        });
+    });
+
+    $(document).on("click", '.delete-cart-itm',function(){
+        var ar = {};
+        ar['type'] = 'delete';
+        var st = this.id;
+        ar['prodId']= st.substr(2);
+        ar['isVar']= st.substr(0,1);
+        $.ajax({
+            type: "POST",
+            url: "/scripts/cart.php",
+            data: ar,
+            cache: false,
+            success: function(result){
+                var cItem = JSON.parse(result);
+                if(cItem.success == 1)
+                    $("#update-portable-cart").click();
+                else
+                    alert('Item Delete Failed. Try Again!');
+            },
+            error:function() {
+                alert('Item Delete Failed. Try Again!');
             }
         });
     });

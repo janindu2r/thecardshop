@@ -66,6 +66,27 @@ if($_SESSION){
                 echo json_encode(array('success' => '0'));
         }
     }
+
+
+    if($_POST['type'] == 'delete')
+    {
+        $prodId = $_POST['prodId'];
+        $isVar = $_POST['isVar'];
+        if($isVar)
+        {
+            $varVal = $_POST['variationVal'];
+            $varId = $_POST['variationId'];
+        }
+        else
+        {
+            $cartItm = new CartProd();
+            $ok = $cartItm->deleteItem($prodId);
+            if($ok)
+                echo json_encode(array('success' => '1'));
+            else
+                echo json_encode(array('success' => '0'));
+        }
+    }
 }
 }
 
