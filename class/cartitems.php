@@ -65,6 +65,17 @@ class CartProd{
                 return 0;
             }
 	}
+
+    function updateFromCartTable($prodId, $qty)
+    {
+            $var = $this->db->runUpdateOneValue('cart_products', 'quantity = ' . $qty, 'user_id = ' . $this->userId . '  and prod_id = ' . $prodId);
+            if ($var) {
+                $this->cartProdIni($prodId, $qty);
+                $this->nItem = false;
+                return $this;
+            } else
+                return 0;
+    }
 	
 	function makeSimpleCartItem($prodId, $qty, $addedDnT)
 	{
@@ -82,11 +93,12 @@ class CartProd{
         $itemHtml .= $this->cProduct->proName.'</strong></h4><h4><small> Shipping $'. number_format($shipping, 2, '.', '') ;
         $itemHtml .= '</small></h4> </div> <div class="col-xs-6"> <div class="col-xs-6 text-right"> <h6><strong>';
         $itemHtml .= $this->cProduct->proPrice . '<span class="text-muted">x</span></strong></h6> </div> <div class="col-xs-4">' ;
-        $itemHtml .= '<input type="number" class="form-control input-sm output-qty-cart" value="'. $this->quantity. '"> </div> ' ;
+        $itemHtml .= '<input type="number" class="form-control input-sm output-qty-cart" id="0-'. $this->cProduct->prodId.'" value="'. $this->quantity. '"> </div> ' ;
         $itemHtml .= '<div class="col-xs-2"> <button type="button" class="btn btn-link btn-xs"> <span class="glyphicon glyphicon-trash"> </span> ' ;
         $itemHtml .= '</button> </div> </div> </div> <hr>' ;
         return $itemHtml;
     }
+
 
     function calculateShippingCost()
     {

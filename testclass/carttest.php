@@ -18,6 +18,9 @@ if($variation)
         echo 'var';
 }
 
+
+
+
 /*
 foreach($crtObj->returnAllVariationObjects('1000001', $st->varIdNames,$st->varNameValues ) as $varObject )
 {

@@ -45,6 +45,27 @@ if($_SESSION){
         }
 
     }
+
+    if($_POST['type'] == 'update')
+    {
+        $prodId = $_POST['prodId'];
+        $isVar = $_POST['isVar'];
+        $uQty = $_POST['qty'];
+        if($isVar)
+        {
+            $varVal = $_POST['variationVal'];
+            $varId = $_POST['variationId'];
+        }
+        else
+        {
+            $cartItm = new CartProd();
+            $ok = $cartItm->updateFromCartTable($prodId, $uQty);
+            if($ok)
+                echo json_encode(array('success' => '1'));
+            else
+                echo json_encode(array('success' => '0'));
+        }
+    }
 }
 }
 

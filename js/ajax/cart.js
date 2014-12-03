@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $("#update-portable-cart").on('click',function () {
+    $(document).on('click','#update-portable-cart',function () {
         var ar = {};
         ar['type'] = 'refresh';
         $.ajax({
@@ -27,9 +27,13 @@ $(document).ready(function() {
     });
 
 
-    $(".output-qty-cart").on('input',function () {
+$(document).on("change", '.output-qty-cart',function(){
         var ar = {};
         ar['type'] = 'update';
+        var st = this.id;
+        ar['prodId']= st.substr(2);
+        ar['isVar']= st.substr(0,1);
+        ar['qty'] = this.value;
         $.ajax({
             type: "POST",
             url: "/scripts/cart.php",
@@ -38,14 +42,7 @@ $(document).ready(function() {
             success: function(result){
                 var cItem = JSON.parse(result);
                 if(cItem.success == 1)
-                {
-
-                 $("#portable-cart").html(cItem.itemAr);
-                    var total = parseFloat(cItem.totalCost);
-                    total = total.toFixed(2);
-                    $('#portable-total-b').html(total);
-                    $('#portable-total-a').html(total);
-                }
+                    $("#update-portable-cart").click();
                 else
                     alert('Cart Update Failed. Try Again!');
             },
@@ -54,4 +51,5 @@ $(document).ready(function() {
             }
         });
     });
+
 });
