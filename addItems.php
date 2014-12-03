@@ -6,7 +6,7 @@
 </head>
 
 <body>
-<form name=" addproduct " method=" POST " action= " addtoproduct.php " enctype="multipart/form-data" > 
+<form name=" addproduct " method=" POST " action= " scripts/addtoproduct.php " enctype="multipart/form-data" > 
 Product ID <input type="text" name=" pro_ID " /><br /><br />
 Shop ID <input type="text" name=" shop_ID " /><br /><br />
 Product Title<input type="text" name="pro_name" /><br /><br />

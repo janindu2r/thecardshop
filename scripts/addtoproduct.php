@@ -26,6 +26,6 @@ $del = 0;
 $next = $object->insertValues($pId,$sId,$pName,$pTag,$cID,$pPrice,$pDesc,$variation,$virtual,$sell,$ppoints,$npoints,$iStock,$cStock,$date,$del);
 
 
-header('Location: ../viewproduct.php');
+header('Location:/viewproduct.php');
 
 ?>

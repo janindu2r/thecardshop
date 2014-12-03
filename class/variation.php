@@ -5,6 +5,8 @@ class Variation extends Physical
     protected $varNames = array(); //var ID and var Name (1 : Color, 2: Size)
     protected $allVars = array(); //var ID and the particular values of the specific variation item (1 : Blue, 2 : Medium)
 
+
+
 	function __construct()
 	{
 		parent::__construct();	
@@ -28,6 +30,13 @@ class Variation extends Physical
             $this->varNames[$key] = $this->getVarName($key);
         }
         return $this;
+	}
+	
+	public function deleteVariation($pId,$vId)
+	{
+	$del = $this->db->runNonQuery(" delete from variations where prod_id = ".$pId." and variation_id = " .$vId);	
+		return $del;
+		
 	}
 
 }
