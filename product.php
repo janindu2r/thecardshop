@@ -10,20 +10,21 @@ $title = 'Comercio' ; //define page title
         <?php include('header.php'); ?>
 <!-- *****************************    Add Page Edits Below   **************************** -->    
 
-<div class="wrapper">
-	<div class="container-fluid">
-    <div class="content-wrapper">	
-		<div class="item-container">	
-			<div class="container">	
-				<div class="col-md-12">
-					<div class="product col-md-4 service-image-left">
+<div class="wrapper container">
+	<div class="content-wrapper">	
+		<div class="row col-md-12 col-lg-12">
+			<div class="">
+				
+				<div class="col-md-6 carousel-bounding-box" id="slider"><!-- product slider, corusel -->
+
+					<div class="product service-image-left">
                     
 						<center>
 							<img id="item-display" src="http://www.corsair.com/Media/catalog/product/g/s/gs600_psu_sideview_blue_2.png" alt=""></img>
 						</center>
 					</div>
 					
-					<div class="container service1-items col-sm-2 col-md-2 pull-left">
+					<!-- <div class="col-sm-2 col-md-2 pull-left" id="service1-items">
 						<center>
 							<a id="item-1" class="service1-item">
 								<img src="http://www.corsair.com/Media/catalog/product/g/s/gs600_psu_sideview_blue_2.png" alt=""></img>
@@ -35,10 +36,10 @@ $title = 'Comercio' ; //define page title
 								<img src="http://www.corsair.com/Media/catalog/product/g/s/gs600_psu_sideview_blue_2.png" alt=""></img>
 							</a>
 						</center>
-					</div>
+					</div> -->
 				</div>
 					
-				<div class="col-md-8 pull-right">
+				<div class="col-md-6">
 					<div class="product-title">Corsair GS600 600 Watt PSU</div>
 					<div class="product-desc">The Corsair Gaming Series GS600 is the ideal price/performance choice for mid-spec gaming PC</div>
 					<div class="product-rating"><i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star-o"></i> </div>
@@ -56,12 +57,18 @@ $title = 'Comercio' ; //define page title
 							Add to wishlist 
 						</button>
 					</div>
+	
+
 				</div>
-			</div> 
-		</div>
-		
-		<div class="container-fluid">		
-			<div class="col-md-12 product-info">
+				</div><!-- /.end of product slider -->
+				
+				
+			</div>
+		</div><!-- end of row col-md-12 col-lg-12 -->
+
+<!-- product description, shipment details, customer reviews -->
+			<div class="container-fluid">		
+				<div class="col-md-12 product-info">
 					<ul id="myTab" class="nav nav-tabs nav_tabs">
 						
 						<li class="active"><a href="#service-one" data-toggle="tab">DESCRIPTION</a></li>
@@ -69,7 +76,7 @@ $title = 'Comercio' ; //define page title
 						<li><a href="#service-three" data-toggle="tab">REVIEWS</a></li>
 						
 					</ul>
-				<div id="myTabContent" class="tab-content">
+					<div id="myTabContent" class="tab-content">
 						<div class="tab-pane fade in active" id="service-one">
 						 
 							<section class="container product-info">
@@ -96,20 +103,19 @@ $title = 'Comercio' ; //define page title
 								
 						</section>
 						
-					</div>
+					</div><!--  /.END OF tab-pane fade id=service-two -->
 					<div class="tab-pane fade" id="service-three">
 												
-					</div>
-				</div>
-				<hr>
-			</div>
-		</div>
+					</div><!--  /.END OF tab-pane fade id=service-three -->
+					
+					</div><!-- /.myTabContent -->
+					<hr>
+				</div><!--  /.END OF col-md-12 product-info -->
+			</div><!--  /.END OF CONTAINER-FLUID -->
 		
-		</div><!-- /.content-wrapper -->
-	</div><!--  /.END OF CONTAINER-FLUID -->
+	</div><!-- /.content-wrapper -->
+</div><!-- /.wrapper container -->
 
-</div><!--  /.END OF WRAPPER -->
-	
 
 
 <!-- *****************************      End of page edits 	 **************************** -->

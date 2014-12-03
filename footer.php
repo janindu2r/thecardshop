@@ -69,7 +69,7 @@
                         <li>
                             <div class="input-append newsletter-box text-center">
                                 <input type="text" class="form-control" placeholder="Email ">
-                                <button class="btn btn-primary" type="button">Subscribe</button>
+                                <button class="btn btn-success" type="button">Subscribe</button>
                             </div>
                         </li>
                     </ul>

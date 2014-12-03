@@ -695,7 +695,7 @@
 
 .service1-items {
     padding: 0px 0 0px 0;
-    float: Below;
+    float: left;
     position: relative;
     overflow: hidden;
     max-width: 100%;
@@ -740,4 +740,12 @@
 
 .service-image-left > center > img,.service-image-right > center > img{
     max-height: 155px;
+}
+
+
+/*product coruosel*/
+.hide-bullets {
+list-style:none;
+margin-left: -40px;
+margin-top:20px;
 }
