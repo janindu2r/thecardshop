@@ -18,7 +18,11 @@ if($_SESSION){
         $qty = $_POST['quantity'];
         if($variation)
         {
-            $cartItm = new CartVar();
+            $vCartItm = new CartVar();
+            $varItems = $_POST['varItems'];
+            $ok = $vCartItm->addToVarCartTable($prodId,$qty,$varItems);
+
+         /*   $cartItm = new CartVar();
             $varVal = $_POST['variationVal'];
             $varId = $_POST['variationId'];
             $ok = $cartItm->addVariationProd($prodId, $qty, $varId, $varVal);
@@ -31,9 +35,9 @@ if($_SESSION){
                 echo json_encode(array('success' => '1'));
             }
             else
-                echo json_encode(array('success' => '0'));
+                echo json_encode(array('success' => '0')); */
 
-
+            echo json_encode(array('success' => '1'));
         }
         else{
             $cartItm = new CartProd();

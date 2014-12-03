@@ -5,7 +5,7 @@ include('overhead.php');
 
 //don't show add to cart if seller is same as product shop owner, instead show edit product. Also don't show quantity box
 
-$prodID = 1000000;
+$prodID = 1000001;
 
 if($_GET){
     $prodID  = $_GET['product'];
@@ -62,7 +62,7 @@ if viewer is  seller link to editproduct.php
                 foreach($viewProd->varIdNames as $key => $val)
                 {
                     echo '<tr><td>'.$val.'</td><td>';
-                    echo '<select id="'.$key.'">';
+                    echo '<select class="prd-variations" id="'.$key.'">';
                     foreach($viewProd->varNameValues[$val] as $varVl)
                     {
                         echo '<option value="'. $varVl. '">'. $varVl .'</option>';
@@ -92,9 +92,11 @@ if viewer is  seller link to editproduct.php
                     cartObj['prodId'] = '<?php echo $viewProd->prodId ?>';
                     cartObj['variation'] = '<?php echo $viewProd->variation ?>';
                     <?php if($viewProd->variation) { ?>
-                    cartObj['variationId'] = '<?php echo $varid ;//echo variation ID?>';
-                    cartObj['variationVal'] = '<?php echo $varval; //echo variation value name  ?>';
-                    <?php } ?>
+                    cartObj['varItems'] = [];
+                    $(".prd-variations").each(function() {
+                        cartObj['varItems'][this.id] = this.value;
+                    });
+                        <?php } ?>
                     cartObj['quantity'] =  document.getElementById("cart-qty").value;
                     $.ajax({
                         type: "POST",
@@ -108,7 +110,7 @@ if viewer is  seller link to editproduct.php
                                 $("#update-portable-cart").click();
 							}
 							else
-							  $('#cart-success-message-id').html('Failed'); //*/
+							  $('#cart-success-message-id').html('Failed'); //
                         }
                     });
                 });

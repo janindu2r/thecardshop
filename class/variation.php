@@ -1,53 +1,35 @@
 <?php
 
-
-class Variations extends Physical
+class Variation extends Physical
 {
-    protected $varId;
-    protected  $varName;
-    protected  $varValue;
-	
+    protected $varNames = array(); //var ID and var Name (1 : Color, 2: Size)
+    protected $allVars = array(); //var ID and the particular values of the specific variation item (1 : Blue, 2 : Medium)
+
 	function __construct()
 	{
 		parent::__construct();	
 	}
 
-    public function getVariationName()
+    public function getVarName($varId)
     {
-        $sqlVarN = 'select var_name from variations where prod_id = '. $this->prodId;
-        $varValue = $this->db->getScalar($sqlVarN);
-        return $varValue;
+        $sqlVarN = 'select var_name from variations where prod_id = '. $this->ownerProd . ' and variation_id = '.$varId;
+        $varName = $this->db->getScalar($sqlVarN);
+        if($varName)
+            return $varName;
+        return $varName;
     }
 
-	public function initializeVariation($pmProdId, $variId, $variVal)
+	public function initializeVariation($pmProdId, array $vars)
 	{
 		$this->selectPhysicalProduct($pmProdId);
-        $this->varId = $variId;
-        $this->varValue = $variVal;
-        $this->varName = getVariationName();
-
+        foreach($vars as $key => $val)
+        {
+            $this->allVars[$key] = $val;
+            $this->varNames[$key] = $this->getVarName($key);
+        }
         return $this;
 	}
 
-    public function returnAllVariationObjects($nProdId, array $names, array $vals)
-    {
-        $allVariations = array();
-        foreach($names as $key => $varval)
-        {
-            foreach($vals[$varval] as $obj)
-            {
-                $varObj = new self();
-                $varObj->selectPhysicalProduct($nProdId);
-                $varObj->varId = $key;
-                $varObj->varName = $varval;
-                $varObj->varValue = $obj;
-                array_push($allVariations, $varObj);
-            }
-        }
-        return $allVariations;
-    }
-
 }
-
 
 ?>
