@@ -36,21 +36,22 @@ if($_POST)
 		$ok = $cartItm->addToCartTable($prodId, $qty);
 		if($ok)
 		{
-           echo json_encode(array('success' => '1', 'itemAr' => $ok->getSimplePortableCartHtml(), 'totalCost' =>  number_format($ok->calculateFullItemPrice(),2,'.','') ));
-          /*
-			$asso['prodTitle'] = $ok->cProduct->proName;
-            $uprice = floatval($ok->cProduct->proPrice);
-			$asso['prodPrice'] = $uprice;
-			$multiply = $ok->cProduct->multiByq;
-			$shipping = floatval($ok->cProduct->shipCst);
-			if($multiply)
-				$shipping = $shipping * floatval($qty) ;
-			$asso['totalCost'] =  ($uprice * $qty) + $shipping;
-            $asso['imageLoc'] = $prodId;
-            $asso['prodDesc'] = 'Shipping Cost $ '. $shipping ;
+            $cr = new Cart();
+            echo json_encode(array('success' => '1', 'itemAr' => $cr->getCompleteCartPrint(), 'totalCost' => number_format($cr->cartTotal, 2, '.', '')));
+            /*
+             $asso['prodTitle'] = $ok->cProduct->proName;
+             $uprice = floatval($ok->cProduct->proPrice);
+             $asso['prodPrice'] = $uprice;
+             $multiply = $ok->cProduct->multiByq;
+             $shipping = floatval($ok->cProduct->shipCst);
+             if($multiply)
+                 $shipping = $shipping * floatval($qty) ;
+             $asso['totalCost'] =  ($uprice * $qty) + $shipping;
+             $asso['imageLoc'] = $prodId;
+             $asso['prodDesc'] = 'Shipping Cost $ '. $shipping ;
 
-            $asso['prodDesc'] .= '</table>';
-			echo json_encode(array('success' => '1', 'itemAr' => $asso)); */
+             $asso['prodDesc'] .= '</table>';
+             echo json_encode(array('success' => '1', 'itemAr' => $asso)); */
 		}
         else
              echo json_encode(array('success' => '0'));
