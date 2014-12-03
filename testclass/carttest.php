@@ -9,6 +9,16 @@ print_r($st->getAllVariations('1000001','1'));
 $crtObj =  new Variations();
 
 echo "<br><br><br>";
+
+$variation = 0;
+$prodId = 1000000;
+$qty = 2;
+if($variation)
+{
+        echo 'var';
+}
+
+/*
 foreach($crtObj->returnAllVariationObjects('1000001', $st->varIdNames,$st->varNameValues ) as $varObject )
 {
    foreach($varObject as $key => $val)
@@ -19,6 +29,6 @@ foreach($crtObj->returnAllVariationObjects('1000001', $st->varIdNames,$st->varNa
         echo "<br>";
     }
     echo "<hr>";
-}
+} */
 
 ?>

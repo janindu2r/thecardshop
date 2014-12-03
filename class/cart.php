@@ -63,7 +63,7 @@ class Cart
             return $fullHtmlString;
         }
         else
-            return "Cart Is Empty";
+            return "<lable id='empty-lbl'>Cart Is Empty</lable>";
 	}
 
 

@@ -6,7 +6,8 @@
 		<link rel="stylesheet" type="text/css" href="/css/styles.css" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		<script src="/js/bootstrap.min.js"></script>
-		<script type="text/javascript">
+        <script src="/js/ajax/cart.js"></script>
+        <script type="text/javascript">
 		 	// $(document).ready(function(){
  	  //   	$(".btn").click(function(){
 		 	//         $("#myModal").modal('show');
@@ -187,7 +188,6 @@
                                                         
                                                     </div>
                                                 </div> -->
-                                                <hr>
                                                 <?php echo $cart->getCompleteCartPrint() ?>
 										<!--		<div class="row">
 													<div class="col-xs-2"><img class="img-responsive" src="http://placehold.it/100x70">
@@ -235,7 +235,7 @@
 											<div class="panel-footer">
 												<div class="row text-center">
 													<div class="col-xs-3">
-                                                            <button type="button" class="btn btn-default btn-block">
+                                                            <button type="button" class="btn btn-default btn-block" id="update-portable-cart">
                                                                 Update cart
                                                             </button>
                                                         </div>
