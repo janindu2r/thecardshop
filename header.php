@@ -51,7 +51,7 @@
 		          <ul class="dropdown-menu" role="menu">
 		            <li><a href="/register.php">Register</a></li>
 		            <li><a href="/product.php">Single Product</a></li>
-		            <li><a href="/userdashboard.php">Something else here</a></li>
+		            <li><a href="/dashboard.php">Something else here</a></li>
 		            <li class="divider"></li>
 		            <li><a href="#">Separated link</a></li>
 		            <li class="divider"></li>
