@@ -88,6 +88,7 @@ if viewer is  seller link to editproduct.php
             {
                 $('#additemtocart').click(function() {
                     var cartObj = {};
+                    cartObj['type'] = 'addprod';
                     cartObj['prodId'] = '<?php echo $viewProd->prodId ?>';
                     cartObj['variation'] = '<?php echo $viewProd->variation ?>';
                     <?php if($viewProd->variation) { ?>
@@ -97,21 +98,14 @@ if viewer is  seller link to editproduct.php
                     cartObj['quantity'] =  document.getElementById("cart-qty").value;
                     $.ajax({
                         type: "POST",
-                        url: "/scripts/addtocart.php",
+                        url: "/scripts/cart.php",
                         data: cartObj,
                         cache: false,
                         success: function(result){
 						var cItem = JSON.parse(result);
 							if(cItem.success == 1)
 							{
-                                $()
-
-                                $("#portable-cart").html(cItem.itemAr);
-                                    $('#cart-success-message-id').html('Item Added To Cart');
-                                    var total = parseFloat(cItem.totalCost);
-                                    total = total.toFixed(2);
-                                    $('#portable-total-b').html(total);
-                                    $('#portable-total-a').html(total);
+                                $("#update-portable-cart").click();
 							}
 							else
 							  $('#cart-success-message-id').html('Failed'); //*/

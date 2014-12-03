@@ -1,7 +1,3 @@
-/*$(document).on("click", "#update-portable-cart", function(){
-
-}); */
-
 $(document).ready(function() {
     $("#update-portable-cart").on('click',function () {
         var ar = {};
@@ -43,7 +39,8 @@ $(document).ready(function() {
                 var cItem = JSON.parse(result);
                 if(cItem.success == 1)
                 {
-                    $("#portable-cart").html(cItem.itemAr);
+
+                 $("#portable-cart").html(cItem.itemAr);
                     var total = parseFloat(cItem.totalCost);
                     total = total.toFixed(2);
                     $('#portable-total-b').html(total);
