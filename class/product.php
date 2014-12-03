@@ -109,6 +109,13 @@ function __construct()
 function __destructor()
 {
 }
+public function deleteAll()
+{
+	
+	$del = $this->db->runNonQuery("update products set deleted = '1' where deleted = '0'");
+	return $del;
+	
+}
 	
 
  public function updateProduct(array $setValue,$wheres)
@@ -141,6 +148,9 @@ $this->prodId = $view['product_id'];
 		$this->del = $view['deleted'];
 		return $this;
 }
+
+
+
 
 
 

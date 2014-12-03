@@ -1,6 +1,12 @@
 <?php
+/*
+created by bmla
+last edit 2014-12-3
+
+*/
+
 include('../class/dbcon.php');
-include('../class/Product.php');
+include('../class/product.php');
 
 
 //view
@@ -24,7 +30,7 @@ echo"we coudnt remove record"."<br>";
 
 
 //updating the details
-$update = new product();
+$update = new Product();
 $values = array( "product_desc" =>"'bad'");
 
 $pUpdate = $update->updateProduct($values,'product_id = "1000000"');
@@ -49,5 +55,14 @@ if($insert)
 else
 echo "not working";
 
+//delete all
+$delAll = new Product();
+$flag = $delAll->deleteAll();
+if($flag == 1)
+{
+echo "done";	
+}
+else
+echo " couldnt ";
 
 ?>
