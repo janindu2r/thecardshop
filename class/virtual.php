@@ -18,9 +18,19 @@ function __construct()
 		$nextRes = $this->db->getFirstRow("select account.email from account inner join shops on account.reg_id = shops.shop_id");
 		
 		$this->email = $nextRes['email'];
-		return $this;
-	}
 		
+		$mail = $this->email;
+		
+		$mLink = wordwrap($this->link,70);
+	if(@mail($mail,"link",$mLink))
+	{
+		echo " mail was sent successfully";
+		
+	}
+	else
+	
+	echo "mail not sent";
+	}
 	
 	
 	
