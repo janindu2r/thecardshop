@@ -6,7 +6,8 @@
 		<link rel="stylesheet" type="text/css" href="/css/styles.css" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		<script src="/js/bootstrap.min.js"></script>
-		<script type="text/javascript">
+        <script src="/js/ajax/cart.js"></script>
+        <script type="text/javascript">
 		 	// $(document).ready(function(){
  	  //   	$(".btn").click(function(){
 		 	//         $("#myModal").modal('show');
@@ -22,11 +23,13 @@
 	<header>
 		<div id="upper-header"> <!-- header for add my account and contacts -->
 			<p class="upper-header-text">Phone orders: 1-800-0000<span>|</span>Email us: office@shop.com</p>
+
 		</div>
-		<hr class="colorgraph">
+		<hr class="shadow">
+
 		<div class="clearfix"></div>
 		<!-- navigation	menu -->
-		<nav class="navbar navbar-default" role="navigation" style="margin-bottom:0;">
+		<nav class="navbar" role="navigation" style="margin-bottom:0;">
   			<div class="container-fluid">
 			    <!-- Brand and toggle get grouped for better mobile display -->
 			    <div class="navbar-header">
@@ -40,13 +43,14 @@
    	 		</div>
 
 		    <!-- Collect the nav links, forms, and other content for toggling -->
+		    <!-- Tempory navigation for different site functions -->
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		      <ul class="nav navbar-nav">
 		        <li class="nav-dropdown">
 		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
 		          <ul class="dropdown-menu" role="menu">
 		            <li><a href="/register.php">Register</a></li>
-		            <li><a href="#">Another action</a></li>
+		            <li><a href="/product.php">Single Product</a></li>
 		            <li><a href="#">Something else here</a></li>
 		            <li class="divider"></li>
 		            <li><a href="#">Separated link</a></li>
@@ -56,16 +60,69 @@
 		        </li>
 		      </ul>
 		      <ul class="nav navbar-nav">
-		        <li class="nav-dropdown">
-		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Tempory Nav<span class="caret"></span></a>
-		          <ul class="dropdown-menu" role="menu">
-		            <li><a href="#">Action</a></li>
-		            <li><a href="#">Another action</a></li>
-		            <li><a href="#">Something else here</a></li>
-		            <li class="divider"></li>
-		            <li><a href="#">Separated link</a></li>
-		            <li class="divider"></li>
-		            <li><a href="#">View Product</a></li>
+		        <li class="nav-dropdown dropdown-large">
+		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Shop by Category<span class="caret"></span></a>
+		          <ul class="dropdown-menu dropdown-menu-large row" role="menu">
+
+					<li class="col-sm-3">
+						<ul>
+							<li class="dropdown-header">Glyphicons</li>
+							<li><a href="#">Available glyphs</a></li>
+							<li class="disabled"><a href="#">How to use</a></li>
+							<li><a href="#">Examples</a></li>
+							<li class="divider"></li>
+							<li class="dropdown-header">Dropdowns</li>
+							<li><a href="#">Example</a></li>
+							<li><a href="#">Aligninment options</a></li>
+							<li><a href="#">Headers</a></li>
+							<li><a href="#">Disabled menu items</a></li>
+						</ul>
+					</li>
+					<li class="col-sm-3">
+						<ul>
+							<li class="dropdown-header">Button groups</li>
+							<li><a href="#">Basic example</a></li>
+							<li><a href="#">Button toolbar</a></li>
+							<li><a href="#">Sizing</a></li>
+							<li><a href="#">Nesting</a></li>
+							<li><a href="#">Vertical variation</a></li>
+							<li class="divider"></li>
+							<li class="dropdown-header">Button dropdowns</li>
+							<li><a href="#">Single button dropdowns</a></li>
+						</ul>
+					</li>
+					<li class="col-sm-3">
+						<ul>
+							<li class="dropdown-header">Input groups</li>
+							<li><a href="#">Basic example</a></li>
+							<li><a href="#">Sizing</a></li>
+							<li><a href="#">Checkboxes and radio addons</a></li>
+							<li class="divider"></li>
+							<li class="dropdown-header">Navs</li>
+							<li><a href="#">Tabs</a></li>
+							<li><a href="#">Pills</a></li>
+							<li><a href="#">Justified</a></li>
+						</ul>
+					</li>
+					<li class="col-sm-3">
+						<ul>
+							<li class="dropdown-header">Navbar</li>
+							<li><a href="#">Default navbar</a></li>
+							<li><a href="#">Buttons</a></li>
+							<li><a href="#">Text</a></li>
+							<li><a href="#">Non-nav links</a></li>
+							<li><a href="#">Component alignment</a></li>
+							<li><a href="#">Fixed to top</a></li>
+							<li><a href="#">Fixed to bottom</a></li>
+							<li><a href="#">Static top</a></li>
+							<li><a href="#">Inverted navbar</a></li>
+						</ul>
+					</li>
+				</ul>
+				
+			</li>
+		</ul>
+		
 		          </ul>
 		        </li>
 		      </ul>
@@ -123,19 +180,14 @@
 												</div>
 											</div>
 											<div class="panel-body" id="portable-cart">
-                                                <div class="row">
+                                                <!-- <div class="row">
                                                     <div class="text-center">
                                                         <div class="col-xs-9">
                                                             <h6 class="text-right">Added items?</h6>
                                                         </div>
-                                                        <div class="col-xs-3">
-                                                            <button type="button" class="btn btn-default btn-sm btn-block">
-                                                                Update cart
-                                                            </button>
-                                                        </div>
+                                                        
                                                     </div>
-                                                </div>
-                                                <hr>
+                                                </div> -->
                                                 <?php echo $cart->getCompleteCartPrint() ?>
 										<!--		<div class="row">
 													<div class="col-xs-2"><img class="img-responsive" src="http://placehold.it/100x70">
@@ -182,7 +234,12 @@
 											</div>
 											<div class="panel-footer">
 												<div class="row text-center">
-													<div class="col-xs-9">
+													<div class="col-xs-3">
+                                                            <button type="button" class="btn btn-default btn-block" id="update-portable-cart">
+                                                                Update cart
+                                                            </button>
+                                                        </div>
+													<div class="col-xs-6">
 														<h4 class="text-right">Total <strong>$<label id="portable-total-b"><?php echo number_format($cart->cartTotal, 2, '.', '') ?></label></strong></h4>
 													</div>
 													<div class="col-xs-3">
@@ -233,6 +290,7 @@
 		      </ul>
 		    </div><!-- /.navbar-collapse -->
   			</div><!-- /.container-fluid -->
+  			<hr class="shadow">
 		</nav>
 
 	</header><!-- Header end, Wrapper Start -->

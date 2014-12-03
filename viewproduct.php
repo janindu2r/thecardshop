@@ -5,11 +5,7 @@ include('overhead.php');
 
 //don't show add to cart if seller is same as product shop owner, instead show edit product. Also don't show quantity box
 
-$prodID = 1000000;
-//vartiation
-$varid = 1 ; $varval = 'Red';
-$variation = 0;
-
+$prodID = 1000001;
 
 if($_GET){
     $prodID  = $_GET['product'];
@@ -17,17 +13,22 @@ if($_GET){
 
 $viewProd = new Product();
 $viewProd = $viewProd->returnProduct($prodID);
+if(!$viewProd->virtual)
+{
+    $tmp = new Physical();
+    $viewProd = $tmp->selectPhysicalProduct($viewProd->prodId);
+    if($viewProd->variation){
+         $viewProd->getAllVariations($viewProd->prodId);
+    }
+}
 
 
-$prodtitle = $viewProd->proName ;
+$prodtitle = $viewProd->proName;
 $viewfrom = 'Comercio';  // Or Shop Name
 $title = $prodtitle. ' | '. $viewfrom ;  // page title
 
 
 ?>
-
-
-
 <!---------------------------------------- Header Start, Do not touch ------------------------------------------->
 <!DOCTYPE html>
 <html>
@@ -45,14 +46,36 @@ if viewer is  seller link to editproduct.php
 <br>
         <h1> <?php echo $prodtitle ; ?>  </h1>
 
-        <?php if($variation) { ?>
+        <button id="update-portable-cart">Btn</button>
 
-            combo boxes to select variations
+        <form>
+            <?php if(!$viewProd->virtual) { //condition check needed for each of these to see if the value is null. only echo if not ?>
+                Dimensions <br>
+                Width : <?php echo $viewProd->width ?> <br>
+                Height : <?php echo $viewProd->height ?> <br>
+                Length : <?php echo $viewProd->length ?> <br>
+                Weight: <?php echo $viewProd->weight ?><br>
+            <?php }
 
-        <?php } ?>
+          if($viewProd->variation) {
+                echo '<br><br>Variations<br><br><table>';
+                foreach($viewProd->varIdNames as $key => $val)
+                {
+                    echo '<tr><td>'.$val.'</td><td>';
+                    echo '<select class="prd-variations" id="'.$key.'">';
+                    foreach($viewProd->varNameValues[$val] as $varVl)
+                    {
+                        echo '<option value="'. $varVl. '">'. $varVl .'</option>';
+                    }
+                    echo  '</select></td></tr>';
+                }
+                echo '</table>';
+             }   ?>
+
+        </form>
 
 
-            input quantity box <br><br><br><br><br>
+           Quantity : <input type="number" id="cart-qty" value="1" min="1" size="20" max="999"> <br>
 
 
         <input type="button" id="additemtocart" value="Add To Cart">
@@ -65,44 +88,29 @@ if viewer is  seller link to editproduct.php
             {
                 $('#additemtocart').click(function() {
                     var cartObj = {};
+                    cartObj['type'] = 'addprod';
                     cartObj['prodId'] = '<?php echo $viewProd->prodId ?>';
                     cartObj['variation'] = '<?php echo $viewProd->variation ?>';
-                    <?php if($variation) { ?>
-                    cartObj['variationId'] = '<?php echo $varid ;//echo variation ID?>';
-                    cartObj['variationVal'] = '<?php echo $varval; //echo variation value name  ?>';
-                    <?php } ?>
-                    cartObj['quantity'] = '<?php echo 2 ;//echo quantity taken from text box ?>';
-
+                    <?php if($viewProd->variation) { ?>
+                    cartObj['varItems'] = [];
+                    $(".prd-variations").each(function() {
+                        cartObj['varItems'][this.id] = this.value;
+                    });
+                        <?php } ?>
+                    cartObj['quantity'] =  document.getElementById("cart-qty").value;
                     $.ajax({
                         type: "POST",
-                        url: "/scripts/addtocart.php",
+                        url: "/scripts/cart.php",
                         data: cartObj,
                         cache: false,
                         success: function(result){
-						// $('#sth1').html(result);
-	//			/*		
 						var cItem = JSON.parse(result);
 							if(cItem.success == 1)
 							{
-							/*	var nItem = cItem.itemAr;
-								var cartDiv = '<div class="row"> <div class="col-xs-2"><img class="img-responsive" src="/content/products/prodthumbnail/'+
-                                    nItem['imageLoc']+ '.jpg"> </div><div class="col-xs-4"> <h4 class="product-name"><strong>' +
-                                    nItem['prodTitle'] + '</strong></h4><h4><small>' +
-                                    nItem['prodDesc'] + '</small></h4> </div> <div class="col-xs-6"> <div class="col-xs-6 text-right"> <h6><strong>' +
-                                    nItem ['prodPrice'] + '<span class="text-muted">x</span></strong></h6> </div> <div class="col-xs-4">' +
-                                    '<input type="text" class="form-control input-sm" value="' +  cartObj['quantity'] + '"> </div> ' +
-                                    '<div class="col-xs-2"> <button type="button" class="btn btn-link btn-xs"> <span class="glyphicon glyphicon-trash"> </span> ' +
-                                    '</button> </div> </div> </div> <hr>' ; */
-								$("#portable-cart").append(cItem.itemAr);
-                                $('#cart-success-message-id').html('Item Added To Cart');
-                                var getTotal = document.getElementById("portable-total-a");
-                                var total = parseFloat(getTotal.innerHTML) + parseFloat(cItem.totalCost);
-                                total = total.toFixed(2);
-                                $('#portable-total-b').html(total);
-                                $('#portable-total-a').html(total);
+                                $("#update-portable-cart").click();
 							}
 							else
-							  $('#cart-success-message-id').html('Failed'); //*/
+							  $('#cart-success-message-id').html('Failed'); //
                         }
                     });
                 });
