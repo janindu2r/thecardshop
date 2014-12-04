@@ -14,10 +14,12 @@ session_start();
 
 if($_GET)
 {
-	if($_GET['logout'])
+	if(array_key_exists('logout', $_GET))
 	{
-		session_destroy();
-		header('location: /index.php');
+        if($_GET['logout']) {
+            session_destroy();
+            header('location: /index.php');
+        }
 	}
 }
 

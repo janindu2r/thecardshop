@@ -2,10 +2,7 @@
 <?php
 include('overhead.php');
 
-
-//don't show add to cart if seller is same as product shop owner, instead show edit product. Also don't show quantity box
-
-$prodID = 1000001;
+$prodID = 1000000;
 
 if($_GET){
     $prodID  = $_GET['product'];
@@ -22,11 +19,8 @@ if(!$viewProd->virtual)
     }
 }
 
-
-$prodtitle = $viewProd->proName;
 $viewfrom = 'Comercio';  // Or Shop Name
-$title = $prodtitle. ' | '. $viewfrom ;  // page title
-
+$title = $viewProd->proName. ' | '. $viewfrom ;  // page title
 
 ?>
 <!---------------------------------------- Header Start, Do not touch ------------------------------------------->
@@ -36,51 +30,139 @@ $title = $prodtitle. ' | '. $viewfrom ;  // page title
         <?php include('header.php'); ?>
 <!---------------------------------------- Add Page Edits Below ------------------------------------------------->    
 
+<div class="wrapper container">
+	<div class="content-wrapper">	
+		<div class="row col-md-12 col-lg-12">
+			<div class="">
+				
+				<div class="col-md-6 carousel-bounding-box" id="slider"><!-- product slider, carousel -->
 
-<a href="cart.php">Add to cart button</a> 
-back to shop/home button
+					<div class="product service-image-left">
+							<img id="item-display" src="/content/products/prodthumbnail/<?php echo $viewProd->prodId ?>.jpg" alt="">
+					</div>
+					
+					<!-- <div class="col-sm-2 col-md-2 pull-left" id="service1-items">
+						<center>
+							<a id="item-1" class="service1-item">
+								<img src="http://www.corsair.com/Media/catalog/product/g/s/gs600_psu_sideview_blue_2.png" alt=""></img>
+							</a>
+							<a id="item-2" class="service1-item">
+								<img src="http://www.corsair.com/Media/catalog/product/g/s/gs600_psu_sideview_blue_2.png" alt=""></img>
+							</a>
+							<a id="item-3" class="service1-item">
+								<img src="http://www.corsair.com/Media/catalog/product/g/s/gs600_psu_sideview_blue_2.png" alt=""></img>
+							</a>
+						</center>
+					</div> -->
+				</div>
 
-if viewer is  seller link to editproduct.php 
+				<div class="col-md-6">
+					<div class="product-title"><?php echo  $viewProd->proName ; ?></div>
+					<div class="product-desc"><?php echo $viewProd->description ; ?> </div>
+					<div class="product-rating"><i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star-o"></i> </div>
+					<hr>
+					<div class="product-price">Price: $<?php echo $viewProd->proPrice ?></div>
 
-<!-- form Select quantity and submit to add to cart page-->
-<br>
-        <h1> <?php echo $prodtitle ; ?>  </h1>
+                    <div>
+                            <?php   if($viewProd->variation) {
+                                echo '<h4>Variations</h4><table>';
+                                foreach($viewProd->varIdNames as $key => $val)
+                                {
+                                    echo '<tr><td>'.$val.'</td><td>';
+                                    echo '<select class="prd-variations" id="'.$key.'">';
+                                    foreach($viewProd->varNameValues[$val] as $varVl)
+                                    {
+                                        echo '<option value="'. $varVl. '">'. $varVl .'</option>';
+                                    }
+                                    echo  '</select></td></tr>';
+                                }
+                                echo '</table>';   }   ?>
+                    </div>
 
-        <button id="update-portable-cart">Btn</button>
+					<div class="product-stock">
+                        <?php if($viewProd->cuStock) { ?>
+                        In Stock &nbsp <span> <?php echo $viewProd->cuStock.'/'.$viewProd->inStock ; ?> </span>
+                        <?php }
+                        else
+                            echo 'Out of stock' ;
+                        ?>
+                    </div>
+					<hr>
+                    <?php if ($logged == 1 &&  $viewProd->shopId != $user->getRegID()) {
+                        if($viewProd->cuStock) { ?>
+                            Quantity : <input type="number" id="cart-qty" value="1" min="1" size="20" max="<?php echo $viewProd->cuStock ?>"> <br>
+                                <div id="cart-success-message-id"><br></div>
+                                <hr>
+                                <div class="btn-group cart">
+                            <button type="button" class="btn btn-success" id="additemtocart">
+                                Add to cart
+                            </button>
+                                </div>
+                    <?php } ?>
+                    <div class="btn-group wishlist">
+                        <button type="button" class="btn btn-danger">
+                            Save Item
+                        </button>
+                    </div>
+                    <?php } ?>
+                    <?php if ($logged == 1 &&  $viewProd->shopId == $user->getRegID()) { ?>
+                    <div class="btn-group cart">
+                                <button type="button" class="btn btn-success">
+                                    Edit Product
+                                </button>
+                    </div>
+                    <?php } ?>
+                </div> <!--/.end of product slider -->
+			</div>
+		</div><!-- end of row col-md-12 col-lg-12 -->
 
-        <form>
-            <?php if(!$viewProd->virtual) { //condition check needed for each of these to see if the value is null. only echo if not ?>
-                Dimensions <br>
-                Width : <?php echo $viewProd->width ?> <br>
-                Height : <?php echo $viewProd->height ?> <br>
-                Length : <?php echo $viewProd->length ?> <br>
-                Weight: <?php echo $viewProd->weight ?><br>
-            <?php }
+<!-- product description, shipment details, customer reviews -->
+			<div class="container-fluid">		
+				<div class="col-md-12 product-info">
+					<ul id="myTab" class="nav nav-tabs nav_tabs">
+						
+						<li class="active"><a href="#service-one" data-toggle="tab">DESCRIPTION</a></li>
+						<li><a href="#service-two" data-toggle="tab">PRODUCT INFO</a></li>
+						<li><a href="#service-three" data-toggle="tab">REVIEWS</a></li>
+						
+					</ul>
+					<div id="myTabContent" class="tab-content">
+						<div class="tab-pane fade in active" id="service-one">
+						 
+							<section class="container product-info">
+                                <?php if(!$viewProd->virtual) {  ?>
+                				<h3> Dimensions </h3>
+                <!-- condition check needed for each of these to see if the value is null. only echo if not -->
+                                        Width : <?php echo $viewProd->width ?> <br>
+                                        Height : <?php echo $viewProd->height ?> <br>
+                                        Length : <?php echo $viewProd->length ?> <br>
+                                        Weight: <?php echo $viewProd->weight ?><br>
+            			        <?php } ?>
+							</section>
+										  
+						</div>
+					<div class="tab-pane fade" id="service-two">
+						
+						<section class="container">
+								
+						</section>
+						
+					</div><!--  /.END OF tab-pane fade id=service-two -->
+					<div class="tab-pane fade" id="service-three">
+										Add Comments Here		
+					</div><!--  /.END OF tab-pane fade id=service-three -->
+					
+					</div><!-- /.myTabContent -->
+					<hr>
+				</div><!--  /.END OF col-md-12 product-info -->
+			</div><!--  /.END OF CONTAINER-FLUID -->
+		
+	</div><!-- /.content-wrapper -->
+</div><!-- /.wrapper container -->
 
-          if($viewProd->variation) {
-                echo '<br><br>Variations<br><br><table>';
-                foreach($viewProd->varIdNames as $key => $val)
-                {
-                    echo '<tr><td>'.$val.'</td><td>';
-                    echo '<select class="prd-variations" id="'.$key.'">';
-                    foreach($viewProd->varNameValues[$val] as $varVl)
-                    {
-                        echo '<option value="'. $varVl. '">'. $varVl .'</option>';
-                    }
-                    echo  '</select></td></tr>';
-                }
-                echo '</table>';
-             }   ?>
-
-        </form>
 
 
-           Quantity : <input type="number" id="cart-qty" value="1" min="1" size="20" max="999"> <br>
-
-
-        <input type="button" id="additemtocart" value="Add To Cart">
-        <div id="cart-success-message-id"></div>
-
+<!--- start of javascript -->
 
 
         <script type="text/javascript">
@@ -108,6 +190,7 @@ if viewer is  seller link to editproduct.php
 							if(cItem.success == 1)
 							{
                                 $("#update-portable-cart").click();
+                                $('#cart-success-message-id').html('Item Added');
 							}
 							else
 							  $('#cart-success-message-id').html('Failed'); //
