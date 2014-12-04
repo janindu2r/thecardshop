@@ -149,19 +149,7 @@ $this->prodId = $view['product_id'];
 		return $this;
 }
 
-
-
-
-
-
 }
-
-
-
-
-
-
-
 
 
 

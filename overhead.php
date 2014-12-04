@@ -1,16 +1,17 @@
 <?php
-//Including all the class files 
+/*Including all the class files 
 include '/class/dbcon.php';
 include '/class/user.php';
 include '/class/product.php';
 include '/class/physical.php';
 include '/class/variation.php';
 include '/class/cartitems.php';
-include '/class/cart.php';
+include '/class/cart.php'; */
+
+include ('/internal.php');
 
 $logged = 0; //boolean variable to check if logged in or not
 $user = new User();
-session_start();
 
 if($_GET)
 {

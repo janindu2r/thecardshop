@@ -1,11 +1,15 @@
 <?php
 //Including all the class files 
-include '/class/dbcon.php';
-include '/class/user.php';
-include '/class/product.php';
-include '/class/physical.php';
-include '/class/variation.php';
-include '/class/cartitems.php';
-include '/class/cart.php';
+$path = $_SERVER['DOCUMENT_ROOT'];
+
+foreach (glob($path."/class/*.php") as $filename)
+{
+	$class = basename($filename, '.php');
+	if($class != 'aaa') {
+		spl_autoload_register(function ($class) {
+    		include '/class/' . $class . '.php';
+		});	
+	}
+}
 
 session_start();
