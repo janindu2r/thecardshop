@@ -61,7 +61,7 @@ $title = $viewProd->proName. ' | '. $viewfrom ;  // page title
 					<div class="product-desc"><?php echo $viewProd->description ; ?> </div>
 					<div class="product-rating"><i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star-o"></i> </div>
 					<hr>
-					<div class="product-price">Price: $<?php echo $viewProd->proPrice ?></div>
+					<div class="product-price">$ <?php echo $viewProd->proPrice ?></div>
 
                     <div>
                             <?php   if($viewProd->variation) {
