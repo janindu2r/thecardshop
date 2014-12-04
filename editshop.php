@@ -1,5 +1,6 @@
-<!-- add session initiation and other similar necessary php stuff below -->
 <?php
+include('overhead.php');
+
 $shopname = 'Shop Name';
 $title = 'Edit Shop Layout | '.$shopname    ;  // page title
 
