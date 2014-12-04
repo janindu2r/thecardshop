@@ -46,7 +46,7 @@ $title = 'Profile | Comercio'  ;  // page title
 			    <div class="row">
 
 			        <div class="form">
-			            <legend><i class="glyphicon glyphicon-globe"></i> Sign up!</legend>
+			            <legend><i class="glyphicon glyphicon-globe"></i>Account Information</legend>
 			            <form action="scripts/reg.php" method="post" class="form" role="form">
 			            <div class="row">
 			                <div class="col-xs-6 col-md-6">
@@ -59,9 +59,9 @@ $title = 'Profile | Comercio'  ;  // page title
 			            </div>
 			            <input class="form-control" name="uname" placeholder="Username" type="text" />
 			            <input class="form-control" name="email" placeholder="Your Email" type="email" />
-			            <input class="form-control" name="reenteremail" placeholder="Re-enter Email" type="email" />
-			            <input class="form-control" name="password" placeholder="Password" type="password" />
-			            <input class="form-control" name="repassword" placeholder="Re-enter Password" type="password" />
+			            <!-- <input class="form-control" name="reenteremail" placeholder="Re-enter Email" type="email" /> -->
+<!-- 			            <input class="form-control" name="password" placeholder="Password" type="password" />
+			            <input class="form-control" name="repassword" placeholder="Re-enter Password" type="password" /> -->
 			            <label for="">
 			                Birth Date</label>
 			            <div class="row">
@@ -98,9 +98,9 @@ $title = 'Profile | Comercio'  ;  // page title
 			            <input class="form-control" name="add3" placeholder="Address Line 3" type="text" />
 			            <input class="form-control" name="postal" placeholder="Postal Code" type="text" />
 			            <br />
-			            <label><input class="checkbox-inline" name="agree" type="checkbox" value="">   Agree to Terms & Conditions</label> <br/> <br/>
-			            <button class="btn btn-lg btn-primary btn-block" type="submit">
-			                Sign up</button>
+			            
+			            <button class="btn btn-primary btn-block" type="submit">
+			                Save</button>
 			            </form>
 			        </div>
 			    </div>
