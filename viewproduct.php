@@ -2,7 +2,7 @@
 <?php
 include('overhead.php');
 
-$prodID = 1000000;
+$prodID = 1000001;
 
 if($_GET){
     $prodID  = $_GET['product'];
@@ -193,7 +193,7 @@ $title = $viewProd->proName. ' | '. $viewfrom ;  // page title
                                 $('#cart-success-message-id').html('Item Added');
 							}
 							else
-							  $('#cart-success-message-id').html('Failed'); //
+							  $('#cart-success-message-id').html('Failed');
                         }
                     });
                 });
