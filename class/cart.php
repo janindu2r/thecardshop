@@ -64,7 +64,7 @@ class Cart
 	{
         $fullHtmlString = '';
         if($this->cartOrder){
-            arsort($this->cartOrder);
+            arsort($this->cartOrder); //sort by date added. Combine html strings together
             foreach($this->cartOrder as $id => $val) {
                 $rId = substr($id,1);
                 if(substr($id,0,1) == '1')
@@ -72,10 +72,6 @@ class Cart
                 else
                     $fullHtmlString .= $this->simpleProds[$rId]->getSimplePortableCartHtml();
             }
-        /*    $fullHtmlString = '';  //combine the html strings together;
-            foreach ($this->simpleProds as $itm) {
-                $fullHtmlString .= $itm->getSimplePortableCartHtml();
-            } */
             return $fullHtmlString;
         }
         else

@@ -2,6 +2,8 @@
  $path = $_SERVER['DOCUMENT_ROOT'];
  include($path.'/internal.php');
 
+//convert this to a switch statement
+
 if($_SESSION){
  if($_POST)
 {

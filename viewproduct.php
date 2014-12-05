@@ -186,7 +186,7 @@ $title = $viewProd->proName. ' | '. $viewfrom ;  // page title
                         data: cartObj,
                         cache: false,
                         success: function(result){
-						var cItem = JSON.parse(result);
+					 	var cItem = JSON.parse(result);
 							if(cItem.success == 1)
 							{
                                 $("#update-portable-cart").click();
