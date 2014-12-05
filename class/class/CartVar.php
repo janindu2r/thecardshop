@@ -39,6 +39,36 @@ class CartVar extends CartProd{
         return $this;
     }
 
+  /*  function dududududud()
+    {
+        $gQty = $this->db->getScalar("select quantity from cart_products where user_id = ".$this->userId."  and prod_id = ".$prodId);
+        if($gQty) {
+            $tQty = intval($gQty) + intval($qty);
+            $var = $this->db->runUpdateOneValue('cart_products', 'quantity = ' . $tQty, 'user_id = ' . $this->userId . '  and prod_id = ' . $prodId);
+            if ($var) {
+                $this->cartProdIni($prodId, $tQty);
+                $this->nItem = false;
+                return $this;
+            } else
+                return 0;
+        }
+        else{ //if not add the product
+            $this->cartProdIni($prodId, $qty);
+            $simProd['user_id'] = $this->db->escapeString($this->userId);
+            $simProd['prod_id'] = $this->db->escapeString($this->cProduct->prodId);
+            $simProd['quantity'] = $this->db->escapeString($this->quantity);
+            $simProd['added_datetime'] = $this->db->escapeString($this->addDateTime);
+            $var = $this->db->runInsertRecord('cart_products', $simProd);
+            if($var) {
+                $this->nItem = true;
+                return $this;
+            }
+            else
+                return 0;
+        } */
+    }
+
+
     function addToVarCartTable($prodId,$qty,array $varItems){
 
         $this->varProdIni($prodId, $varItems);
@@ -46,8 +76,19 @@ class CartVar extends CartProd{
         $this->initializeVarGroup();
         $varGroup['user_id'] = $this->db->escapeString($this->userId);
         $varGroup['product_id'] = $this->db->escapeString($this->cProduct->prodId);
-        $varGroup['quantity'] = $this->db->escapeString($this->quantity);
+
         $varGroup['added_datetime'] = $this->db->escapeString($this->addDateTime);
+
+
+        $gQty = $this->db->getScalar("select quantity from cart_products where user_id = ".$this->userId."  and prod_id = ".$prodId);
+        if($gQty) {
+
+
+
+
+
+
+        $varGroup['quantity'] = $this->db->escapeString($this->quantity);
         $this->groupId = $this->db->runInsertAndGetID('cart_variation_group', $varGroup);
         $success = 0;
 
@@ -94,9 +135,9 @@ class CartVar extends CartProd{
         $itemHtml .= $this->cProduct->proName.'</strong></h4><h4><small> ' .  $desc ;
         $itemHtml .= '</small></h4> </div> <div class="col-xs-6"> <div class="col-xs-6 text-right"> <h6><strong>';
         $itemHtml .= $this->cProduct->proPrice . '<span class="text-muted">x</span></strong></h6> </div> <div class="col-xs-4">' ;
-        $itemHtml .= '<input type="number" class="form-control input-sm output-qty-cart" id="0-'. $this->groupId.'" value="';
+        $itemHtml .= '<input type="number" class="form-control input-sm output-qty-cart" id="1-'. $this->groupId.'" value="';
         $itemHtml .= $this->quantity. '" min="1" max="999"> </div> ' ;
-        $itemHtml .= '<div class="col-xs-2"> <button type="button" class="btn btn-link btn-xs delete-cart-itm" id="0-'. $this->groupId ;
+        $itemHtml .= '<div class="col-xs-2"> <button type="button" class="btn btn-link btn-xs delete-cart-itm" id="1-'. $this->groupId ;
         $itemHtml .= '"><span class="glyphicon glyphicon-trash"> </span> </button> </div> </div> </div> <hr>' ;
         return $itemHtml;
     }
