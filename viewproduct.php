@@ -174,9 +174,9 @@ $title = $viewProd->proName. ' | '. $viewfrom ;  // page title
                     cartObj['prodId'] = '<?php echo $viewProd->prodId ?>';
                     cartObj['variation'] = '<?php echo $viewProd->variation ?>';
                     <?php if($viewProd->variation) { ?>
-                    cartObj['varItems'] = [];
+                    cartObj['varItems'] = {};
                     $(".prd-variations").each(function() {
-                        cartObj['varItems'][this.id] = this.value;
+                        cartObj['varItems']['"' + this.id + '"'] = this.value;
                     });
                         <?php } ?>
                     cartObj['quantity'] =  document.getElementById("cart-qty").value;

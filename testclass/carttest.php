@@ -2,6 +2,14 @@
  $path = $_SERVER['DOCUMENT_ROOT'];
  include($path.'/internal.php');
 
+
+$userId = 10001;
+
+
+
+
+
+/*
 $st = new Physical();
 
 print_r($st->getAllVariations('1000001','1'));
@@ -27,5 +35,5 @@ foreach($crtObj->returnAllVariationObjects('1000001', $st->varIdNames,$st->varNa
         echo "<br>";
     }
     echo "<hr>";
-}
+}  */
 ?>

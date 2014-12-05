@@ -9,6 +9,7 @@ by: JK;
 class CartVar extends CartProd{
 
     private $cartVGroup = array();
+    public $groupId;
   //   $varNames => array of var ID and var Name (1 : Color, 2: Size)
   //   $allVars => array of var ID and the particular values of the specific variation item (1 : Blue, 2 : Medium)
 
@@ -28,6 +29,7 @@ class CartVar extends CartProd{
     {
         $this->cProduct = new Physical();
         $this->cProduct = $this->cProduct->selectPhysicalProduct($prodId);
+
         if($this->cProduct->variation)
         {
             $var = new Variation();
@@ -46,14 +48,14 @@ class CartVar extends CartProd{
         $varGroup['product_id'] = $this->db->escapeString($this->cProduct->prodId);
         $varGroup['quantity'] = $this->db->escapeString($this->quantity);
         $varGroup['added_datetime'] = $this->db->escapeString($this->addDateTime);
-        $groupId = $this->db->runInsertAndGetID('cart_variation_group', $varGroup);
+        $this->groupId = $this->db->runInsertAndGetID('cart_variation_group', $varGroup);
         $success = 0;
 
-        if($groupId)
+        if($this->groupId)
         {
-            $varProd['var_group'] = $this->db->escapeString($groupId) ;
+            $varProd['var_group'] = $this->db->escapeString($this->groupId) ;
             foreach($this->cProduct->allVars as $k => $vl ){
-                $varProd['variation_id'] = $this->db->escapeString($k);
+                $varProd['variation_id'] = $k;
                	$varProd['variation_value'] = $this->db->escapeString($vl);
                 $success += $this->db->runInsertRecord('cart_variations', $varProd);
             }
@@ -66,18 +68,37 @@ class CartVar extends CartProd{
     }
 
 
-    function makeVariationCartItem($prodId,$qty,array $varItems, $addedDnT)
+    function makeVariationCartItem($groupId, $prodId,$qty,$addedDnT, array $varItems)
     {
-        $this->cartProdIni($prodId, $qty);
-        $this->cProduct->initializeVariation($prodId, $varItems);
+        $this->varProdIni($prodId, $varItems);
+        $this->quantity = $qty;
         $this->addDateTime = $addedDnT;
+        $this->groupId = $groupId;
         $this->initializeVarGroup();
         return $this;
     }
 
+
     function getPortableVariationItem()
     {
+        $shipping = $this->calculateShippingCost();
+        $desc = '<b>Variation</b><br>';
 
+        foreach($this->cartVGroup as $k => $v)
+            $desc .=  '<i>' .$k . '</i> ' . $v .'<br>';
+
+        $desc .= '<i>Shipping</i> $'. number_format($shipping, 2, '.', '');
+
+        $itemHtml = '<div class="row"> <div class="col-xs-2"> <img class="img-responsive" src="/content/products/prodthumbnail/' ;
+        $itemHtml .=  $this->cProduct->prodId.'.jpg"> </div><div class="col-xs-4"> <h4 class="product-name"><strong>' ;
+        $itemHtml .= $this->cProduct->proName.'</strong></h4><h4><small> ' .  $desc ;
+        $itemHtml .= '</small></h4> </div> <div class="col-xs-6"> <div class="col-xs-6 text-right"> <h6><strong>';
+        $itemHtml .= $this->cProduct->proPrice . '<span class="text-muted">x</span></strong></h6> </div> <div class="col-xs-4">' ;
+        $itemHtml .= '<input type="number" class="form-control input-sm output-qty-cart" id="0-'. $this->groupId.'" value="';
+        $itemHtml .= $this->quantity. '" min="1" max="999"> </div> ' ;
+        $itemHtml .= '<div class="col-xs-2"> <button type="button" class="btn btn-link btn-xs delete-cart-itm" id="0-'. $this->groupId ;
+        $itemHtml .= '"><span class="glyphicon glyphicon-trash"> </span> </button> </div> </div> </div> <hr>' ;
+        return $itemHtml;
     }
 
 }
