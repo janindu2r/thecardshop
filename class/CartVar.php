@@ -39,6 +39,43 @@ class CartVar extends CartProd{
         return $this;
     }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD:class/CartVar.php
+=======
+  /*  function dududududud()
+    {
+        $gQty = $this->db->getScalar("select quantity from cart_products where user_id = ".$this->userId."  and prod_id = ".$prodId);
+        if($gQty) {
+            $tQty = intval($gQty) + intval($qty);
+            $var = $this->db->runUpdateOneValue('cart_products', 'quantity = ' . $tQty, 'user_id = ' . $this->userId . '  and prod_id = ' . $prodId);
+            if ($var) {
+                $this->cartProdIni($prodId, $tQty);
+                $this->nItem = false;
+                return $this;
+            } else
+                return 0;
+        }
+        else{ //if not add the product
+            $this->cartProdIni($prodId, $qty);
+            $simProd['user_id'] = $this->db->escapeString($this->userId);
+            $simProd['prod_id'] = $this->db->escapeString($this->cProduct->prodId);
+            $simProd['quantity'] = $this->db->escapeString($this->quantity);
+            $simProd['added_datetime'] = $this->db->escapeString($this->addDateTime);
+            $var = $this->db->runInsertRecord('cart_products', $simProd);
+            if($var) {
+                $this->nItem = true;
+                return $this;
+            }
+            else
+                return 0;
+        } */
+    }
+
+
+    function addToVarCartTable($prodId,$qty,array $varItems){
+>>>>>>> origin/master:class/class/CartVar.php
+>>>>>>> origin/master
 
     function addToVarCartTable($prodId,$qty,array $varItems){
         $this->varProdIni($prodId, $varItems);
@@ -46,8 +83,31 @@ class CartVar extends CartProd{
         $this->initializeVarGroup();
         $varGroup['user_id'] = $this->db->escapeString($this->userId);
         $varGroup['product_id'] = $this->db->escapeString($this->cProduct->prodId);
+<<<<<<< HEAD
         $varGroup['added_datetime'] = $this->db->escapeString($this->addDateTime);
         $varGroup['quantity'] = $this->db->escapeString($this->quantity);
+=======
+<<<<<<< HEAD:class/CartVar.php
+        $varGroup['added_datetime'] = $this->db->escapeString($this->addDateTime);
+        $varGroup['quantity'] = $this->db->escapeString($this->quantity);
+=======
+
+        $varGroup['added_datetime'] = $this->db->escapeString($this->addDateTime);
+
+
+        $gQty = $this->db->getScalar("select quantity from cart_products where user_id = ".$this->userId."  and prod_id = ".$prodId);
+        if($gQty) {
+
+
+
+
+
+
+        $varGroup['quantity'] = $this->db->escapeString($this->quantity);
+        $this->groupId = $this->db->runInsertAndGetID('cart_variation_group', $varGroup);
+        $success = 0;
+>>>>>>> origin/master:class/class/CartVar.php
+>>>>>>> origin/master
 
         //Get if there's already a group with the same variation numbers
         $varConct ='';
