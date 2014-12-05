@@ -9,14 +9,14 @@
 		<!-- CSS Styles -->
 		<link rel="stylesheet" type="text/css" href="/css/styles.css" />
 
-		<!-- JavaScripts -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<!-- JavaScripts --> <!--https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js -->
+		<script src="/js/jquery.min.js"></script>
 		<script src="/js/bootstrap.min.js"></script>
         <script src="/js/ajax/cart.js"></script>
 
 		<!-- Bootstrap -->
    		<link href="/css/bootstrap.css" rel="stylesheet">
-   		 <link href="/css/bootstrap.min.css" rel="stylesheet">
+   		<link href="/css/bootstrap.min.css" rel="stylesheet">
 	</head>
 
 <body>

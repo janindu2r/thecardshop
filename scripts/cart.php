@@ -15,6 +15,7 @@ if($_SESSION){
 
     if($_POST['type'] == 'addprod')
     {
+        $ok = 0;
         $variation = intval( $_POST['variation']);
         $prodId = $_POST['prodId'];
         $qty = $_POST['quantity'];
@@ -23,62 +24,60 @@ if($_SESSION){
             $vCartItm = new CartVar();
             $varItems = $_POST['varItems'];
             $ok = $vCartItm->addToVarCartTable($prodId,$qty,$varItems);
-            if($ok)
-                echo json_encode(array('success' => '1'));
-            else
-                echo json_encode(array('success' => '0'));
         }
         else{
             $cartItm = new CartProd();
             $ok = $cartItm->addToCartTable($prodId, $qty);
-            if($ok)
-                echo json_encode(array('success' => '1'));
-            else
-                echo json_encode(array('success' => '0'));
         }
+        if($ok)
+            echo json_encode(array('success' => '1'));
+        else
+            echo json_encode(array('success' => '0'));
 
     }
 
     if($_POST['type'] == 'update')
     {
-        $prodId = $_POST['prodId'];
+        $ok = 0;
+        $relId = $_POST['relId'];
         $isVar = $_POST['isVar'];
         $uQty = $_POST['qty'];
         if($isVar)
         {
-            $varVal = $_POST['variationVal'];
-            $varId = $_POST['variationId'];
+            $cartItm = new CartVar();
+            $ok = $cartItm->updateFromVarGroupTable($relId,$uQty);
         }
         else
         {
             $cartItm = new CartProd();
-            $ok = $cartItm->updateFromCartTable($prodId, $uQty);
-            if($ok)
-                echo json_encode(array('success' => '1'));
-            else
-                echo json_encode(array('success' => '0'));
+            $ok = $cartItm->updateFromCartTable($relId, $uQty);
         }
+        if($ok)
+            echo json_encode(array('success' => '1'));
+        else
+            echo json_encode(array('success' => '0'));
     }
 
 
     if($_POST['type'] == 'delete')
     {
-        $prodId = $_POST['prodId'];
+        $ok = 0;
+        $relId = $_POST['relId'];
         $isVar = $_POST['isVar'];
         if($isVar)
         {
-            $varVal = $_POST['variationVal'];
-            $varId = $_POST['variationId'];
+            $cartItm = new CartVar();
+            $ok = $cartItm->deleteCartVar($relId);
         }
         else
         {
             $cartItm = new CartProd();
-            $ok = $cartItm->deleteItem($prodId);
-            if($ok)
-                echo json_encode(array('success' => '1'));
-            else
-                echo json_encode(array('success' => '0'));
+            $ok = $cartItm->deleteItem($relId);
         }
+        if($ok)
+            echo json_encode(array('success' => '1'));
+        else
+            echo json_encode(array('success' => '0'));
     }
 }
 }

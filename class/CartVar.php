@@ -102,6 +102,24 @@ class CartVar extends CartProd{
     }
 
 
+    function updateFromVarGroupTable($groupId, $qty)
+    {
+        $var = $this->db->runUpdateOneValue('cart_variation_group', 'quantity = ' . $qty, 'var_group = ' . $groupId );
+        if ($var)
+            return 1;
+        else
+            return 0;
+    }
+
+    function deleteCartVar($groupId){
+            $var = $this->db->deleteRecords('cart_variation_group', 'var_group = ' . $groupId);
+            if($var)
+                return 1;
+            else
+                return 0;
+    }
+
+
     function getPortableVariationItem()
     {
         $shipping = $this->calculateShippingCost();
@@ -122,6 +140,7 @@ class CartVar extends CartProd{
         $itemHtml .= '<div class="col-xs-2"> <button type="button" class="btn btn-link btn-xs delete-cart-itm" id="1-'. $this->groupId ;
         $itemHtml .= '"><span class="glyphicon glyphicon-trash"> </span> </button> </div> </div> </div> <hr>' ;
         return $itemHtml;
+
     }
 
 }

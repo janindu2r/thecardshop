@@ -65,11 +65,9 @@ class CartProd{
     function updateFromCartTable($prodId, $qty)
     {
             $var = $this->db->runUpdateOneValue('cart_products', 'quantity = ' . $qty, 'user_id = ' . $this->userId . '  and prod_id = ' . $prodId);
-            if ($var) {
-                $this->cartProdIni($prodId, $qty);
-                $this->nItem = false;
-                return $this;
-            } else
+            if ($var)
+                return 1;
+            else
                 return 0;
     }
 
@@ -77,12 +75,9 @@ class CartProd{
     {
         $var = $this->db->deleteRecords('cart_products', 'user_id = ' . $this->userId . '  and prod_id = ' . $prodId);
         if($var)
-        {
             return 1;
-        }
         else
             return 0;
-
     }
 	
 	function makeSimpleCartItem($prodId, $qty, $addedDnT)
