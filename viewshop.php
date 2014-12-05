@@ -1,6 +1,6 @@
 <!-- add session initiation and other similar necessary php stuff below -->
 <?php
-
+include('overhead.php');
 $shopname = 'Your shop name';
 $title = $shopname.' | Comercio' ;  // page title
 

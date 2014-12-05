@@ -21,23 +21,10 @@ if($_SESSION){
             $vCartItm = new CartVar();
             $varItems = $_POST['varItems'];
             $ok = $vCartItm->addToVarCartTable($prodId,$qty,$varItems);
-
-         /*   $cartItm = new CartVar();
-            $varVal = $_POST['variationVal'];
-            $varId = $_POST['variationId'];
-            $ok = $cartItm->addVariationProd($prodId, $qty, $varId, $varVal);
             if($ok)
-            {
-                $asso['prodTitle'] = 'JK Title';
-                $asso['prodDesc'] = 'Color : '. $varVal;
-                $asso['prodPrice'] = '400';
-                $asso['prdShip'] = '200';
                 echo json_encode(array('success' => '1'));
-            }
             else
-                echo json_encode(array('success' => '0')); */
-
-            echo json_encode(array('success' => '1'));
+                echo json_encode(array('success' => '0'));
         }
         else{
             $cartItm = new CartProd();

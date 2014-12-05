@@ -1,5 +1,6 @@
 <!-- add session initiation and other similar necessary php stuff below -->
 <?php
+include('overhead.php');
 
 $title = 'Add New Product' ;  // page title
 
@@ -12,22 +13,10 @@ $title = 'Add New Product' ;  // page title
         <?php include('header.php'); ?>
 <!---------------------------------------- Add Page Edits Below ------------------------------------------------->    
 
-Add Product Form
-<?php include('addItems.php');
+Add Product Form <br><br>
 
+<?php include('additems.php'); ?>
 
-
-
-?>
-
-
-
- 
-
-
-?>
-
-Submit will add data and redirect to viewproduct.php
 
 <!---------------------------------------- End of page edits ---------------------------------------------------->
 <?php include('footer.php'); //including the footer?>

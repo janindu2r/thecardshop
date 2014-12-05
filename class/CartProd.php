@@ -1,5 +1,5 @@
 <?php
-/* Cart Items Class 
+/* Cart Products Class 
 created: 2014-12-01
 by : JK;
 lastEdited: 2014-12-01
@@ -103,7 +103,7 @@ class CartProd{
 
         $itemHtml = '<div class="row"> <div class="col-xs-2"> <img class="img-responsive" src="/content/products/prodthumbnail/' ;
         $itemHtml .=  $this->cProduct->prodId.'.jpg"> </div><div class="col-xs-4"> <h4 class="product-name"><strong>' ;
-        $itemHtml .= $this->cProduct->proName.'</strong></h4><h4><small> Shipping $'. number_format($shipping, 2, '.', '') ;
+        $itemHtml .= $this->cProduct->proName.'</strong></h4><h4><small><i>Shipping</i> $'. number_format($shipping, 2, '.', '') ;
         $itemHtml .= '</small></h4> </div> <div class="col-xs-6"> <div class="col-xs-6 text-right"> <h6><strong>';
         $itemHtml .= $this->cProduct->proPrice . '<span class="text-muted">x</span></strong></h6> </div> <div class="col-xs-4">' ;
         $itemHtml .= '<input type="number" class="form-control input-sm output-qty-cart" id="0-'. $this->cProduct->prodId.'" value="';
@@ -132,52 +132,6 @@ class CartProd{
         return  round($fullPrc,2);
     }
 
-}
-
-class CartVar extends CartProd{
-
-    private $cartVGroup;
-
-    function __construct()
-    {
-        parent::__construct();
-        $this->cProduct = new Variation();
-    }
-
-	function variationIni(array $allVars)
-	{
-		$this->variationId = $varId;
-		$this->variationValue = $varVal;
-	}
-	
-	function addVariationProd($prodId, $qty, $varId, $varVal)
-	{
-		$this->cartProdIni($prodId, $qty);
-		$this->variationIni($varId, $varVal);
-		$varProd['user_id'] =  $this->db->escapeString($this->userId);
-		$varProd['product_id'] = $this->db->escapeString($this->cProduct->prodId);
-	//	$varProd['variation_id'] = $this->db->escapeString($this->variationId);
-	//	$varProd['variation_value'] = $this->db->escapeString($this->variationValue);
-        $varProd['quantity'] = $this->db->escapeString($this->quantity);
-		$varProd['added_datetime'] = $this->db->escapeString($this->addDateTime);
-        $success = $this->db->runInsertRecord('cart_variation', $varProd);
-		return $success;
-	}
-
-
-    function makeVariationCartItem($prodId, array $varArr,$qty, $addedDnT)
-    {
-            $this->cartProdIni($prodId, $qty);
-          //  $this->variationIni($varId, $varVal);
-            $this->addDateTime = $addedDnT;
-            return $this;
-    }
-
-    function getPortableVariationItem()
-    {
-
-    }
-		
 }
 
 ?>

@@ -1,19 +1,19 @@
         <meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        
         <title><?php echo $title ?></title>
+		
+
 		<link rel="shortcut icon" href="/favicon.ico">  <!--absolute links -->
+		<!-- CSS Styles -->
 		<link rel="stylesheet" type="text/css" href="/css/styles.css" />
+
+		<!-- JavaScripts -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		<script src="/js/bootstrap.min.js"></script>
         <script src="/js/ajax/cart.js"></script>
-        <script type="text/javascript">
-		 	// $(document).ready(function(){
- 	  //   	$(".btn").click(function(){
-		 	//         $("#myModal").modal('show');
-		 	//     });
-		 	// });
-		// </script>
+
 		<!-- Bootstrap -->
    		<link href="/css/bootstrap.css" rel="stylesheet">
    		 <link href="/css/bootstrap.min.css" rel="stylesheet">
@@ -50,8 +50,8 @@
 		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
 		          <ul class="dropdown-menu" role="menu">
 		            <li><a href="/register.php">Register</a></li>
-		            <li><a href="/product.php">Single Product</a></li>
-		            <li><a href="/dashboard.php">Acc</a></li>
+		            <li><a href="/viewproduct.php">Single Product</a></li>
+		            <li><a href="#">Acc</a></li>
 		            <li class="divider"></li>
 		            <li><a href="#">Separated link</a></li>
 		            <li class="divider"></li>
@@ -147,7 +147,7 @@
 		      	<li class="dropdown">
 		      		<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user pull-left"></span><span class="user-name-style"> <?php echo $user->getprofile() ?></span> <span class="sr-only">(current)</span></a>
 		      		<ul class="dropdown-menu">
-			            <li><a href="#">Account Settings <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
+			            <li><a href="/dashboard.php">Account Settings <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
 			            <li class="divider"></li>
 			            <li><a href="#">User stats <span class="glyphicon glyphicon-stats pull-right"></span></a></li>
 			            <li class="divider"></li>

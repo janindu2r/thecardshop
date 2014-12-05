@@ -4,9 +4,7 @@
 	author: Aslam
 	created: 2014-11-17
 */
-
-	include('../class/dbcon.php');
-	include('../class/user.php');
+	include('/internal.php');
 
 	$user = new User();
 

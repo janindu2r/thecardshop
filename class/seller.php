@@ -19,8 +19,8 @@
 			$slid = uniqid(SL, false);
 			$slid = md5($slid);
 
-			this->$sellerID = $slid;
-			this->$reputationPoints = 0;
+			$this->sellerID = $slid;
+			$this->reputationPoints = 0;
 		}
 
 		function getSellerId()
@@ -70,12 +70,12 @@
 
 		function setReputationPoints($points)
 		{
-			this->$reputationPoints += $points;
+			$this->reputationPoints += $points;
 		}
 
 		function getReputationPoints()
 		{
-			return this->$reputationPoints;
+			return $this->reputationPoints;
 		}
 		
 		function manageShop($details, $category)
