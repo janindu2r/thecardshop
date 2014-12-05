@@ -12,7 +12,6 @@ class CartProd{
 	public  $quantity;
 	protected $addDateTime;	
 	protected $db;
-    public $nItem;
 	
 	function __construct()
     {		
@@ -45,7 +44,6 @@ class CartProd{
             $var = $this->db->runUpdateOneValue('cart_products', 'quantity = ' . $tQty, 'user_id = ' . $this->userId . '  and prod_id = ' . $prodId);
             if ($var) {
                 $this->cartProdIni($prodId, $tQty);
-                $this->nItem = false;
                 return $this;
             } else
                 return 0;
@@ -57,10 +55,8 @@ class CartProd{
             $simProd['quantity'] = $this->db->escapeString($this->quantity);
             $simProd['added_datetime'] = $this->db->escapeString($this->addDateTime);
             $var = $this->db->runInsertRecord('cart_products', $simProd);
-            if($var) {
-                $this->nItem = true;
+            if($var)
                 return $this;
-            }
             else
                 return 0;
             }

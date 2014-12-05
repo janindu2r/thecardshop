@@ -39,32 +39,55 @@ class CartVar extends CartProd{
         return $this;
     }
 
-    function addToVarCartTable($prodId,$qty,array $varItems){
 
+    function addToVarCartTable($prodId,$qty,array $varItems){
         $this->varProdIni($prodId, $varItems);
         $this->quantity = $qty;
         $this->initializeVarGroup();
         $varGroup['user_id'] = $this->db->escapeString($this->userId);
         $varGroup['product_id'] = $this->db->escapeString($this->cProduct->prodId);
-        $varGroup['quantity'] = $this->db->escapeString($this->quantity);
         $varGroup['added_datetime'] = $this->db->escapeString($this->addDateTime);
-        $this->groupId = $this->db->runInsertAndGetID('cart_variation_group', $varGroup);
-        $success = 0;
+        $varGroup['quantity'] = $this->db->escapeString($this->quantity);
 
-        if($this->groupId)
-        {
-            $varProd['var_group'] = $this->db->escapeString($this->groupId) ;
-            foreach($this->cProduct->allVars as $k => $vl ){
-                $varProd['variation_id'] = $k;
-               	$varProd['variation_value'] = $this->db->escapeString($vl);
-                $success += $this->db->runInsertRecord('cart_variations', $varProd);
-            }
+        //Get if there's already a group with the same variation numbers
+        $varConct ='';
+        foreach($varItems as $k => $v)
+            $varConct .=  ','. substr($k,1,1) . ':' . $v ;
+
+        $varConct = $this->db->escapeString(substr($varConct,1));
+
+        $sqlString = 'SELECT g.var_group as var_group, g.quantity as qty FROM cart_variation_group g join (select var_group ' ;
+        $sqlString .= 'from cart_variations group by var_group having group_concat(concat_ws(":",variation_id,variation_value)) = '. $varConct ;
+        $sqlString .= ') s on g.var_group = s.var_group where g.user_id = '. $this->userId . ' and g.product_id = ' . $prodId ;
+
+        $extRow = $this->db->getFirstRow($sqlString);
+        if($extRow) {
+            //group ID exists, run update query
+            $this->groupId = $extRow['var_group'];
+            $this->quantity = intval($extRow['qty']) + intval($qty);
+            $var = $this->db->runUpdateOneValue('cart_variation_group', 'quantity = ' . $this->quantity , 'var_group = ' . $this->groupId);
+                if ($var)
+                    return 1;
+                else
+                    return 0;
         }
+        else {
+            $this->groupId = $this->db->runInsertAndGetID('cart_variation_group', $varGroup);
+            $success = 0;
 
-        if($success == count($varItems))
-            return 1;
-        else
-            return 0;
+            if ($this->groupId) {
+                $varProd['var_group'] = $this->db->escapeString($this->groupId);
+                foreach ($this->cProduct->allVars as $k => $vl) {
+                    $varProd['variation_id'] = $k;
+                    $varProd['variation_value'] = $this->db->escapeString($vl);
+                    $success += $this->db->runInsertRecord('cart_variations', $varProd);
+                }
+            }
+            if($success == count($varItems))
+                return 1;
+            else
+                return 0;
+        }
     }
 
 
@@ -94,9 +117,9 @@ class CartVar extends CartProd{
         $itemHtml .= $this->cProduct->proName.'</strong></h4><h4><small> ' .  $desc ;
         $itemHtml .= '</small></h4> </div> <div class="col-xs-6"> <div class="col-xs-6 text-right"> <h6><strong>';
         $itemHtml .= $this->cProduct->proPrice . '<span class="text-muted">x</span></strong></h6> </div> <div class="col-xs-4">' ;
-        $itemHtml .= '<input type="number" class="form-control input-sm output-qty-cart" id="0-'. $this->groupId.'" value="';
+        $itemHtml .= '<input type="number" class="form-control input-sm output-qty-cart" id="1-'. $this->groupId.'" value="';
         $itemHtml .= $this->quantity. '" min="1" max="999"> </div> ' ;
-        $itemHtml .= '<div class="col-xs-2"> <button type="button" class="btn btn-link btn-xs delete-cart-itm" id="0-'. $this->groupId ;
+        $itemHtml .= '<div class="col-xs-2"> <button type="button" class="btn btn-link btn-xs delete-cart-itm" id="1-'. $this->groupId ;
         $itemHtml .= '"><span class="glyphicon glyphicon-trash"> </span> </button> </div> </div> </div> <hr>' ;
         return $itemHtml;
     }
