@@ -21,6 +21,8 @@ include('../class/variation.php');
 	echo "its not deleted"."<br>"; 
 	 
  }
+//insert variations
+
 
 
 
