@@ -35,6 +35,44 @@ class Variation extends Physical
 	    $del = $this->db->runNonQuery(" delete from variations where prod_id = ".$pId." and variation_id = " .$vId);
 		return $del;
 	}
+	
+	
+	
+	//inserting variations
+/*	
+	public function addVariations(array $assVar)
+	{
+		$newVar = $this->db->runInsertRecord("variations",$assVar);
+	try
+	{
+		if($newVar == 1)
+		{
+		$this->initializeVariation($proId,$assVar);		
+		return $this;
+		}
+		else
+		return 0;
+		
+	}
+	catch(Exception $e)
+	{
+	  echo $e->getMessage();	
+	}
+		     
+			  
+		
+	}
+	
+	public function insertvalues($pId,$vId,$vNam)
+	{
+		$variation['prod_id'] = $this->db->escapeString($pId);
+		$variation['variation_id'] = $this->db->escapeString($vId);
+		$variation['var_name'] = $this->db->escapeString($vNam); 
+		return $this->addVariations($variation);
+		
+		
+		
+	}*/
 
 }
 
