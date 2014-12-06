@@ -8,7 +8,7 @@ product class
 */
 class Product
 {
-public  $proName,$proTag, $proPrice,$sellUnit,$description,$inStock,$cuStock,$shopId,$catId,$variation,$virtual,$pPoints,$nPoints,$dates,$del;
+public  $prodId, $proName,$proTag, $proPrice,$sellUnit,$description,$inStock,$cuStock,$shopId,$catId,$variation,$virtual,$pPoints,$nPoints,$dates,$del;
 public $db;
 
 function __construct()
@@ -26,7 +26,7 @@ function __construct()
 
  public function initializeProduct(array $prodArray)
  {
-	 	//$this->prodId = $prodArray['product_id'];
+	 	$this->prodId = $prodArray['product_id'];
 		$this->shopId = $prodArray['shop_id'];
 		$this->proName = $prodArray['product_title'];
 		$this->description =$prodArray['product_desc'];	
