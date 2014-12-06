@@ -9,6 +9,10 @@ include('../class/dbcon.php');
 include('../class/product.php');
 include('../class/physical.php');
 include('../class/Variation.php');
+
+
+
+//deleting a record
  $vNew = new Variation();
  $success = $vNew->deleteVariation(1000000,1);
  if($success == 1)
@@ -21,6 +25,19 @@ include('../class/Variation.php');
 	echo "its not deleted"."<br>"; 
 	 
  }
+ 
+ //add a record
+ 
+ $rec = new Variation();
+ $flag = $rec->insertvalues(" 1000000 "," 1 "," color ");
+  if( $flag == 1)
+  {
+  echo "record inserted";
+  
+  }
+  else
+  
+  echo "couldnt insert";
 
 
 

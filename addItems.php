@@ -1,7 +1,7 @@
 
-<form name=" addproduct " method=" POST " action= " scripts/addtoproduct.php " enctype="multipart/form-data" > 
-Product ID <input type="text" name=" pro_ID " /><br /><br />
-Shop ID <input type="text" name=" shop_ID " /><br /><br />
+<form name=" addproduct " method="POST" action= " /scripts/addtoproduct.php " enctype="multipart/form-data" > 
+Product ID <input type="text" name="prod_ID" /><br /><br />
+Shop ID <input type="text" name="shop_ID" /><br /><br />
 Product Title<input type="text" name="pro_name" /><br /><br />
 Product Tag<input type="text" name="pro_tag" /><br /><br />
 Category ID<input type="text" name="CatId" /><br /><br />

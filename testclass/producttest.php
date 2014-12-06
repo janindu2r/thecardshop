@@ -65,4 +65,11 @@ echo "done";
 else
 echo " couldnt ";
 
+
+//calling the getProductId function
+
+$obj = new Product();
+$result = $obj->getProductId("First Product");
+echo $result->prodId;
+
 ?>
