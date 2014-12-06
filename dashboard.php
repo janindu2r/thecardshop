@@ -14,9 +14,9 @@ $title = 'Profile | Comercio'  ;  // page title
 
 <div class="container" id="dasboard-page-body">
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-2">
             <ul class="nav nav-pills nav-stacked admin-menu">
-                <li class="active"><a href="#" data-target-id="home"><i class="fa fa-home fa-fw">-</i>Home</a></li>
+                <li class="active"><a href="#" data-target-id="home"><i class="fa fa-home fa-fw"></i>Home</a></li>
                 <li><a href="#" data-target-id="widgets"><i class="fa fa-list-alt fa-fw"></i>Widgets</a></li>
                 <li><a href="#" data-target-id="pages"><i class="fa fa-file-o fa-fw"></i>Pages</a></li>
                 <!-- <li><a href="#" data-target-id="charts"><i class="fa fa-bar-chart-o fa-fw"></i>Charts</a></li>
@@ -28,16 +28,94 @@ $title = 'Profile | Comercio'  ;  // page title
                 <li><a href="#" data-target-id="settings"><i class="fa fa-cogs fa-fw"></i>Settings</a></li> -->
             </ul>
         </div>
-        <div class="col-md-8 admin-content" id="home">
-            <p>
-                Hello! This is a forked snippet.<br>
-                It is for users, which use one-page layouts.
-            </p>
-            <p>
-                Here's the original one from BhaumikPatel: <a href="http://bootsnipp.com/snippets/featured/vertical-admin-menu" target="_BLANK">Vertical Admin Menu</a>
-                <br><br>
-                <strong>Thank you Bhaumik!</strong>
-            </p>
+        <div class="col-md-9  admin-content" id="home">
+            <div class="col-md-6">
+                <div class="panel panel-default"><!-- Contact Details -->
+                    <div class="panel-heading">
+                        Account Details
+                    </div>
+                    
+                    <div class="panel-body">
+                    <div class="form-group">
+                        <label for="UserName">First Name</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="john26769">
+                    </div>
+                    <div class="form-group">
+                        <label for="UserName">Last Name</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="john26769">
+                    </div>
+                    <div class="form-group">
+                        <label for="UserName">Date of Birth</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="john26769">
+                    </div>
+                    <div class="form-group">
+                        <label for="UserName">Address Line1</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="john26769">
+                    </div>
+                    <div class="form-group">
+                        <label for="UserName">Address Line2</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="john26769">
+                    </div>
+                    <div class="form-group">
+                        <label for="UserName">Address Line3</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="john26769">
+                    </div>
+                    <div class="form-group">
+                        <label for="UserName">Postal Code</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="john26769">
+                    </div>
+                    
+                    <div class="form-group pull-right">
+                        <a href="#" class="btn btn-primary btn-success"><span class="glyphicon glyphicon-floppy-disk"></span> Save</a>
+                        <a href="#" class="btn btn-primary btn-danger"><span class="glyphicon glyphicon-remove"></span> Discard</a>
+                    </div>
+                </div>
+                </div><!-- /.Contact Details --> 
+            </div>
+            <div class="col-md-6">
+                <div class="panel panel-default"><!-- Contact Details -->
+                    <div class="panel-heading">
+                        Account Details
+                    </div>
+                    
+                    <div class="panel-body">
+                    <div class="form-group">
+                        <label for="UserName">User Name</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="john26769">
+                    </div>
+                    <div class="form-group">
+                        <label for="UserName">Email</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="john@abc.com">
+                    </div>
+                    
+                    <div class="form-group pull-right">
+                        <a href="#" class="btn btn-primary btn-success"><span class="glyphicon glyphicon-floppy-disk"></span> Save</a>
+                    </div>
+                </div>
+                </div><!-- /.Contact Details -->
+                <div class="panel panel-default"><!-- Contact Details -->
+                    <div class="panel-heading">
+                        Password
+                    </div>
+                    
+                    <div class="panel-body">
+                    <div class="form-group">
+                        <label for="UserName">Current Password</label>
+                        <input type="password" class="form-control" id="" placeholder="***********">
+                    </div>
+                    <div class="form-group">
+                        <label for="UserName">New Password</label>
+                        <input type="password" class="form-control" id="" placeholder="***********">
+                    </div>
+                    
+                    <div class="form-group pull-right">
+                        <a href="#" class="btn btn-primary btn-success"><span class="glyphicon glyphicon-floppy-disk"></span> Save</a>
+                    </div>
+                </div>
+                </div><!-- /.Contact Details --> 
+            </div>
+            
+
         </div>
         <div class="col-md-8 admin-content" id="widgets">
 			<div class="RegWrapper" id="#">
@@ -60,7 +138,7 @@ $title = 'Profile | Comercio'  ;  // page title
 			            <input class="form-control" name="uname" placeholder="Username" type="text" />
 			            <input class="form-control" name="email" placeholder="Your Email" type="email" />
 			            <!-- <input class="form-control" name="reenteremail" placeholder="Re-enter Email" type="email" /> -->
-<!-- 			            <input class="form-control" name="password" placeholder="Password" type="password" />
+						<!-- <input class="form-control" name="password" placeholder="Password" type="password" />
 			            <input class="form-control" name="repassword" placeholder="Re-enter Password" type="password" /> -->
 			            <label for="">
 			                Birth Date</label>
