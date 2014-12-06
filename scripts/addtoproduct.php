@@ -3,7 +3,8 @@ $path = $_SERVER['DOCUMENT_ROOT'];
 include ($path.'/internal.php');
 
 $db = new DbCon();
-
+if($_POST)
+{
 $pId = $_POST['prod_ID'];
 $sId = $_POST['shop_ID'];
 $pTag = $_POST['pro_tag'];
@@ -25,6 +26,7 @@ print_r($_POST);
 $object = new Product();
 $del = 0;
 $next = $object->insertValues($pId,$sId,$pName,$pTag,$cID,$pPrice,$pDesc,$variation,$virtual,$sell,$ppoints,$npoints,$iStock,$cStock,$date,$del);
+}
 if($next == 1)
 {
 

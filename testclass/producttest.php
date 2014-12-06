@@ -47,23 +47,24 @@ echo "coudnt update try again"."<br>";
 //adding data
 
 $add = new product();
-$insert = $add->insertValues("7","8","fgh","3ed","4","234","fffffffffffffffffffffffffffffffffffffffff","1","0","456","30","4","2014-12-24","1");
+$insert = $add->insertValues("8","fgh","3ed","4","234","fffffffffffffffffffffffffffffffffffffffff","1","0","456","30","4","2014-12-24","1");
 if($insert)
 {
-	print_r($insert);
+	print_r($insert)."<br>";
 }
 else
-echo "not working";
+
+echo "not working"."<br>";
 
 //delete all
 $delAll = new Product();
 $flag = $delAll->deleteAll();
 if($flag == 1)
 {
-echo "done";	
+echo "done"."<br>";	
 }
 else
-echo " couldnt ";
+echo " couldnt "."<br>";
 
 
 //calling the getProductId function

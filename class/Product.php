@@ -8,7 +8,7 @@ product class
 */
 class Product
 {
-public $prodId, $proName,$proTag, $proPrice,$sellUnit,$description,$inStock,$cuStock,$shopId,$catId,$variation,$virtual,$pPoints,$nPoints,$dates,$del;
+public  $proName,$proTag, $proPrice,$sellUnit,$description,$inStock,$cuStock,$shopId,$catId,$variation,$virtual,$pPoints,$nPoints,$dates,$del;
 public $db;
 
 function __construct()
@@ -26,7 +26,7 @@ function __construct()
 
  public function initializeProduct(array $prodArray)
  {
-	 	$this->prodId = $prodArray['product_id'];
+	 	//$this->prodId = $prodArray['product_id'];
 		$this->shopId = $prodArray['shop_id'];
 		$this->proName = $prodArray['product_title'];
 		$this->description =$prodArray['product_desc'];	
@@ -77,7 +77,7 @@ function __construct()
 	 
  }
 
- public function insertValues($pId,$sId,$pTitle,$pTag,$cId,$pPrice,$pDesc,$pVartns,$pVirtual,$pSelUnits,$iStock,$cStock,$pDate,$pDel)
+ public function insertValues($sId,$pTitle,$pTag,$cId,$pPrice,$pDesc,$pVartns,$pVirtual,$pSelUnits,$iStock,$cStock,$pDate,$pDel)
  {
 	// $asscArry['product_id'] = $this->db->escapeString($pId);
 	 $asscArry['shop_id'] = $this->db->escapeString($sId);	
@@ -129,7 +129,7 @@ public function deleteAll()
 //viewing products
 public function viewProducts($pId)
 {
-$view = $this->db->getFirstRow("select * from products where product_id  = ".$pId."and deleted = 0");
+$view = $this->db->getFirstRow(" select * from products where product_id  = ".$pId."and deleted = 0");
 
 $this->prodId = $view['product_id'];	
 	
