@@ -270,16 +270,20 @@
 						          
 						          <div class="modal-body">
 						            <form method="post" action="" name="login_form">
-						              <p><input type="text" class="span3" name="eid" id="email" placeholder="User Name or Email"></p>
-						              <p><input type="password" class="span3" name="passwd" placeholder="Password"></p>
-						              <p><button type="submit" class="btn btn-primary">Sign in</button>
-						                <a href="#">Forgot Password?</a>
-						              </p>
+						              <!-- Text input-->
+										<div class="form-group">
+										  <input id="eid" name="eid" type="text" placeholder="Enter your user name" class="form-control input-md" required="">
+										</div>
+										<div class="form-group">
+						              		<input type="password" class="form-control input-md" name="passwd" placeholder="Password">
+						              	</div>
+						              <button type="submit" class="btn btn-sm btn-primary pull-right">Sign in</button>
+						                <a href="#" class="btn btn-xs btn-default">Forgot Password?</a>
 						            </form>
 						          </div>
 						          <div class="modal-footer">
 						            New To Comercio?
-						            <a href="/register.php" class="btn btn-primary">Register</a>
+						            <a href="/register.php" class="btn btn-sm btn-success">Register</a>
 						          </div>
 						        </div>
 							</div> <!-- /.modal-content -->
