@@ -257,7 +257,7 @@
                 <?php } else if($logged == 0) { ?>
 		        <!-- **********************Modal window for Login *********************-->
 		        <li>
-		        	<a href="javascript:;" class="forget" data-toggle="modal" data-target=".login-modal">Login</a>
+		        	<a href="javascript:;" id="loginBtn" class="forget btn btn-primary btn-success" data-toggle="modal" data-target=".login-modal"><span class="glyphicon glyphicon-log-in"></span> Login</a>
 					<div class="modal fade login-modal" tabindex="-1" role="dialog" aria-labelledby="myForgetModalLabel" aria-hidden="true">
 						<div class="modal-dialog modal-sm">
 							<div class="modal-content">
