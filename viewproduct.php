@@ -149,55 +149,25 @@ $title = $viewProd->proName. ' | '. $viewfrom ;  // page title
 						
 					</div><!--  /.END OF tab-pane fade id=service-two -->
 					<div class="tab-pane fade" id="service-three">
-										<div class="detailBox">
-                                            <div class="titleBox">
-                                              <label>Comment Box</label>
-                                              
-                                            </div>
-                                            <div class="commentBox">
-                                                
-                                                <p class="taskDescription">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                                            </div>
-                                            <div class="actionBox">
-                                                <ul class="commentList">
-                                                    <li>
-                                                        <div class="commenterImage">
-                                                          <img src="http://lorempixel.com/50/50/people/6" />
-                                                        </div>
-                                                        <div class="commentText">
-                                                            <p class="">Hello this is a test comment.</p> <span class="date sub-text">on March 5th, 2014</span>
-
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="commenterImage">
-                                                          <img src="http://lorempixel.com/50/50/people/7" />
-                                                        </div>
-                                                        <div class="commentText">
-                                                            <p class="">Hello this is a test comment and this comment is particularly very long and it goes on and on and on.</p> <span class="date sub-text">on March 5th, 2014</span>
-
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="commenterImage">
-                                                          <img src="http://lorempixel.com/50/50/people/9" />
-                                                        </div>
-                                                        <div class="commentText">
-                                                            <p class="">Hello this is a test comment.</p> <span class="date sub-text">on March 5th, 2014</span>
-
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                                <form class="form-inline" role="form">
-                                                    <div class="form-group form-lg">
-                                                        <input class="form-control" type="text" placeholder="Your comments" />
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <button class="btn btn-default">Add</button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>	
+                    <div class="row" style="margin-top:10px;">
+                    <div class="well well-sm">
+						<div class="row" id="post-review-box" style=";">
+                            <div class="col-md-12">
+                                <form accept-charset="UTF-8" action="" method="post">
+                                    
+                                    <textarea class="form-control animated" cols="50" id="new-review" name="comment" placeholder="Enter your review here..." rows="5"></textarea>
+                    
+                                    <div class="text-right">
+                                        <div class="stars starrr" data-rating="0"></div>
+                                        <a class="btn btn-danger btn-sm" href="#" id="close-review-box" style="display:none; margin-right: 10px;">
+                                        <span class="glyphicon glyphicon-remove"></span>Cancel</a>
+                                        <button class="btn btn-success media-body" style="margin-top:5px;" type="submit">Save</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
 					</div><!--  /.END **OF tab-pane fade id=service-three -->
 					
 					</div><!-- /.myTabContent -->
