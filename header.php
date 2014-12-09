@@ -15,7 +15,7 @@
         <script src="/js/ajax/cart.js"></script>
 
 		<!-- Bootstrap -->
-		
+
    		<link href="/css/bootstrap.css" rel="stylesheet">
    		<link href="/css/bootstrap.min.css" rel="stylesheet">
 	</head>
@@ -57,6 +57,7 @@
 		            <li><a href="/registershop.php">Register Shop</a></li>
 		            <li class="divider"></li>
 		            <li><a href="/addItems.php">Add Items</a></li>
+		            <li><a href="/registershop.php">Reg Shop</a></li>
 		          </ul>
 		        </li>
 		      </ul>
