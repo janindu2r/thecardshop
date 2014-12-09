@@ -1,10 +1,42 @@
+<?php
 
+$sql = "category_id from categories";
+$res = mysql_query($sql);
+while($list = mysql_fetch_assoc($res))
+{
+	$categoryId = $list['category_id'];
+	
+	
+}
+
+
+
+
+
+?>
 <form name=" addproduct " method="POST" action= " /scripts/addtoproduct.php " enctype="multipart/form-data" > 
 
-Shop ID <input type="text" name="shop_ID" /><br /><br />
+Shop ID<select name="shopId">
+<option value = "shopId"></option>
+</select><br /><br />
 Product Title<input type="text" name="pro_name" /><br /><br />
 Product Tag<input type="text" name="pro_tag" /><br /><br />
-Category ID<input type="text" name="CatId" /><br /><br />
+Category ID<select name="category">
+<option value="0">select category id</option>
+
+$array = explode(",",$categoryId);
+<?php foreach($array as $val)
+{?>
+	
+	<option value="<?php echo $val; ?>"><?php echo $val;?></option>
+	
+	<?php
+	
+}
+?>
+
+
+
 Variations <input type="radio" name="var" value="1" checked="checked" />Yes
 <input type="radio" name="var" value="0"  />No<br /><br />
 Virtual <input type="radio" name="vir" value="1" checked="checked" />Yes
@@ -23,3 +55,4 @@ upload Image<input type="file" name="img" id="fileToUpload" /><br /><br />
 <input type="reset" name="reset" value="back" /><br /><br />
 
 </form>
+
