@@ -78,6 +78,11 @@ class Cart
             return "<lable id='empty-lbl'>Cart Is Empty</lable>";
 	}
 
+    function sortCart(){
+        arsort($this->cartOrder);
+    }
+
+
     function calculateCartTotal()
     {
         foreach($this->simpleProds as $itm)
