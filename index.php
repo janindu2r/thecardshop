@@ -92,7 +92,7 @@ $title = 'Comercio' ; //define page title
 				                        <div class="col-sm-3">
 				                            <div class="col-item">
 				                                <div class="photo">
-				                                    <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
+				                                    <img src="http://www.techlicious.com/images/phones/samsung-galaxy-s5-blue-front-and-back-350px.jpg" class="img-responsive" alt="a" />
 				                                </div>
 				                                <div class="info">
 				                                    <div class="row">
@@ -123,7 +123,7 @@ $title = 'Comercio' ; //define page title
 				                        <div class="col-sm-3">
 				                            <div class="col-item">
 				                                <div class="photo">
-				                                    <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
+				                                    <img src="http://www.rayashop.com/Images/Products/S7582-Black-Mti-300.png" class="img-responsive" alt="a" />
 				                                </div>
 				                                <div class="info">
 				                                    <div class="row">
@@ -150,7 +150,7 @@ $title = 'Comercio' ; //define page title
 				                        <div class="col-sm-3">
 				                            <div class="col-item">
 				                                <div class="photo">
-				                                    <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
+				                                    <img src="http://goo.gl/h8o5mB" class="img-responsive" alt="a" />
 				                                </div>
 				                                <div class="info">
 				                                    <div class="row">
@@ -180,7 +180,7 @@ $title = 'Comercio' ; //define page title
 				                        <div class="col-sm-3">
 				                            <div class="col-item">
 				                                <div class="photo">
-				                                    <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
+				                                    <img src="http://images.sodahead.com/polls/002308443/1032261492_lenovo_ideacentre_b500_08871fu_answer_2_xlarge.png" class="img-responsive" alt="a" />
 				                                </div>
 				                                <div class="info">
 				                                    <div class="row">
@@ -214,7 +214,7 @@ $title = 'Comercio' ; //define page title
 				                        <div class="col-sm-3">
 				                            <div class="col-item">
 				                                <div class="photo">
-				                                    <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
+				                                    <img src="http://goo.gl/LGe8ur" class="img-responsive" alt="a" />
 				                                </div>
 				                                <div class="info">
 				                                    <div class="row">
@@ -244,7 +244,7 @@ $title = 'Comercio' ; //define page title
 				                        <div class="col-sm-3">
 				                            <div class="col-item">
 				                                <div class="photo">
-				                                    <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
+				                                    <img src="http://www.mygsm.me/images/P/galaxy-camera-white.png" class="img-responsive" alt="a" />
 				                                </div>
 				                                <div class="info">
 				                                    <div class="row">
@@ -271,7 +271,7 @@ $title = 'Comercio' ; //define page title
 				                        <div class="col-sm-3">
 				                            <div class="col-item">
 				                                <div class="photo">
-				                                    <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
+				                                    <img src="http://goo.gl/GtAWqN" class="img-responsive" alt="a" />
 				                                </div>
 				                                <div class="info">
 				                                    <div class="row">
@@ -301,7 +301,7 @@ $title = 'Comercio' ; //define page title
 				                        <div class="col-sm-3">
 				                            <div class="col-item">
 				                                <div class="photo">
-				                                    <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
+				                                    <img src="http://goo.gl/o1411u" class="img-responsive" alt="a" />
 				                                </div>
 				                                <div class="info">
 				                                    <div class="row">
@@ -356,7 +356,7 @@ $title = 'Comercio' ; //define page title
 				                        <div class="col-sm-4">
 				                            <div class="col-item">
 				                                <div class="photo">
-				                                    <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
+				                                    <img src="http://picture-cdn.wheretoget.it/rad3mk-i.jpg" class="img-responsive" alt="a" />
 				                                </div>
 				                                <div class="info">
 				                                    <div class="row">
@@ -386,7 +386,7 @@ $title = 'Comercio' ; //define page title
 				                        <div class="col-sm-4">
 				                            <div class="col-item">
 				                                <div class="photo">
-				                                    <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
+				                                    <img src="http://picture-cdn.wheretoget.it/8dt5le-i.jpg" class="img-responsive" alt="a" />
 				                                </div>
 				                                <div class="info">
 				                                    <div class="row">
@@ -413,7 +413,7 @@ $title = 'Comercio' ; //define page title
 				                        <div class="col-sm-4">
 				                            <div class="col-item">
 				                                <div class="photo">
-				                                    <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
+				                                    <img src="http://vatenco.com/pictures/TOOL_SET.jpg" class="img-responsive" alt="a" />
 				                                </div>
 				                                <div class="info">
 				                                    <div class="row">
@@ -447,7 +447,7 @@ $title = 'Comercio' ; //define page title
 				                        <div class="col-sm-4">
 				                            <div class="col-item">
 				                                <div class="photo">
-				                                    <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
+				                                    <img src="http://pimg.tradeindia.com/01052945/b/1/Swiss-Knife-Tools-Handyman-.jpg" class="img-responsive" alt="a" />
 				                                </div>
 				                                <div class="info">
 				                                    <div class="row">
@@ -477,7 +477,7 @@ $title = 'Comercio' ; //define page title
 				                        <div class="col-sm-4">
 				                            <div class="col-item">
 				                                <div class="photo">
-				                                    <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
+				                                    <img src="http://www.bagabam.com/product_images/otis-elite-field-bag-iid21198.jpg" class="img-responsive" alt="a" />
 				                                </div>
 				                                <div class="info">
 				                                    <div class="row">
@@ -504,7 +504,7 @@ $title = 'Comercio' ; //define page title
 				                        <div class="col-sm-4">
 				                            <div class="col-item">
 				                                <div class="photo">
-				                                    <img src="http://placehold.it/350x260" class="img-responsive" alt="a" />
+				                                    <img src="http://chavezcycling.com/wp-content/uploads/2009/06/saddle-bag.jpg" class="img-responsive" alt="a" />
 				                                </div>
 				                                <div class="info">
 				                                    <div class="row">
