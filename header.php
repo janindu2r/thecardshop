@@ -295,7 +295,7 @@
 		      </ul>
 		    </div><!-- /.navbar-collapse -->
   			</div><!-- /.container-fluid -->
-  			<!-- <hr class="shadow"> -->
+  			<hr class="shadow">
 		</nav>
 
 	</header><!-- Header end, Wrapper Start -->
