@@ -232,7 +232,7 @@ $title = 'Comercio' ; //define page title
 				                                    </div>
 				                                    <div class="separator clear-left">
 				                                        <p class="btn-add">
-				                                            <i class="fa fa-shopping-cart"></i><a href="http://www.jquery2dotnet.com" class="hidden-sm">Add to cart</a></p>
+				                                            <a href="#" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span> Add to cart</a>
 				                                        <p class="btn-details">
 				                                            <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-list"></span> More details</a>
 				                                    </div>

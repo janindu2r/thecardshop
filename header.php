@@ -15,6 +15,7 @@
         <script src="/js/ajax/cart.js"></script>
 
 		<!-- Bootstrap -->
+		
    		<link href="/css/bootstrap.css" rel="stylesheet">
    		<link href="/css/bootstrap.min.css" rel="stylesheet">
 	</head>
@@ -51,11 +52,11 @@
 		          <ul class="dropdown-menu" role="menu">
 		            <li><a href="/register.php">Register</a></li>
 		            <li><a href="/viewproduct.php">Single Product</a></li>
-		            <li><a href="#">Acc</a></li>
+		            <li><a href="/admin.php">Admin</a></li>
 		            <li class="divider"></li>
-		            <li><a href="#">Separated link</a></li>
+		            <li><a href="/registershop.php">Register Shop</a></li>
 		            <li class="divider"></li>
-		            <li><a href="#">One more separated link</a></li>
+		            <li><a href="/addItems.php">Add Items</a></li>
 		          </ul>
 		        </li>
 		      </ul>
@@ -294,7 +295,7 @@
 		      </ul>
 		    </div><!-- /.navbar-collapse -->
   			</div><!-- /.container-fluid -->
-  			<hr class="shadow">
+  			<!-- <hr class="shadow"> -->
 		</nav>
 
 	</header><!-- Header end, Wrapper Start -->
