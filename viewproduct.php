@@ -2,7 +2,7 @@
 <?php
 include('overhead.php');
 
-$prodID = 1000000;
+$prodID = 1000001;
 
 if($_GET){
     $prodID  = $_GET['product'];
@@ -174,9 +174,9 @@ $title = $viewProd->proName. ' | '. $viewfrom ;  // page title
                     cartObj['prodId'] = '<?php echo $viewProd->prodId ?>';
                     cartObj['variation'] = '<?php echo $viewProd->variation ?>';
                     <?php if($viewProd->variation) { ?>
-                    cartObj['varItems'] = [];
+                    cartObj['varItems'] = {};
                     $(".prd-variations").each(function() {
-                        cartObj['varItems'][this.id] = this.value;
+                        cartObj['varItems']['"' + this.id + '"'] = this.value;
                     });
                         <?php } ?>
                     cartObj['quantity'] =  document.getElementById("cart-qty").value;
@@ -186,14 +186,14 @@ $title = $viewProd->proName. ' | '. $viewfrom ;  // page title
                         data: cartObj,
                         cache: false,
                         success: function(result){
-						var cItem = JSON.parse(result);
+					 	var cItem = JSON.parse(result);
 							if(cItem.success == 1)
 							{
                                 $("#update-portable-cart").click();
                                 $('#cart-success-message-id').html('Item Added');
 							}
 							else
-							  $('#cart-success-message-id').html('Failed'); //
+							  $('#cart-success-message-id').html('Failed');
                         }
                     });
                 });

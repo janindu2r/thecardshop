@@ -12,7 +12,6 @@ class CartProd{
 	public  $quantity;
 	protected $addDateTime;	
 	protected $db;
-    public $nItem;
 	
 	function __construct()
     {		
@@ -45,7 +44,6 @@ class CartProd{
             $var = $this->db->runUpdateOneValue('cart_products', 'quantity = ' . $tQty, 'user_id = ' . $this->userId . '  and prod_id = ' . $prodId);
             if ($var) {
                 $this->cartProdIni($prodId, $tQty);
-                $this->nItem = false;
                 return $this;
             } else
                 return 0;
@@ -57,10 +55,8 @@ class CartProd{
             $simProd['quantity'] = $this->db->escapeString($this->quantity);
             $simProd['added_datetime'] = $this->db->escapeString($this->addDateTime);
             $var = $this->db->runInsertRecord('cart_products', $simProd);
-            if($var) {
-                $this->nItem = true;
+            if($var)
                 return $this;
-            }
             else
                 return 0;
             }
@@ -69,11 +65,9 @@ class CartProd{
     function updateFromCartTable($prodId, $qty)
     {
             $var = $this->db->runUpdateOneValue('cart_products', 'quantity = ' . $qty, 'user_id = ' . $this->userId . '  and prod_id = ' . $prodId);
-            if ($var) {
-                $this->cartProdIni($prodId, $qty);
-                $this->nItem = false;
-                return $this;
-            } else
+            if ($var)
+                return 1;
+            else
                 return 0;
     }
 
@@ -81,12 +75,9 @@ class CartProd{
     {
         $var = $this->db->deleteRecords('cart_products', 'user_id = ' . $this->userId . '  and prod_id = ' . $prodId);
         if($var)
-        {
             return 1;
-        }
         else
             return 0;
-
     }
 	
 	function makeSimpleCartItem($prodId, $qty, $addedDnT)
@@ -103,7 +94,7 @@ class CartProd{
 
         $itemHtml = '<div class="row"> <div class="col-xs-2"> <img class="img-responsive" src="/content/products/prodthumbnail/' ;
         $itemHtml .=  $this->cProduct->prodId.'.jpg"> </div><div class="col-xs-4"> <h4 class="product-name"><strong>' ;
-        $itemHtml .= $this->cProduct->proName.'</strong></h4><h4><small> Shipping $'. number_format($shipping, 2, '.', '') ;
+        $itemHtml .= $this->cProduct->proName.'</strong></h4><h4><small><i>Shipping</i> $'. number_format($shipping, 2, '.', '') ;
         $itemHtml .= '</small></h4> </div> <div class="col-xs-6"> <div class="col-xs-6 text-right"> <h6><strong>';
         $itemHtml .= $this->cProduct->proPrice . '<span class="text-muted">x</span></strong></h6> </div> <div class="col-xs-4">' ;
         $itemHtml .= '<input type="number" class="form-control input-sm output-qty-cart" id="0-'. $this->cProduct->prodId.'" value="';

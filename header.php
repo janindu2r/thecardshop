@@ -1,22 +1,23 @@
         <meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        
         <title><?php echo $title ?></title>
+		
+
 		<link rel="shortcut icon" href="/favicon.ico">  <!--absolute links -->
+		<!-- CSS Styles -->
 		<link rel="stylesheet" type="text/css" href="/css/styles.css" />
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+		<!-- JavaScripts --> <!--https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js -->
+		<script src="/js/jquery.min.js"></script>
 		<script src="/js/bootstrap.min.js"></script>
         <script src="/js/ajax/cart.js"></script>
-        <script type="text/javascript">
-		 	// $(document).ready(function(){
- 	  //   	$(".btn").click(function(){
-		 	//         $("#myModal").modal('show');
-		 	//     });
-		 	// });
-		// </script>
+
 		<!-- Bootstrap -->
+		
    		<link href="/css/bootstrap.css" rel="stylesheet">
-   		 <link href="/css/bootstrap.min.css" rel="stylesheet">
+   		<link href="/css/bootstrap.min.css" rel="stylesheet">
 	</head>
 
 <body>
@@ -50,12 +51,12 @@
 		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
 		          <ul class="dropdown-menu" role="menu">
 		            <li><a href="/register.php">Register</a></li>
-		            <li><a href="/product.php">Single Product</a></li>
-		            <li><a href="/dashboard.php">Acc</a></li>
+		            <li><a href="/viewproduct.php">Single Product</a></li>
+		            <li><a href="/admin.php">Admin</a></li>
 		            <li class="divider"></li>
-		            <li><a href="#">Separated link</a></li>
+		            <li><a href="/registershop.php">Register Shop</a></li>
 		            <li class="divider"></li>
-		            <li><a href="#">One more separated link</a></li>
+		            <li><a href="/addItems.php">Add Items</a></li>
 		          </ul>
 		        </li>
 		      </ul>
@@ -147,7 +148,7 @@
 		      	<li class="dropdown">
 		      		<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user pull-left"></span><span class="user-name-style"> <?php echo $user->getprofile() ?></span> <span class="sr-only">(current)</span></a>
 		      		<ul class="dropdown-menu">
-			            <li><a href="#">Account Settings <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
+			            <li><a href="/dashboard.php">Account Settings <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
 			            <li class="divider"></li>
 			            <li><a href="#">User stats <span class="glyphicon glyphicon-stats pull-right"></span></a></li>
 			            <li class="divider"></li>
@@ -172,9 +173,9 @@
 															<h5><span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart</h5>
 														</div>
 														<div class="col-xs-6">
-															<button type="button" class="btn btn-primary btn-sm btn-block">
+															<a href="/cart.php"type="button" class="btn btn-primary btn-sm btn-block">
 																<span class="glyphicon glyphicon-share-alt"></span> Continue shopping
-															</button>
+															</a>
 														</div>
 													</div>
 												</div>
@@ -257,7 +258,7 @@
                 <?php } else if($logged == 0) { ?>
 		        <!-- **********************Modal window for Login *********************-->
 		        <li>
-		        	<a href="javascript:;" class="forget" data-toggle="modal" data-target=".login-modal">Login</a>
+		        	<a href="javascript:;" id="loginBtn" class="forget btn btn-primary btn-success" data-toggle="modal" data-target=".login-modal"><span class="glyphicon glyphicon-log-in"></span> Login</a>
 					<div class="modal fade login-modal" tabindex="-1" role="dialog" aria-labelledby="myForgetModalLabel" aria-hidden="true">
 						<div class="modal-dialog modal-sm">
 							<div class="modal-content">
@@ -270,16 +271,20 @@
 						          
 						          <div class="modal-body">
 						            <form method="post" action="" name="login_form">
-						              <p><input type="text" class="span3" name="eid" id="email" placeholder="User Name or Email"></p>
-						              <p><input type="password" class="span3" name="passwd" placeholder="Password"></p>
-						              <p><button type="submit" class="btn btn-primary">Sign in</button>
-						                <a href="#">Forgot Password?</a>
-						              </p>
+						              <!-- Text input-->
+										<div class="form-group">
+										  <input id="eid" name="eid" type="text" placeholder="Enter your user name" class="form-control input-md" required="">
+										</div>
+										<div class="form-group">
+						              		<input type="password" class="form-control input-md" name="passwd" placeholder="Password">
+						              	</div>
+						              <button type="submit" class="btn btn-sm btn-primary pull-right">Sign in</button>
+						                <a href="#" class="btn btn-xs btn-default">Forgot Password?</a>
 						            </form>
 						          </div>
 						          <div class="modal-footer">
 						            New To Comercio?
-						            <a href="/register.php" class="btn btn-primary">Register</a>
+						            <a href="/register.php" class="btn btn-sm btn-success">Register</a>
 						          </div>
 						        </div>
 							</div> <!-- /.modal-content -->

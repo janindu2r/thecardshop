@@ -8,7 +8,7 @@ product class
 */
 class Product
 {
-public $prodId, $proName,$proTag, $proPrice,$sellUnit,$description,$inStock,$cuStock,$shopId,$catId,$variation,$virtual,$pPoints,$nPoints,$dates,$del;
+public  $prodId, $proName,$proTag, $proPrice,$sellUnit,$description,$inStock,$cuStock,$shopId,$catId,$variation,$virtual,$pPoints,$nPoints,$dates,$del;
 public $db;
 
 function __construct()
@@ -54,6 +54,8 @@ function __construct()
 
  public function addProduct(array $assArryProd)
  {
+	 
+	echo $this->db->getInsertSql("products",$assArryProd);
 	
 	$new = $this->db->runInsertRecord("products",$assArryProd);
 	try
@@ -75,9 +77,9 @@ function __construct()
 	 
  }
 
- public function insertValues($pId,$sId,$pTitle,$pTag,$cId,$pPrice,$pDesc,$pVartns,$pVirtual,$pSelUnits,$iStock,$cStock,$pDate,$pDel)
+ public function insertValues($sId,$pTitle,$pTag,$cId,$pPrice,$pDesc,$pVartns,$pVirtual,$pSelUnits,$iStock,$cStock,$pDate,$pDel)
  {
-	 $asscArry['product_id'] = $this->db->escapeString($pId);
+	// $asscArry['product_id'] = $this->db->escapeString($pId);
 	 $asscArry['shop_id'] = $this->db->escapeString($sId);	
 	$asscArry['product_title'] = $this->db->escapeString($pTitle);
 	$asscArry['product_tag'] = $this->db->escapeString($pTag);
@@ -127,7 +129,7 @@ public function deleteAll()
 //viewing products
 public function viewProducts($pId)
 {
-$view = $this->db->getFirstRow("select * from products where product_id  = ".$pId."and deleted = 0");
+$view = $this->db->getFirstRow(" select * from products where product_id  = ".$pId."and deleted = 0");
 
 $this->prodId = $view['product_id'];	
 	
@@ -148,6 +150,15 @@ $this->prodId = $view['product_id'];
 		$this->del = $view['deleted'];
 		return $this;
 }
+//function to gain the product id
+public function getProductId($pName)
+{
+	$res = $this->db->getFirstRow("select product_id from products");
+	$this->prodId = $res['product_id'];
+	return $this;
+	
+}
+
 
 }
 
