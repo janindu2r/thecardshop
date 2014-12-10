@@ -165,7 +165,7 @@
                             <lable id="portable-total-a"><?php echo  number_format($cart->cartTotal, 2, '.', ''); ?></lable></span></a>
 		        		<ul class="dropdown-menu">
 								<div class="row">
-									<div class="col-xs-12">
+									<div class="col-md-12">
 										<div class="panel panel-info">
 											<div class="panel-heading">
 												<div class="panel-title">
