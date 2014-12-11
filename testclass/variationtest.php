@@ -29,7 +29,7 @@ include('../class/Variation.php');
  //add a record
  
  $rec = new Variation();
- $flag = $rec->insertvalues(" 1000000 "," 1 "," color ");
+ $flag = $rec->insertvalues(" 1000000 "," color ");
   if( $flag == 1)
   {
   echo "record inserted";
@@ -38,7 +38,15 @@ include('../class/Variation.php');
   else
   
   echo "couldnt insert";
+$dAll = new Variation();
+$flag = $dAll->deleteAll();
 
+if($flag ==1)
+{
+echo "deleted";	
+}
+else
+echo"not deleted";
 
 
 ?>
