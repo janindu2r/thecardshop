@@ -5,16 +5,12 @@ Created on:2014-12-4
 by:bmla
 
 */
-include('../class/dbcon.php');
-include('../class/product.php');
-include('../class/physical.php');
-include('../class/Variation.php');
-
+include($_SERVER['DOCUMENT_ROOT'].'/internal.php');
 
 
 //deleting a record
  $vNew = new Variation();
- $success = $vNew->deleteVariation(1000000,1);
+ /* $success = $vNew->deleteVariation(1000000,1);
  if($success == 1)
  {
 	echo "deleted"."<br>"; 
@@ -24,12 +20,12 @@ include('../class/Variation.php');
  {
 	echo "its not deleted"."<br>"; 
 	 
- }
+ } */
  
  //add a record
  
  $rec = new Variation();
- $flag = $rec->insertvalues(" 1000000 "," color ");
+ $flag = $rec->insertValues(insertValues("1000000","Color");
   if( $flag == 1)
   {
   echo "record inserted";
@@ -38,15 +34,17 @@ include('../class/Variation.php');
   else
   
   echo "couldnt insert";
+
+
 $dAll = new Variation();
-$flag = $dAll->deleteAll();
+/* $flag = $dAll->deleteAll();
 
 if($flag ==1)
 {
 echo "deleted";	
 }
 else
-echo"not deleted";
+echo"not deleted"; */
 
 
 ?>
