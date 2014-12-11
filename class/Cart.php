@@ -49,6 +49,7 @@ class Cart
                 $qt = $row['quantity'];
                 $varStr = array();
                 $varIts = $this->db->getSelectTable('select variation_id, variation_value from cart_variations where var_group = '. $groupId);
+                if($varIts){
                 foreach($varIts as $row)
                 {
                     $varStr[$row['variation_id']] = $row['variation_value'];
@@ -56,6 +57,7 @@ class Cart
                 $newCartProd = $newCartProd->makeVariationCartItem($groupId,$pdId,$qt,$dnt, $varStr);
                 $this->varProds[$groupId] =$newCartProd;
                 $this->cartOrder['1'.$groupId] = $dnt;
+				}
             }
         }
 	}
