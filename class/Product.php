@@ -57,17 +57,17 @@ function __construct()
 	 
 	echo $this->db->getInsertSql("products",$assArryProd);
 	
-	$new = $this->db->runInsertRecord("products",$assArryProd);
+	$new = $this->db->runInsertAndGetID("products",$assArryProd);
 	try
 	{
-		if($new == 1)
+		if($new)
 		{
-		$this->initializeProduct($assArryProd);		
-		return $this;
+        $assArryProd['product_id'] =  $new ;
+		$obj = $this->initializeProduct($assArryProd);
+		return $obj;
 		}
 		else
 		return 0;
-		
 	}
 	catch(Exception $e)
 	{
@@ -80,7 +80,7 @@ function __construct()
  public function insertValues($sId,$pTitle,$pTag,$cId,$pPrice,$pDesc,$pVartns,$pVirtual,$pSelUnits,$iStock,$cStock,$pDate,$pDel)
  {
 	// $asscArry['product_id'] = $this->db->escapeString($pId);
-	 $asscArry['shop_id'] = $this->db->escapeString($sId);	
+	 $asscArry['shop_id'] = $this->db->escapeString($sId);
 	$asscArry['product_title'] = $this->db->escapeString($pTitle);
 	$asscArry['product_tag'] = $this->db->escapeString($pTag);
 	$asscArry['category_id'] = $this->db->escapeString($cId);
