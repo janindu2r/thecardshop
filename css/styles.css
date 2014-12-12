@@ -1,3 +1,21 @@
+/************************************************clearfix*******************************************/
+
+.clearfix:after {
+     visibility: hidden;
+     display: block;
+     font-size: 0;
+     content: " ";
+     clear: both;
+     height: 0;
+     }
+.clearfix { display: inline-block; }
+/* start commented backslash hack \*/
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
+/* close commented backslash hack */
+
+
+/*--------------Top Section--------------*/
 #upper-header{
 	width: auto;
 	height: 35px;
@@ -21,17 +39,6 @@
     margin-bottom: 0; 
 
 }
-/*.colorgraph{
-  height: 5px;
-  border-top: 0;
-  background: #c4e17f;
-  margin-top: 0;
-  margin-bottom: 0;	
-  background-image: -webkit-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
-  background-image: -moz-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
-  background-image: -o-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
-  background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
-}*/
 
 #search_container{
     margin-top:20%;
@@ -49,15 +56,6 @@
     background:transparent;
 }
 /*************************************** navbar styles ****************************************************/
-/*.nav {
-    left:50%;
-    margin-left:-150px;
-    top:50px;
-    position:absolute;
-}
-.nav>li>a:hover, .nav>li>a:focus, .nav .open>a, .nav .open>a:hover, .nav .open>a:focus {
-    background:#fff;
-}*/
 .cart-text{
 	padding:5px;
 	text-align: center;
@@ -106,7 +104,7 @@
     z-index: 9;
 }
 
-
+/*--------------Login Button-------------------*/
 #loginBtn{
     margin-top: 10px;
     margin-bottom: 3;
@@ -150,21 +148,7 @@
 .thumbnail:hover .caption {
     top:0;
 }
-/************************************************clearfix*******************************************/
-.clearfix:after {
-     visibility: hidden;
-     display: block;
-     font-size: 0;
-     content: " ";
-     clear: both;
-     height: 0;
-     }
-.clearfix { display: inline-block; }
-/* start commented backslash hack \*/
-* html .clearfix { height: 1%; }
-.clearfix { display: block; }
-/* close commented backslash hack */
-/************************************************clearfix-end*******************************************/
+
 
 @import url(http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css);
 .col-item
@@ -421,7 +405,7 @@
 .wrapper{
     min-height: 20em;
 }
-/*    --------------------------------------------------
+/*  --------------------------------------------------
 	:: Login Section
 	-------------------------------------------------- */
 #login {
