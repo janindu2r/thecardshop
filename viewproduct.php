@@ -22,6 +22,7 @@ if(!$viewProd->virtual)
 $viewfrom = 'Comercio';  // Or Shop Name
 $title = $viewProd->proName. ' | '. $viewfrom ;  // page title
 
+$_SESSION['product'] = $viewProd->prodId;
 ?>
 <!---------------------------------------- Header Start, Do not touch ------------------------------------------->
 <!DOCTYPE html>
@@ -149,7 +150,9 @@ $title = $viewProd->proName. ' | '. $viewfrom ;  // page title
 						
 					</div><!--  /.END OF tab-pane fade id=service-two -->
 					<div class="tab-pane fade" id="service-three">
-										Add Comments Here		
+										<!--Add Comments Here-->
+                                        <?php include('comments.php');
+                                        ?>
 					</div><!--  /.END OF tab-pane fade id=service-three -->
 					
 					</div><!-- /.myTabContent -->
@@ -202,4 +205,4 @@ $title = $viewProd->proName. ' | '. $viewfrom ;  // page title
         </script>
 <!---------------------------------------- End of page edits ---------------------------------------------------->
 <?php include('footer.php'); //including the footer?>
-<!-- End of page -->
+<!-- End of page

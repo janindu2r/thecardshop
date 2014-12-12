@@ -1,22 +1,33 @@
 <?php
-include($_SERVER['DOCUMENT_ROOT']."/class/dbcon.php");
+
+include($_SERVER['DOCUMENT_ROOT']."/internal.php");
 
 $db = new DbCon();
 
+$user = $_SESSION['user'];
+
 if($_POST)
 {
-	$author = 10200;	
+	$author = $user->getRegID();
 	$comment = $_POST['comment'];
 	$date = date('Y-m-d H:i:s');
 
 	$ar['comment_text'] = "'" .$comment. "'";
-	$ar['author_id'] = 10200;
+	$ar['author_id'] = $author;
 	$ar['vote_ups'] = 0;
 	$ar['vote_downs'] = 0;
 	$ar['post_dnt'] = "'".$date."'";
 
-	//$cmd = array("comment_text"=>"'$comment'", "author_id"=>"'$author'", "vote_ups"=>"'0'", "vote_downs"=>"'0'", "post_dnt"=>"'$date'");
-	$command= $db->runInsertRecord('comments', $ar);
+	$id= $db->runInsertAndGetID('comments', $ar);
+	
+	$arr['comment_id'] = $id;
+	$arr['buy_reg_id'] = $author;
+	$res = $db->runInsertRecord('buyer_comments', $arr);
+
+
+	$prod['comment_id'] = $id;
+	$prod['prod_id'] = $_SESSION['product'];
+	$resl = $db->runInsertRecord('product_comments', $prod);
 
 	//  displaying the new comment
 	echo "<div class='comment_box'>";

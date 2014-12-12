@@ -1,4 +1,4 @@
-<html>
+<!-- <html>
 <head>
 <link rel="stylesheet" type="text/css" href="css/comments.css">
 <script type="text/javascript" src="js/jquery.min.js"></script>
@@ -34,7 +34,8 @@
 
 </head>
 
-<body>
+<body> -->
+    
     <div id="container">
     <h2 style='color:#777777'>Comercio Comment System</h2><br/>
 
@@ -53,6 +54,6 @@
 
     </div>
 
-</body>
+<!-- </body>
 
-</html>
+</html> -->
