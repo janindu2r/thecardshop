@@ -12,15 +12,6 @@ $title = '' ;  // page title
 	<head>
         <?php include('header.php'); ?>
 <!-- *****************************    Add Page Edits Below   **************************** -->    
-<div class="RegWrapper" id="SignUpWrapper">
-	<div class="container">
-		<div class="row">
-			<form name=" addproduct " method="POST" action= " /scripts/addtoproduct.php " enctype="multipart/form-data" >
-
-			</form><!-- /.end of add product -->
-		</div>
-	</div>
-</div>
 
 <!-- *****************************      End of page edits 	 **************************** -->
 <?php include('footer.php'); //including the footer?>

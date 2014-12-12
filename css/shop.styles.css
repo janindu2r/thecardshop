@@ -1,0 +1,15 @@
+#shop-product{
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+#cover_container{
+overflow: auto;
+width: auto;
+height:315px;
+background-image: url(/img/Patterns/restaurant.png);
+}
+
+#inner-cover>h3{
+	margin: 30 30 100 100
+}
