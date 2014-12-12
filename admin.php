@@ -1,8 +1,8 @@
 <!-- add session initiation and other similar necessary php stuff below -->
 <?php
-include('overhead.php');
+include('/overhead.php');
 
-$title = '' ;  // page title
+$title = 'Administrator Dashboard' ;  // page title
 
 
 ?>
@@ -10,7 +10,7 @@ $title = '' ;  // page title
 <!DOCTYPE html>
 <html>
 	<head>
-        <?php include('header.php'); ?>
+        <?php include('/header.php'); ?>
 <!-- *****************************    Add Page Edits Below   **************************** -->    
 <div class="container" id="dasboard-page-body">
     <div class="row">
