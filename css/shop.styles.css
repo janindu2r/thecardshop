@@ -13,3 +13,17 @@ background-image: url(/img/Patterns/restaurant.png);
 #inner-cover>h3{
 	margin: 30 30 100 100
 }
+
+.image { 
+   position: relative; 
+   width: 100%; /* for IE 6 */
+}
+
+h2{ 
+   color: white; 
+   font: bold 24px/45px Helvetica, Sans-Serif; 
+   letter-spacing: -1px;  
+   background: rgb(0, 0, 0); /* fallback color */
+   background: rgba(0, 0, 0, 0.7);
+   padding: 10px; 
+}

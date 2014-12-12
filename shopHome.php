@@ -16,9 +16,9 @@ $title = '' ;  // page title
 <div class="#">
 	<div class="shop-profile">
 		<div id="cover_container">
-			<div id="inner-cover">
-				<h3>Headline</h3>
-			    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. <a href="http://sevenx.de/demo/bootstrap-carousel/" target="_blank" class="label label-danger">Bootstrap 3 - Carousel Collection</a></p>
+			<div class="image">
+				
+      			<h2>A Movie in the ParkKung Fu Panda</h2>
 			</div>
 		</div>
 
