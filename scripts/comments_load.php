@@ -3,7 +3,7 @@
 
 $db = new DbCon();
 
-$sql="Select * from comments order by comment_id asc";
+$sql="Select * from comments order by comment_id desc";
 
 $command= $db->getSelectTable($sql);
 
@@ -18,7 +18,7 @@ if ($command) {
 		echo "<div class='body'>";
 
 		echo "<div><span><b>$id</b></span> <br/>";
-		echo "<span><b>$date</b></span> ";
+		echo "<span class='date'>$date</span> ";
 
 		echo "<div class='txt'>$comment</div>";
 		echo "</div>";

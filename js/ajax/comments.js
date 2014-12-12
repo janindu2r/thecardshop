@@ -1,7 +1,7 @@
 $(document).ready(function() {
 $("#comment_submit").click(function() 
 		    {
-		    var comment = $("#comment").val();
+		    var comment = $("#new-review").val();
 
 		    var dataString = 'comment='+ comment;
 		    if(comment=='')
@@ -16,8 +16,8 @@ $("#comment_submit").click(function()
 		    data: dataString,
 		    cache: false,
 		    success: function(html){
-		    $("#comment").val('');
-		    $("#success_msg").append(html);
+		    $("#new-review").val('');
+		    $("#success_msg").prepend(html);
 		    }
 		    });
 		    }return false;
