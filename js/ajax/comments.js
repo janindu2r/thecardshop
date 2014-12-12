@@ -12,7 +12,7 @@ $("#comment_submit").click(function()
 		    {
 		    $.ajax({
 		    type: "POST",
-		    url: "scripts/comments_save.php",
+		    url: "/scripts/comments_save.php",
 		    data: dataString,
 		    cache: false,
 		    success: function(html){

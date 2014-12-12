@@ -18,6 +18,7 @@ if(!$viewProd->virtual)
          $viewProd->getAllVariations($viewProd->prodId);
     }
 }
+$_SESSION['product'] = $viewProd->prodId;
 
 $viewfrom = 'Comercio';  // Or Shop Name
 $title = $viewProd->proName. ' | '. $viewfrom ;  // page title
@@ -168,6 +169,11 @@ $title = $viewProd->proName. ' | '. $viewfrom ;  // page title
                         </div>
                     </div>
                     </div>
+                    
+                    <!--Add Comments Here-->
+                                        <?php include('comments.php');
+                                        ?>
+                    
 					</div><!--  /.END **OF tab-pane fade id=service-three -->
 					
 					</div><!-- /.myTabContent -->
