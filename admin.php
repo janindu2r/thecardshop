@@ -159,7 +159,7 @@ $title = 'Administrator Dashboard' ;  // page title
 		                    <div class="panel-body">
 			                    <div class="form-group">
                                 
-                                <form name=" addproduct " method="POST" action= " default.php " enctype="multipart/form-data" > 
+                                <form name=" addproduct " method="POST" action= " /scripts/addtoproduct.php " enctype="multipart/form-data" >
 			                        <label for="#">Product Name</label>
 			                        <input type="text" class="form-control" id="" placeholder="Shop john26769">
 			                    </div>
@@ -226,12 +226,12 @@ $title = 'Administrator Dashboard' ;  // page title
 			                        <label for="#">Selling Unit</label>
 			                        <input type="text" class="form-control" id="exampleInputtext1" placeholder="john26769">
 			                    </div>
-			                    <div class="form-group">
+			                    <!--<div class="form-group">
 			                        <label for="#">Initial Stock</label>
 			                        <input type="number" class="form-control" id="exampleInputtext1" placeholder="john26769">
-			                    </div>
+			                    </div>-->
 			                    <div class="form-group">
-			                        <label for="#">Current Stock</label>
+			                        <label for="#">Stock</label>
 			                        <input type="number" class="form-control" id="exampleInputEmail1" placeholder="john26769">
 			                    </div>
 			                    <div class="form-group">
@@ -338,7 +338,7 @@ echo"error";
 
 
 
-}  
+}
 				  
 				  
 				  ?>              

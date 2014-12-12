@@ -39,7 +39,7 @@ $allowed_type =array( 'image/jpg','image/png');
 
 $object = new Product();
 $del = 0;
-$object = $object->insertValues($shopowner ,$pName,$pTag,$cID,$pPrice,$pDesc,$variation,$virtual,$sell,$iStock,$cStock,$date,$del);
+$object = $object->insertValues($shopowner ,$pName,$pTag,$cID,$pPrice,$pDesc,$variation,$virtual,$sell,$cStock,$date,$del);
 
 
 /*

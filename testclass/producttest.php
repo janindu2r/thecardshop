@@ -47,7 +47,7 @@ echo "coudnt update try again"."<br>";
 //adding data
 
 $add = new product();
-$insert = $add->insertValues("10003","fgh","3ed","3","234","fffffffffffffffffffffffffffffffffffffffff","1","0","456","30","4","2014-12-24","1");
+$insert = $add->insertValues("10003","fgh","3ed","3","234","fffffffffffffffffffffffffffffffffffffffff","1","0","456","30","2014-12-24","1");
 if($insert)
 {
 	print_r($insert)."<br>";

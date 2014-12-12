@@ -54,7 +54,7 @@ Product price<input type="text" name="pro_price" /><br /><br />
 Selling unit<input type="text" name="sel_unit" /><br /><br />
 
 Initial Stock<input type="number" name="iStock" /><br /><br />
-Current Stock<input type="number" name="cStock" /><br /><br />
+
 Date Added <input type="date" name="pDate" /><br />
 upload Image<input type="file" name="img" id="fileToUpload" /><br /><br />
 
