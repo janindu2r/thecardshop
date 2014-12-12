@@ -5,8 +5,7 @@
 	Date: 2014/11/14
 */
 
-	include('../class/dbcon.php');
-	include('../class/user.php');
+	include($_SERVER['DOCUMENT_ROOT'].'/internal.php');
 
 	$user = new User();
 /*
