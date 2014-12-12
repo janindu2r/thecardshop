@@ -5,8 +5,8 @@ last edit 2014-12-3
 
 */
 
-include('../class/dbcon.php');
-include('../class/product.php');
+include('../class/DbCon.php');
+include('../class/Product.php');
 
 
 //view
@@ -47,7 +47,7 @@ echo "coudnt update try again"."<br>";
 //adding data
 
 $add = new product();
-$insert = $add->insertValues("8","fgh","3ed","4","234","fffffffffffffffffffffffffffffffffffffffff","1","0","456","30","4","2014-12-24","1");
+$insert = $add->insertValues("10000","fgh","3ed","10005","234","fffffffffffffffffffffffffffffffffffffffff","1","0","456","30","4","2014-12-24","1");
 if($insert)
 {
 	print_r($insert)."<br>";

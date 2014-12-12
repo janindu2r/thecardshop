@@ -132,7 +132,8 @@ class CartVar extends CartProd{
 
         $itemHtml = '<div class="row"> <div class="col-xs-2"> <img class="img-responsive" src="/content/products/prodthumbnail/' ;
         $itemHtml .=  $this->cProduct->prodId.'.jpg"> </div><div class="col-xs-4"> <h4 class="product-name"><strong>' ;
-        $itemHtml .= $this->cProduct->proName.'</strong></h4><h4><small> ' .  $desc ;
+        $itemHtml .= '<a href="/viewproduct.php?product=' . $this->cProduct->prodId . '">';
+        $itemHtml .= $this->cProduct->proName.'</a></strong></h4><h4><small> ' .  $desc ;
         $itemHtml .= '</small></h4> </div> <div class="col-xs-6"> <div class="col-xs-6 text-right"> <h6><strong>';
         $itemHtml .= $this->cProduct->proPrice . '<span class="text-muted">x</span></strong></h6> </div> <div class="col-xs-4">' ;
         $itemHtml .= '<input type="number" class="form-control input-sm output-qty-cart" id="1-'. $this->groupId.'" value="';

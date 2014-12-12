@@ -36,7 +36,7 @@ if($_POST)
        // $_SESSION['cart'] = new Cart();
     }
 	else
-		header('location: /login.php');	//redirect to login page with error name
+		header('location: /login.php');	//redirect to login page
 }
  
 if ($_SESSION) {

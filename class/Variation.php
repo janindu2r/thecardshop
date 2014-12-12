@@ -67,8 +67,10 @@ public $pId,$vId,$vName;
 	
 	public function insertvalues($pId,$vNam)
 	{
+
 		$variation['prod_id'] = $this->db->escapeString($pId);
-		$variation['variation_id'] = $this->db->escapeString($vId);
+		//$variation['variation_id'] = $this->db->escapeString($vId);
+				//$variation['variation_id'] = max($variation['variation_id'] + 1);
 		$variation['var_name'] = $this->db->escapeString($vNam); 
 		return $this->addVariations($variation);
 		
@@ -86,16 +88,32 @@ public $pId,$vId,$vName;
 		
 	}
 	//inserting variation values
-	public function insertVarValues($pid,$vId,$vVal,$vImg,$stck,$del)
+	public function insertVarValues($pid,$vId,array $val,$vImg,$stck,$del)
 	{
+		
+		foreach($val as $value)
+		{
+			
+			$sql = " insert into variation_values(variation_value) values('$value') ";
+		}
+		unset($value);
 	$array["prod_id"] = $this->db->escapeString($pid);	
 	$array["variation_id"] = $this->db->escapeString($pid);	
-	$array["variation_value"] = $this->db->escapeString($pid);
+	
 	$array["var_img"] = $this->db->escapeString($pid);
 	$array["current_stock"] = $this->db->escapeString($pid);
 	$array["deleted"] = $this->db->escapeString($pid);	
 	}
 
+
+
+public function deleteAll()
+{
+	
+	$del = $this->db->runNonQuery("update variations  set delete= '1' where delete = '0'");
+	return $del;
+	
+}
 }
 
 ?>

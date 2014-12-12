@@ -26,7 +26,7 @@
 		$emailCheck = $db->escapeString($_POST["reenteremail"]);
 		$regDetail['display_name'] = $db->escapeString($_POST["uname"]);
 		$regDetail['password'] = $db->escapeString(md5($_POST["password"]));
-		$passwordCheck = $db->escapeString(md5($_POST["repassword"]);
+		$passwordCheck = $db->escapeString(md5($_POST["repassword"]));
 		$regDetail['verified'] = 0;
 
 		$user->setDispName($regDetail['display_name']);

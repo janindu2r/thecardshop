@@ -46,7 +46,7 @@
 		</script>
 
 		<!-- Bootstrap -->
-		
+
    		<link href="/css/bootstrap.css" rel="stylesheet">
    		<link href="/css/bootstrap.min.css" rel="stylesheet">
 	</head>
@@ -88,6 +88,7 @@
 		            <li><a href="/registershop.php">Register Shop</a></li>
 		            <li class="divider"></li>
 		            <li><a href="/addItems.php">Add Items</a></li>
+		            <li><a href="/registershop.php">Reg Shop</a></li>
 		          </ul>
 		        </li>
 		      </ul>
@@ -195,7 +196,7 @@
                             <lable id="portable-total-a"><?php echo  number_format($cart->cartTotal, 2, '.', ''); ?></lable></span></a>
 		        		<ul class="dropdown-menu">
 								<div class="row">
-									<div class="col-xs-12">
+									<div class="col-md-12">
 										<div class="panel panel-info">
 											<div class="panel-heading">
 												<div class="panel-title">
