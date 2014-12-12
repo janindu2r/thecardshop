@@ -9,28 +9,8 @@ h2
 margin-bottom:-1px;
 }
 
-a
-{
-color:#222222;
-text-decoration:none;
-}
 
-a:hover
-{
-color:4099FF;
-text-decoration:underline;
-}
-
-#container
-{
-overflow:auto;
-width:650px;
-padding-top:50px;
-margin:0 auto;
-}
-
-
-.textbox
+/*.textbox
 {
 border:solid 1px #dddddd;
 width:200px;
@@ -41,9 +21,9 @@ overflow: auto;
 resize: none;
 padding:3px;
 -moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;
-}
+}*/
 
-select
+/*select
 {
 border:solid 1px #dddddd;
 width:175px;
@@ -56,8 +36,8 @@ resize: none;
 padding:3px;
 -moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;
 }
-
-.btn{
+*/
+/*.btn{
 cursor:pointer;
 padding:5px;
 margin-top:15px;
@@ -68,9 +48,9 @@ background-repeat: repeat-x;
 border-color: #2f96b4 #2f96b4 #1f6377;
 border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
 -moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;
-}
+}*/
 
-textarea
+/*textarea
 {
 width:400px;
 font-family:arial;
@@ -81,16 +61,16 @@ height:70px;
 border:solid 1px #dddddd;
 padding:5px;
 -moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;
-}
+}*/
 
 
 .comment_box
 {
-margin-top:5px;
-padding:5px;
-width:390px;
+margin-top:10px;
+padding:10px;
+width:560px;
 border:solid 1px #aaaaaa;
--moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;
+-moz-border-radius: 10px;-webkit-border-radius: 10px;border-radius: 10px;
 font-size:13px;
 overflow:auto;
 }
@@ -104,4 +84,14 @@ margin-left:60px;
 {
 margin-top:5px;
 color:#333333;
+}
+
+span b
+{
+	font-size: 16px;
+}
+
+.date
+{
+	font-style: italic;
 }

@@ -150,7 +150,7 @@ $title = $viewProd->proName. ' | '. $viewfrom ;  // page title
 						
 					</div><!--  /.END OF tab-pane fade id=service-two -->
 					<div class="tab-pane fade" id="service-three">
-                    <div class="row" style="margin-top:10px;">
+                    <!-- <div class="row" style="margin-top:10px;">
                     <div class="well well-sm">
 						<div class="row" id="post-review-box" style=";">
                             <div class="col-md-12">
@@ -168,7 +168,7 @@ $title = $viewProd->proName. ' | '. $viewfrom ;  // page title
                             </div>
                         </div>
                     </div>
-                    </div>
+                    </div> -->
                     
                     <!--Add Comments Here-->
                                         <?php include('comments.php');

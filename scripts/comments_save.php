@@ -33,7 +33,7 @@ if($_POST)
 	echo "<div class='comment_box'>";
 	echo "<div class='body'>";
 	echo "<div><span><b>$author</b></span> <br/>";
-	echo "<span><b>$date</b></span> ";
+	echo "<span>$date</span> ";
 
 	echo "<div class='txt'>$comment</div>";
 	echo "</div>";
