@@ -8,42 +8,15 @@
 		<link rel="shortcut icon" href="/favicon.ico">  <!--absolute links -->
 		<!-- CSS Styles -->
 		<link rel="stylesheet" type="text/css" href="/css/styles.css" />
-		<link rel="stylesheet" type="text/css" href="css/comments.css"> <!-- styling for user comments -->
+        
+        <link rel="stylesheet" type="text/css" href="css/comments.css"> <!-- styling for user comments -->
+        
 
 		<!-- JavaScripts --> <!--https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js -->
 		<script src="/js/jquery.min.js"></script>
 		<script src="/js/bootstrap.min.js"></script>
         <script src="/js/ajax/cart.js"></script>
-
-        <!-- script for user comments -->
-        <script type="text/javascript" >
-		    $(function() {
-		    $("#comment_submit").click(function() 
-		    {
-		    var comment = $("#comment").val();
-
-		    var dataString = 'comment='+ comment;
-		    if(comment=='')
-		    {
-		    alert('Please leave a comment');
-		    }
-		    else
-		    {
-		    $.ajax({
-		    type: "POST",
-		    url: "scripts/comments_save.php",
-		    data: dataString,
-		    cache: false,
-		    success: function(html){
-		    $("#comment").val('');
-		    $("#success_msg").append(html);
-		    }
-		    });
-		    }return false;
-		    }); 
-		    });
-
-		</script>
+        <script src="/js/ajax/comments.js"></script>
 
 		<!-- Bootstrap -->
 

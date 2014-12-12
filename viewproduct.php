@@ -22,7 +22,6 @@ if(!$viewProd->virtual)
 $viewfrom = 'Comercio';  // Or Shop Name
 $title = $viewProd->proName. ' | '. $viewfrom ;  // page title
 
-$_SESSION['product'] = $viewProd->prodId;
 ?>
 <!---------------------------------------- Header Start, Do not touch ------------------------------------------->
 <!DOCTYPE html>
@@ -150,10 +149,26 @@ $_SESSION['product'] = $viewProd->prodId;
 						
 					</div><!--  /.END OF tab-pane fade id=service-two -->
 					<div class="tab-pane fade" id="service-three">
-										<!--Add Comments Here-->
-                                        <?php include('comments.php');
-                                        ?>
-					</div><!--  /.END OF tab-pane fade id=service-three -->
+                    <div class="row" style="margin-top:10px;">
+                    <div class="well well-sm">
+						<div class="row" id="post-review-box" style=";">
+                            <div class="col-md-12">
+                                <form accept-charset="UTF-8" action="" method="post">
+                                    
+                                    <textarea class="form-control animated" cols="50" id="new-review" name="comment" placeholder="Enter your review here..." rows="5"></textarea>
+                    
+                                    <div class="text-right">
+                                        <div class="stars starrr" data-rating="0"></div>
+                                        <a class="btn btn-danger btn-sm" href="#" id="close-review-box" style="display:none; margin-right: 10px;">
+                                        <span class="glyphicon glyphicon-remove"></span>Cancel</a>
+                                        <button class="btn btn-success media-body" style="margin-top:5px;" type="submit">Save</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+					</div><!--  /.END **OF tab-pane fade id=service-three -->
 					
 					</div><!-- /.myTabContent -->
 					<hr>
@@ -205,4 +220,4 @@ $_SESSION['product'] = $viewProd->prodId;
         </script>
 <!---------------------------------------- End of page edits ---------------------------------------------------->
 <?php include('footer.php'); //including the footer?>
-<!-- End of page
+<!-- End of page -->
