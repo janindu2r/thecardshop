@@ -6,6 +6,16 @@ if($_SESSION){
 	header('location: /index.php');
 }
 
+if($_GET)
+{
+	if($_GET['error'])
+	{
+		if ($_GET['error'] = 1)
+			echo '<script>alert("Please input valid data for registration!")</script>';
+	}
+}
+
+
 $title = 'Sign Up' ;  // page title	
 ?>
 <!-- -------------------------------------- Header Start, Do not touch ----------------------------------------- -->

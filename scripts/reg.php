@@ -48,12 +48,14 @@
 			$user->registration('account', $regDetail);
 		
 			$user->registration('user', $regDetailed);
+			
+			//add email generation here 
 
-			header('Location: ../index.php');
+			header('Location: /index.php');
 		}
 		else
 		{
-			header('Location: ../register.php');
+			header('Location: /register.php?error=1');
 		}
 		
 //	}
