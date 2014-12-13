@@ -440,6 +440,11 @@ echo"error";
         var target = $(this).attr('data-target-id');
         $('#' + target).show();
     });
+
+    function validateShopForm()
+    {
+        if
+    }
 });
 </script>
 
