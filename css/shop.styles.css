@@ -1,29 +1,72 @@
 #shop-product{
-	margin-top: 20px;
+	margin-top: 90px;
 	margin-bottom: 20px;
 }
 
-#cover_container{
-overflow: auto;
-width: auto;
-height:315px;
-background-image: url(/img/Patterns/restaurant.png);
+#coruosel{
+   height:300px;
+   max-height: %6
 }
 
-#inner-cover>h3{
-	margin: 30 30 100 100
+#profile_img{
+background-color: #FFFFFF;
+border: 1px solid #DEDEDE;
+margin-left: 100px;
+margin-top: -80px;
+position: absolute;
+width: 160px;
+height: 160px;
+float:left;
 }
 
-.image { 
-   position: relative; 
-   width: 100%; /* for IE 6 */
+#info_box{
+padding:60px 50px 0px 10px;
+border:solid 1px #dedede;
+width:auto;
+background-color:#fcfcfc;
+margin-top:200px;
+}
+.avatar_img{
+padding:3px;
 }
 
-h2{ 
-   color: white; 
-   font: bold 24px/45px Helvetica, Sans-Serif; 
-   letter-spacing: -1px;  
-   background: rgb(0, 0, 0); /* fallback color */
-   background: rgba(0, 0, 0, 0.7);
-   padding: 10px; 
+
+#info-box{
+margin-left:115px;
+margin-top: -50px;
+position: absolute;
+}
+
+/*#info-name{
+float:left;
+overflow:hidden;
+word-wrap: break-word;
+width:1150px;
+}*/
+
+#info-content{
+margin-left:170px;
+width:auto;
+}
+
+#info-photos{
+text-align:center;
+font-size:11px;
+padding:5px;
+float:left;
+width:80px;
+border:solid 1px #eeeeee;
+background-color: #fff;
+-moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;
+}
+
+#info-friends{
+text-align:center;
+font-size:11px;
+padding:5px;
+margin-left:100px;
+border:solid 1px #eeeeee;
+width:80px;
+background-color: #fff;
+-moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;
 }
