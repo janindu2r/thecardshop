@@ -169,7 +169,7 @@
                             <lable id="portable-total-a"><?php echo  number_format($cart->cartTotal, 2, '.', ''); ?></lable></span></a>
 		        		<ul class="dropdown-menu">
 								<div class="row">
-									<div class="col-md-12">
+									<div class="col-md-13">
 										<div class="panel panel-info">
 											<div class="panel-heading">
 												<div class="panel-title">
@@ -177,7 +177,7 @@
 														<div class="col-xs-6">
 															<h5><span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart</h5>
 														</div>
-														<div class="col-xs-6">
+														<div class="col-xs-7">
 															<a href="/cart.php"type="button" class="btn btn-primary btn-sm btn-block">
 																<span class="glyphicon glyphicon-share-alt"></span> Continue shopping
 															</a>
@@ -240,9 +240,9 @@
 											</div>
 											<div class="panel-footer">
 												<div class="row text-center">
-													<div class="col-xs-3">
+													<div class="col-xs-4">
                                                             <button type="button" class="btn btn-default btn-block" id="update-portable-cart">
-                                                                Update cart
+                                                                Update Cart
                                                             </button>
                                                         </div>
 													<div class="col-xs-6">

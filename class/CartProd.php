@@ -97,7 +97,7 @@ class CartProd{
         $itemHtml .= '<a href="/viewproduct.php?product=' . $this->cProduct->prodId . '">';
         $itemHtml .= $this->cProduct->proName.'</a></strong></h4><h4><small><i>Shipping</i> $'. number_format($shipping, 2, '.', '') ;
         $itemHtml .= '</small></h4> </div> <div class="col-xs-6"> <div class="col-xs-6 text-right"> <h6><strong>';
-        $itemHtml .= $this->cProduct->proPrice . '<span class="text-muted">x</span></strong></h6> </div> <div class="col-xs-4">' ;
+        $itemHtml .= $this->cProduct->proPrice . '<span class="text-muted">x</span></strong></h6> </div> <div class="col-xs-5">' ;
         $itemHtml .= '<input type="number" class="form-control input-sm output-qty-cart" id="0-'. $this->cProduct->prodId.'" value="';
         $itemHtml .= $this->quantity. '" min="1" max="999"> </div> ' ;
         $itemHtml .= '<div class="col-xs-2"> <button type="button" class="btn btn-link btn-xs delete-cart-itm" id="0-'. $this->cProduct->prodId ;
