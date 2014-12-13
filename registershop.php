@@ -4,7 +4,7 @@ include('overhead.php');
 $title = 'Activate Shop' ;  // page title
 
 if($user->shop)
-    
+
 
 
 ?>
@@ -17,6 +17,38 @@ if($user->shop)
 		</style>
 
         <?php include('header.php'); ?>
+
+        <script>
+            function funcValidate() {
+                if (document.regShop.sname.value.length == 0) {
+                    alert("please enter a shop name");
+                    return false;
+                }
+                else if (document.regShop.sname.value.length > 30) {
+                    alert("please enter a shop name with less than 30 characters");
+                    return false;
+                }
+                else if (document.regShop.descr.value.length == 0) {
+                    alert("please enter a shop description");
+                    return false;
+                }
+                else if (document.regShop.city.selectedIndex == 0) {
+
+                    alert("please select a location");
+                    return false;
+                }
+                else if (document.regShop.category.selectedIndex == 0) {
+
+                    alert("please select a category");
+                    return false;
+                }
+                else if (document.regShop.payment.value.length == 0) {
+                    alert("please enter a payment method");
+                    return false;
+                }
+            }
+        </script>
+
 <!---------------------------------------- Add Page Edits Below ------------------------------------------------->    
 <!-- -->
 <div class="RegWrapper" id="SignUpWrapper">
@@ -26,7 +58,7 @@ if($user->shop)
 
         <div class="col-xs-12 col-sm-12 col-md-6 well well-sm col-md-offset-3" id="signUpFormContainer">
             <legend><i class="glyphicon glyphicon-globe"></i> Activate your Shop!</legend>
-            <form action="scripts/shop.php" method="post" class="form" role="form" name ="regShop" onclick="function()">
+            <form action="scripts/shop.php" method="post" class="form" role="form" name ="regShop" onsubmit="return funcValidate();">
             
             <input class="form-control" name="sname" placeholder="Shop Name" type="text" />
             <textarea class="form-control" rows="3" name="descr" placeholder="Shop Description"></textarea>
@@ -85,46 +117,6 @@ shop activation form
 <a href="shopdashboard.php">Activate and go to seller dash board</a>
 <a href="viewshop.php">Activate and View your shop</a>
  -->
-<script>
-
-    $(document).ready(function () {
-
-        if(document.regShop.sname.value.length == 0)
-        {
-            alert("please enter a shop name");
-
-        }
-        else if(document.regShop.sname.value.length > 30)
-        {
-            alert("please enter a shop name with less than 30 characters");
-
-        }
-        else if(document.regShop.descr.value.length == 0)
-        {
-            alert("please enter a shop description");
-        }
-        else if(document.regShop.city.selectedIndex == 0)
-        {
-            alert("please select a location");
-        }
-        else if(document.regShop.category.selectedIndex == 0)
-        {
-
-            alert("please select a category");
-        }
-        else if(document.regShop.payment.value.length == 0)
-        {
-            alert("please enter a payment method");
-        }
-
-
-    })
-
-
-
-
-
-</script>
 <!---------------------------------------- End of page edits ---------------------------------------------------->
 <?php include('footer.php'); //including the footer?>
 <!-- End of page -->
