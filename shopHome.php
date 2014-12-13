@@ -54,7 +54,7 @@ $title = '' ;  // page title
 			  <div class="clearfix"></div>
 			</div>
 		
-<div id="profile_img"><img src='Image Link' class=''/>Add Image</div>
+<div id=""><img id="profile_img" src='/img/ShopSlider/identicon.png' class=''/></div>
 		<div id="info-box">
 
 		<div id="info-content">

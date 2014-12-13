@@ -11,6 +11,7 @@
 #profile_img{
 background-color: #FFFFFF;
 border: 1px solid #DEDEDE;
+border-radius: 10px;
 margin-left: 100px;
 margin-top: -80px;
 position: absolute;
