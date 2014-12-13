@@ -92,7 +92,9 @@ class CartProd{
     {
         $shipping = $this->calculateShippingCost();
         $shipPrice = number_format($shipping, 2, '.', '');
-        $desc = '<i>Shipping</i> $'. $shipPrice;
+        $desc = '<div style="font-size: 0.9em;"><table class="table"><tbody>';
+        $desc .= '<tr><td><b>Shipping</b></td><td> $'.  $shipPrice . '</div></td></tr></tbody></table>';
+
 
         $itemHtml = '<div class="row"> <div class="col-xs-2"> <img class="img-responsive" src="/content/products/prodthumbnail/' ;
         $itemHtml .=  $this->cProduct->prodId.'.jpg"> </div><div class="col-xs-4"> <h4 class="product-name"><strong>' ;
@@ -112,8 +114,10 @@ class CartProd{
         $shipping = $this->calculateShippingCost();
         $itemTotal = $this->toDec($this->calculateEachItemPrice());
         $shipPrice = $this->toDec($shipping);
+        $grandTotal = $this->toDec($this->calculateEachWithShipping());
 
-        $itemHtml = '<tr><td class="col-sm-8 col-md-6"><div class="media"><a class="thumbnail pull-left" id="cart-picture" style="width: 72px; height: 72px;" href="/viewproduct.php?product=';
+
+        $itemHtml = '<tr><td class="col-sm-6 col-md-4"><div class="media"><a class="thumbnail pull-left" id="cart-picture" style="width: 72px; height: 72px;" href="/viewproduct.php?product=';
         $itemHtml .=  $this->cProduct->prodId . '"><img class="media-object" src="/content/products/prodthumbnail/'. $this->cProduct->prodId .'.jpg"></a>';
         $itemHtml .= '<div class="media-body"><h4 class="media-heading"><a href="/viewproduct.php?product=';
         $itemHtml .=  $this->cProduct->prodId . '">'.$this->cProduct->proName;
@@ -123,8 +127,9 @@ class CartProd{
         $itemHtml .= '<input type="number" class="form-control input-sm output-qty-cart" id="0-'. $this->cProduct->prodId.'" value="';
         $itemHtml .= $this->quantity. '" min="1" max="999"></td><td class="col-sm-1 col-md-1 text-right">$';
         $itemHtml .= $this->cProduct->proPrice . '</td><td class="col-sm-1 col-md-1 text-right">$';
+        $itemHtml .= $itemTotal .'</td><td class="col-sm-1 col-md-1 text-right">$';
         $itemHtml .= $shipPrice .'</strong></td><td class="col-sm-1 col-md-1 text-right"><strong>$';
-        $itemHtml .= $itemTotal . '</td><td class="col-sm-1 col-md-1 text-right"><button type="button"';
+        $itemHtml .= $grandTotal . '</td><td class="col-sm-1 col-md-1 text-right"><button type="button"';
         $itemHtml .= 'class="btn btn-sm btn-danger delete-cart-itm" id="0-'. $this->cProduct->prodId . '"><span class="glyphicon glyphicon-remove"></span>';
         $itemHtml .= '</button></td></tr>';
 

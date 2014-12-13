@@ -124,12 +124,12 @@ class CartVar extends CartProd{
     {
         $shipping = $this->calculateShippingCost();
         $shipPrice = number_format($shipping, 2, '.', '');
-        $desc = '<b>Variation</b><br>';
+        $desc = '<div style="font-size: 0.9em;"><table class="table"><tbody>';
 
         foreach($this->cartVGroup as $k => $v)
-            $desc .=  '<i>' .$k . '</i> ' . $v .'<br>';
+            $desc .=  '<tr><td><b>' .$k . '</b></td><td>' . $v .'</td></tr>';
 
-        $desc .= '<i>Shipping</i> $'.  $shipPrice;
+        $desc .= '<tr><td><b>Shipping</b></td><td> $'.  $shipPrice . '</div></td></tr></tbody></table>';
 
         $itemHtml = '<div class="row"> <div class="col-xs-2"> <img class="img-responsive" src="/content/products/prodthumbnail/' ;
         $itemHtml .=  $this->cProduct->prodId.'.jpg"> </div><div class="col-xs-4"> <h4 class="product-name"><strong>' ;
@@ -150,15 +150,15 @@ class CartVar extends CartProd{
         $shipping = $this->calculateShippingCost();
         $itemTotal = $this->toDec($this->calculateEachItemPrice());
         $shipPrice = $this->toDec($shipping);
+        $grandTotal = $this->toDec($this->calculateEachWithShipping());
 
-        $desc = '<div style="color: #34495e; padding: 5px"><small><b>Variation</b><br>';
-
+        $desc = '<br><br><div style="font-size: 0.9em; margin: 5px"><table class="table"><tbody>';
         foreach($this->cartVGroup as $k => $v)
-            $desc .=  '<b>' .$k . '</b> ' . $v .'<br>';
+            $desc .=  '<tr><td><b>' .$k . '</b></td><td>' . $v .'</td></tr>';
+        $desc .= '</tbody></table></div>';
 
-        $desc .= '</small></div>';
 
-        $itemHtml = '<tr><td class="col-sm-8 col-md-6"><div class="media"><a class="thumbnail pull-left"id="cart-picture" style="width: 72px; height: 72px;"  href="/viewproduct.php?product=';
+        $itemHtml = '<tr><td class="col-sm-6 col-md-4"><div class="media"><a class="thumbnail pull-left"id="cart-picture" style="width: 72px; height: 72px;"  href="/viewproduct.php?product=';
         $itemHtml .=  $this->cProduct->prodId . '"><img class="media-object" src="/content/products/prodthumbnail/'. $this->cProduct->prodId .'.jpg"></a>';
         $itemHtml .= '<div class="media-body"><h4 class="media-heading"><a href="/viewproduct.php?product=';
         $itemHtml .=  $this->cProduct->prodId . '">'.$this->cProduct->proName;
@@ -168,8 +168,9 @@ class CartVar extends CartProd{
         $itemHtml .= '<input type="number" class="form-control input-sm output-qty-cart" id="1-'. $this->groupId.'" value="';
         $itemHtml .= $this->quantity. '" min="1" max="999"></td><td class="col-sm-1 col-md-1 text-right">$';
         $itemHtml .= $this->cProduct->proPrice . '</td><td class="col-sm-1 col-md-1 text-right">$';
+        $itemHtml .= $itemTotal .'</td><td class="col-sm-1 col-md-1 text-right">$';
         $itemHtml .= $shipPrice .'</td><td class="col-sm-1 col-md-1 text-right"><strong>$';
-        $itemHtml .=  $itemTotal . '</strong></td><td class="col-sm-1 col-md-1 text-right"><button type="button"';
+        $itemHtml .= $grandTotal. '</strong></td><td class="col-sm-1 col-md-1 text-right"><button type="button"';
         $itemHtml .= 'class="btn btn-sm btn-danger delete-cart-itm" id="1-'. $this->groupId .'"><span class="glyphicon glyphicon-remove"></span>';
         $itemHtml .= '</button></td></tr>';
 

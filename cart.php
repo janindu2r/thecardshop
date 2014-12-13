@@ -22,40 +22,45 @@ $title = 'Cart' ;  // page title
                         <th>Product</th>
                         <th>Quantity</th>
                         <th class="text-right">Unit Price</th>
+                        <th class="text-right">Items Total</th>
                         <th class="text-right">Shipping</th>
                         <th class="text-right">Total</th>
                         <th class="col-sm-1 col-md-1"> </th>
                     </tr>
                 </thead>
                 <tbody>
-
                 <?php echo $cart->getCompleteStaticCart() ?>
 
                     <tr>
-                        <td colspan="4" class="text-right"><h5>Subtotal</h5></td>
+                        <td colspan="5" class="text-right"><h5>Subtotal</h5></td>
                         <td class="text-right"><h5><strong>$<?php echo $cart->toDec($cart->cartSubTotal)?></strong></h5></td>
                         <td></td>
                     </tr>
                     <tr>
-                        <td colspan="4" class="text-right"><h5>Estimated shipping</h5></td>
+                        <td colspan="5" class="text-right"><h5>Estimated shipping</h5></td>
                         <td class="text-right"><h5><strong>$<?php echo $cart->toDec($cart->cartEstShipping)?></strong></h5></td>
                         <td></td>
                     </tr>
                     <tr>
-                        <td colspan="4" class="text-right"><h3>Total</h3></td>
+                        <td colspan="5" class="text-right"><h3>Total</h3></td>
                         <td class="text-right"><h3>$<?php echo $cart->toDec($cart->cartTotal)?></h3></td>
                         <td></td>
                     </tr>
                     <tr>
+                        <td class="text-left">
+                            <a href="" type="button" class="btn btn-default">
+                                Update Cart
+                            </a>
+                        </td>
                         <td colspan="4" class="text-right">
-                        <button type="button" class="btn btn-default">
+                        <a href="/index.php" type="button" class="btn btn-default">
                             <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
-                        </button></td>
-                        <td colspan="2">
-                        <button type="button" class="btn btn-success">
+                        </a></td>
+                        <td>
+                        <a href="/order.php" type="button" class="btn btn-success btn-block">
                             Checkout <span class="glyphicon glyphicon-play"></span>
-                        </button></td>
-
+                        </a></td>
+                        <td></td>
                     </tr>
                 </tbody>
             </table>

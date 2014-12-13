@@ -166,8 +166,8 @@
 		      	</li>
 		        <li class="dropdown-cart">
 		        	<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-shopping-cart"></i><span class="cart-text">$
-                            <lable id="portable-total-a"><?php echo  $cart->toDec($cart->cartTotal); ?></lable></span></a>
-		        		<ul class="dropdown-menu" style="width: 570px">
+                            <label id="portable-total-a"><?php echo  $cart->toDec($cart->cartTotal); ?></label></span></a>
+		        		<ul class="dropdown-menu" style="width: 600px">
 								<div class="row">
 									<div class="col-md-12">
 										<div class="panel panel-info">
@@ -198,7 +198,7 @@
                                                             </button>
                                                         </div>
 													<div class="col-xs-6">
-														<h4 class="text-right">Total <strong>$<label id="portable-total-b"><?php echo number_format($cart->cartTotal, 2, '.', '') ?></label></strong></h4>
+														<h4 class="text-right">Total <strong>$<label id="portable-total-b"><?php echo $cart->toDec($cart->cartTotal) ?></label></strong></h4>
 													</div>
 													<div class="col-xs-3">
                                                         <a href="/cart.php" type="button" class="btn btn-success btn-block">
