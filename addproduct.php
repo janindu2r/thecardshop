@@ -53,7 +53,7 @@ Product description<textarea name="description" rows="3" cols="35"></textarea><b
 Product price<input type="text" name="pro_price" /><br /><br />
 Selling unit<input type="text" name="sel_unit" /><br /><br />
 
-Initial Stock<input type="number" name="iStock" /><br /><br />
+Initial Stock<input type="number" name="Stock" /><br /><br />
 
 Date Added <input type="date" name="pDate" /><br />
 upload Image<input type="file" name="img" id="fileToUpload" /><br /><br />

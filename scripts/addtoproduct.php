@@ -27,8 +27,8 @@ $variation = mysql_real_escape_string(strip_tags($_POST['var']));
 $virtual = mysql_real_escape_string(strip_tags($_POST['vir']));
 
 
-$iStock = mysql_real_escape_string(strip_tags($_POST['iStock']));
-$cStock = mysql_real_escape_string(strip_tags($_POST['cStock']));
+$iStock = mysql_real_escape_string(strip_tags($_POST['Stock']));
+$cStock = mysql_real_escape_string(strip_tags($_POST['Stock']));
 $date = mysql_real_escape_string(strip_tags($_POST['pDate']));
 $pic_tmp = $_FILES['img']['tmp_name'];
 $pic_name = $_FILES['img']['name'];
@@ -39,7 +39,7 @@ $allowed_type =array( 'image/jpg','image/png');
 
 $object = new Product();
 $del = 0;
-$object = $object->insertValues($shopowner ,$pName,$pTag,$cID,$pPrice,$pDesc,$variation,$virtual,$sell,$cStock,$date,$del);
+$object = $object->insertValues($shopowner ,$pName,$pTag,$cID,$pPrice,$pDesc,$variation,$virtual,$sell,$iStock,$cStock,$date,$del);
 
 
 /*
