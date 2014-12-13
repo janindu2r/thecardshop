@@ -20,19 +20,41 @@ class User
 	protected $negrep;
 	protected $email;
 
-	/*function __construct(argument)
-	{
-		# code...
-	}`*/
+    private $db;
 
-	//start of getters and setters
-	
-	public static function validateUserName($string)
+    function __construct()
+    {
+        $this->db = new DbCon();
+    }
+
+    function validateEmail($string){
+        $chars =  htmlspecialchars($string);
+        if($chars != $string)
+            return false;
+        else {
+            $val = $this->db->getScalar("SELECT COUNT(email)FROM account WHERE email =  ". $this->db->escapeString($string));
+            if(!$val)
+                return true;
+            else
+                return false;
+        }
+    }
+
+	function validateUserName($string) //Ajax validation upon user registration
 	{
-		//Ajax validation upon user registration
+        $chars =  htmlspecialchars($string);
+        if($chars != $string)
+            return false;
+        else {
+            $val = $this->db->getScalar("SELECT COUNT(display_name) FROM account WHERE display_name =  ". $this->db->escapeString($string));
+            if(!$val)
+                return true;
+            else
+                return false;
+        }
 	}
 	
-	function getprofile()   //used in header.php 
+	function getProfile()   //used in header.php
 	{
 		return $this->fname.' '.$this->lname;
 	}
@@ -104,16 +126,15 @@ class User
 
 	function login($disp, $pass)
 	{
-		$query = sprintf("SELECT * FROM account WHERE  (display_name='%s' or email='%s') and password='%s' and verified = 1",$disp, $disp, $pass);		
-		$dbcon = new DbCon();
-		$result= $dbcon->getFirstRow($query);
+		$query = sprintf("SELECT * FROM account WHERE  (display_name='%s' or email='%s') and password='%s' and verified = 1",$disp, $disp, $pass);
+		$result= $this->db->getFirstRow($query);
 		if($result != 0)
 		{
 			$this->regID = $result['reg_id'];
 			$this->dispName = $result['display_name'];
 			$this->password = $result['password'];
 			$this->email = $result['email'];
-			$udetails = $dbcon->getFirstRow("select * from user where reg_id =".$this->regID);
+			$udetails = $this->db->getFirstRow("select * from user where reg_id =".$this->regID);
 			$this->fname = $udetails['fname'];
 			$this->lname = $udetails['lname'];
 			return 1;			
@@ -129,9 +150,7 @@ class User
 
 	function registration($tbl, $details)
 	{
-		$con = new DbCon();
-
-		$result = $con->runInsertRecord($tbl, $details);
+		$result = $this->db->runInsertRecord($tbl, $details);
 /*
 		if($result)
 			header('Location:  confirm.php');
@@ -141,8 +160,7 @@ class User
 
 	function updateDetails($details, $clause)
 	{
-		$dbcon = new DbCon();
-		$result = $dbcon->runUpdateRecord('user', $details, $clause);
+		$result = $this->db->runUpdateRecord('user', $details, $clause);
 
 		if($result != 0)
 		{

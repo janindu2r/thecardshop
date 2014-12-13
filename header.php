@@ -151,7 +151,7 @@
 		      <ul class="nav navbar-nav navbar-right">
               <?php if($logged == 1) { ?>
 		      	<li class="dropdown">
-		      		<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user pull-left"></span><span class="user-name-style"> <?php echo $user->getprofile() ?></span> <span class="sr-only">(current)</span></a>
+		      		<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user pull-left"></span><span class="user-name-style"> <?php echo $user->getProfile() ?></span> <span class="sr-only">(current)</span></a>
 		      		<ul class="dropdown-menu">
 			            <li><a href="/dashboard.php">Account Settings <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
 			            <li class="divider"></li>
