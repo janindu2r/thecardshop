@@ -72,7 +72,7 @@ $title = 'Sign Up' ;  // page title
             </div>
             <div class="row">
                 <div class="col-xs-11 col-md-11">
-                    <input class="form-control" id="normpass" name="password" placeholder="Password" type="password" />
+                    <input class="form-control" name="password" placeholder="Password" type="password" />
                 </div>
                 <div class="col-xs-1 col-md-1">
                     <img id="" src="">
@@ -139,34 +139,13 @@ $title = 'Sign Up' ;  // page title
 
 
     <script type="text/javascript">
-/*
+
         $(document).ready(function() {
             var successimg = "/img/bullets/valid.png";
             var failimg = "/img/bullets/invalid.png";
 
-            $('#usermail').keydown(function () {
-                alert(this.text());
-                var dataString = "uname = " + this.text();
-                alert(dataString);
-                $.ajax({
-                    type: "POST",
-                    url: "/scripts/unamecheck.php",
-                    data: dataString,
-                    cache: false,
-                    success: function (result) {
-                        var valid = parseInt(result);
-                        if (valid == 1) {
-                            alert('um');
-                            $("#usermailmsg").attr("src", successimg).fadeIn(50);
-                        }
-                        else
-                            $("#usermailmsg").hide().attr("src", $(this).data(failimg)).stop().fadeIn(50);
-                    }
-                });
-            });
-
-            $('#username').keydown(function () {
-                var dataString = "email = " + this.text();
+            $('#username').change(function () {
+                var dataString = 'uname=' + this.value;
                 $.ajax({
                     type: "POST",
                     url: "/scripts/unamecheck.php",
@@ -175,32 +154,55 @@ $title = 'Sign Up' ;  // page title
                     success: function (result) {
                         var valid = parseInt(result);
                         if (valid == 1)
-                            $("#usernamemsg").hide().attr("src", $(this).data(successimg)).stop().fadeIn(50);
+                            $("#usernamemsg").attr("src", successimg).fadeIn(40000);
                         else
-                            $("#usernamemsg").hide().attr("src", $(this).data(failimg)).stop().fadeIn(50);
+                            $("#usernamemsg").attr("src", failimg).fadeIn(40000);
                     }
                 });
             });
 
+            $('#usermail').change(function () {
+                var dataString = 'email=' + this.value ;
+                $.ajax({
+                    type: "POST",
+                    url: "/scripts/unamecheck.php",
+                    data: dataString,
+                    cache: false,
+                    success: function (result) {
+                        var valid = parseInt(result);
+                        if (valid == 1)
+                            $("#usermailmsg").attr("src", successimg).fadeIn(40000);
+                        else
+                            $("#usermailmsg").attr("src", failimg).fadeIn(40000);
+                    }
+                });
+            });
+
+
+
            $('#checkmail').change(function () {
-               alert(document.getElementById("#usermail").value);
-            //   alert($('#usermail').val());
-            /*    if (this.value == $('#usermail').text())
-                    $("#checkmailmsg").src =  successimg;
-                else
-                    $("#checkmailmsg").src =  failimg;
+               var newval = document.getElementsByName('email')[0].value;
+               if (this.value.toString() == newval.toString())
+                   $("#checkmailmsg").attr("src", successimg).fadeIn(40000);
+               else if(this.value.toString() == "")
+                   $("#checkmailmsg").attr("src", '').fadeIn(40000);
+               else
+                   $("#checkmailmsg").attr("src", failimg).fadeIn(40000);
             });
 
 
-            $('#checkpass').keydown(function () {
-                if (this.text() == $('#normpass').text())
-                    $("#checkpassmsg").hide().attr("src", $(this).data(successimg)).stop().fadeIn(50);
+            $('#checkpass').change(function () {
+                var newval = document.getElementsByName('password')[0].value;
+                if (this.value.toString() == newval.toString())
+                    $("#checkpassmsg").attr("src", successimg).fadeIn(40000);
+                else if(this.value.toString() == "")
+                    $("#checkpassmsg").attr("src", '').fadeIn(40000);
                 else
-                    $("#checkpassmsg").hide().attr("src", $(this).data(failimg)).stop().fadeIn(50);
-
+                    $("#checkpassmsg").attr("src", failimg).fadeIn(40000);
             });
 
-        });*/
+
+        });
 
     </script>
 

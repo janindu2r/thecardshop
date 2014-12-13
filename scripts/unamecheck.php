@@ -5,26 +5,30 @@
 	Date: 2014/11/14
 */
 
-include('/internal.php');
+include($_SERVER['DOCUMENT_ROOT'].'/internal.php');
 
 $user = new User();
 
 if($_POST) {
 
-    if ($_POST['uname']) {
-        $valid = $user->validateUserName($_POST['uname']);
-        if($valid)
-            echo 1;
-        else
-            echo 0;
-    }
-
-    if ($_POST['email']) {
-        $valid = $user->validateEmail($_POST['email']);
-        if($valid)
-            echo 1;
-        else
-            echo 0;
+    foreach($_POST as $key => $val)
+    {
+        switch ($key) {
+            case "uname":
+                $valid = $user->validateUserName($val);
+                if ($valid)
+                    echo 1;
+                else
+                    echo 0;
+                break;
+            case "email";
+                $valid = $user->validateEmail($val);
+                if($valid)
+                    echo 1;
+                else
+                    echo 0;
+                break;
+        }
     }
 }
 

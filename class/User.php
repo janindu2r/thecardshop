@@ -33,7 +33,7 @@ class User
             return false;
         else {
             $val = $this->db->getScalar("SELECT COUNT(email)FROM account WHERE email =  ". $this->db->escapeString($string));
-            if(!$val)
+            if($val == 0)
                 return true;
             else
                 return false;
@@ -47,7 +47,7 @@ class User
             return false;
         else {
             $val = $this->db->getScalar("SELECT COUNT(display_name) FROM account WHERE display_name =  ". $this->db->escapeString($string));
-            if(!$val)
+            if($val == 0)
                 return true;
             else
                 return false;
