@@ -24,6 +24,8 @@ function __construct()
 	
 }
 
+
+
  public function initializeProduct(array $prodArray)
  {
 	 	$this->prodId = $prodArray['product_id'];

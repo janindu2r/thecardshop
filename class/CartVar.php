@@ -123,12 +123,13 @@ class CartVar extends CartProd{
     function getPortableVariationItem()
     {
         $shipping = $this->calculateShippingCost();
+        $shipPrice = number_format($shipping, 2, '.', '');
         $desc = '<b>Variation</b><br>';
 
         foreach($this->cartVGroup as $k => $v)
             $desc .=  '<i>' .$k . '</i> ' . $v .'<br>';
 
-        $desc .= '<i>Shipping</i> $'. number_format($shipping, 2, '.', '');
+        $desc .= '<i>Shipping</i> $'.  $shipPrice;
 
         $itemHtml = '<div class="row"> <div class="col-xs-2"> <img class="img-responsive" src="/content/products/prodthumbnail/' ;
         $itemHtml .=  $this->cProduct->prodId.'.jpg"> </div><div class="col-xs-4"> <h4 class="product-name"><strong>' ;
@@ -143,6 +144,39 @@ class CartVar extends CartProd{
         return $itemHtml;
 
     }
+
+    function getStaticVarCartItem()
+    {
+        $shipping = $this->calculateShippingCost();
+        $shipPrice = number_format($shipping, 2, '.', '');
+
+        $desc = '<div style="font-size: 0.9em; color: #34495e; padding: 5px"><small></small><b>Variation</b><br>';
+
+        foreach($this->cartVGroup as $k => $v)
+            $desc .=  '<i>' .$k . '</i> ' . $v .'<br>';
+
+        $desc .= '</small></div>';
+
+        $itemHtml = '<tr><td class="col-sm-8 col-md-6"><div class="media"><a class="thumbnail pull-left"id="cart-picture" style="width: 72px; height: 72px;"  href="/viewproduct.php?product=';
+        $itemHtml .=  $this->cProduct->prodId . '"><img class="media-object" src="/content/products/prodthumbnail/'. $this->cProduct->prodId .'.jpg"></a>';
+        $itemHtml .= '<div class="media-body"><h4 class="media-heading"><a href="/viewproduct.php?product=';
+        $itemHtml .=  $this->cProduct->prodId . '">'.$this->cProduct->proName;
+        $itemHtml .= '</a></h4><h5 class="media-heading"> by <a href="#">'.   /*$this->cProduct->getShopName()*/ 'sth' .'</a></h5>' ;
+        $itemHtml .= '<span>Status: </span><span class="text-success"><strong>'. $this->cProduct->cuStock .' out of ';
+        $itemHtml .= $this->cProduct->inStock . ' available </strong></span>'. $desc .'</div></div></td><td class="col-sm-1" style="text-align: center">' ;
+        $itemHtml .= '<input type="number" class="form-control input-sm output-qty-cart" id="1-'. $this->groupId.'" value="';
+        $itemHtml .= $this->quantity. '" min="1" max="999"></td><td class="col-sm-1 col-md-1 text-right"><strong>$';
+        $itemHtml .= $this->cProduct->proPrice . '</strong></td><td class="col-sm-1 col-md-1 text-right"><strong>$';
+        $itemHtml .= $shipPrice .'</strong></td><td class="col-sm-1 col-md-1 text-right"><strong>$';
+        $itemHtml .= $this->calculateEachItemPrice() . '</strong></td><td class="col-sm-1 col-md-1 text-right"><button type="button"';
+        $itemHtml .= 'class="btn btn-sm btn-danger delete-cart-itm" id="1-'. $this->groupId .'"><span class="glyphicon glyphicon-remove"></span>';
+        $itemHtml .= '</button></td></tr>';
+
+        return $itemHtml;
+    }
+
+
+
 
 }
 

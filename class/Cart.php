@@ -72,13 +72,30 @@ class Cart
                 if(substr($id,0,1) == '1')
                     $fullHtmlString .= $this->varProds[$rId]->getPortableVariationItem();
                 else
-                    $fullHtmlString .= $this->simpleProds[$rId]->getSimplePortableCartHtml();
+                    $fullHtmlString .= $this->simpleProds[$rId]->getPortableSimpleCartItem();
             }
             return $fullHtmlString;
         }
         else
-            return "<lable id='empty-lbl'>Cart Is Empty</lable>";
+            return "<label id='empty-lbl'>Cart Is Empty</label>";
 	}
+
+    function getCompleteStaticCart(){
+        $fullHtmlString = '';
+        if($this->cartOrder){
+            arsort($this->cartOrder); //sort by date added. Combine html strings together
+            foreach($this->cartOrder as $id => $val) {
+                $rId = substr($id,1);
+                if(substr($id,0,1) == '1')
+                    $fullHtmlString .= $this->varProds[$rId]->getStaticVarCartItem();
+                else
+                    $fullHtmlString .= $this->simpleProds[$rId]->getStaticSimpleCartItem();
+            }
+            return $fullHtmlString;
+        }
+        else
+            return "<label id='empty-lbl'>Cart Is Empty</label>";
+    }
 
     function sortCart(){
         arsort($this->cartOrder);
