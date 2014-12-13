@@ -167,9 +167,9 @@
 		        <li class="dropdown-cart">
 		        	<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-shopping-cart"></i><span class="cart-text">$
                             <lable id="portable-total-a"><?php echo  number_format($cart->cartTotal, 2, '.', ''); ?></lable></span></a>
-		        		<ul class="dropdown-menu">
+		        		<ul class="dropdown-menu" style="width: 570px">
 								<div class="row">
-									<div class="col-md-13">
+									<div class="col-md-12">
 										<div class="panel panel-info">
 											<div class="panel-heading">
 												<div class="panel-title">
@@ -177,8 +177,8 @@
 														<div class="col-xs-6">
 															<h5><span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart</h5>
 														</div>
-														<div class="col-xs-7">
-															<a href="/cart.php"type="button" class="btn btn-primary btn-sm btn-block">
+														<div class="col-xs-6">
+															<a href="/cart.php"type="button" class="btn btn-primary btn-md btn-block">
 																<span class="glyphicon glyphicon-share-alt"></span> Continue shopping
 															</a>
 														</div>
@@ -240,7 +240,7 @@
 											</div>
 											<div class="panel-footer">
 												<div class="row text-center">
-													<div class="col-xs-4">
+													<div class="col-xs-3">
                                                             <button type="button" class="btn btn-default btn-block" id="update-portable-cart">
                                                                 Update Cart
                                                             </button>

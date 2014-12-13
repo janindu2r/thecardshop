@@ -134,11 +134,11 @@ class CartVar extends CartProd{
         $itemHtml .=  $this->cProduct->prodId.'.jpg"> </div><div class="col-xs-4"> <h4 class="product-name"><strong>' ;
         $itemHtml .= '<a href="/viewproduct.php?product=' . $this->cProduct->prodId . '">';
         $itemHtml .= $this->cProduct->proName.'</a></strong></h4><h4><small> ' .  $desc ;
-        $itemHtml .= '</small></h4> </div> <div class="col-xs-6"> <div class="col-xs-6 text-right"> <h6><strong>';
+        $itemHtml .= '</small></h4> </div> <div class="col-xs-5"> <div class="col-xs-5 text-right"> <h6><strong>';
         $itemHtml .= $this->cProduct->proPrice . '<span class="text-muted">x</span></strong></h6> </div> <div class="col-xs-5">' ;
-        $itemHtml .= '<input type="number" class="form-control input-sm output-qty-cart " id="1-'. $this->groupId.'" value="';
+        $itemHtml .= '<input type="number" class="form-control input-sm output-qty-cart" id="1-'. $this->groupId.'" value="';
         $itemHtml .= $this->quantity. '" min="1" max="999"> </div> ' ;
-        $itemHtml .= '<div class="col-xs-2"> <button type="button" class="btn btn-link btn-xs delete-cart-itm" id="1-'. $this->groupId ;
+        $itemHtml .= '<div class="col-xs-1"> <button type="button" class="btn btn-link btn-xs delete-cart-itm" id="1-'. $this->groupId ;
         $itemHtml .= '"><span class="glyphicon glyphicon-trash"> </span> </button> </div> </div> </div> <hr>' ;
         return $itemHtml;
 

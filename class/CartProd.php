@@ -91,16 +91,17 @@ class CartProd{
     function getSimplePortableCartHtml()
     {
         $shipping = $this->calculateShippingCost();
+        $desc = '<i>Shipping</i> $'. number_format($shipping, 2, '.', '');
 
         $itemHtml = '<div class="row"> <div class="col-xs-2"> <img class="img-responsive" src="/content/products/prodthumbnail/' ;
-        $itemHtml .=  $this->cProduct->prodId.'.jpg"> </div><div class="col-md-4"> <h4 class="product-name"><strong>' ;
+        $itemHtml .=  $this->cProduct->prodId.'.jpg"> </div><div class="col-xs-4"> <h4 class="product-name"><strong>' ;
         $itemHtml .= '<a href="/viewproduct.php?product=' . $this->cProduct->prodId . '">';
-        $itemHtml .= $this->cProduct->proName.'</a></strong></h4><h4><small><i>Shipping</i> $'. number_format($shipping, 2, '.', '') ;
-        $itemHtml .= '</small></h4> </div> <div class="col-xs-6"> <div class="col-xs-6 text-right"> <h6><strong>';
+        $itemHtml .= $this->cProduct->proName.'</a></strong></h4><h4><small> ' .  $desc ;
+        $itemHtml .= '</small></h4> </div> <div class="col-xs-5"> <div class="col-xs-5 text-right"> <h6><strong>';
         $itemHtml .= $this->cProduct->proPrice . '<span class="text-muted">x</span></strong></h6> </div> <div class="col-xs-5">' ;
         $itemHtml .= '<input type="number" class="form-control input-sm output-qty-cart" id="0-'. $this->cProduct->prodId.'" value="';
         $itemHtml .= $this->quantity. '" min="1" max="999"> </div> ' ;
-        $itemHtml .= '<div class="col-xs-2"> <button type="button" class="btn btn-link btn-xs delete-cart-itm" id="0-'. $this->cProduct->prodId ;
+        $itemHtml .= '<div class="col-xs-1"> <button type="button" class="btn btn-link btn-xs delete-cart-itm" id="0-'. $this->cProduct->prodId ;
         $itemHtml .= '"><span class="glyphicon glyphicon-trash"> </span> </button> </div> </div> </div> <hr>' ;
         return $itemHtml;
     }
