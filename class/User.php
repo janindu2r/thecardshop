@@ -11,14 +11,18 @@ class User
 	protected $regID;
 	protected $dispName;
 	protected $password;
-	protected $address;
-	protected $gender;
-	protected $dob;
-	protected $fname;
-	protected $lname;
-	protected $posrep;
-	protected $negrep;
-	protected $email;
+    protected $gender;
+    private $dob;
+    public $fName;
+    public $lName;
+	public $addressL1;
+    public  $addressL2;
+    public  $addressL3;
+    public  $postalCode;
+    public  $posRep;
+    public  $negRep;
+    public  $email;
+    public $shop;
 
     private $db;
 
@@ -26,6 +30,7 @@ class User
     {
         $this->db = new DbCon();
     }
+
 
     function validateEmail($string){
         $chars =  htmlspecialchars($string);
@@ -56,7 +61,7 @@ class User
 	
 	function getProfile()   //used in header.php
 	{
-		return $this->fname.' '.$this->lname;
+		return $this->fName.' '.$this->lName;
 	}
 	
 	function setRegID($id)
@@ -86,23 +91,6 @@ class User
 		return $this->password;
 	}
 
-	function setAddress($add)
-	{
-		$this->address = $add;
-	}
-	function getAddress()
-	{
-		return $this->address;
-	}
-
-	function setCountry($count)
-	{
-		$this->country = $count;
-	}
-	function getCountry()
-	{
-		return $this->country;
-	}
 
 	function setGender($gend)
 	{
@@ -122,6 +110,14 @@ class User
 		return $this->dob;
 	}
 
+    function getAge()
+    {
+        $birthDate = explode("-", $this->dob);
+        $today =  explode("-", date("Y-m-d"));
+        $age = intval($today[0]) - intval($birthDate[0]);
+        return $age;
+    }
+
 	//end of getters and setters
 
 	function login($disp, $pass)
@@ -130,23 +126,34 @@ class User
 		$result= $this->db->getFirstRow($query);
 		if($result != 0)
 		{
-			$this->regID = $result['reg_id'];
-			$this->dispName = $result['display_name'];
-			$this->password = $result['password'];
-			$this->email = $result['email'];
-			$udetails = $this->db->getFirstRow("select * from user where reg_id =".$this->regID);
-			$this->fname = $udetails['fname'];
-			$this->lname = $udetails['lname'];
-			return 1;			
-			//initiate rest of the variables
+			$this->initializeUser($result);
+            return 1;
 		}
 		else
 		{
-			//handle return on index.php (redirect to login page)
 			return 0;
 		}
-
 	}
+
+    function initializeUser($result)
+    {
+        $this->regID = $result['reg_id'];
+        $this->dispName = $result['display_name'];
+        $this->password = $result['password'];
+        $this->email = $result['email'];
+        $uDetails = $this->db->getFirstRow("select * from user where reg_id =". $this->regID);
+        $this->fName = $uDetails['fname'];
+        $this->lName = $uDetails['lname'];
+        $this->dob = $uDetails['date_of_birth'];
+        $this->gender = $uDetails['gender'];
+        $this->addressL1 = $uDetails['deflt_billin_addl1'];
+        $this->addressL2 = $uDetails['deflt_billin_addl2'];
+        $this->addressL3 = $uDetails['deflt_billin_addl3'];
+        $this->postalCode = $uDetails['postal_code'];
+        $this->posRep = $uDetails['pos_rep_pnts'];
+        $this->negRep = $uDetails['neg_rep_pnts'];
+    }
+
 
     private function getEmail($regId, $userFullName){
 
@@ -169,6 +176,9 @@ class User
     {
         $mailSuccess = false;
         $accDetails['verified'] = 0;
+        $accDetails['registration_dnt'] =  date("Y-m-d");
+
+        echo $this->db->getInsertSql('account', $accDetails);
 
         $getId = $this->db->runInsertAndGetID('account', $accDetails);
 
@@ -176,6 +186,8 @@ class User
         $userDetails['reg_id'] = $getId;
         $userDetails['pos_rep_pnts'] = 0;
         $userDetails['neg_rep_pnts'] = 0;
+
+            echo $this->db->getInsertSql('user', $userDetails);
 
         $success = $this->db->runInsertRecord('user', $userDetails);
 
@@ -190,6 +202,9 @@ class User
 
         return $mailSuccess . $this->getEmail($getId,$fullName);
     }
+
+
+
 
 	function updateDetails($details, $clause)
 	{
