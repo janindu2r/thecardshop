@@ -27,6 +27,11 @@ class User
 
 	//start of getters and setters
 	
+	public static function validateUserName($string)
+	{
+		//Ajax validation upon user registration
+	}
+	
 	function getprofile()   //used in header.php 
 	{
 		return $this->fname.' '.$this->lname;
