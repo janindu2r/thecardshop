@@ -3,6 +3,9 @@
 include('overhead.php');
 $title = 'Activate Shop' ;  // page title
 
+if($user->shop)
+    
+
 
 ?>
 <!---------------------------------------- Header Start, Do not touch ------------------------------------------->
@@ -39,6 +42,7 @@ $title = 'Activate Shop' ;  // page title
                         <option value="ANU">Anuradhapura</option>
                         <option value="KAN">Kandy</option>
                         <option value="NEG">Negombo</option>
+                        <option value="RAT">Ratnapura</option>
                     </select>
                 </div>                
             </div>
@@ -58,14 +62,15 @@ $title = 'Activate Shop' ;  // page title
                     </select>
                 </div>                
             </div>
-            <label><input class="character-checkbox" name="money" type="checkbox" value="">   Money back guarantee available</label> <br/> <br/><br /><br />
+            <label><input class="character-checkbox" name="moneyback" type="checkbox" value="">   Money back guarantee available</label> <br/> <br/><br /><br />
 
 
             <legend><i class="glyphicon glyphicon-picture"></i> Theme your Shop</legend>
             <label for="#scheme">Choose your color theme</label> &nbsp;&nbsp;&nbsp;&nbsp; <input type="color" name="colorscheme" id="scheme"> <br/><br/><br/><br/>
 
             <legend><i class="glyphicon glyphicon-shopping-cart"></i> Add your Payment Details</legend>
-            <input class="form-control" name="payment" placeholder="Paypal link" type="text" /><br/><br/><br/>
+            <input class="form-control" name="paypalemail" placeholder="Paypal Email" type="text" />
+            <input class="form-control" name="paypaltoken" placeholder="Paypal Token" type="text" /><br/><br/><br/>
 
             <button class="btn btn-lg btn-primary btn-block" type="submit">
                 Create Shop</button>
