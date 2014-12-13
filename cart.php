@@ -32,7 +32,7 @@ $title = 'Cart' ;  // page title
                     <tr>
                         <td class="col-sm-1 col-md-1">
                             <button type="button" class="btn btn-danger">
-                                <span class="glyphicon glyphicon-trash"></span>
+                                <span class="glyphicon glyphicon-remove"></span>
                             </button></td>
                         <td class="col-sm-8 col-md-6">
                         <div class="media">
@@ -54,7 +54,7 @@ $title = 'Cart' ;  // page title
                     <tr>
                         <td class="col-sm-1 col-md-1">
                             <button type="button" class="btn btn-danger">
-                                <span class="glyphicon glyphicon-trash"></span>
+                                <span class="glyphicon glyphicon-remove"></span>
                             </button></td>
                         <td class="col-md-6">
                         <div class="media">
