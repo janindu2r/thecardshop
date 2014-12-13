@@ -161,6 +161,13 @@ public function getProductId($pName)
 	
 }
 
+function getShopName()
+{
+$shopName = $this->db->getScalar("select shop_name from shops where shop_id = ". $this->shopId);
+return $shopName;
+}
+
+
 
 }
 

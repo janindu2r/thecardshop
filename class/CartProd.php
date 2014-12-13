@@ -110,26 +110,30 @@ class CartProd{
     function getStaticSimpleCartItem()
     {
         $shipping = $this->calculateShippingCost();
-        $shipPrice = number_format($shipping, 2, '.', '');
+        $itemTotal = $this->toDec($this->calculateEachItemPrice());
+        $shipPrice = $this->toDec($shipping);
 
         $itemHtml = '<tr><td class="col-sm-8 col-md-6"><div class="media"><a class="thumbnail pull-left" id="cart-picture" style="width: 72px; height: 72px;" href="/viewproduct.php?product=';
         $itemHtml .=  $this->cProduct->prodId . '"><img class="media-object" src="/content/products/prodthumbnail/'. $this->cProduct->prodId .'.jpg"></a>';
         $itemHtml .= '<div class="media-body"><h4 class="media-heading"><a href="/viewproduct.php?product=';
         $itemHtml .=  $this->cProduct->prodId . '">'.$this->cProduct->proName;
-        $itemHtml .= '</a></h4><h5 class="media-heading"> by <a href="#">'. /*$this->cProduct->getShopName()*/ 'sth' .'</a></h5>' ;
-        $itemHtml .= '<span>Status: </span><span class="text-success"><strong>'. $this->cProduct->cuStock .' out of ';
-        $itemHtml .= $this->cProduct->inStock . ' available </strong></span></div></div></td><td class="col-sm-1" style="text-align: center">' ;
+        $itemHtml .= '</a></h4><h5 class="media-heading"> by <a href="#">'. $this->cProduct->getShopName() .'</a></h5>' ;
+        $itemHtml .= '<span class="text-success"><strong>'. $this->cProduct->cuStock .' out of ';
+        $itemHtml .= $this->cProduct->inStock . ' available</strong></span></div></div></td><td class="col-sm-1" style="text-align: center">' ;
         $itemHtml .= '<input type="number" class="form-control input-sm output-qty-cart" id="0-'. $this->cProduct->prodId.'" value="';
-        $itemHtml .= $this->quantity. '" min="1" max="999"></td><td class="col-sm-1 col-md-1 text-right"><strong>$';
-        $itemHtml .= $this->cProduct->proPrice . '</strong></td><td class="col-sm-1 col-md-1 text-right"><strong>$';
+        $itemHtml .= $this->quantity. '" min="1" max="999"></td><td class="col-sm-1 col-md-1 text-right">$';
+        $itemHtml .= $this->cProduct->proPrice . '</td><td class="col-sm-1 col-md-1 text-right">$';
         $itemHtml .= $shipPrice .'</strong></td><td class="col-sm-1 col-md-1 text-right"><strong>$';
-        $itemHtml .= $this->calculateEachItemPrice() . '</strong></td><td class="col-sm-1 col-md-1 text-right"><button type="button"';
+        $itemHtml .= $itemTotal . '</td><td class="col-sm-1 col-md-1 text-right"><button type="button"';
         $itemHtml .= 'class="btn btn-sm btn-danger delete-cart-itm" id="0-'. $this->cProduct->prodId . '"><span class="glyphicon glyphicon-remove"></span>';
         $itemHtml .= '</button></td></tr>';
 
         return $itemHtml;
     }
 
+    function toDec($val){
+        return number_format($val, 2, '.', '');
+    }
 
     function calculateShippingCost()
     {
@@ -144,7 +148,13 @@ class CartProd{
     }
 
     function calculateEachItemPrice(){
-        return floatval($this->cProduct->proPrice) * floatval($this->quantity);
+        $val = floatval($this->cProduct->proPrice) * floatval($this->quantity);
+        return round($val,2);
+    }
+
+    function calculateEachWithShipping(){
+        $val = $this->calculateEachItemPrice() + $this->calculateShippingCost();
+        return round($val,2);
     }
 
     function calculateFullItemPrice()

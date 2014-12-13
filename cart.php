@@ -31,21 +31,19 @@ $title = 'Cart' ;  // page title
 
                 <?php echo $cart->getCompleteStaticCart() ?>
 
-
-
                     <tr>
                         <td colspan="4" class="text-right"><h5>Subtotal</h5></td>
-                        <td class="text-right"><h5><strong>$24.59</strong></h5></td>
+                        <td class="text-right"><h5><strong>$<?php echo $cart->toDec($cart->cartSubTotal)?></strong></h5></td>
                         <td></td>
                     </tr>
                     <tr>
                         <td colspan="4" class="text-right"><h5>Estimated shipping</h5></td>
-                        <td class="text-right"><h5><strong>$6.94</strong></h5></td>
+                        <td class="text-right"><h5><strong>$<?php echo $cart->toDec($cart->cartEstShipping)?></strong></h5></td>
                         <td></td>
                     </tr>
                     <tr>
                         <td colspan="4" class="text-right"><h3>Total</h3></td>
-                        <td class="text-right"><h3><strong>$31.53</strong></h3></td>
+                        <td class="text-right"><h3>$<?php echo $cart->toDec($cart->cartTotal)?></h3></td>
                         <td></td>
                     </tr>
                     <tr>

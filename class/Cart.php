@@ -14,6 +14,8 @@ class Cart
     public $varProds = array();
     public $cartOrder = array();
     public $cartTotal = 0;
+    public $cartSubTotal = 0;
+    public $cartEstShipping = 0;
 	
 	function __construct() {
         $this->db = new DbCon();
@@ -66,7 +68,7 @@ class Cart
 	{
         $fullHtmlString = '';
         if($this->cartOrder){
-            arsort($this->cartOrder); //sort by date added. Combine html strings together
+            $this->sortCart();
             foreach($this->cartOrder as $id => $val) {
                 $rId = substr($id,1);
                 if(substr($id,0,1) == '1')
@@ -83,7 +85,7 @@ class Cart
     function getCompleteStaticCart(){
         $fullHtmlString = '';
         if($this->cartOrder){
-            arsort($this->cartOrder); //sort by date added. Combine html strings together
+            $this->sortCart(); //sort by date added. Combine html strings together
             foreach($this->cartOrder as $id => $val) {
                 $rId = substr($id,1);
                 if(substr($id,0,1) == '1')
@@ -104,6 +106,27 @@ class Cart
 
     function calculateCartTotal()
     {
+        foreach($this->simpleProds as $itm) {
+            $this->cartTotal += floatval($itm->calculateFullItemPrice());
+            $this->cartSubTotal +=  floatval($itm->calculateEachItemPrice());
+            $this->cartEstShipping += floatval($itm->calculateShippingCost());
+        }
+        foreach($this->varProds as $vItm) {
+            $this->cartTotal += floatval($vItm->calculateFullItemPrice());
+            $this->cartSubTotal +=  floatval($vItm->calculateEachItemPrice());
+            $this->cartEstShipping += floatval($vItm->calculateShippingCost());
+        }
+
+        $this->cartTotal = round($this->cartTotal,2);
+    }
+
+    function toDec($val){
+        return number_format($val, 2, '.', '');
+    }
+
+
+    function getFullShipping()
+    {
         foreach($this->simpleProds as $itm)
             $this->cartTotal += floatval($itm->calculateFullItemPrice());
         foreach($this->varProds as $vItm)
@@ -111,7 +134,6 @@ class Cart
 
         $this->cartTotal = round($this->cartTotal,2);
     }
-
 }
 
 ?>
