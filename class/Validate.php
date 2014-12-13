@@ -30,6 +30,27 @@ public static function longText($txtAreaString)
     return $txtAreaString;
 }
 
+    public  function checkEmpty($text)
+    {
+        if(empty($text))
+        {
+            echo"field is empty";
+
+        }
+        else
+            return $text;
+    }
+    public function  checkNumeric($text)
+    {
+        if(is_numeric($text))
+        {
+            return $text;
+        }
+        else
+            echo"enter a number";
+    }
+
+
 
 }
 
