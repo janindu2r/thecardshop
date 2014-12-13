@@ -126,7 +126,7 @@ class User
 
 	function login($disp, $pass)
 	{
-		$query = sprintf("SELECT * FROM account WHERE  (display_name='%s' or email='%s') and password='%s' and verified = 1",$disp, $disp, $pass);
+		$query = sprintf("SELECT * FROM account WHERE  (display_name='%s' or email='%s') and password= md5('%s') and verified = 1",$disp, $disp, $pass);
 		$result= $this->db->getFirstRow($query);
 		if($result != 0)
 		{
@@ -148,15 +148,48 @@ class User
 
 	}
 
-	function registration($tbl, $details)
-	{
-		$result = $this->db->runInsertRecord($tbl, $details);
-/*
-		if($result)
-			header('Location:  confirm.php');
-		else
-			header('Location:  registration.php');*/
-	}
+    private function getEmail($regId, $userFullName){
+
+        $email = '<html><div style="width: 80%; margin: 0 auto; padding: 20px;"><h2>Hello ';
+        $email .= $userFullName .'!</h2><p style="text-align: center; border-radius: 10px; color:#34495e">Welcome to Comercio! ';
+        $email .= 'An online ecommerce platform designed to provide the customer and seller the best online service possible</p><div style="padding: 2em;">';
+        $email .= '<a title="Activate" style="text-decoration: none; color:#FFFFFF; padding: 1em 1.5em 1em 1.5em; border-radius: 0.5em; font-size: 1.2em; background-color: #557da1;"';
+        $email .= 'href="http://comerciotest.com/activation.php?confirm='. md5((string)$regId) ;
+        $email .= '">Activate Your Account</a></div></div></html>';
+
+        return $email;
+    }
+
+    private function reeval($str)
+    {
+        return substr($str, 1, strlen($str)-2);
+    }
+
+    function registration(array $accDetails,array $userDetails)
+    {
+        $mailSuccess = false;
+        $accDetails['verified'] = 0;
+
+        $getId = $this->db->runInsertAndGetID('account', $accDetails);
+
+        if ($getId) {
+        $userDetails['reg_id'] = $getId;
+        $userDetails['pos_rep_pnts'] = 0;
+        $userDetails['neg_rep_pnts'] = 0;
+
+        $success = $this->db->runInsertRecord('user', $userDetails);
+
+            if($success) {
+                $to = $this->reeval($accDetails['email']);
+                $regMail = new Email();
+                $fullName = $this->reeval($userDetails['fname']) . ' ' . $this->reeval($userDetails['lname']);
+                $mailSuccess = $regMail->sendMail($to, 'Registration', 'Welcome to Comercio', $this->getEmail($getId, $fullName));
+            }
+        }
+
+
+        return $mailSuccess . $this->getEmail($getId,$fullName);
+    }
 
 	function updateDetails($details, $clause)
 	{

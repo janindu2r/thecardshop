@@ -121,7 +121,7 @@ class DbCon
 	
 	
 	/* Private Function : update sql statement  */    
-	private function getUpdateSql($tableName, $setValues, $whereClause ) 
+	private function getUpdateSql($tableName, $setValues, $whereClause )
 	{
 		$dbSetVals = "";
 		
@@ -148,7 +148,7 @@ class DbCon
 	$whereClause --> Everything the sql condition must check (eg: field1 = value1 AND field2 = value2 OR field3 = value3)
 	 */
 	function runUpdateOneValue($tableName, $updateField, $whereClause){		
-		$sql = "UPDATE ". $tableName . " SET ".  $updateField . " WHERE " . $whereClause; 
+		$sql = "UPDATE ". $tableName . " SET ".  $updateField . " WHERE " . $whereClause;
 		$result = $this->runNonQuery($sql);
 		return $result;	
 	}
