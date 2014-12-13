@@ -79,7 +79,7 @@ function __construct()
 	 
  }
 
- public function insertValues($sId,$pTitle,$pTag,$cId,$pPrice,$pDesc,$pVartns,$pVirtual,$pSelUnits,$Stock,$pDate,$pDel)
+ public function insertValues($sId,$pTitle,$pTag,$cId,$pPrice,$pDesc,$pVartns,$pVirtual,$pSelUnits,$Stock,$pDel)
  {
 	// $asscArry['product_id'] = $this->db->escapeString($pId);
 	 $asscArry['shop_id'] = $this->db->escapeString($sId);
@@ -96,7 +96,7 @@ function __construct()
 	$asscArry['initial_stck'] = $this->db->escapeString($Stock);
 	$asscArry['current_stck'] =$this->db->escapeString($Stock);
 	
-	$asscArry['date_added'] = $this->db->escapeString($pDate);
+	$asscArry['date_added'] = date('Y-m-d');
 	$asscArry['deleted'] = $this->db->escapeString($pDel);
 	
 	return $this->addProduct($asscArry);

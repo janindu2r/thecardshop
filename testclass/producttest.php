@@ -47,7 +47,7 @@ echo "coudnt update try again"."<br>";
 //adding data
 
 $add = new product();
-$insert = $add->insertValues("10006","nika","3ed","5","234","rica","1","0","500","30","2014-12-28","1");
+$insert = $add->insertValues("10007","roseberry","3ed","6","300","ribs","1","0","500","30","1");
 if($insert)
 {
 	print_r($insert)."<br>";
@@ -75,7 +75,7 @@ echo $result->prodId;
 
 //calling the getShopname function
 $anthrObj = new Product();
-(string)$val = $anthrObj->getShopName(10000);
+$val = $anthrObj->getShopName();
 echo $val;
 
 ?>

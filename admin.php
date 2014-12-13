@@ -141,7 +141,7 @@ $title = 'Administrator Dashboard' ;  // page title
                       
                       
                       <?php
-					  $sql = "select category_id from categories";
+					  $sql = "select category_id from products";
 					  $res = mysql_query($sql);
 					  while($list = mysql_fetch_assoc($res))
 					  {
@@ -152,6 +152,16 @@ $title = 'Administrator Dashboard' ;  // page title
 					  
 					  
 					  ?>
+                      <?php
+
+                      $sql = "SELECT c.category_id AS id, c.category_name AS name FROM categories c JOIN shop_categories s ON s.category_id = c.category_id WHERE s.shop_id = ";
+                      $sql .=  $user->getRegID();
+
+                      $db = new DbCon();
+                      $arr = $db->getSelectTable($sql); //getting category ids
+
+
+                      ?>
 					  <div class="tab-content col-md-6 col-md-offset-3">
 					    <div role="tabpanel" class="tab-pane active" id="home">...</div>
 					    <div role="tabpanel" class="tab-pane" id="addProduct">
@@ -159,7 +169,7 @@ $title = 'Administrator Dashboard' ;  // page title
 		                    <div class="panel-body">
 			                    <div class="form-group">
                                 
-                                <form name=" addproduct " method="POST" action= " /scripts/addtoproduct.php " enctype="multipart/form-data" >
+                                <form name=" addproduct " method="POST" action= " /scripts/addtoproduct.php " enctype=" multipart/form-data" >
 			                        <label for="#">Product Name</label>
 			                        <input type="text" class="form-control" id="" placeholder="Shop john26769">
 			                    </div>
@@ -193,6 +203,28 @@ $title = 'Administrator Dashboard' ;  // page title
 						    </select>
 			                    </div>
 			                    <div class="form-group">
+                                    <div class="form-group">
+                                        <label for="#">Shop ID</label>
+
+                                        <!-- <input type="text" class="form-control" id="exampleInputtext1" placeholder="john26769">-->
+
+                                        <select id="shopId" name="shopId" class="form-control">
+                                            <option value="0">Select shop ID</option>
+                                           <!-- <?php
+                                            $array = explode(",",$catId);
+                                            foreach($array as $val)
+                                            {
+                                                ?>
+                                                <option value="<?php echo $val ?>">
+                                                    <?php echo $val;?></option>
+                                            <?php
+
+                                            }
+                                            ?>-->
+
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
 			                       <label class=" control-label" for="radios">Variations </label>
 									  <div class=""> 
 									    <label class="radio-inline" for="radios-0">
@@ -245,7 +277,7 @@ $title = 'Administrator Dashboard' ;  // page title
 			                    
 			      <?php
 				
-function out_errors($error)
+/*function out_errors($error)
 {
 echo'<ul><li>',$error.'</li></ul>';	
 	
@@ -338,8 +370,11 @@ echo"error";
 
 
 
+
+
+
 }
-				  
+		*/
 				  
 				  ?>              
 			                    <div class="form-group pull-right">
