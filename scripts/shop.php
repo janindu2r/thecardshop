@@ -24,7 +24,7 @@ if($_SESSION) {
             $shopDetails['paypal_id_token'] = $db->escapeString($_POST['paypaltoken']);
 
 
-        $sell = new Seller();
+        $sell = new Seller($_SESSION['user']->getRegID());
 
         $logo = 0;
         $slider[0] = 0;

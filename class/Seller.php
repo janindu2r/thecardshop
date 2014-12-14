@@ -21,10 +21,10 @@
         public  $categories = array();
         public $comPath =  '/content/shop/slider/' ;
 
-		function __construct()
+		function __construct($shopId)
 		{
             $this->db = new DbCon();
-            $this->shopId = $_SESSION['user']->getRegID();
+            $this->shopId = $shopId;
             $this->comPath .= $this->shopId;
 		}
 
@@ -87,19 +87,21 @@
             return '10';
         }
 
-        function initiate(){
+        function initiate()
+        {
             $shopDetails = $this->db->getFirstRow("select * from shops where shop_id = " . $this->shopId);
             $this->shopName = $shopDetails['shop_name'];
-            $this->shopDesc =    $shopDetails['shop_desc'];
-            $this->shopLoc =  $shopDetails['shop_base_loc'];
+            $this->shopDesc = $shopDetails['shop_desc'];
+            $this->shopLoc = $shopDetails['shop_base_loc'];
             $this->moneyback = $shopDetails['mony_back_gurantee'];
             $this->paypalEmail = $shopDetails['paypal_acc_email'];
-            $this->posRep =  $shopDetails['pos_rep_pnts'];
-            $this->negRep =  $shopDetails['neg_rep_pnts'];
-        //  $shopDetails['paypal_id_token']
-            $this->logoImg = '/content/shop/logo/'. $this->shopId . '.jpg';
+            $this->posRep = $shopDetails['pos_rep_pnts'];
+            $this->negRep = $shopDetails['neg_rep_pnts'];
+            //  $shopDetails['paypal_id_token']
+            $this->logoImg = '/content/shop/logo/' . $this->shopId . '.jpg';
             $this->getCategories();
             $this->getSliderImages();
+            return $shopDetails;
         }
 
 

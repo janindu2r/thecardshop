@@ -4,7 +4,7 @@ include('/overhead.php');
 
 $title = 'Administrator Dashboard' ;  // page title
 
-$owner = new Seller();
+$owner = new Seller($user->getRegID());
 $owner->initiate();
 
 ?>

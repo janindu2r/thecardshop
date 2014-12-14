@@ -2,15 +2,19 @@
 <?php
 include('overhead.php');
 
-if(!$user->shop) {
-    header('Location:/index.php');
+if($user->shop)
+{
+    $shop = new Seller($user->getRegID());
+    $shop->initiate();
 }
-
-$shop = new Seller();
-if($_GET){
-    $shop->shopId  = $_GET['shop'];
+else if(isset($_GET['shop']))
+{
+    $shop = new Seller($_GET['shop']);
+    if(!$shop->initiate())
+        header('Location:/index.php');
 }
-$shop->initiate();
+else
+        header('Location:/index.php');
 
 $title =  $shop->shopName.' | Comercio' ;  // page title
 

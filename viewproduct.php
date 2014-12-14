@@ -30,7 +30,6 @@ $title = $viewProd->proName. ' | '. $viewfrom ;  // page title
 	<head>
         <link href="/css/gallery.style.css" rel="stylesheet" type="text/css" />  
         <script src="/Gallery/photogallery/jquery-ajax.js"> </script>
-        <script src="/Gallery/photogallery/jquery-ajax.js"> </script> 
         <script src="/Gallery/photogallery/galleria-1.2.9.min.js"></script> 
         <?php include('header.php'); ?>
 <!-- -------------------------------------- Add Page Edits Below ----------------------------------------------- -->    
@@ -45,12 +44,10 @@ $title = $viewProd->proName. ' | '. $viewfrom ;  // page title
 				<div id="imagegallery">
                     <div id="galleria">
                         <img src="/content/products/prodthumbnail/<?php echo $viewProd->prodId ?>.jpg" data-title=""/>
-
                         <!-- multiple images -->
-                        <img src="/Gallery/gallery/1.jpg" data-title=""/>
-                        <img src="/Gallery/gallery/2.jpg" data-title=""/>
-                        <img src="/Gallery/gallery/3.jpg" data-title=""/>
-                        <img src="/Gallery/gallery/4.jpg" data-title=""/>
+                        <?php foreach($viewProd->prodImages as $imSrc)
+                                echo '<img src="/content/products/prodimages/'.$imSrc.'.jpg" data-title=""/>';
+                        ?>
                     </div>
                 </div>
 					

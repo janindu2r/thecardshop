@@ -38,10 +38,12 @@ if($_POST)
 	else
 		header('location: /login.php');	//redirect to login page
 }
- 
-if ($_SESSION) {
-	$logged = 1; 
-	$user = $_SESSION['user'];
-    $cart =  new Cart(); // = $_SESSION['cart'];
+
+if($_SESSION) {
+	if (isset($_SESSION['user'])) {
+		$logged = 1;
+		$user = $_SESSION['user'];
+		$cart = new Cart(); // = $_SESSION['cart'];
+	}
 }
 ?>
