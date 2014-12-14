@@ -1,8 +1,8 @@
 <?php
 
 class Email
-{	
-	private function getCorrectEmail($department)  
+{
+	private function getCorrectEmail($department)
 	{
 		return 'teamelitecomercio@gmail.com';	//Comercio email address
 	}
@@ -13,8 +13,8 @@ class Email
 	
 	function sendMail($to, $department, $subject, $body)
 	{
-		require 'mail/class.phpmailer.php';
-		
+		require_once 'mail/class.phpmailer.php';
+
 		$from =  $this->getCorrectEmail($department);
 		$fromName = $this->getFromName($department);	
 	
@@ -32,8 +32,8 @@ class Email
 		$mailer->MsgHTML($body);
 		$address = $to;
 		$mailer->AddAddress($address, $to);
-		return $mailer->Send(); 
-		
+
+        return $mailer->Send();
 	}
 	
 	function sendSimpleMail($to, $department, $subject, $body){

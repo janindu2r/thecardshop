@@ -1,6 +1,7 @@
 <!-- add session initiation and other similar necessary php stuff below -->
 <?php
-include('overhead.php');
+include('/overhead.php');
+
 $title = 'Profile | Comercio'  ;  // page title
 
 
@@ -8,8 +9,8 @@ $title = 'Profile | Comercio'  ;  // page title
 <!-- -------------------------------------- Header Start, Do not touch ----------------------------------------- -->
 <!DOCTYPE html>
 <html>
-	<head>
-        <?php include('header.php'); ?>
+<head>
+    <?php include('header.php'); ?>
 <!-- -------------------------------------- Add Page Edits Below ----------------------------------------------- -->    
 
 <div class="container" id="dasboard-page-body">
@@ -34,35 +35,34 @@ $title = 'Profile | Comercio'  ;  // page title
                     <div class="panel-heading">
                         Account Details
                     </div>
-                    
                     <div class="panel-body">
                     <div class="form-group">
-                        <label for="UserName">First Name</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="john26769">
+                        <label for="FirstName">First Name</label>
+                        <input type="text" class="form-control" id="FirstName" name="fname" value="<?php echo $user->fName ?>" placeholder="john26769">
                     </div>
                     <div class="form-group">
-                        <label for="UserName">Last Name</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="john26769">
+                        <label for="LastName">Last Name</label>
+                        <input type="text" class="form-control" id="LastName" value="<?php echo $user->lName ?>" placeholder="john26769">
                     </div>
                     <div class="form-group">
-                        <label for="UserName">Date of Birth</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="john26769">
+                        <label for="DateOfBirth">Date of Birth</label>
+                        <input type="text" class="form-control" id="DateOfBirth" value="<?php echo $user->getDob() ?>" placeholder="john26769">
                     </div>
                     <div class="form-group">
                         <label for="UserName">Address Line1</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="john26769">
+                        <input type="text" class="form-control" id="exampleInputEmail1" value="<?php echo $user->addressL1 ?>" placeholder="john26769">
                     </div>
                     <div class="form-group">
                         <label for="UserName">Address Line2</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="john26769">
+                        <input type="email" class="form-control" id="exampleInputEmail1" value="<?php echo $user->addressL2 ?>" placeholder="john26769">
                     </div>
                     <div class="form-group">
                         <label for="UserName">Address Line3</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="john26769">
+                        <input type="email" class="form-control" id="exampleInputEmail1"  value="<?php echo $user->addressL3 ?>" placeholder="john26769">
                     </div>
                     <div class="form-group">
                         <label for="UserName">Postal Code</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="john26769">
+                        <input type="email" class="form-control" id="exampleInputEmail1"  value="<?php echo $user->postalCode ?>" placeholder="john26769">
                     </div>
                     
                     <div class="form-group pull-right">
@@ -81,11 +81,11 @@ $title = 'Profile | Comercio'  ;  // page title
                     <div class="panel-body">
                     <div class="form-group">
                         <label for="UserName">User Name</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="john26769">
+                        <input type="text" class="form-control" id="exampleInputEmail1"  value="<?php echo $user->getDispName()?>" placeholder="john26769">
                     </div>
                     <div class="form-group">
                         <label for="UserName">Email</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="john@abc.com">
+                        <input type="email" class="form-control" id="exampleInputEmail1"  value="<?php echo $user->email ?>" placeholder="john@abc.com">
                     </div>
                     
                     <div class="form-group pull-right">
@@ -101,11 +101,11 @@ $title = 'Profile | Comercio'  ;  // page title
                     <div class="panel-body">
                     <div class="form-group">
                         <label for="UserName">Current Password</label>
-                        <input type="password" class="form-control" id="" placeholder="***********">
+                        <input type="password" class="form-control" id=""  value="" placeholder="***********">
                     </div>
                     <div class="form-group">
                         <label for="UserName">New Password</label>
-                        <input type="password" class="form-control" id="" placeholder="***********">
+                        <input type="password" class="form-control" id=""  value="" placeholder="***********">
                     </div>
                     
                     <div class="form-group pull-right">
@@ -144,8 +144,8 @@ $title = 'Profile | Comercio'  ;  // page title
         </div>
         <div class="col-md-9 admin-content" id="settings">
             Settings
-        </div> -->
-    </div>
+        </div>
+    </div>-->
 </div>
 </div>
 <!-- //////JavaScript for browsing tab pages////// -->
@@ -172,5 +172,6 @@ $title = 'Profile | Comercio'  ;  // page title
 </script>
 
 <!-- -------------------------------------- End of page edits -------------------------------------------------- -->
-<?php include('footer.php'); //including the footer?>
-<!-- End of page
+    <!---------------------------------------- End of page edits ---------------------------------------------------->
+    <?php include('footer.php'); //including the footer?>
+    <!-- End of page -->

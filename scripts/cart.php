@@ -10,7 +10,7 @@ if($_SESSION){
     if($_POST['type'] == 'refresh')
     {
         $cr = new Cart();
-        echo json_encode(array('success' => '1', 'itemAr' => $cr->getCompleteCartPrint(), 'totalCost' => number_format($cr->cartTotal, 2, '.', '')));
+        echo json_encode(array('success' => '1', 'itemAr' => $cr->getCompleteCartPrint(), 'totalCost' => $cr->toDec($cr->cartTotal)));
     }
 
     if($_POST['type'] == 'addprod')

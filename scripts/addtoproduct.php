@@ -10,26 +10,26 @@ $shopowner = $user->getRegID();
 echo'<ul><li>',$error.'</li></ul>';	
 	
 } */
-
+$db = new DbCon();
 if($_POST)
 {
 
 
 //$sId = mysql_real_escape_string(strip_tags($_POST['shopID']));
-$pTag = mysql_real_escape_string(strip_tags($_POST['pro_tag']));
-$pName = mysql_real_escape_string(strip_tags($_POST['pro_name']));
-$cID = mysql_real_escape_string(strip_tags($_POST['category']));
-$pDesc = mysql_real_escape_string(strip_tags($_POST['description']));
-$pPrice =mysql_real_escape_string(strip_tags( $_POST['pro_price']));
-$sell = mysql_real_escape_string(strip_tags($_POST['sel_unit']));
+$pTag = $db->escapeString ($_POST['pro_tag']);
+$pName = $db->escapeString ($_POST['pro_name']);
+$cID =$db->escapeString ($_POST['category']);
+$pDesc = $db->escapeString ($_POST['description']);
+$pPrice =$db->escapeString ( $_POST['pro_price']);
+$sell = $db->escapeString ($_POST['sel_unit']);
 
-$variation = mysql_real_escape_string(strip_tags($_POST['var']));
-$virtual = mysql_real_escape_string(strip_tags($_POST['vir']));
+$variation = $db->escapeString ($_POST['var']);
+$virtual =$db->escapeString  ($_POST['vir']);
 
 
-$iStock = mysql_real_escape_string(strip_tags($_POST['Stock']));
-$cStock = mysql_real_escape_string(strip_tags($_POST['Stock']));
-$date = mysql_real_escape_string(strip_tags($_POST['pDate']));
+$iStock = $db->escapeString ($_POST['Stock']);
+//$cStock = mysql_real_escape_string(strip_tags($_POST['Stock']));
+//$date = mysql_real_escape_string(strip_tags($_POST['pDate']));
 $pic_tmp = $_FILES['img']['tmp_name'];
 $pic_name = $_FILES['img']['name'];
 $pic_name = $_FILES['img']['type'];
@@ -39,7 +39,7 @@ $allowed_type =array( 'image/jpg','image/png');
 
 $object = new Product();
 $del = 0;
-$object = $object->insertValues($shopowner ,$pName,$pTag,$cID,$pPrice,$pDesc,$variation,$virtual,$sell,$iStock,$cStock,$date,$del);
+$object = $object->insertValues($shopowner ,$pName,$pTag,$cID,$pPrice,$pDesc,$variation,$virtual,$sell,$iStock,$date,$del);
 
 
 /*

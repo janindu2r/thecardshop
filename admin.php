@@ -141,7 +141,7 @@ $title = 'Administrator Dashboard' ;  // page title
                       
                       
                       <?php
-					  $sql = "select category_id from categories";
+					  $sql = "select category_id from products";
 					  $res = mysql_query($sql);
 					  while($list = mysql_fetch_assoc($res))
 					  {
@@ -152,6 +152,16 @@ $title = 'Administrator Dashboard' ;  // page title
 					  
 					  
 					  ?>
+                      <?php
+
+                      $sql = "SELECT c.category_id AS id, c.category_name AS name FROM categories c JOIN shop_categories s ON s.category_id = c.category_id WHERE s.shop_id = ";
+                      $sql .=  $user->getRegID();
+
+                      $db = new DbCon();
+                      $arr = $db->getSelectTable($sql); //getting category ids
+
+
+                      ?>
 					  <div class="tab-content col-md-6 col-md-offset-3">
 					    <div role="tabpanel" class="tab-pane active" id="home">...</div>
 					    <div role="tabpanel" class="tab-pane" id="addProduct">
@@ -159,17 +169,17 @@ $title = 'Administrator Dashboard' ;  // page title
 		                    <div class="panel-body">
 			                    <div class="form-group">
                                 
-                                <form name=" addproduct " method="POST" action= " /scripts/addtoproduct.php " enctype="multipart/form-data" >
+                                <form name=" addproduct " method="POST" action= " /scripts/addtoproduct.php " enctype=" multipart/form-data" onclick="function();">
 			                        <label for="#">Product Name</label>
-			                        <input type="text" class="form-control" id="" placeholder="Shop john26769">
+			                        <input type="text" name = "name" class="form-control" id="" placeholder="Shop john26769">
 			                    </div>
 			                    <div class="form-group">
 			                        <label for="#">Price</label>
-			                        <input type="text" class="form-control" id="exampleInputtext1" placeholder="john26769">
+			                        <input type="text"name = "price" class="form-control" id="exampleInputtext1" placeholder="john26769">
 			                    </div>
 			                    <div class="form-group">
 			                        <label for="#">Product Tag</label>
-			                        <input type="text" class="form-control" id="exampleInputtext1" placeholder="john26769">
+			                        <input type="text" name = "tag" class="form-control" id="exampleInputtext1" placeholder="john26769">
 			                    </div>
 			                    <div class="form-group">
 			                        <label for="#">Category ID</label>
@@ -193,6 +203,28 @@ $title = 'Administrator Dashboard' ;  // page title
 						    </select>
 			                    </div>
 			                    <div class="form-group">
+                                    <div class="form-group">
+                                        <label for="#">Shop ID</label>
+
+                                        <!-- <input type="text" class="form-control" id="exampleInputtext1" placeholder="john26769">-->
+
+                                        <select id="shopId" name="shopId" class="form-control">
+                                            <option value="0">Select shop ID</option>
+                                           <!-- <?php
+                                            $array = explode(",",$catId);
+                                            foreach($array as $val)
+                                            {
+                                                ?>
+                                                <option value="<?php echo $val ?>">
+                                                    <?php echo $val;?></option>
+                                            <?php
+
+                                            }
+                                            ?>-->
+
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
 			                       <label class=" control-label" for="radios">Variations </label>
 									  <div class=""> 
 									    <label class="radio-inline" for="radios-0">
@@ -224,7 +256,7 @@ $title = 'Administrator Dashboard' ;  // page title
 			                    </div>
 			                    <div class="form-group">
 			                        <label for="#">Selling Unit</label>
-			                        <input type="text" class="form-control" id="exampleInputtext1" placeholder="john26769">
+			                        <input type="text" name = "sell" class="form-control" id="exampleInputtext1" placeholder="john26769">
 			                    </div>
 			                    <!--<div class="form-group">
 			                        <label for="#">Initial Stock</label>
@@ -232,7 +264,7 @@ $title = 'Administrator Dashboard' ;  // page title
 			                    </div>-->
 			                    <div class="form-group">
 			                        <label for="#">Stock</label>
-			                        <input type="number" class="form-control" id="exampleInputEmail1" placeholder="john26769">
+			                        <input type="number" name = "stock" class="form-control" id="exampleInputEmail1" placeholder="john26769">
 			                    </div>
 			                    <div class="form-group">
 			                        <label class="control-label" for="fileUpload">Upload Image</label>
@@ -245,7 +277,7 @@ $title = 'Administrator Dashboard' ;  // page title
 			                    
 			      <?php
 				
-function out_errors($error)
+/*function out_errors($error)
 {
 echo'<ul><li>',$error.'</li></ul>';	
 	
@@ -338,8 +370,11 @@ echo"error";
 
 
 
+
+
+
 }
-				  
+		*/
 				  
 				  ?>              
 			                    <div class="form-group pull-right">
@@ -405,6 +440,49 @@ echo"error";
         var target = $(this).attr('data-target-id');
         $('#' + target).show();
     });
+      if(document.addproduct.name.value.length == 0)
+      {
+          alert("please enter the product name");
+          else if(document.addproduct.name.value.length >25)
+      {
+          alert("use a name with less than 25 characters");
+      }
+          else if(document.addproduct.price.value == 0)
+      {
+          alert("please enter the price");
+      }
+      else if(document.addproduct.tag.value.length > 50)
+      {
+          alert("please enter a product tag which has less than 50 characters");
+      }
+          else if(document.addproduct.catId.selectedIndex == 0)
+      {
+          alert("please select the category Id");
+      }
+      else if(document.addproduct.shopId.selectedIndex == 0)
+      {
+          alert("please select the shop Id");
+      }
+      else if(!(document.addproduct.radios[0].checked ||document.addproduct.radios[1].checked) )
+      {
+          alert("please select a button for variations");
+      }
+      else if(document.addproduct.textarea.value.length == 0)
+      {
+          alert("please enter a product description");
+      }
+      else if(document.addproduct.sell.value == 0)
+      {
+          alert("please enter selling unit");
+      }
+      else if(document.addproduct.stock.value == 0)
+      {
+          alert("please enter stock");
+      }
+
+
+      }
+
 });
 </script>
 
