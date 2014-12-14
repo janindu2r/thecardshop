@@ -204,7 +204,7 @@ $title = '' ;  // page title
 
         <!-- ****** //////Add redirection for summery page on #summery below////// *******-->
           <div class="form-group pull-right">
-           <a href="#summery" class="btn btn-lg btn-success">Confirm Order <span class="glyphicon glyphicon-ok-sign"></span></a>             
+           <a href="/order.php" class="btn btn-lg btn-success">Confirm Order <span class="glyphicon glyphicon-ok-sign"></span></a>             
           </div>
 
 

@@ -19,8 +19,8 @@ $title = 'Administrator Dashboard' ;  // page title
                 <li class="active"><a href="#" data-target-id="home"><i class="fa fa-user fa-fw"></i>Account</a></li>
                 <li><a href="#" data-target-id="products"><i class="fa fa-dropbox fa-fw"></i>Products</a></li>
                 <li><a href="#" data-target-id="pages"><i class="fa fa-history fa-fw"></i>Order History</a></li>
-                <!-- <li><a href="#" data-target-id="charts"><i class="fa fa-bar-chart-o fa-fw"></i>Charts</a></li>
-                <li><a href="#" data-target-id="table"><i class="fa fa-table fa-fw"></i>Table</a></li>
+                <li><a href="/shopHome.php" data-target-id="charts"><i class="fa fa-bar-chart-o fa-fw"></i>View Products</a></li>
+                <!-- <li><a href="#" data-target-id="table"><i class="fa fa-table fa-fw"></i>Table</a></li>
                 <li><a href="#" data-target-id="forms"><i class="fa fa-tasks fa-fw"></i>Forms</a></li>
                 <li><a href="#" data-target-id="calender"><i class="fa fa-calendar fa-fw"></i>Calender</a></li>
                 <li><a href="#" data-target-id="library"><i class="fa fa-book fa-fw"></i>Library</a></li>

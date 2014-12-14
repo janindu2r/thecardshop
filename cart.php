@@ -57,7 +57,7 @@ $title = 'Cart' ;  // page title
                             <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
                         </a></td>
                         <td>
-                        <a href="/order.php" type="button" class="btn btn-success btn-block">
+                        <a href="/checkout.php" type="button" class="btn btn-success btn-block">
                             Checkout <span class="glyphicon glyphicon-play"></span>
                         </a></td>
                         <td></td>
