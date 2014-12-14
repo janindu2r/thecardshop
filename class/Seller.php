@@ -5,97 +5,118 @@
 	Created : 2014-11-18
 */
 	
-	class Seller extends User
+	class Seller
 	{
-		var $sellerID;
-		var $shopName;
-		private $shopDecription;
-		protected $creditAccountNo;
-		private $logoImg;
-		var $reputationPoints;
+        public $shopId;
+		public $shopName;
+		public $shopDesc;
+		private $paypalEmail;
+		public $logoImg;
+        public $shopSlider = array();
+		public $posRep;
+        public $negRep;
+        public $moneyback;
+        public $shopLoc;
+        private $db;
+        public  $categories = array();
+        public $comPath =  '/content/shop/slider/' ;
 
 		function __construct()
 		{
-			$slid = uniqid(SL, false);
-			$slid = md5($slid);
-
-			$this->sellerID = $slid;
-			$this->reputationPoints = 0;
+            $this->db = new DbCon();
+            $this->shopId = $_SESSION['user']->getRegID();
+            $this->comPath .= $this->shopId;
 		}
 
-		function getSellerId()
-		{
-			return $this->sellerID;
-		}
+        function getCategories()
+        {
+            $sql = "SELECT c.category_id AS id, c.category_name AS name FROM categories c JOIN shop_categories s ON s.category_id = c.category_id WHERE s.shop_id = ";
+            $sql .= $this->shopId;
 
-		function setShopName($spname)
-		{
-			$this->shopName = $spname;
-		}
+            $arr = $this->db->getSelectTable($sql); //getting category ids
+            if($arr) {
+                foreach ($arr as $row)
+                    $this->categories[$row['id']] = $row['name'];
+            }
+        }
 
-		function getShopName()
-		{
-			return $this->shopName;
-		}
+        function insertSeller($shop, $cat)
+        {
+            $shop['shop_id'] = $this->db->escapeString($this->shopId);
+            $shop['pos_rep_pnts'] = 0;
+            $shop['neg_rep_pnts'] = 0;
+            $shop['activated_date'] = $this->db->escapeString(date("Y-m-d"));
 
-		function setShopDescription($desc)
-		{
-			$this->shopDecription = $desc;
-		}
+            if($shop['paypal_acc_email'] == '')
+                $shop['paypal_acc_email'] = $this->db->escapeString($_SESSION['user']->email);
 
-		function getShopDescription()
-		{
-			return $this->shopDecription;
-		}
+            $success = $this->db->runInsertRecord('shops', $shop);
 
-		function setCreditAccountNo($accno)
-		{
-			$this->creditAccountNo = $accno;
-		}
+            if ($success) {
+                $_SESSION['user']->shop = 1;
+                $categories = explode(" | ", $cat);
+                $catIds = array();
 
-		function getCreditAccountNo()
-		{
-			return $this->creditAccountNo;
-		}
+                foreach ($categories as $val) {
+                    $catId = $this->db->getScalar("select category_id from categories where category_name = " . $this->db->escapeString($val));
+                    if ($catId == null) {
+                        $arr['category_name'] = $this->db->escapeString($val);
+                    }
+                    if (!in_array($catId, $catIds))
+                        array_push($catIds, $catId);
+                }
 
-		function setLogoImg()
-		{
+                $insertCat['shop_id'] = $this->shopId;
+                foreach ($catIds as $newVal) {
+                    $insertCat['category_id'] = $newVal;
+                    $this->db->runInsertRecord('shop_categories', $insertCat);
+                }
+                $this->initiate();
+                return 1;
+            }
+        }
 
-		}
+        function initiate(){
+            $shopDetails = $this->db->getFirstRow("select * from shops where shop_id = " . $this->shopId);
+            $this->shopName = $shopDetails['shop_name'];
+            $this->shopDesc =    $shopDetails['shop_desc'];
+            $this->shopLoc =  $shopDetails['shop_base_loc'];
+            $this->moneyback = $shopDetails['mony_back_gurantee'];
+            $this->paypalEmail = $shopDetails['paypal_acc_email'];
+            $this->posRep =  $shopDetails['pos_rep_pnts'];
+            $this->negRep =  $shopDetails['neg_rep_pnts'];
+        //  $shopDetails['paypal_id_token']
+            $this->logoImg = '/content/shop/logo/'. $this->shopId . '.jpg';
+            $this->getCategories();
+            $this->getSliderImages();
+        }
 
-		function getLogoImg()
-		{
 
-		}
+        function getSliderImages()
+        {
+            $sql = "SELECT image FROM shop_gallery where shop_id = ". $this->shopId;
+            $arr = $this->db->getSelectTable($sql);
+            if($arr) {
+                foreach ($arr as $row)
+                    array_push($this->shopSlider, $this->comPath.$row['image'].'.jpg');
+            }
+        }
 
-		function setReputationPoints($points)
-		{
-			$this->reputationPoints += $points;
-		}
 
-		function getReputationPoints()
-		{
-			return $this->reputationPoints;
-		}
-		
+        /*
 		function manageShop($details, $category)
 		{
 			//$details stores the form data received via POST and is passed here
-
 			$db = new DbCon();
-
 			$result = $db->runInsertRecord('shops', $details);
-
 			if($result)
 				header('Location:  profile.php');
 			else
 				header('Location:  manageShops.php');
-
 			$newDetails['shopID'] = $details['shopID'];
 			$newDetails['categoryID'] = $category;
-			
 			$newResult = $db->runInsertRecord('shop_categories', $newDetails);
-		}
+		} */
 	}
 
 ?>

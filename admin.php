@@ -443,7 +443,7 @@ echo"error";
 
     function validateShopForm()
     {
-        if
+       // if
     }
 });
 </script>

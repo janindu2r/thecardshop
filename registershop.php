@@ -4,7 +4,12 @@ include('overhead.php');
 $title = 'Activate Shop' ;  // page title
 
 if($user->shop)
+    header('location: /admin.php');
 
+
+$db = new DbCon();
+
+$categories =  $db->getSelectTable('select category_name from categories');
 
 
 ?>
@@ -47,6 +52,14 @@ if($user->shop)
                     return false;
                 }
             }
+
+            function addCategory(){
+                var val = document.getElementsByName('categories')[0].value;
+                var cat = document.getElementsByName('category')[0].value;
+                if(val != "")
+                    cat = " | " + cat;
+                document.getElementsByName('categories')[0].value = document.getElementsByName('categories')[0].value + cat;
+            }
         </script>
 
 <!---------------------------------------- Add Page Edits Below ------------------------------------------------->    
@@ -58,7 +71,7 @@ if($user->shop)
 
         <div class="col-xs-12 col-sm-12 col-md-6 well well-sm col-md-offset-3" id="signUpFormContainer">
             <legend><i class="glyphicon glyphicon-globe"></i> Activate your Shop!</legend>
-            <form action="scripts/shop.php" method="post" class="form" role="form" name ="regShop" onsubmit="return funcValidate();">
+            <form action="/scripts/shop.php" method="post" class="form" role="form" name ="regShop" enctype="multipart/form-data" >
             
             <input class="form-control" name="sname" placeholder="Shop Name" type="text" />
             <textarea class="form-control" rows="3" name="descr" placeholder="Shop Description"></textarea>
@@ -85,22 +98,53 @@ if($user->shop)
                 <div class="col-xs-4 col-md-8">
                     <select class="form-control" name="category">
                         <option value="Category" selected disabled>Category</option>
-                        <option value="00001">Electronics</option>
-                        <option value="00002">Computers</option>
-                        <option value="00003">Fashion</option>
-                        <option value="00004">Jewellery</option>
-                        <option value="00005">Mobile</option>
-                        <option value="00006">Hardware</option>
+                        <?php
+                            if($categories){
+                               foreach($categories as $row)
+                                    echo "<option value=". $row['category_name'] .">". $row['category_name'] ."</option>";
+                            }
+                        ?>
                     </select>
-                </div>                
+                </div>
+                    <div class="col-xs-2 col-md-2"> <button type="button" onclick="addCategory()">Add</button> </div>
+                </div><div class="row">
+                <div class="col-xs-6 col-md-10">
+                    <textarea class="form-control" rows="2" name="categories" placeholder="Categories Description"></textarea>
+                </div>
             </div>
             <label><input class="character-checkbox" name="moneyback" type="checkbox" value="">   Money back guarantee available</label> <br/> <br/><br /><br />
 
 
             <legend><i class="glyphicon glyphicon-picture"></i> Theme your Shop</legend>
-            <label for="#scheme">Choose your color theme</label> &nbsp;&nbsp;&nbsp;&nbsp; <input type="color" name="colorscheme" id="scheme"> <br/><br/><br/><br/>
 
-            <legend><i class="glyphicon glyphicon-shopping-cart"></i> Add your Payment Details</legend>
+                <div class="row">
+                <div class="col-xs-2 col-md-3">
+                    Upload Logo(JPG)
+                </div>
+                <div class="col-xs-3 col-md-5">
+                    <input type="file" name="shoplogo">
+                </div>
+                </div>
+                <br>
+                <br><br>
+                <div class="row">
+                    <div class="col-xs-2 col-md-3">
+                        Upload Banner Images
+                    </div>
+                    <div class="col-xs-3 col-md-5">
+                        <input type="file" name="banner[0]">
+                    </div> </div>
+                <div class="row">
+                    <div class="col-xs-2 col-md-3">
+                    </div>
+                    <div class="col-xs-3 col-md-5">
+                        <input type="file" name="banner[1]">
+                    </div>
+                </div>
+                <br> <br> <br>
+
+
+                <legend><i class="glyphicon glyphicon-shopping-cart"></i> Add your Payment Details</legend>
             <input class="form-control" name="paypalemail" placeholder="Paypal Email" type="text" />
             <input class="form-control" name="paypaltoken" placeholder="Paypal Token" type="text" /><br/><br/><br/>
 
@@ -110,6 +154,7 @@ if($user->shop)
         </div>
     </div>
 </div>
+
 
 <!--
 shop activation form

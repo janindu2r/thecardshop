@@ -10,8 +10,7 @@ $title = 'Cart' ;  // page title
 <html>
 	<head>
         <?php include('header.php'); ?>
-<!-- -------------------------------------- Add Page Edits Below ----------------------------------------------- -->    
-
+<!-- -------------------------------------- Add Page Edits Below ----------------------------------------------- -->
 <div class="container">
     <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-12">
