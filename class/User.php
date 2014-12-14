@@ -152,6 +152,7 @@ class User
         $this->postalCode = $uDetails['postal_code'];
         $this->posRep = $uDetails['pos_rep_pnts'];
         $this->negRep = $uDetails['neg_rep_pnts'];
+        $this->shop = $this->db->getScalar('select count(shop_id) from shops where shop_id = '. $this->regID);
     }
 
 
