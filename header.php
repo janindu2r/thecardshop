@@ -35,7 +35,7 @@
 		<div class="clearfix"></div>
 		<!-- navigation	menu -->
 		<nav class="navbar" role="navigation" style="margin-bottom:0;">
-  			<div class="container-fluid">
+  			<div class="#">
 			    <!-- Brand and toggle get grouped for better mobile display -->
 			    <div class="navbar-header">
 			      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -61,7 +61,11 @@
 		            <li><a href="/registershop.php">Register Shop</a></li>
 		            <li class="divider"></li>
 		            <li><a href="/registershop.php">Reg Shop</a></li>
+<<<<<<< HEAD
 		            <li><a href="/viewshop.php">Shop</a></li>
+=======
+		            <li><a href="/shopHome.php">Shop</a></li>
+>>>>>>> origin/master
 		            <li><a href="/checkout.php">Checkout</a></li>
 		          </ul>
 		        </li>
