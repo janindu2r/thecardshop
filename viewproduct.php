@@ -59,9 +59,11 @@ $title = $viewProd->proName. ' | '. $viewfrom ;  // page title
 
 				<div class="col-md-6">
 					<div class="product-title"><?php echo  $viewProd->proName ; ?></div>
-					<div class="product-desc"><?php echo $viewProd->description ; ?> </div>
+					<div class="product-desc"><?php echo $viewProd->proTag ; ?> </div>
 					<div class="product-rating"><i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star-o"></i> </div>
 					<hr>
+                    <p><?php echo $viewProd->description ?></p>
+                    <hr>
 					<div class="product-price">$ <?php echo $viewProd->proPrice ?></div>
 
                     <div>

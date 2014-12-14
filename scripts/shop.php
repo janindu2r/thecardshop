@@ -37,7 +37,7 @@ if($_SESSION) {
         if ($sellerAdded) {
 
             if ($_FILES) {
-                if ($_FILES['shoplogo']['tmp_name']) {
+                if (isset($_FILES['shoplogo'])) {
                     list($width, $height) = getimagesize($_FILES['shoplogo']['tmp_name']);
                     if ($_FILES['shoplogo']['type'] == 'image/jpeg' && $width == $height && $_FILES['shoplogo']['size'] <= $max_logo_size) {
                         move_uploaded_file($_FILES['shoplogo']['tmp_name'], $root. $sell->logoImg);

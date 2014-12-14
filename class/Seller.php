@@ -32,7 +32,6 @@
         {
             $sql = "SELECT c.category_id AS id, c.category_name AS name FROM categories c JOIN shop_categories s ON s.category_id = c.category_id WHERE s.shop_id = ";
             $sql .= $this->shopId;
-
             $arr = $this->db->getSelectTable($sql); //getting category ids
             if($arr) {
                 foreach ($arr as $row)
