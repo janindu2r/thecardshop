@@ -24,37 +24,41 @@ $viewfrom = 'Comercio';  // Or Shop Name
 $title = $viewProd->proName. ' | '. $viewfrom ;  // page title
 
 ?>
-<!---------------------------------------- Header Start, Do not touch ------------------------------------------->
+<!-- -------------------------------------- Header Start, Do not touch ----------------------------------------- -->
 <!DOCTYPE html>
 <html>
 	<head>
+        <link href="/css/gallery.style.css" rel="stylesheet" type="text/css" />  
+        <script src="/Gallery/photogallery/jquery-ajax.js"> </script>
+        <script src="/Gallery/photogallery/jquery-ajax.js"> </script> 
+        <script src="/Gallery/photogallery/galleria-1.2.9.min.js"></script> 
         <?php include('header.php'); ?>
-<!---------------------------------------- Add Page Edits Below ------------------------------------------------->    
+<!-- -------------------------------------- Add Page Edits Below ----------------------------------------------- -->    
 
 <div class="wrapper container">
 	<div class="content-wrapper">	
 		<div class="row col-md-12 col-lg-12">
 			<div class="">
 				
-				<div class="col-md-6 carousel-bounding-box" id="slider"><!-- product slider, carousel -->
+				<div class="col-md-6 carousel-bounding-box" id="slider"> <!-- product slider, carousel -->
 
-					<div class="product service-image-left">
-							<img id="item-display" src="/content/products/prodthumbnail/<?php echo $viewProd->prodId ?>.jpg" alt="">
-					</div>
+				<div id="imagegallery">
+                    <div id="galleria">
+                        <img src="/Gallery/gallery/1.jpg"
+                        data-title="caption 1"/>
+                        
+                        <img src="/Gallery/gallery/2.jpg"
+                        data-title="caption 2"/>
+                        
+                        <img src="/Gallery/gallery/3.jpg"
+                        data-title="caption 3"/>
+                  
+                        <img src="/Gallery/gallery/4.jpg"
+                        data-title="caption 4"/>
+                    </div>
+                </div>
 					
-					<!-- <div class="col-sm-2 col-md-2 pull-left" id="service1-items">
-						<center>
-							<a id="item-1" class="service1-item">
-								<img src="http://www.corsair.com/Media/catalog/product/g/s/gs600_psu_sideview_blue_2.png" alt=""></img>
-							</a>
-							<a id="item-2" class="service1-item">
-								<img src="http://www.corsair.com/Media/catalog/product/g/s/gs600_psu_sideview_blue_2.png" alt=""></img>
-							</a>
-							<a id="item-3" class="service1-item">
-								<img src="http://www.corsair.com/Media/catalog/product/g/s/gs600_psu_sideview_blue_2.png" alt=""></img>
-							</a>
-						</center>
-					</div> -->
+					
 				</div>
 
 				<div class="col-md-6">
@@ -226,6 +230,11 @@ $title = $viewProd->proName. ' | '. $viewfrom ;  // page title
             });
 
         </script>
+<script>
+    Galleria.loadTheme('/Gallery/photogallery/galleria.classic.min.js');  // Load the classic theme
+    Galleria.run('#galleria'); // Initialize Galleria
+</script>
+
 <!---------------------------------------- End of page edits ---------------------------------------------------->
 <?php include('footer.php'); //including the footer?>
 <!-- End of page -->
