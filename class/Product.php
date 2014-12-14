@@ -24,10 +24,9 @@ function __construct()
 	
 }
 
+ public function initializeProduct($prodArray){
 
-
- public function initializeProduct(array $prodArray)
- {
+     if($prodArray){
 	 	$this->prodId = $prodArray['product_id'];
 		$this->shopId = $prodArray['shop_id'];
 		$this->proName = $prodArray['product_title'];
@@ -45,44 +44,33 @@ function __construct()
 		$this->dates = $prodArray['date_added'];
 		$this->del = $prodArray['deleted'];
 		return $this;
- }
- 
- public function returnProduct($productID)
- {
-	 $selectArray = $this->db->getFirstRow("select * from products where product_id = ".$productID);	 
-	 $arr =  $this->initializeProduct($selectArray);
-	 return $arr;
+     }
+     else
+         return 0;
  }
 
- public function addProduct(array $assArryProd)
+ public function returnProduct($productID)
  {
-	 
-	echo $this->db->getInsertSql("products",$assArryProd);
-	
-	$new = $this->db->runInsertAndGetID("products",$assArryProd);
-	try
-	{
+	 $selectArray = $this->db->getFirstRow("select * from products where product_id = ". $this->db->escapeString($productID));
+     return $this->initializeProduct($selectArray);
+ }
+
+ public function addProduct(array $asArrProd)
+ {
+	$new = $this->db->runInsertAndGetID("products",$asArrProd);
 		if($new)
 		{
-        $assArryProd['product_id'] =  $new ;
-		$obj = $this->initializeProduct($assArryProd);
+        $asArrProd['product_id'] =  $new ;
+		$obj = $this->initializeProduct($asArrProd);
 		return $obj;
 		}
 		else
 		return 0;
-	}
-	catch(Exception $e)
-	{
-	  echo $e->getMessage();	
-	}
-	
-	 
  }
 
- public function insertValues($sId,$pTitle,$pTag,$cId,$pPrice,$pDesc,$pVartns,$pVirtual,$pSelUnits,$Stock,$pDel)
+ public function insertValues($sId,$pTitle,$pTag,$cId,$pPrice,$pDesc,$pVartns,$pVirtual,$pSelUnits,$Stock)
  {
-	// $asscArry['product_id'] = $this->db->escapeString($pId);
-	 $asscArry['shop_id'] = $this->db->escapeString($sId);
+    $asscArry['shop_id'] = $this->db->escapeString($sId);
 	$asscArry['product_title'] = $this->db->escapeString($pTitle);
 	$asscArry['product_tag'] = $this->db->escapeString($pTag);
 	$asscArry['category_id'] = $this->db->escapeString($cId);
@@ -91,13 +79,12 @@ function __construct()
 	$asscArry['variations'] = $this->db->escapeString($pVartns);
 	$asscArry['virtual'] = $this->db->escapeString($pVirtual);
 	$asscArry['selling_unit'] =$this->db->escapeString($pSelUnits);
-	$asscArry['pos_rep_points'] = 0;
-	$asscArry['neg_rep_points'] = 0;
+	$asscArry['pos_rep_points'] = '0';
+	$asscArry['neg_rep_points'] = '0';
 	$asscArry['initial_stck'] = $this->db->escapeString($Stock);
 	$asscArry['current_stck'] =$this->db->escapeString($Stock);
-	
-	$asscArry['date_added'] = date('Y-m-d');
-	$asscArry['deleted'] = $this->db->escapeString($pDel);
+	$asscArry['date_added'] = $this->db->escapeString(date('Y-m-d'));
+	$asscArry['deleted'] = '0';
 	
 	return $this->addProduct($asscArry);
 	 
@@ -110,31 +97,25 @@ function __construct()
  }
 
 
-function __destructor()
-{
-}
 public function deleteAll()
 {
-	
 	$del = $this->db->runNonQuery("update products set deleted = '1' where deleted = '0'");
 	return $del;
-	
 }
 	
 
  public function updateProduct(array $setValue,$wheres)
  {
-			
 	$result = $this->db->runUpdateRecord('products',$setValue,$wheres);
 	return $result; 
  }
+
+
 //viewing products
 public function viewProducts($pId)
 {
-$view = $this->db->getFirstRow(" select * from products where product_id  = ".$pId."and deleted = 0");
-
-$this->prodId = $view['product_id'];	
-	
+        $view = $this->db->getFirstRow(" select * from products where product_id  = ".$pId."and deleted = 0");
+        $this->prodId = $view['product_id'];
 		$this->shopId = $view['shop_id'];
 		$this->proName = $view['product_title'];
 		$this->proTag = $view['product_tag'];
@@ -158,7 +139,6 @@ public function getProductId($pName)
 	$res = $this->db->getFirstRow("select product_id from products");
 	$this->prodId = $res['product_id'];
 	return $this;
-	
 }
 
 function getShopName()
@@ -166,7 +146,6 @@ function getShopName()
 $shopName = $this->db->getScalar("select shop_name from shops where shop_id = ". $this->shopId);
 return $shopName;
 }
-
 
 
 }

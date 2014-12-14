@@ -3,6 +3,11 @@
 class Validate
 {
 
+public static function validImgFormat()
+{
+
+}
+
 public static function validString($string, $boolean)
 {
     $valid = false;

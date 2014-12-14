@@ -27,14 +27,12 @@ $arr = $db->getSelectTable($sql); //getting category ids
 
 
 ?>
-<form name=" addproduct " method="POST" action= " /scripts/addtoproduct.php " enctype="multipart/form-data" > 
+<form name="addproduct" method="POST" action= " /scripts/addtoproduct.php " enctype="multipart/form-data" >
 
 Product Title<input type="text" name="pro_name" /><br /><br />
 Product Tag<input type="text" name="pro_tag" /><br /><br />
-Category ID<select name="category">
-<option value="0">select category id</option>
-
-<!-- $array = explode(",",$categoryId); -->
+Category<select name="category">
+<option value="0">Select Category</option>
 
         <?php if($arr) {
             foreach ($arr as $row) { ?>
@@ -53,7 +51,7 @@ Product description<textarea name="description" rows="3" cols="35"></textarea><b
 Product price<input type="text" name="pro_price" /><br /><br />
 Selling unit<input type="text" name="sel_unit" /><br /><br />
 
-Initial Stock<input type="number" name="Stock" /><br /><br />
+Initial Stock<input type="number" name="stock" /><br /><br />
 
 Date Added <input type="date" name="pDate" /><br />
 upload Image<input type="file" name="img" id="fileToUpload" /><br /><br />

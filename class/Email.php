@@ -16,8 +16,10 @@ class Email
 		require_once 'mail/class.phpmailer.php';
 
 		$from =  $this->getCorrectEmail($department);
-		$fromName = $this->getFromName($department);	
-	
+		$fromName = $this->getFromName($department);
+
+        $logo = '<html><div><img src="'.$_SERVER['DOCUMENT_ROOT'].'/img/logo/logo.png" style="width: 70px; float: left;"><h1 style=" color: #3c763d; padding: 1em;">Comercio</h1></div>';
+
 		$mailer = new PHPMailer();
 		$mailer->IsSMTP(true);		
 		$mailer->IsHTML(true);		
@@ -29,7 +31,7 @@ class Email
 		$mailer->SetFrom($from, $fromName);
 		$mailer->AddReplyTo($from,$fromName);
 		$mailer->Subject    = $subject;
-		$mailer->MsgHTML($body);
+		$mailer->MsgHTML($logo.$body.'</html>');
 		$address = $to;
 		$mailer->AddAddress($address, $to);
 

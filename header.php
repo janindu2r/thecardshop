@@ -62,7 +62,7 @@
 		            <li class="divider"></li>
 		            <li><a href="/addItems.php">Add Items</a></li>
 		            <li><a href="/registershop.php">Reg Shop</a></li>
-		            <li><a href="/shopHome.php">Shop</a></li>
+		            <li><a href="/shophome.php">Shop</a></li>
 		            <li><a href="/checkout.php">Checkout</a></li>
 		          </ul>
 		        </li>

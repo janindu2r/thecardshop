@@ -8,7 +8,7 @@ $title = 'Profile | Comercio'  ;  // page title
 ?>
 <!-- -------------------------------------- Header Start, Do not touch ----------------------------------------- -->
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <head>
     <?php include('header.php'); ?>
 <!-- -------------------------------------- Add Page Edits Below ----------------------------------------------- -->    
@@ -37,6 +37,7 @@ $title = 'Profile | Comercio'  ;  // page title
                     </div>
                     <div class="panel-body">
                     <div class="form-group">
+                        <form name="editProfile" action="EditProfile.php" method="post">
                         <label for="FirstName">First Name</label>
                         <input type="text" class="form-control" id="FirstName" name="fname" value="<?php echo $user->fName ?>" placeholder="john26769">
                     </div>
@@ -66,12 +67,17 @@ $title = 'Profile | Comercio'  ;  // page title
                     </div>
                     
                     <div class="form-group pull-right">
-                        <a href="#" class="btn btn-primary btn-success"><span class="glyphicon glyphicon-floppy-disk"></span> Save</a>
+                        <input type="submit" class="btn btn-primary btn-success"  value="save" >
+                        <a href="#" class="btn btn-primary btn-success"><span class="glyphicon glyphicon-floppy-disk"> </span> Save</a>
                         <a href="#" class="btn btn-primary btn-danger"><span class="glyphicon glyphicon-remove"></span> Discard</a>
+
                     </div>
                 </div>
-                </div><!-- /.Contact Details --> 
+                    </form>
+                </div><!-- /.Contact Details -->
+                </form>
             </div>
+            </form>
             <div class="col-md-6">
                 <div class="panel panel-default"><!-- Contact Details -->
                     <div class="panel-heading">
