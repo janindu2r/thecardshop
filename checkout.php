@@ -10,12 +10,12 @@ $title = '' ;  // page title
 <!DOCTYPE html>
 <html>
 	<head>
-		<link rel="stylesheet" type="text/css" href="/css/STEPS.styles.css">
+		<link rel="stylesheet" type="text/css" href="/css/steps.styles.css">
         <?php include('header.php'); ?>
 <!-- *****************************    Add Page Edits Below   **************************** --> 
 <div class="container">
   <div class="checkout-header">
-    <h1>One step to go</h1>
+    <h1 class="bg-success">One step to go</h1>
   </div>
   <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
     <div class="panel panel-default">
