@@ -66,7 +66,7 @@ $title = 'Profile | Comercio'  ;  // page title
                     </div>
                     
                     <div class="form-group pull-right">
-                        <a href="#" class="btn btn-primary btn-success"><span class="glyphicon glyphicon-floppy-disk"></span> Save</a>
+                        <a href="#" class="btn btn-primary btn-success"><span class="glyphicon glyphicon-floppy-disk"><input type="submit" action="EditProfile.php" method ="POST"> </span> Save</a>
                         <a href="#" class="btn btn-primary btn-danger"><span class="glyphicon glyphicon-remove"></span> Discard</a>
                     </div>
                 </div>
