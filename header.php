@@ -34,8 +34,8 @@
 
 		<div class="clearfix"></div>
 		<!-- navigation	menu -->
-		<nav class="navbar" role="navigation" style="margin-bottom:0;">
-  			<div class="container-fluid">
+		<nav class="navbar" role="navigation">
+  			<div class="#">
 			    <!-- Brand and toggle get grouped for better mobile display -->
 			    <div class="navbar-header">
 			      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
