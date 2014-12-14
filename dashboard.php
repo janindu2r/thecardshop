@@ -38,31 +38,31 @@ $title = 'Profile | Comercio'  ;  // page title
                     <div class="panel-body">
                     <div class="form-group">
                         <label for="FirstName">First Name</label>
-                        <input type="text" class="form-control" id="FirstName" value="<?php echo $user->fName ?>" placeholder="john26769">
+                        <input type="text" class="form-control" id="FirstName" name="fname" value="<?php echo $user->fName ?>" placeholder="john26769">
                     </div>
                     <div class="form-group">
                         <label for="LastName">Last Name</label>
-                        <input type="text" class="form-control" id="LastName" value="<?php echo $user->lName ?>" placeholder="john26769">
+                        <input type="text" class="form-control" id="LastName" name="lname" value="<?php echo $user->lName ?>" placeholder="john26769">
                     </div>
                     <div class="form-group">
                         <label for="DateOfBirth">Date of Birth</label>
-                        <input type="text" class="form-control" id="DateOfBirth" value="<?php echo $user->getDob() ?>" placeholder="john26769">
+                        <input type="text" class="form-control" id="DateOfBirth" name="dob" value="<?php echo $user->getDob() ?>" placeholder="john26769">
                     </div>
                     <div class="form-group">
                         <label for="UserName">Address Line1</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" value="<?php echo $user->addressL1 ?>" placeholder="john26769">
+                        <input type="text" class="form-control" id="exampleInputEmail1"name="add1" value="<?php echo $user->addressL1 ?>" placeholder="john26769">
                     </div>
                     <div class="form-group">
                         <label for="UserName">Address Line2</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" value="<?php echo $user->addressL2 ?>" placeholder="john26769">
+                        <input type="email" class="form-control" id="exampleInputEmail1" name="add2" value="<?php echo $user->addressL2 ?>" placeholder="john26769">
                     </div>
                     <div class="form-group">
                         <label for="UserName">Address Line3</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1"  value="<?php echo $user->addressL3 ?>" placeholder="john26769">
+                        <input type="email" class="form-control" id="exampleInputEmail1" name="add3" value="<?php echo $user->addressL3 ?>" placeholder="john26769">
                     </div>
                     <div class="form-group">
                         <label for="UserName">Postal Code</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1"  value="<?php echo $user->postalCode ?>" placeholder="john26769">
+                        <input type="email" class="form-control" id="exampleInputEmail1"  name="postal" value="<?php echo $user->postalCode ?>" placeholder="john26769">
                     </div>
                     
                     <div class="form-group pull-right">
