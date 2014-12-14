@@ -8,7 +8,7 @@ by: JK;
 
 class Cart
 {
-	protected $userId;
+	public $userId;
 	protected $db;
     public $simpleProds = array();
     public $varProds = array();
@@ -22,6 +22,7 @@ class Cart
 		$this->userId = $_SESSION['user']->getRegID();
         $this->getSimpleProducts();
         $this->getVariationProducts();
+        $this->sortCart(); //sort by date added. Combine html strings together
         $this->calculateCartTotal();
 	} 
 	
@@ -68,7 +69,6 @@ class Cart
 	{
         $fullHtmlString = '';
         if($this->cartOrder){
-            $this->sortCart();
             foreach($this->cartOrder as $id => $val) {
                 $rId = substr($id,1);
                 if(substr($id,0,1) == '1')
@@ -85,7 +85,6 @@ class Cart
     function getCompleteStaticCart(){
         $fullHtmlString = '';
         if($this->cartOrder){
-            $this->sortCart(); //sort by date added. Combine html strings together
             foreach($this->cartOrder as $id => $val) {
                 $rId = substr($id,1);
                 if(substr($id,0,1) == '1')
@@ -125,15 +124,6 @@ class Cart
     }
 
 
-    function getFullShipping()
-    {
-        foreach($this->simpleProds as $itm)
-            $this->cartTotal += floatval($itm->calculateFullItemPrice());
-        foreach($this->varProds as $vItm)
-            $this->cartTotal += floatval($vItm->calculateFullItemPrice());
-
-        $this->cartTotal = round($this->cartTotal,2);
-    }
 }
 
 ?>

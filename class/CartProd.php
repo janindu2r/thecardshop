@@ -8,10 +8,10 @@ by: JK;
 
 class CartProd{
 	protected $userId;
-	public $cProduct;
-	public  $quantity;
-	protected $addDateTime;	
-	protected $db;
+    public $cProduct;
+    public  $quantity;
+    protected $addDateTime;
+    protected $db;
 	
 	function __construct()
     {		
@@ -121,7 +121,7 @@ class CartProd{
         $itemHtml .=  $this->cProduct->prodId . '"><img class="media-object" src="/content/products/prodthumbnail/'. $this->cProduct->prodId .'.jpg"></a>';
         $itemHtml .= '<div class="media-body"><h4 class="media-heading"><a href="/viewproduct.php?product=';
         $itemHtml .=  $this->cProduct->prodId . '">'.$this->cProduct->proName;
-        $itemHtml .= '</a></h4><h5 class="media-heading"> by <a href="#">'. $this->cProduct->getShopName() .'</a></h5>' ;
+        $itemHtml .= '</a></h4><h5 class="media-heading"> by <a href="/viewshop.php?shop='.$this->cProduct->shopId.'">'. $this->cProduct->getShopName() .'</a></h5>' ;
         $itemHtml .= '<span class="text-success"><strong>'. $this->cProduct->cuStock .' out of ';
         $itemHtml .= $this->cProduct->inStock . ' available</strong></span></div></div></td><td class="col-sm-1" style="text-align: center">' ;
         $itemHtml .= '<input type="number" class="form-control input-sm output-qty-cart" id="0-'. $this->cProduct->prodId.'" value="';

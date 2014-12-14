@@ -137,6 +137,13 @@ $title = $viewProd->proName. ' | '. $viewfrom ;  // page title
 						<div class="tab-pane fade in active" id="service-one">
 						 
 							<section class="container product-info">
+
+                                <p>Product By <b><?php echo $viewProd->getShopName() ?></b>
+                                <a href="/viewshop.php?shop=<?php echo $viewProd->shopId?>" type="button" class="btn btn-success">
+                                    Visit Shop
+                                </a> </p>
+
+
                                 <?php if(!$viewProd->virtual) {  ?>
                 				<h3> Dimensions </h3>
                 <!-- condition check needed for each of these to see if the value is null. only echo if not -->

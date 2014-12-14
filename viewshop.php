@@ -6,8 +6,10 @@ if(!$user->shop) {
     header('Location:/index.php');
 }
 
-
 $shop = new Seller();
+if($_GET){
+    $shop->shopId  = $_GET['shop'];
+}
 $shop->initiate();
 
 $title =  $shop->shopName.' | Comercio' ;  // page title
@@ -50,6 +52,9 @@ $categories = substr($categories,1);
                     <h2> <?php echo $shop->shopName ?> </h2>
                     <h4>Our Product Categories</h4>
                     <p><?php echo $categories;?></p>
+                    <h4>Location</h4>
+                    <p><?php echo $shop->shopLoc;?></p>
+                    <?php if($shop->moneyback) echo '<h5>We offer money back gurantee</h5>' ?>
                 </div>
             </div>
 
