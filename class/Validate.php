@@ -8,19 +8,52 @@ public static function validImgFormat()
 
 }
 
-public static function validString($string, $boolean)
+public  static function validString($string)
 {
-    $valid = false;
+    $max = 30;
+  if(!preg_match('/[a-zA-Z]/',$string))
+  {
+      echo "error";
+  }
+    $len = strlen($string);
+    if($len == 0)
+    {
+        echo "filed is empty";
+    }
+    if($len > $max)
+
+    {
+        echo "enter a name with less than 30 characters ";
+    }
+
+
+   // $valid = false;
 
     //check if string is valid
 
-    return $valid;
+/*
+if($flag == true)
+{
+    echo $string;
+    return $string;
+}
+   else
+       echo"invalid name";
+  //  return $valid;*/
 }
 
 public static function validInt($val)
 {
+    $id = 5;
+    if(! preg_match("/{5}/",$val));
+    {
+        echo "enter a number with less than 5 digits"."<br>";
+    }
 
-    return $val;
+
+
+
+
 }
 
 public static function validateDecimal($val)
@@ -39,7 +72,7 @@ public static function longText($txtAreaString)
     {
         if(empty($text))
         {
-            echo"field is empty";
+            echo"field is empty"."<br>";
 
         }
         else
@@ -52,10 +85,22 @@ public static function longText($txtAreaString)
             return $text;
         }
         else
-            echo"enter a number";
+            echo"enter a number"." <br>";
+    }
+
+public static  function emailValidte($string)
+{
+    if(!filter_var($string,FILTER_VALIDATE_EMAIL))
+    {
+        echo "email is not valid"."<br>";
+    }
+    else
+    {
+        echo "valid email"."<br>";
     }
 
 
+}
 
 }
 

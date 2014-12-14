@@ -18,31 +18,29 @@ $owner->initiate();
         <script>
             function validateShopForm() {
 
-                if (document.addproduct.name.value.length == 0) {
+                if (document.addproduct.pro_name.value.length == 0) {
                     alert("please enter the product name");
                 }
-                else if (document.addproduct.name.value.length > 25) {
+                else if (document.addproduct.pro_name.value.length > 25) {
                     alert("use a name with less than 25 characters");
                 }
-                else if (document.addproduct.price.value == 0) {
+                else if (document.addproduct.pro_price.value == 0) {
                     alert("please enter the price");
                 }
-                else if (document.addproduct.tag.value.length > 50) {
+                else if (document.addproduct.pro_tag.value.length > 50) {
                     alert("please enter a product tag which has less than 50 characters");
                 }
-                else if (document.addproduct.catId.selectedIndex == 0) {
+                else if (document.addproduct.category.selectedIndex == 0) {
                     alert("please select the category Id");
                 }
-                else if (document.addproduct.shopId.selectedIndex == 0) {
-                    alert("please select the shop Id");
-                }
-                else if (!(document.addproduct.radios[0].checked || document.addproduct.radios[1].checked)) {
+
+                else if (!(document.addproduct.var[0].checked || document.addproduct.var[1].checked)) {
                     alert("please select a button for variations");
                 }
-                else if (document.addproduct.textarea.value.length == 0) {
+                else if (document.addproduct.description.value.length == 0) {
                     alert("please enter a product description");
                 }
-                else if (document.addproduct.sell.value == 0) {
+                else if (document.addproduct.sel_unit.value == 0) {
                     alert("please enter selling unit");
                 }
                 else if (document.addproduct.stock.value == 0) {
@@ -101,11 +99,12 @@ $owner->initiate();
 						    </select>
 						  </div>
                     </div>
-                                      
-                    <div class="form-group pull-right">
+                        <input type="submit" class=" btn btn-primary btn-success" id="exampleSubmit" value="Add">
+                        <input type="reset" class=" btn btn-primary btn-danger" id="exampleSubmit" value="Discard">
+                  <!--  <div class="form-group pull-right">
                         <a href="#" class="btn btn-primary btn-success"><span class="glyphicon glyphicon-floppy-disk"></span> Save</a>
                         <a href="#" class="btn btn-primary btn-danger"><span class="glyphicon glyphicon-remove"></span> Discard</a>
-                    </div>
+                    </div>-->
                 </div>
                 </div><!-- /.Contact Details --> 
             </div>
@@ -125,7 +124,7 @@ $owner->initiate();
                         <label for="UserName">Email</label>
                         <input type="email" class="form-control" id="exampleInputEmail1" placeholder="john@abc.com">
                     </div>
-                    
+                        <input type="submit" class=" btn btn-primary btn-success" id="exampleSubmit" value="Save">
                     <div class="form-group pull-right">
                         <a href="#" class="btn btn-primary btn-success"><span class="glyphicon glyphicon-floppy-disk"></span> Save</a>
                     </div>
@@ -145,9 +144,9 @@ $owner->initiate();
                         <label for="UserName">New Password</label>
                         <input type="password" class="form-control" id="" placeholder="***********">
                     </div>
-                    
+                        <input type="submit" class=" btn btn-primary btn-success" id="exampleSubmit" value="save">
                     <div class="form-group pull-right">
-                        <a href="#" class="btn btn-primary btn-success"><span class="glyphicon glyphicon-floppy-disk"></span> Save</a>
+                       <!-- <a href="#" class="btn btn-primary btn-success"><span class="glyphicon glyphicon-floppy-disk"></span> Save</a>-->
                     </div>
                 </div>
                 </div><!-- /.Contact Details --> 
@@ -184,7 +183,7 @@ $owner->initiate();
 		                    <div class="panel-body">
 			                    <div class="form-group">
                                 
-                                <form name="addproduct" method="POST" action= "/scripts/addtoproduct.php " enctype="multipart/form-data" onclick="//return validateShopForm();">
+                                <form name="addproduct" method="POST" action= "/scripts/addtoproduct.php " enctype="multipart/form-data" onclick="return validateShopForm();">
 			                        <label for="#">Product Name</label>
 			                        <input type="text" name = "pro_name" class="form-control" id="" placeholder="Shop john26769">
 			                    </div>
@@ -215,7 +214,7 @@ $owner->initiate();
 			                       <label class=" control-label" for="radios">Variations </label>
 									  <div class=""> 
 									    <label class="radio-inline" for="radios-0">
-									      <input type="radio" name="var" id="radios-0" value="1" checked="checked">
+									      <input type="radio" name="var" id="radios-0" value="1" >
 									      Yes
 									    </label> 
 									    <label class="radio-inline" for="radios-1">
@@ -228,7 +227,7 @@ $owner->initiate();
 			                       <label class=" control-label" for="radios">Virtual </label>
 									  <div class=""> 
 									    <label class="radio-inline" for="radios-0">
-									      <input type="radio" name="vir" id="radios-0" value="1" checked="checked">
+									      <input type="radio" name="vir" id="radios-0" value="1" checked = "checked" >
 									      Yes
 									    </label> 
 									    <label class="radio-inline" for="radios-1">
@@ -259,9 +258,11 @@ $owner->initiate();
 									    <input id="fileUpload" name="prodimg" class="input-file" type="file">
                                       </div>
 			                    </div>
+
+
 			                    <div class="form-group">
-                                    <input type="submit"  class="form-control btn btn-primary btn-success" id="exampleSubmit" value="Add">
-                                    <input type="reset" class="form-control btn btn-primary btn-danger" id="exampleSubmit" value="Discard">
+                                    <input type="submit"  class=" btn btn-primary btn-success" id="exampleSubmit" value="Add">
+                                    <input type="reset" class=" btn btn-primary btn-danger" id="exampleSubmit" value="Discard">
 			                        <!--  <a href="#" class="btn btn-primary btn-success"><span class="glyphicon glyphicon-floppy-disk"></span> Add</a>
 			                        <a href="#" class="btn btn-primary btn-danger"><span class="glyphicon glyphicon-remove"></span>Discard</a> -->
 			                    </div>

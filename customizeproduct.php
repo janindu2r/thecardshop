@@ -42,7 +42,7 @@ $title = 'Administrator Dashboard' ;  // page title
                                 <div class="panel-body">
                                     <div class="form-group">
 
-                                        <form name="physical" method="POST" action=" " enctype="multipart/form-data" onclick="//return validateShopForm();">
+                                        <form name="physical" method="POST" action="/script/addtophysical "  onclick="//return validateShopForm();">
                                             <label for="#">Width</label>
                                             <input type="number" name="width" class="form-control" id="exampleInputtext1" placeholder="26769">
                                         </div>
@@ -62,7 +62,7 @@ $title = 'Administrator Dashboard' ;  // page title
                                     <div class="form-group">
                                         <label for="#">Shipping Cost</label>
 
-                                        <input type="number" class="form-control" id="exampleInputtext1" placeholder="26769">
+                                        <input type="number" name="cost" class="form-control" id="exampleInputtext1" placeholder="26769">
                                     </div>
                                     <div class="form-group">
                                         <div class="form-group">
@@ -79,8 +79,8 @@ $title = 'Administrator Dashboard' ;  // page title
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <input type="submit" class="form-control btn btn-primary btn-success" id="exampleSubmit" value="Add">
-                                            <input type="reset" class="form-control btn btn-primary btn-danger" id="exampleSubmit" value="Discard">
+                                            <input type="submit"  id="exampleSubmit" value="Add">
+                                            <input type="reset"  id="exampleSubmit" value="Discard">
                                             <!--  <a href="#" class="btn btn-primary btn-success"><span class="glyphicon glyphicon-floppy-disk"></span> Add</a>
                                             <a href="#" class="btn btn-primary btn-danger"><span class="glyphicon glyphicon-remove"></span>Discard</a> -->
                                         </div>
@@ -112,7 +112,7 @@ $title = 'Administrator Dashboard' ;  // page title
                                 <div class="panel-body">
                                     <div class="form-group">
 
-                                        <form name="virtual" method="POST" action=" " enctype="multipart/form-data" onclick="//return validateShopForm();">
+                                        <form name="virtual" method="POST" action=" " onclick="//return validateShopForm();">
                                             <label for="#">Download Link</label>
                                             <input type="text" name="link" class="form-control" id="" placeholder="www.asd.com">
                                             <div class="form-group">
@@ -153,7 +153,7 @@ $title = 'Administrator Dashboard' ;  // page title
                                 <div class="panel-body">
                                     <div class="form-group">
 
-                                        <form name="addproduct" method="POST" action="/scripts/addtoproduct.php " enctype="multipart/form-data" onclick="//return validateShopForm();">
+                                        <form name="addproduct" method="POST" action="/scripts/addtoproduct.php "  onclick="//return validateShopForm();">
                                             <label for="#">Product Name</label>
                                             <input type="text" name="pro_name" class="form-control" id="" placeholder="Shop john26769">
                                         </form></div>
@@ -258,7 +258,7 @@ $title = 'Administrator Dashboard' ;  // page title
                                 <div class="panel-body">
                                     <div class="form-group">
 
-                                        <form name="addproduct" method="POST" action="/scripts/addtoproduct.php " enctype="multipart/form-data" onclick="//return validateShopForm();">
+                                        <form name="addproduct" method="POST" action="/scripts/addtoproduct.php "  onclick="//return validateShopForm();">
                                             <label for="#">Product Name</label>
                                             <input type="text" name="pro_name" class="form-control" id="" placeholder="Shop john26769">
                                         </form></div>
@@ -329,9 +329,10 @@ $title = 'Administrator Dashboard' ;  // page title
                                                 <input id="fileUpload" name="prodimg" class="input-file" type="file">
                                             </div>
                                         </div>
+                                        <input type="submit" class=" btn btn-primary btn-success" id="exampleSubmit" value="Add">
+                                        <input type="reset" class=" btn btn-primary btn-danger" id="exampleSubmit" value="Discard">
                                         <div class="form-group">
-                                            <input type="submit" class="form-control btn btn-primary btn-success" id="exampleSubmit" value="Add">
-                                            <input type="reset" class="form-control btn btn-primary btn-danger" id="exampleSubmit" value="Discard">
+
                                             <!--  <a href="#" class="btn btn-primary btn-success"><span class="glyphicon glyphicon-floppy-disk"></span> Add</a>
                                             <a href="#" class="btn btn-primary btn-danger"><span class="glyphicon glyphicon-remove"></span>Discard</a> -->
                                         </div>
