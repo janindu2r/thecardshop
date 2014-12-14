@@ -5,7 +5,7 @@
 .galleria-container {
     position: relative;
     overflow: hidden;
-    box-shadow: 0.2em 0.2em 0.5em rgb(10,10,10);
+    box-shadow: 0 0 2px 1px rgb(220,220,220);
 	border-radius: 10px;
 }
 .galleria-container img {

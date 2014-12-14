@@ -3,11 +3,9 @@
 
 #imagegallery{
 	clear:both;
-	
-	
 	border: none !important;
 	padding: 0;
 	}
 
- #galleria{height:420px}
+#galleria{height:450px; width: 470px}
 

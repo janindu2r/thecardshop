@@ -44,17 +44,13 @@ $title = $viewProd->proName. ' | '. $viewfrom ;  // page title
 
 				<div id="imagegallery">
                     <div id="galleria">
-                        <img src="/Gallery/gallery/1.jpg"
-                        data-title="caption 1"/>
-                        
-                        <img src="/Gallery/gallery/2.jpg"
-                        data-title="caption 2"/>
-                        
-                        <img src="/Gallery/gallery/3.jpg"
-                        data-title="caption 3"/>
-                  
-                        <img src="/Gallery/gallery/4.jpg"
-                        data-title="caption 4"/>
+                        <img src="/content/products/prodthumbnail/<?php echo $viewProd->prodId ?>.jpg" data-title=""/>
+
+                        <!-- multiple images -->
+                        <img src="/Gallery/gallery/1.jpg" data-title=""/>
+                        <img src="/Gallery/gallery/2.jpg" data-title=""/>
+                        <img src="/Gallery/gallery/3.jpg" data-title=""/>
+                        <img src="/Gallery/gallery/4.jpg" data-title=""/>
                     </div>
                 </div>
 					
