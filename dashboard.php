@@ -38,7 +38,7 @@ $title = 'Profile | Comercio'  ;  // page title
                     <div class="panel-body">
                     <div class="form-group">
                         <label for="FirstName">First Name</label>
-                        <input type="text" class="form-control" id="FirstName" value="<?php echo $user->fName ?>" placeholder="john26769">
+                        <input type="text" class="form-control" id="FirstName" name="fname" value="<?php echo $user->fName ?>" placeholder="john26769">
                     </div>
                     <div class="form-group">
                         <label for="LastName">Last Name</label>
