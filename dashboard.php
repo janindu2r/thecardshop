@@ -18,10 +18,10 @@ $title = 'Profile | Comercio'  ;  // page title
         <div class="col-md-2">
             <ul class="nav nav-pills nav-stacked admin-menu">
                 <li class="active"><a href="#" data-target-id="home"><i class="fa fa-user fa-fw"></i>Profile</a></li>
-                <li><a href="#" data-target-id="widgets"><i class="fa fa-heart fa-fw"></i>My Wish List</a></li>
-                <li><a href="#" data-target-id="pages"><i class="fa fa-history fa-fw"></i>Order History</a></li>
-                <!-- <li><a href="#" data-target-id="charts"><i class="fa fa-bar-chart-o fa-fw"></i>Charts</a></li>
-                <li><a href="#" data-target-id="table"><i class="fa fa-table fa-fw"></i>Table</a></li>
+                <li><a href="#" data-target-id="widgets"><i class="fa fa-heart fa-fw"></i> My Wish List</a></li>
+                <li><a href="#" data-target-id="pages"><i class="fa fa-history fa-fw"></i> Order History</a></li>
+                 <li><a href="#" data-target-id="charts"><i class="fa fa-suitcase fa-fw"></i> Activate Shop</a></li>
+                <!--<li><a href="#" data-target-id="table"><i class="fa fa-table fa-fw"></i>Table</a></li>
                 <li><a href="#" data-target-id="forms"><i class="fa fa-tasks fa-fw"></i>Forms</a></li>
                 <li><a href="#" data-target-id="calender"><i class="fa fa-calendar fa-fw"></i>Calender</a></li>
                 <li><a href="#" data-target-id="library"><i class="fa fa-book fa-fw"></i>Library</a></li>
@@ -131,7 +131,13 @@ $title = 'Profile | Comercio'  ;  // page title
             Pages
         </div>
         <div class="col-md-8 admin-content" id="charts">
-            Charts
+            <div class="col-md-3 col-offset-3"> 
+                <div class="panel">
+                    <div class="panel-body">
+                        <a href="#" class="btn btn-lg btn-info"><span class="glyphicon glyphicon-bullhorn"></span> Activate Your Shop</a>
+                    </div>
+                </div>
+            </div>
         </div>
         <!-- <div class="col-md-9 admin-content" id="table">
             Table
