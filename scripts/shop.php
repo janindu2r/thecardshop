@@ -65,10 +65,17 @@ if($_SESSION) {
 
             if ($logo == 0)
                 copy($root."/content/shop/logo/default.jpg",$root. $sell->logoImg);
-            if ($slider[0] == 0)
-                copy($root."/content/shop/slider/default.jpg", $root. $sell->comPath . '0' . ".jpg");
-            if ($slider[1] == 0)
-                copy($root."/content/shop/slider/default.jpg",$root. $sell->comPath . '1' . ".jpg");
+            $galleryarr['shop_id'] = $db->escapeString($sell->shopId);
+            if ($slider[0] == 0) {
+                copy($root . "/content/shop/slider/default.jpg", $root . $sell->comPath . '0' . ".jpg");
+                $galleryarr['image'] = '0';
+                $db->runInsertRecord('shop_gallery', $galleryarr);
+            }
+            if ($slider[1] == 0) {
+                copy($root . "/content/shop/slider/default.jpg", $root . $sell->comPath . '1' . ".jpg");
+                $galleryarr['image'] = '1';
+                $db->runInsertRecord('shop_gallery', $galleryarr);
+            }
 
         }
 

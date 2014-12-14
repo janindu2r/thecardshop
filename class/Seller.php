@@ -60,8 +60,9 @@
                     $catId = $this->db->getScalar("select category_id from categories where category_name = " . $this->db->escapeString($val));
                     if ($catId == null) {
                         $arr['category_name'] = $this->db->escapeString($val);
+                        $catId = $this->db->runInsertAndGetID('categories', $arr);
                     }
-                    if (!in_array($catId, $catIds))
+                    if (!in_array($catId, $catIds) && $catId != null)
                         array_push($catIds, $catId);
                 }
 
@@ -73,6 +74,17 @@
                 $this->initiate();
                 return 1;
             }
+        }
+
+        function productCount()
+        {
+            $sql = 'SELECT COUNT( product_id ) FROM products WHERE shop_id ='. $this->shopId;
+            return $this->db->getScalar($sql);
+        }
+
+        function salesCount(){ //tobe implemented
+
+            return '10';
         }
 
         function initiate(){

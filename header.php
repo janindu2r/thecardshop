@@ -44,7 +44,7 @@
 			        <span class="icon-bar"></span>
 			        <span class="icon-bar"></span>
 			      </button>
-			      <a class="navbar-brand" href="/index.php">Commercio</a>
+			      <a class="navbar-brand" href="/index.php">Comercio</a>
    	 		</div>
 
 		    <!-- Collect the nav links, forms, and other content for toggling -->
@@ -60,9 +60,8 @@
 		            <li class="divider"></li>
 		            <li><a href="/registershop.php">Register Shop</a></li>
 		            <li class="divider"></li>
-		            <li><a href="/addItems.php">Add Items</a></li>
 		            <li><a href="/registershop.php">Reg Shop</a></li>
-		            <li><a href="/shophome.php">Shop</a></li>
+		            <li><a href="/viewshop.php">Shop</a></li>
 		            <li><a href="/checkout.php">Checkout</a></li>
 		          </ul>
 		        </li>

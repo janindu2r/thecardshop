@@ -109,11 +109,7 @@ $title = 'Sign Up' ;  // page title
 
         <div class="col-xs-12 col-sm-12 col-md-6 well well-sm col-md-offset-3" id="signUpFormContainer">
             <legend><i class="glyphicon glyphicon-globe"></i> Sign up!</legend>
-<<<<<<< HEAD
-            <form action="scripts/register.php" method="post" class="form" role="form" name = "registrn" onclick="validate();">
-=======
             <form action="scripts/register.php" method="post" class="form" role="form" name = "registrn" onsubmit="return validateRegister();">
->>>>>>> origin/master
             <div class="row">
                 <div class="col-xs-6 col-md-6">
                     <input class="form-control" name="firstname" placeholder="First Name" type="text"
@@ -278,68 +274,6 @@ $title = 'Sign Up' ;  // page title
                     $("#checkpassmsg").attr("src", failimg).fadeIn(40000);
             });
 
-<<<<<<< HEAD
-                 function validate() {
-                     if (document.registrn.firstname.value.length == 0) {
-                         alert("please enter the first name");
-                     }
-                     else if (document.registrn.firstname.value.length > 20) {
-                         alert("please enter a name with less than 20 characters");
-                     }
-                     else if (document.registrn.lastname.value.length == 0) {
-                         alert("please enter the first name");
-                     }
-                     else if (document.registrn.lastname.value.length > 30) {
-                         alert("please enter a name with less than 30 characters");
-                     }
-                     else if (document.registrn.email.value.length == 0) {
-                         alert("please enter the email address");
-                     }
-                     else if (document.registrn.reenteremail.value.length > 30) {
-                         alert("please enter a name with less than 30 characters");
-                     }
-                     else if (document.registrn.password.value.length == 0) {
-                         alert("please enter the first name");
-                     }
-                     else if (document.registrn.repassword.value.length > 32) {
-                         alert("please enter a name with less than 32 characters");
-                     }
-                     else if (document.registrn.month.selectedIndex == 0) {
-                         alert("please select a month");
-                     }
-                     else if (document.registrn.day.selectedIndex == 0) {
-                         alert("please select a day ");
-                     }
-                     else if (document.registrn.year.selectedIndex == 0) {
-                         alert("please select a year");
-                     }
-                     else if (!(document.registrn.gender[0].checked || document.registrn.gender[1].checked)) {
-                         alert("what is your gender ");
-                     }
-                     else if (document.registrn.add1.value.length == 0) {
-                         alert("please enter the address");
-                     }
-                     else if (document.registrn.add2.value.length == 0) {
-                         alert("please enter the address ");
-                     }
-                     else if (document.registrn.postal.value.length == 0) {
-                         alert("please enter the postal code ");
-                     }
-                     else if (!document.registrn.agree.checked) {
-                         alert("first user must agree the terms and conditions");
-                     }
-
-
-                 }
-
-
-
-
-
-
-
-=======
->>>>>>> origin/master
         });
 
     </script>
