@@ -89,64 +89,18 @@ $title = 'Comercio' ; //define page title
 				            <div class="carousel-inner">
 				                <div class="item active">
 				                    <div class="row">
-				                        <div class="col-sm-3">
-				                            <div class="col-item">
-				                                <div class="photo">
-				                                    <img src="http://www.techlicious.com/images/phones/samsung-galaxy-s5-blue-front-and-back-350px.jpg" class="img-responsive" alt="a" />
-				                                </div>
-				                                <div class="info">
-				                                    <div class="row">
-				                                        <div class="price col-md-6">
-				                                            <h5>
-				                                                Sample Product</h5>
-				                                            <h5 class="price-text-color">
-				                                                $199.99</h5>
-				                                        </div>
-				                                        <div class="rating hidden-sm col-md-6">
-				                                            <i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-				                                            </i><i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-				                                            </i><i class="fa fa-star"></i>
-				                                        </div>
-				                                    </div>
-				                                    <div class="separator clear-left">
-				                                        <p class="btn-add">
-				                                            <a href="#" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span> Add to cart</a>
-				                                        <p class="btn-details">
-				                                            <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-list"></span> More details</a>
-				                                        
-				                                    </div>
-				                                    <div class="clearfix">
-				                                    </div>
-				                                </div>
-				                            </div>
-				                        </div>
-				                        <div class="col-sm-3">
-				                            <div class="col-item">
-				                                <div class="photo">
-				                                    <img src="http://www.rayashop.com/Images/Products/S7582-Black-Mti-300.png" class="img-responsive" alt="a" />
-				                                </div>
-				                                <div class="info">
-				                                    <div class="row">
-				                                        <div class="price col-md-6">
-				                                            <h5>
-				                                                Product Example</h5>
-				                                            <h5 class="price-text-color">
-				                                                $249.99</h5>
-				                                        </div>
-				                                        <div class="rating hidden-sm col-md-6">
-				                                        </div>
-				                                    </div>
-				                                    <div class="separator clear-left">
-				                                        <p class="btn-add">
-				                                           <a href="#" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span> Add to cart</a>
-				                                        <p class="btn-details">
-				                                            <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-list"></span> More details</a>
-				                                    </div>
-				                                    <div class="clearfix">
-				                                    </div>
-				                                </div>
-				                            </div>
-				                        </div>
+
+										
+											<?php
+											$viewProd = new Product();
+											echo $viewProd->getSmallBoxItem(1000000);
+											?>
+
+										<!-- Variation Item -->
+										<?php
+										$varProd = new Variation();
+										echo $varProd->getSmallBoxItem(1000001);
+										?>
 				                        <div class="col-sm-3">
 				                            <div class="col-item">
 				                                <div class="photo">
@@ -353,63 +307,17 @@ $title = 'Comercio' ; //define page title
 				            <div class="carousel-inner">
 				                <div class="item active">
 				                    <div class="row">
-				                        <div class="col-sm-4">
-				                            <div class="col-item">
-				                                <div class="photo">
-				                                    <img src="http://picture-cdn.wheretoget.it/rad3mk-i.jpg" class="img-responsive" alt="a" />
-				                                </div>
-				                                <div class="info">
-				                                    <div class="row">
-				                                        <div class="price col-md-6">
-				                                            <h5>
-				                                                Sample Product</h5>
-				                                            <h5 class="price-text-color">
-				                                                $199.99</h5>
-				                                        </div>
-				                                        <div class="rating hidden-sm col-md-6">
-				                                            <i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-				                                            </i><i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-				                                            </i><i class="fa fa-star"></i>
-				                                        </div>
-				                                    </div>
-				                                    <div class="separator clear-left">
-				                                        <p class="btn-add">
-				                                            <a href="#" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span> Add to cart</a>
-				                                        <p class="btn-details">
-				                                            <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-list"></span> More details</a>
-				                                    </div>
-				                                    <div class="clearfix">
-				                                    </div>
-				                                </div>
-				                            </div>
-				                        </div>
-				                        <div class="col-sm-4">
-				                            <div class="col-item">
-				                                <div class="photo">
-				                                    <img src="http://picture-cdn.wheretoget.it/8dt5le-i.jpg" class="img-responsive" alt="a" />
-				                                </div>
-				                                <div class="info">
-				                                    <div class="row">
-				                                        <div class="price col-md-6">
-				                                            <h5>
-				                                                Product Example</h5>
-				                                            <h5 class="price-text-color">
-				                                                $249.99</h5>
-				                                        </div>
-				                                        <div class="rating hidden-sm col-md-6">
-				                                        </div>
-				                                    </div>
-				                                    <div class="separator clear-left">
-				                                        <p class="btn-add">
-				                                            <a href="#" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span> Add to cart</a>
-				                                        <p class="btn-details">
-				                                            <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-list"></span> More details</a>
-				                                    </div>
-				                                    <div class="clearfix">
-				                                    </div>
-				                                </div>
-				                            </div>
-				                        </div>
+										<?php
+										$viewProd = new Product();
+										echo $viewProd->getLargeBoxItem(1000000);
+										?>
+
+										<!-- Variation Item -->
+										<?php
+										$varProd = new Variation();
+										echo $varProd->getLargeBoxItem(1000001);
+										?>
+
 				                        <div class="col-sm-4">
 				                            <div class="col-item">
 				                                <div class="photo">

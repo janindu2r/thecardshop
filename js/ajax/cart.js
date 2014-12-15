@@ -26,6 +26,28 @@ $(document).ready(function() {
         });
     });
 
+    $(document).on("click", '.add-one-to-cart', function () {
+        var cartObj = {};
+        cartObj['type'] = 'addprod';
+        cartObj['prodId'] = this.id.toString();
+        cartObj['variation'] = '0';
+        cartObj['quantity'] =  '1';
+        $.ajax({
+            type: "POST",
+            url: "/scripts/cart.php",
+            data: cartObj,
+            cache: false,
+            success: function(result){
+                var cItem = JSON.parse(result);
+                if(cItem.success == 1)
+                {
+                    $("#update-portable-cart").click();
+                }
+            }
+        });
+    });
+
+
     $(document).on("change", '.output-qty-cart', function () {
         var ar = {};
         ar['type'] = 'update';

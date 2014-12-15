@@ -6,7 +6,7 @@ class Variation extends Physical
 {
     public $varNames = array(); //var ID and var Name (1 : Color, 2: Size)
     public $allVars = array(); //var ID and the particular values of the specific variation item (1 : Blue, 2 : Medium)
-public $pId,$vId,$vName;
+	public $pId,$vId,$vName;
 	function __construct()
 	{
 		parent::__construct();	
@@ -31,6 +31,36 @@ public $pId,$vId,$vName;
         }
         return $this;
 	}
+
+
+	function getLargeBoxItem($prodId)
+	{
+		return $this->getThumbnailBoxItem($prodId, 4);
+	}
+
+	function getSmallBoxItem($prodId)
+	{
+		return $this->getThumbnailBoxItem($prodId, 3);
+	}
+
+
+
+	private function getThumbnailBoxItem($prodId, $col)
+	{
+		$size = 8 - $col;
+		$this->returnProduct($prodId);
+		$itemHtml  =  '<div class="col-sm-'.$col.'"><div class="col-item"><div class="photo"><img src="/content/products/prodthumbnail/';
+		$itemHtml .= $this->prodId .'.jpg" class="img-responsive" alt="a" /></div><div class="info"><div class="row">';
+		$itemHtml .= '<div class="price col-md-6"><h'.$size.'><b>'.$this->proName.'</b></h'.$size.'> by <a href="/viewshop.php?shop='.$this->shopId.'">';
+		$itemHtml .= $this->getShopName() .'</a> </div><div class="rating hidden-sm col-md-6">';
+		$itemHtml .= '<h3 class="price-text-color">$'.$this->proPrice.'</h3>';
+		$itemHtml .= '</div></div><div class="separator clear-left"><p class="btn-details">';
+		$itemHtml .= '<a href="/viewproduct.php?product='. $this->prodId . '" class="btn btn-default">';
+		$itemHtml .= '<span class="glyphicon glyphicon-list"></span> More details</a></p></div><div class="clearfix"></div></div>';
+		$itemHtml .= '</div></div>';
+		return $itemHtml;
+	}
+
 	
 	public function deleteVariation($pId,$vId)
 	{

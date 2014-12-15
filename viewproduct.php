@@ -107,9 +107,9 @@ $title = $viewProd->proName. ' | '. $viewfrom ;  // page title
                     <?php } ?>
                     <?php if ($logged == 1 &&  $viewProd->shopId == $user->getRegID()) { ?>
                     <div class="btn-group cart">
-                                <button type="button" class="btn btn-success">
+                                <a href="/customizeproduct.php?product=<?php echo $viewProd->prodId ?>" type="button" class="btn btn-success">
                                     Edit Product
-                                </button>
+                                </a>
                     </div>
                     <?php } ?>
                 </div> <!--/.end of product slider -->
