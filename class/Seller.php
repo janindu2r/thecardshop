@@ -116,6 +116,15 @@
         }
 
 
+        public function getShopProducts( $shopId)
+        {
+         $query = " select product_id, virtual from products where shop_id = ". $shopId ;
+           $res = $this->getSelectTable($query);
+            return $res;
+
+        }
+
+
         /*
 		function manageShop($details, $category)
 		{

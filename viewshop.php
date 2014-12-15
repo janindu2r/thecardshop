@@ -23,6 +23,33 @@ foreach($shop->categories as $key=> $val)
     $categories .= ', '.$val;
 
 $categories = substr($categories,1);
+
+
+
+//calling method getshoproducts
+
+$flag = $shop->getShopProducts($shop->shopId);
+
+foreach($flag as $new)
+{
+   if($new['variations'] == 1)
+   {
+       $obj = new Variation();
+   }
+    else
+    {
+        $obj = new Product();
+
+    }
+   echo  $obj->getLargeBoxItems($new['product_id']);
+   // $obj->getSmallBoxItems($new['product_id']);
+
+}
+
+
+
+
+
 ?>
 <!-- **************************** Header Start, Do not touch **************************** -->
 <!DOCTYPE html>
