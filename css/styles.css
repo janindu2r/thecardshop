@@ -16,6 +16,16 @@
 
 
 /*--------------Top Section--------------*/
+#navfix{
+    
+    width:auto;
+    border-radius: 0;
+    margin-right: auto;
+    margin-left: auto;
+}
+#forfixednav{
+    margin-bottom: 10px;
+}
 #upper-header{
 	width: auto;
 	height: 35px;
@@ -69,7 +79,7 @@
 	text-align: center;
 }
 .dropdown {
-    background:#fff;
+    
 /*    border:1px solid #ccc;*/
 /*    border-radius:4px;*/
     width:auto;    
@@ -111,6 +121,7 @@
     border-bottom-width: 0px;
     padding-top: 5px;
     padding-bottom: 5px;
+    margin-left: 20px;
 }
 
 #carousel{
@@ -505,10 +516,11 @@
             Cart DropDown styles
 ------------------------------------------------------------------*/
 .dropdown-cart {
-    background:#fff;
+   /* background:#fff;*/
 /*    border:1px solid #ccc;*/
 /*    border-radius:4px;*/
-    width:auto;    
+    width:auto;
+    margin-right: 30px;    
 }
 .dropdown-cart-menu>li>a {
     color:#428bca;

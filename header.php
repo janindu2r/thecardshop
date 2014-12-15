@@ -30,11 +30,11 @@
 			<p class="upper-header-text">Phone orders: 1-800-0000<span>|</span>Email us: office@shop.com</p>
 
 		</div>
-		<hr class="shadow">
+		<!-- <hr class="shadow"> -->
 
 		<div class="clearfix"></div>
 		<!-- navigation	menu -->
-		<nav class="navbar" role="navigation" style="margin-bottom:0;">
+		<nav id="navfix" class="navbar navbar-inverse" role="navigation" style="margin-bottom:0;">
   			<div class="#">
 			    <!-- Brand and toggle get grouped for better mobile display -->
 			    <div class="navbar-header">
@@ -44,7 +44,7 @@
 			        <span class="icon-bar"></span>
 			        <span class="icon-bar"></span>
 			      </button>
-			      <a class="navbar-brand" href="/index.php">Comercio</a>
+			      <a class="navbar-brand" href="/index.php"><img src="/img/logo.png"></a>
    	 		</div>
 
 		    <!-- Collect the nav links, forms, and other content for toggling -->
@@ -216,7 +216,7 @@
                 <?php } else if($logged == 0) { ?>
 		        <!-- **********************Modal window for Login *********************-->
 		        <li>
-		        	<a href="javascript:;" id="loginBtn" class="forget btn btn-primary btn-success" data-toggle="modal" data-target=".login-modal"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+		        	<a href="javascript:;" id="loginBtn" class="nav navbar-nav btn btn-primary btn-success" data-toggle="modal" data-target=".login-modal"><span class="glyphicon glyphicon-log-in"></span> Login</a>
 					<div class="modal fade login-modal" tabindex="-1" role="dialog" aria-labelledby="myForgetModalLabel" aria-hidden="true">
 						<div class="modal-dialog modal-sm">
 							<div class="modal-content">
@@ -253,8 +253,11 @@
 		      </ul>
 		    </div><!-- /.navbar-collapse -->
   			</div><!-- /.container-fluid -->
-  			<hr class="shadow">
+  			<!-- <hr class="shadow"> -->
 		</nav>
+		<!-- <div id="forfixednav">
+			
+		</div> -->
 
 	</header><!-- Header end, Wrapper Start -->
   <div class="wrapper">
