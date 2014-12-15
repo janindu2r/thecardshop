@@ -12,6 +12,16 @@ class Physical extends Product
         parent::__construct();
     }
 
+	function getBadges(){
+		$html = '<div style="padding: 5px;">';
+		if($this->getMoneyBack())
+			$html .= '<img src="/img/product/moneyback.png">';
+		if($this->variation)
+			$html .= '<img src="/img/product/variation.png">';
+		if($this->shipCst == 0)
+			$html .= '<img src="/img/product/shipfree.png">';
+		return $html.'</div>';
+	}
 
     public function selectPhysicalProduct($proID)
     {

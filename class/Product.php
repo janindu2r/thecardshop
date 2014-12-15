@@ -194,6 +194,26 @@ class Product
 		return $this->getThumbnailBoxItem($prodId, 3);
 	}
 
+	function getBadges()
+	{
+		$html = '<div style="padding: 5px;">';
+		if($this->getMoneyBack())
+			$html .= '<img src="/img/product/moneyback.png">';
+		if($this->virtual)
+			$html .= '<img src="/img/product/virtual.png">';
+		return $html.'</div>';
+	}
+
+	function getMoneyBack(){
+		return $this->db->getScalar('select mony_back_gurantee from shops where shop_id = ' . $this->shopId);
+	}
+
+	function getCategory()
+	{
+		return $this->db->getScalar('select category_name from categories where category_id = ' . $this->catId);
+	}
+
+
 	private function getThumbnailBoxItem($prodId, $col)
 	{
 		$size = 8 - $col;
@@ -201,7 +221,7 @@ class Product
 		$itemHtml  =  '<div class="col-sm-'.$col.'"><div class="col-item"><div class="photo"><img src="/content/products/prodthumbnail/';
 		$itemHtml .= $this->prodId .'.jpg" class="img-responsive" alt="a" /></div><div class="info"><div class="row">';
 		$itemHtml .= '<div class="price col-md-6"><h'.$size.'><b>'.$this->proName.'</b></h'.$size.'> by <a href="/viewshop.php?shop='.$this->shopId.'">';
-		$itemHtml .= $this->getShopName() .'</a> </div><div class="rating hidden-sm col-md-6">';
+		$itemHtml .= $this->getShopName() .'</a>'. $this->getBadges().'</div><div class="rating hidden-sm col-md-6">';
 		$itemHtml .= '<h3 class="price-text-color">$'.$this->proPrice.'</h3>';
 		$itemHtml .= '</div></div><div class="separator clear-left">';
 		$itemHtml .= $this->getCartButton() . '<p class="btn-details">';

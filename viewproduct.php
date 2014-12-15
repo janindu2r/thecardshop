@@ -20,8 +20,7 @@ if(!$viewProd->virtual)
 }
 $_SESSION['product'] = $viewProd->prodId;
 
-$viewfrom = 'Comercio';  // Or Shop Name
-$title = $viewProd->proName. ' | '. $viewfrom ;  // page title
+$title = $viewProd->proName. ' | Comercio' ;  // page title
 
 ?>
 <!-- -------------------------------------- Header Start, Do not touch ----------------------------------------- -->
@@ -57,9 +56,30 @@ $title = $viewProd->proName. ' | '. $viewfrom ;  // page title
 				<div class="col-md-6">
 					<div class="product-title"><?php echo  $viewProd->proName ; ?></div>
 					<div class="product-desc"><?php echo $viewProd->proTag ; ?> </div>
-					<div class="product-rating"><i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star-o"></i> </div>
+					<div class="product-rating"><?php echo $viewProd->getBadges(); ?> </div>
 					<hr>
-                    <p><?php echo $viewProd->description ?></p>
+                    <p>
+                    <?php
+                    echo 'Category : '. $viewProd->getCategory() .'<br>' ;
+                    if($viewProd->virtual)
+                    echo 'Virtual : Yes';
+                    else {
+                        if($viewProd->shipCst == 0)
+                        echo '<b>Free Shipping!!</b><br>';
+                        else {
+                            echo 'Shipping : $' . $viewProd->shipCst . '<br>';
+                            if($viewProd->multiByq)
+                                echo 'Shipping will be multiplied by quantity';
+                        }
+                    }
+                    ?>
+
+
+                    </ul>
+
+                    </p>
+
+
                     <hr>
 					<div class="product-price">$ <?php echo $viewProd->proPrice ?></div>
 
@@ -136,14 +156,20 @@ $title = $viewProd->proName. ' | '. $viewfrom ;  // page title
                                     Visit Shop
                                 </a> </p>
 
+                               <p> <?php echo $viewProd->description ?> </p>
 
                                 <?php if(!$viewProd->virtual) {  ?>
-                				<h3> Dimensions </h3>
+                				<h4> Dimensions </h4>
                 <!-- condition check needed for each of these to see if the value is null. only echo if not -->
-                                        Width : <?php echo $viewProd->width ?> <br>
-                                        Height : <?php echo $viewProd->height ?> <br>
-                                        Length : <?php echo $viewProd->length ?> <br>
-                                        Weight: <?php echo $viewProd->weight ?><br>
+                                    <?php if($viewProd->width)
+                                        echo 'Width : '. $viewProd->width . ' cm<br>';
+                                        if($viewProd->height)
+                                            echo 'Height : '. $viewProd->height. ' cm<br>';
+                                        if($viewProd->length)
+                                            echo ' Length : '. $viewProd->length. ' cm<br>';
+                                        if($viewProd->weight)
+                                            echo 'Weight : '.$viewProd->weight . ' kg<br>';
+                                        ?>
             			        <?php } ?>
 							</section>
 										  
