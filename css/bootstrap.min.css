@@ -9,6 +9,9 @@
 	/*height:50px;*/
 	width:100%;
 }
+.navbar-inverse .navbar-nav>li>a {
+color: #FFFFFF;
+}
 /*
 .navbar .navbar-brand {
 	color: #000000;
