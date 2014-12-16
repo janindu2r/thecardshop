@@ -10,8 +10,8 @@ else
 
 $category = new Category();
 
-$title =   $category->getCatName($catId).' | Category' ;  // page title
-$catList =  $category->getCatProdList($catId, 0, 4);
+$catName = $category->getCatName($catId);
+$title =   $catName.' | Category' ;  // page title
 
 ?>
 <!-- **************************** Header Start, Do not touch **************************** -->
@@ -21,15 +21,66 @@ $catList =  $category->getCatProdList($catId, 0, 4);
         <?php include('header.php'); ?>
 <!-- *****************************    Add Page Edits Below   **************************** -->
 
+<div style="padding: 3em"> <h2> <?php echo $catName ?> </h2> </div>
+
+        <div class="container">
+            <div id="shop-product">
+                <div class="item active">
+                    <div class="row">
+                        <?php
+                        $flag = $category->getCatProdList($catId, 0, 4);
+                        if($flag) {
+                            foreach ($flag as $new) {
+                                $obj = new Product();
+                                if ($new['variations'] == 1)
+                                    $obj = new Variation();
+                                echo $obj->getSmallBoxItem($new['product_id']);
+                            }
+                        }
+                        ?>
+                    </div>
+                </div>
+            </div>
+            <div id="shop-product">
+                <div class="item active">
+                    <div class="row">
+                        <?php
+                        $flag = $category->getCatProdList($catId, 4, 4);
+                        if($flag) {
+                            foreach ($flag as $new) {
+                                $obj = new Product();
+                                if ($new['variations'] == 1)
+                                    $obj = new Variation();
+                                echo $obj->getSmallBoxItem($new['product_id']);
+                            }
+                        }
+                        ?>
+                    </div>
+                </div>
+            </div>
+            <div id="shop-product">
+                <div class="item active">
+                    <div class="row">
+                        <?php
+                        $flag = $category->getCatProdList($catId, 8, 4);
+                        if($flag) {
+                            foreach ($flag as $new) {
+                                $obj = new Product();
+                                if ($new['variations'] == 1)
+                                    $obj = new Variation();
+                                echo $obj->getSmallBoxItem($new['product_id']);
+                            }
+                        }
+                        ?>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
+        <div style="padding: 3em"> <h2> <?php echo 'End of product list' ?> </h2> </div>
 
 
-
-
-
-
-
-<!-- *****************************      End of page edits 	 **************************** -->
+        <!-- *****************************      End of page edits 	 **************************** -->
 <?php include('footer.php'); //including the footer?>
 <!-- End of page
