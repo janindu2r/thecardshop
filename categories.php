@@ -2,15 +2,16 @@
 <?php
 include('overhead.php');
 
+$catId = 0;
 if($_GET && isset($_GET['id']))
     $catId = $_GET['id'];
 else
     header('location: /index.php');
 
-$catName = '';
+$category = new Category();
 
-$title = 'Category' ;  // page title
-
+$title =   $category->getCatName($catId).' | Category' ;  // page title
+$catList =  $category->getCatProdList($catId, 0, 4);
 
 ?>
 <!-- **************************** Header Start, Do not touch **************************** -->

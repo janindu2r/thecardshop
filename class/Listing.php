@@ -8,14 +8,6 @@ class Listing
         $this->db = new DbCon();
     }
 
-    //get products title when product_Id is given
-    public function getCategorizedProducts($catId, $start, $num)
-    {
-        $query = "select product_id from products where category_id = ".$catId." order by product_id desc limit ". $start .",". $num ;
-        $result = $this->db->getSelectTable($query);
-        return $result;
-    }
-
     //getting top selling products
     public function topSellProducts($start, $num)
     {
@@ -60,14 +52,6 @@ class Listing
     }
 
     */
-
-
-    public function getCategories()
-    {
-        $sql = "select category_id, category_name from categories order by category_name ASC";
-        $result = $this->db->getSelectTable($sql);
-        return $result;
-    }
 
 }
 
