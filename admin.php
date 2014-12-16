@@ -4,8 +4,12 @@ include('/overhead.php');
 
 $title = 'Administrator Dashboard' ;  // page title
 
+if(!$_SESSION)
+    header('location: /index.php');
+
 $owner = new Seller($user->getRegID());
 $owner->initiate();
+
 
 ?>
 <!-- **************************** Header Start, Do not touch **************************** -->
@@ -33,7 +37,6 @@ $owner->initiate();
                 else if (document.addproduct.category.selectedIndex == 0) {
                     alert("please select the category Id");
                 }
-
                 else if (!(document.addproduct.var[0].checked || document.addproduct.var[1].checked)) {
                     alert("please select a button for variations");
                 }

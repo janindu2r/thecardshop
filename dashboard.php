@@ -2,8 +2,10 @@
 <?php
 include('/overhead.php');
 
-$title = 'Profile | Comercio'  ;  // page title
+if(!$_SESSION)
+    header('location: /index.php');
 
+$title = 'Profile | Comercio'  ;  // page title
 
 ?>
 <!-- -------------------------------------- Header Start, Do not touch ----------------------------------------- -->
@@ -21,7 +23,12 @@ $title = 'Profile | Comercio'  ;  // page title
                 <li class="active"><a href="#" data-target-id="home"><i class="fa fa-user fa-fw"></i>Profile</a></li>
                 <!-- <li><a href="#" data-target-id="widgets"><i class="fa fa-heart fa-fw"></i> My Wish List</a></li> -->
                 <li><a href="#" data-target-id="pages"><i class="fa fa-history fa-fw"></i> Order History</a></li>
+
+              <?php if(!$user->shop) { ?>
                  <li><a href="#" data-target-id="charts"><i class="fa fa-suitcase fa-fw"></i> Activate Shop</a></li>
+             <?php } else {?>
+                  <li><a href="/viewshop.php" data-target-id="charts"><i class="fa fa-suitcase fa-fw"></i> Visit Shop</a></li>
+              <?php  } ?>
                 <!--<li><a href="#" data-target-id="table"><i class="fa fa-table fa-fw"></i>Table</a></li>
                 <li><a href="#" data-target-id="forms"><i class="fa fa-tasks fa-fw"></i>Forms</a></li>
                 <li><a href="#" data-target-id="calender"><i class="fa fa-calendar fa-fw"></i>Calender</a></li>
@@ -289,34 +296,48 @@ $title = 'Profile | Comercio'  ;  // page title
       <!-- /.modal-dialog --> 
     </div>
         </div>
-        <div class="col-md-8 admin-content" id="charts">
-            <div class="col-md-3 col-offset-3"> 
-                <div class="panel">
-                    <div class="panel-body">
-                        <a href="#" class="btn btn-lg btn-info"><span class="glyphicon glyphicon-bullhorn"></span> Activate Your Shop</a>
+
+        <?php if(!$user->shop) { ?>
+           <div class="col-md-8 admin-content" id="charts">
+               <div class="col-md-3 col-offset-3">
+                   <div class="panel">
+                       <div class="panel-body">
+                           <a href="#" class="btn btn-lg btn-info"><span class="glyphicon glyphicon-bullhorn"></span> Activate Your Shop</a>
+                       </div>
+                   </div>
+               </div>
+           </div>
+        <?php } else { ?>
+            <div class="col-md-8 admin-content" id="charts">
+                <div class="col-md-3 col-offset-3">
+                    <div class="panel">
+                        <div class="panel-body">
+                            <a href="/viewshop.php" class="btn btn-lg btn-info"><span class="glyphicon glyphicon-bullhorn"></span>View Shop</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- <div class="col-md-9 admin-content" id="table">
-            Table
-        </div>
-        <div class="col-md-9 admin-content" id="forms">
-            Forms
-        </div>
-        <div class="col-md-9 admin-content" id="calender">
-            Calender
-        </div>
-        <div class="col-md-9 admin-content" id="library">
-            Library
-        </div>
-        <div class="col-md-9 admin-content" id="applications">
-            Applications
-        </div>
-        <div class="col-md-9 admin-content" id="settings">
-            Settings
-        </div>
-    </div>-->
+        <?php } ?>
+        <!--
+           <div class="col-md-9 admin-content" id="table">
+               Table
+           </div>
+           <div class="col-md-9 admin-content" id="forms">
+               Forms
+           </div>
+           <div class="col-md-9 admin-content" id="calender">
+               Calender
+           </div>
+           <div class="col-md-9 admin-content" id="library">
+               Library
+           </div>
+           <div class="col-md-9 admin-content" id="applications">
+               Applications
+           </div>
+           <div class="col-md-9 admin-content" id="settings">
+               Settings
+           </div>
+       </div>-->
 </div>
 </div>
 <!-- //////JavaScript for browsing tab pages////// -->
