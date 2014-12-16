@@ -52,8 +52,17 @@
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		      <ul class="nav navbar-nav">
 		        <li class="nav-dropdown">
-		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Shop by Category <span class="caret"></span></a>
 		          <ul class="dropdown-menu" role="menu">
+					  <?php
+					  $cats = new Category();
+					  $catList = $cats->getCategories();
+					  foreach($catList as $row)
+					  {
+						  echo '<li><a href="/categories.php?id='.$row['category_id'].'">'.$row['category_name'].'</a></li>';
+					  }
+					  ?>
+					  <li class="divider"></li>
 		            <li><a href="/register.php">Register</a></li>
 		            <li><a href="/viewproduct.php">Single Product</a></li>
 		            <li><a href="/admin.php">Admin</a></li>
@@ -66,27 +75,20 @@
 		          </ul>
 		        </li>
 		      </ul>
-		      <ul class="nav navbar-nav">
+		<!--      <ul class="nav navbar-nav">
 		        <li class="nav-dropdown dropdown-large">
 		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Shop by Category<span class="caret"></span></a>
 		          <ul class="dropdown-menu dropdown-menu-large row" role="menu">
 					  <li class="col-sm-3">
 						  <ul>
 							  <li class="dropdown-header">Categories</li>
-							  <?php
-							  $cats = new Category();
-							  $catList = $cats->getCategories();
-							  foreach($catList as $row)
-							  {
-								  echo '<li><a href="/categories.php?id='.$row['category_id'].'">'.$row['category_name'].'</a></li>';
-							  }
-							  ?>
+							  //get php categories
 						  </ul>
 					  </li>
 				</ul>
 				
 			</li>
-		</ul>
+		</ul> -->
 		
 		          </ul>
 		        </li>
