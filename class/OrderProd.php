@@ -35,11 +35,23 @@ class OrderProd extends CartProd
         $ar['shipping_tot'] = $this->db->escapeString($this->shippingCost);
         $add = $this->db->runInsertRecord('product_order_items', $ar);
 
-        //email the seller and make notification
+        //email the seller and make notifications if virtual?
 
         return $add;
     }
 
+    function simpProdIni($prodId)
+    {
+        $this->cProduct = new Product();
+        $this->cProduct =  $this->cProduct->returnProduct($prodId);
+        if(!$this->cProduct->virtual)
+        {
+            $shipping= new Physical();
+            $shipping= $shipping->selectPhysicalProduct($this->cProduct->prodId);
+            $this->cProduct = $shipping;
+        }
+        return $this->cProduct;
+    }
 	
 }
 ?>

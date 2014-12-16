@@ -41,7 +41,6 @@ class Order
             $this->initializeOrder();
             $this->addOrderSimpProds($tempCart->simpleProds);
             $this->addOrderVarProds($tempCart->varProds);
-
             return $this->orderId;
         }
     }
@@ -66,10 +65,7 @@ class Order
         $this->shippingAd[2] =  $oVals['ship_add_line2'];
         $this->shippingAd[3] =  $oVals['ship_add_line3'];
         $this->shippingAd[4] =  $oVals['ship_postal_code'];
-        //initialize order prod items and var items
-
     }
-
 
     function addOrderSimpProds(array $cartProds)
     {
@@ -97,6 +93,41 @@ class Order
         }
 
     }
+
+    function getOrder($id){
+        $this->orderId = $id;
+        $this->initializeOrder();
+        $this->getOrderSimpProds();
+        $this->getOrderVarProds();
+    }
+
+    function getOrderSimpProds()
+    {
+        $sql = 'select * from product_order_items where order_id = '. $this->orderId ;
+        $simpProds = $this->db->getSelectTable($sql);
+        foreach($simpProds as $row) {
+            $ordPrd = new OrderProd();
+            $ordPrd->makeOrderProd($ordPrd->simpProdIni($row['product_id']), $row['quantity'], $row['shipping_tot'], $row['items_tot']);
+            array_push($this->simpleProds, $ordPrd);
+        }
+
+    }
+
+    function getOrderVarProds()
+    {
+        $sql = 'select * from variation_order_group where order_id = '. $this->orderId ;
+        $varProds = $this->db->getSelectTable($sql);
+        foreach ($varProds as $row) {
+            $varPrd = new OrderVar();
+            $varPrd->orderId = $this->orderId;
+            $varPrd->groupId = $row['varord_group'];
+            $varPrd->varProdIni($row['product_id']);
+            $varPrd->initializeVars();
+            $varPrd->makeVarOrderProd($varPrd->cProduct,$varPrd->cartVGroup,$row['quantity'], $row['shipping_tot'], $row['items_tot']);
+            array_push($this->varProds, $varPrd);
+        }
+    }
+
 
 
 

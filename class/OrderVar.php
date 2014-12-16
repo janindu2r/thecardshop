@@ -2,12 +2,12 @@
 class OrderVar extends CartVar
 {
     public $orderId;
-    public  $shippedDate;
-    public  $receivedDateTime;
+    public $shippedDate;
+    public $receivedDateTime;
     public $shippingCost;
     public $paidToSeller;
-    public  $shipLoc;
-    public  $itemsTotal;
+    public $shipLoc;
+    public $itemsTotal;
 
     function __construct(){
         parent::__construct();
@@ -49,6 +49,25 @@ class OrderVar extends CartVar
         }
         return $ad;
     }
+
+    function varProdIni($prodId)
+    {
+        $this->cProduct= new Variation();
+        $this->cProduct->initializeVariation($prodId, $this->initializeVars()) ;
+        return $this->cProduct;
+    }
+
+    function  initializeVars()
+    {
+        $varStr = null;
+        $sql = 'select * from variation_order_items where varord_group = '. $this->groupId;
+        $varIts = $this->db->getSelectTable($sql);
+        foreach ($varIts as $row) {
+            $varStr[$row['variation_id']] = $row['variation_value'];
+        }
+        return $varStr;
+    }
+
 	
 }
 ?>

@@ -3,6 +3,11 @@
 include('overhead.php');
 $title = 'Order' ;  // page title
 
+if(isset($_GET['order'])){
+        $order = new Order();
+        $order->getOrder($_GET['order']);
+}
+
 
 ?>
 <!---------------------------------------- Header Start, Do not touch ------------------------------------------->
@@ -14,9 +19,7 @@ $title = 'Order' ;  // page title
 
         Your order has been placed.<br>
         Order ID  - <?php echo $_GET['order'] ?> <br>
-
-            And the order Status is - <?php echo $_GET['status'] ?>
-
+        And the order Status is - <?php echo $_GET['status'] ?><br>
 
 <!---------------------------------------- End of page edits ---------------------------------------------------->
 <?php include('footer.php'); //including the footer?>
