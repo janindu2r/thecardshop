@@ -8,7 +8,7 @@
         <div class="contact-bar" id="row">
             <div class="container">
             <div class="col-md-4 pull-left" id="logo">
-                <img src="/img/logo.PNG">
+                <img src="/img/footer_logo.PNG">
             </div>
             <div class="col-md-6">
                 <div class="">
