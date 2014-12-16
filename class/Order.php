@@ -25,7 +25,6 @@ class Order
     function insertOrder(array $inVals)
     {
       //  $ar['order_id']
-
         $tempCart = new Cart();
         $inVals['buyer_id'] = $this->db->escapeString($tempCart->userId);
         $currentT = date("Y-m-d H:i:s");
@@ -77,7 +76,7 @@ class Order
         foreach($cartProds as $obj){
             $ordPrd = new OrderProd();
             $ordPrd->makeOrderProd($obj->cProduct, $obj->quantity, $obj->calculateShippingCost(), $obj->calculateEachItemPrice());
-            $ad = $ordPrd->addToOrderItemsTable($this->orderId);
+            $ad = $ordPrd->addToOrderItems($this->orderId);
             if($ad) {
                 array_push($this->simpleProds, $ordPrd);
                 $obj->deleteItem($obj->cProduct->prodId);
@@ -89,23 +88,15 @@ class Order
     {
         foreach($cartVars as $obj){
             $varPrd = new OrderVar();
-
-            //add to cart.
-            $ad = 0;
-            if($ad){
+            $varPrd->makeVarOrderProd($obj->cProduct, $obj->cartVGroup ,$obj->quantity, $obj->calculateShippingCost(), $obj->calculateEachItemPrice());
+            $ad = $varPrd->addToOrderVarItems($this->orderId);
+            if($ad > 1){
                 array_push($this->varProds, $varPrd);
                 $obj->deleteCartVar($obj->groupId);
             }
         }
 
     }
-
-    function getOrderSimpProds()
-    {
-
-    }
-
-
 
 
 

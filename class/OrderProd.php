@@ -12,7 +12,6 @@ class OrderProd extends CartProd
 
     function __construct(){
         parent::__construct();
-
     }
 
     function makeOrderProd($prod, $qty, $ship, $totPrc)
@@ -24,7 +23,7 @@ class OrderProd extends CartProd
         return $this;
     }
 
-    function addToOrderItemsTable($ordId)
+    function addToOrderItems($ordId)
     {
         $this->orderId = $ordId;
         $ar['order_id'] = $this->db->escapeString($this->orderId);
@@ -36,7 +35,7 @@ class OrderProd extends CartProd
         $ar['shipping_tot'] = $this->db->escapeString($this->shippingCost);
         $add = $this->db->runInsertRecord('product_order_items', $ar);
 
-
+        //email the seller and make notification
 
         return $add;
     }

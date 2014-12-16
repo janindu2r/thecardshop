@@ -2,6 +2,9 @@
 
 include($_SERVER['DOCUMENT_ROOT'].'/internal.php');
 
+$id = null;
+$status = null;
+
 if($_SESSION) {
     $db = new DbCon();//$orderItem[] =   $_POST[''];
     if ($_POST) {
@@ -18,13 +21,22 @@ if($_SESSION) {
         $orderItem['ship_postal_code'] =  $db->escapeString( $_POST['spostalcode']);
         $orderItem['buyer_note'] = $db->escapeString($_POST['buyernote']);
 
-        if($_POST['payment'] == 'paypal') {
-            $ord = new Order();
-            echo $ord->insertOrder($orderItem);
-        }
+        $ord = new Order();
+        $id = $ord->insertOrder($orderItem);
 
+        if($id) {
+            if ($_POST['payment'] == 'paypal') {
+                //process the payment and redirect the user accordingly
+                $status = 'paid';
+            }
+        }
     }
 }
+
+if($id == 0)
+    header('location: /index.php');
+else
+    header('location: /order.php?order='. $id.'&status='.$status);
 
 
 ?>

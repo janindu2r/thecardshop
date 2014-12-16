@@ -8,7 +8,7 @@ by: JK;
 
 class CartVar extends CartProd{
 
-    private $cartVGroup = array();
+    public $cartVGroup = array();
     public $groupId;
   //   $varNames => array of var ID and var Name (1 : Color, 2: Size)
   //   $allVars => array of var ID and the particular values of the specific variation item (1 : Blue, 2 : Medium)
