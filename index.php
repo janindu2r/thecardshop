@@ -9,7 +9,7 @@ $list = new Listing();
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta name="description" content="Comercio, buy quality items, sell your items" />
+		<meta name="description" content="Comercio, Yeah it's yours!" />
 		<meta name="keywords" content="comercio, e-commerce, buy, sell" />
 		<meta name="author" content="EliteCoders" />
         <!-- include header -->
@@ -129,7 +129,7 @@ $list = new Listing();
 				        <div class="row">
 				            <div class="col-md-9">
 				                <h3>
-				                    Carousel Product Cart Slider</h3>
+				                    Recent Products</h3>
 				            </div>
 				            <div class="col-md-3">
 				                <!-- Controls -->
@@ -146,137 +146,33 @@ $list = new Listing();
 				                <div class="item active">
 				                    <div class="row">
 										<?php
-										$viewProd = new Product();
-										echo $viewProd->getLargeBoxItem(1000000);
+										$prd = $list->getRecentProducts(0,3);
+										if($prd) {
+											foreach ($prd as $row) {
+												$viewProd = new Product();
+												if ($row[1]) {
+													$viewProd = new Variation();
+												}
+												echo $viewProd->getLargeBoxItem($row['product_id']);
+											}
+										}
 										?>
-
-										<!-- Variation Item -->
-										<?php
-										$varProd = new Variation();
-										echo $varProd->getLargeBoxItem(1000001);
-										?>
-
-				                        <div class="col-sm-4">
-				                            <div class="col-item">
-				                                <div class="photo">
-				                                    <img src="http://vatenco.com/pictures/TOOL_SET.jpg" class="img-responsive" alt="a" />
-				                                </div>
-				                                <div class="info">
-				                                    <div class="row">
-				                                        <div class="price col-md-6">
-				                                            <h5>
-				                                                Next Sample Product</h5>
-				                                            <h5 class="price-text-color">
-				                                                $149.99</h5>
-				                                        </div>
-				                                        <div class="rating hidden-sm col-md-6">
-				                                            <i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-				                                            </i><i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-				                                            </i><i class="fa fa-star"></i>
-				                                        </div>
-				                                    </div>
-				                                    <div class="separator clear-left">
-				                                        <p class="btn-add">
-				                                            <a href="#" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span> Add to cart</a>
-				                                        <p class="btn-details">
-				                                            <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-list"></span> More details</a>
-				                                    </div>
-				                                    <div class="clearfix">
-				                                    </div>
-				                                </div>
-				                            </div>
-				                        </div>
 				                    </div>
 				                </div>
 				                <div class="item">
 				                    <div class="row">
-				                        <div class="col-sm-4">
-				                            <div class="col-item">
-				                                <div class="photo">
-				                                    <img src="http://pimg.tradeindia.com/01052945/b/1/Swiss-Knife-Tools-Handyman-.jpg" class="img-responsive" alt="a" />
-				                                </div>
-				                                <div class="info">
-				                                    <div class="row">
-				                                        <div class="price col-md-6">
-				                                            <h5>
-				                                                Product with Variants</h5>
-				                                            <h5 class="price-text-color">
-				                                                $199.99</h5>
-				                                        </div>
-				                                        <div class="rating hidden-sm col-md-6">
-				                                            <i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-				                                            </i><i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-				                                            </i><i class="fa fa-star"></i>
-				                                        </div>
-				                                    </div>
-				                                    <div class="separator clear-left">
-				                                        <p class="btn-add">
-				                                            <a href="#" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span> Add to cart</a>
-				                                        <p class="btn-details">
-				                                            <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-list"></span> More details</a>
-				                                    </div>
-				                                    <div class="clearfix">
-				                                    </div>
-				                                </div>
-				                            </div>
-				                        </div>
-				                        <div class="col-sm-4">
-				                            <div class="col-item">
-				                                <div class="photo">
-				                                    <img src="http://www.bagabam.com/product_images/otis-elite-field-bag-iid21198.jpg" class="img-responsive" alt="a" />
-				                                </div>
-				                                <div class="info">
-				                                    <div class="row">
-				                                        <div class="price col-md-6">
-				                                            <h5>
-				                                                Grouped Product</h5>
-				                                            <h5 class="price-text-color">
-				                                                $249.99</h5>
-				                                        </div>
-				                                        <div class="rating hidden-sm col-md-6">
-				                                        </div>
-				                                    </div>
-				                                    <div class="separator clear-left">
-				                                        <p class="btn-add">
-				                                            <a href="#" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span> Add to cart</a>
-				                                        <p class="btn-details">
-				                                            <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-list"></span> More details</a>
-				                                    </div>
-				                                    <div class="clearfix">
-				                                    </div>
-				                                </div>
-				                            </div>
-				                        </div>
-				                        <div class="col-sm-4">
-				                            <div class="col-item">
-				                                <div class="photo">
-				                                    <img src="http://chavezcycling.com/wp-content/uploads/2009/06/saddle-bag.jpg" class="img-responsive" alt="a" />
-				                                </div>
-				                                <div class="info">
-				                                    <div class="row">
-				                                        <div class="price col-md-6">
-				                                            <h5>
-				                                                Product with Variants</h5>
-				                                            <h5 class="price-text-color">
-				                                                $149.99</h5>
-				                                        </div>
-				                                        <div class="rating hidden-sm col-md-6">
-				                                            <i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-				                                            </i><i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-				                                            </i><i class="fa fa-star"></i>
-				                                        </div>
-				                                    </div>
-				                                    <div class="separator clear-left">
-				                                        <p class="btn-add">
-				                                            <a href="#" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span> Add to cart</a>
-				                                        <p class="btn-details">
-				                                            <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-list"></span> More details</a>
-				                                    </div>
-				                                    <div class="clearfix">
-				                                    </div>
-				                                </div>
-				                            </div>
-				                        </div>
+										<?php
+										$prd = $list->getRecentProducts(3,3);
+										if($prd) {
+											foreach ($prd as $row) {
+												$viewProd = new Product();
+												if ($row[1]) {
+													$viewProd = new Variation();
+												}
+												echo $viewProd->getLargeBoxItem($row['product_id']);
+											}
+										}
+										?>
 				                    </div>
 				                </div>
 				            </div>

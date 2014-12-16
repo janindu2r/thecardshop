@@ -70,21 +70,19 @@
 		        <li class="nav-dropdown dropdown-large">
 		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Shop by Category<span class="caret"></span></a>
 		          <ul class="dropdown-menu dropdown-menu-large row" role="menu">
-
-					<li class="col-sm-3">
-						<ul>
-							<li class="dropdown-header">Glyphicons</li>
-							<li><a href="#">Available glyphs</a></li>
-							<li class="disabled"><a href="#">How to use</a></li>
-							<li><a href="#">Examples</a></li>
-							<li class="divider"></li>
-							<li class="dropdown-header">Dropdowns</li>
-							<li><a href="#">Example</a></li>
-							<li><a href="#">Aligninment options</a></li>
-							<li><a href="#">Headers</a></li>
-							<li><a href="#">Disabled menu items</a></li>
-						</ul>
-					</li>
+					  <li class="col-sm-3">
+						  <ul>
+							  <li class="dropdown-header">Categories</li>
+							  <?php
+							  $cats = new Listing();
+							  $catList = $cats->getCategories();
+							  foreach($catList as $row)
+							  {
+								  echo '<li><a href="/categories.php?id='.$row['category_id'].'">'.$row['category_name'].'</a></li>';
+							  }
+							  ?>
+						  </ul>
+					  </li>
 					<li class="col-sm-3">
 						<ul>
 							<li class="dropdown-header">Button groups</li>

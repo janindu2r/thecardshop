@@ -36,7 +36,7 @@ class Listing
     //getting most recent products
     public function getRecentProducts($start, $num)
     {
-        $sql = " select product_id from products order by date_added desc limit ". $start .",". $num ;
+        $sql = " select product_id, variations from products order by date_added desc limit ". $start .",". $num ;
         $result = $this->db->getSelectTable($sql);
         return $result;
     }
@@ -49,6 +49,8 @@ class Listing
         return $result;
     }
 
+
+
     /* getting top selling shops
     public function getTopShops($start, $num)
     {
@@ -58,6 +60,14 @@ class Listing
     }
 
     */
+
+
+    public function getCategories()
+    {
+        $sql = "select category_id, category_name from categories order by category_name ASC";
+        $result = $this->db->getSelectTable($sql);
+        return $result;
+    }
 
 }
 
