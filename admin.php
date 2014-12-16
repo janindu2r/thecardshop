@@ -56,10 +56,11 @@ $owner->initiate();
             <ul class="nav nav-pills nav-stacked admin-menu">
                 <li class="active"><a href="#" data-target-id="home"><i class="fa fa-user fa-fw"></i>Account</a></li>
                 <li><a href="#" data-target-id="products"><i class="fa fa-dropbox fa-fw"></i>Products</a></li>
+                <li><a href="/shophome.php" data-target-id="charts"><i class="fa fa-table fa-fw"></i>View Products</a></li>
                 <li><a href="#" data-target-id="pages"><i class="fa fa-history fa-fw"></i>Order History</a></li>
-                <li><a href="/shophome.php" data-target-id="charts"><i class="fa fa-bar-chart-o fa-fw"></i>View Products</a></li>
-                <!-- <li><a href="#" data-target-id="table"><i class="fa fa-table fa-fw"></i>Table</a></li>
-                <li><a href="#" data-target-id="forms"><i class="fa fa-tasks fa-fw"></i>Forms</a></li>
+                
+                <li><a href="#" data-target-id="table"><i class="fa fa-shopping-cart fa-fw"></i>Go To Shop</a></li>
+                <!-- <li><a href="#" data-target-id="forms"><i class="fa fa-tasks fa-fw"></i>Forms</a></li>
                 <li><a href="#" data-target-id="calender"><i class="fa fa-calendar fa-fw"></i>Calender</a></li>
                 <li><a href="#" data-target-id="library"><i class="fa fa-book fa-fw"></i>Library</a></li>
                 <li><a href="#" data-target-id="applications"><i class="fa fa-pencil fa-fw"></i>Applications</a></li>
@@ -154,32 +155,12 @@ $owner->initiate();
             
 
         </div>
-        <div class="col-md-9 admin-content" id="products">
+        <div class="col-md-6 admin-content" id="products">
         	<div class="panel panel-default">
         		<div class="panel-heading">
-        			Products
+        			Add a product
         		</div>
         		<div class="panel-body">
-        			<div role="tabpanel">
-
-					  <!-- Nav tabs -->
-					  <ul class="nav nav-tabs" role="tablist">
-					    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
-					    <li role="presentation"><a href="#addProduct" aria-controls="addProduct" role="tab" data-toggle="tab">Add Product</a></li>
-					    <!-- <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
-					    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li> -->
-					  </ul>
-
-					  <!-- Tab panes -->
-
-					  <div class="tab-content col-md-6 col-md-offset-3">
-					    <div role="tabpanel" class="tab-pane active" id="home">
-
-                            Some content
-
-					    </div>
-					    <div role="tabpanel" class="tab-pane" id="addProduct">
-
 		                    <div class="panel-body">
 			                    <div class="form-group">
                                 
@@ -268,21 +249,162 @@ $owner->initiate();
 			                    </div>
 					    	</div>
 					    </div>
-					<!--    <div role="tabpanel" class="tab-pane" id="messages">...</div>
-					    <div role="tabpanel" class="tab-pane" id="settings">...</div> -->
-					  </div>
 
-					</div>
+
+					
         		</div>
-        	</div></div>
-            
-        </div> <!-- /.end of widgets tab page -->
+        	</div>
+        </div>
+
 
         <div class="col-md-8 admin-content" id="pages">
             Pages
         </div>
-        <div class="col-md-8 admin-content" id="charts">
-            Charts
+        <div class="col-md-10 admin-content" id="charts">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<div class="container">
+    <div class="row">
+        
+        
+        <div class="col-md-12">
+        <h4>Bootstrap Snipp for Datatable</h4>
+        <div class="table-responsive">
+
+                
+              <table id="mytable" class="table table-bordred table-striped">
+                   
+                   <thead>
+                   
+                   <th><input type="checkbox" id="checkall" /></th>
+                   <th>First Name</th>
+                    <th>Last Name</th>
+                     <th>Address</th>
+                      <th>Edit</th>
+                       <th>Delete</th>
+                   </thead>
+    <tbody>
+    
+    <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td>Mohsin</td>
+    <td>Irshad</td>
+    <td>CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan</td>
+    <td><p><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+    <td><p><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
+    </tr>
+    
+        <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td>Mohsin</td>
+    <td>Irshad</td>
+    <td>CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan</td>
+    <td><p><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+    <td><p><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
+    </tr>
+    
+    
+        <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td>Mohsin</td>
+    <td>Irshad</td>
+    <td>CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan</td>
+    <td><p><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+    <td><p><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete"><span class="glyphicon glyphicon-trash"></span></button></p></td>
+    </tr>
+    
+    
+    
+        <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td>Mohsin</td>
+    <td>Irshad</td>
+    <td>CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan</td>
+    <td><p><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+    <td><p><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete"><span class="glyphicon glyphicon-trash"></span></button></p></td>
+    </tr>
+    
+    
+    
+        <tr>
+    <td><input type="checkbox" class="checkthis" /></td>
+    <td>Mohsin</td>
+    <td>Irshad</td>
+    <td>CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan</td>
+    <td><p><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+    <td><p><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete"><span class="glyphicon glyphicon-trash"></span></button></p></td>
+    </tr>
+    
+    
+   
+    
+   
+    
+    </tbody>
+        
+</table>
+
+<div class="clearfix"></div>
+                
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+      <div class="modal-dialog">
+    <div class="modal-content">
+          <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title custom_align" id="Heading">Edit Your Detail</h4>
+      </div>
+          <div class="modal-body">
+          <div class="form-group">
+        <input class="form-control " type="text" placeholder="Mohsin">
+        </div>
+        <div class="form-group">
+        
+        <input class="form-control " type="text" placeholder="Irshad">
+        </div>
+        <div class="form-group">
+        <textarea rows="2" class="form-control" placeholder="CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan"></textarea>
+    
+        
+        </div>
+      </div>
+          <div class="modal-footer ">
+        <button type="button" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Update</button>
+      </div>
+        </div>
+    <!-- /.modal-content --> 
+  </div>
+      <!-- /.modal-dialog --> 
+    </div>
+    
+    
+    
+    <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+      <div class="modal-dialog">
+    <div class="modal-content">
+          <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title custom_align" id="Heading">Delete this entry</h4>
+      </div>
+          <div class="modal-body">
+       
+       <div class="alert alert-warning"><span class="glyphicon glyphicon-warning-sign"></span> Are you sure you want to delete this Record?</div>
+       
+      </div>
+        <div class="modal-footer ">
+        <button type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
+      </div>
+        </div>
+    <!-- /.modal-content --> 
+  </div>
+      <!-- /.modal-dialog --> 
+    </div>
         </div>
         <!-- <div class="col-md-9 admin-content" id="table">
             Table
