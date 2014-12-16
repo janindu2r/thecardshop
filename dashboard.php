@@ -10,6 +10,7 @@ $title = 'Profile | Comercio'  ;  // page title
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/html">
 <head>
+    <link rel="stylesheet" type="text/css" href="/css/dashboard.styles.css">
     <?php include('header.php'); ?>
 <!-- -------------------------------------- Add Page Edits Below ----------------------------------------------- -->    
 
@@ -18,7 +19,7 @@ $title = 'Profile | Comercio'  ;  // page title
         <div class="col-md-2">
             <ul class="nav nav-pills nav-stacked admin-menu">
                 <li class="active"><a href="#" data-target-id="home"><i class="fa fa-user fa-fw"></i>Profile</a></li>
-                <li><a href="#" data-target-id="widgets"><i class="fa fa-heart fa-fw"></i> My Wish List</a></li>
+                <!-- <li><a href="#" data-target-id="widgets"><i class="fa fa-heart fa-fw"></i> My Wish List</a></li> -->
                 <li><a href="#" data-target-id="pages"><i class="fa fa-history fa-fw"></i> Order History</a></li>
                  <li><a href="#" data-target-id="charts"><i class="fa fa-suitcase fa-fw"></i> Activate Shop</a></li>
                 <!--<li><a href="#" data-target-id="table"><i class="fa fa-table fa-fw"></i>Table</a></li>
@@ -129,8 +130,162 @@ $title = 'Profile | Comercio'  ;  // page title
             
         </div> <!-- /.end of widgets tab page -->
 
-        <div class="col-md-8 admin-content" id="pages">
-            Pages
+        <div class="col-md-10 admin-content" id="pages">
+            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<h4>Details of you order history</h4>
+    <div class="row">
+    <div class="col-md-4 col-offset-3 pull-right">
+        
+        <div class="input-group custom-search-form">
+              <input type="text" class="form-control">
+              <span class="input-group-btn">
+              <button class="btn btn-default" type="button">
+              <span class="glyphicon glyphicon-search"></span>
+             </button>
+             </span>
+             </div><!-- /input-group -->
+        </div>
+    
+        <div class="col-md-12">        
+        
+        <div class="table-responsive">
+
+                
+<table id="mytable" class="table table-bordred table-striped">
+                   
+                    <thead>
+                   
+                    <th><input type="checkbox" id="checkall" /></th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Address</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                   
+                   </thead>
+            <tbody>
+            
+            <tr>
+            <td><input type="checkbox" class="checkthis" /></td>
+            <td>Mohsin</td>
+            <td>Irshad</td>
+            <td>CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan</td>
+            <td><p><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+            <td><p><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
+            </tr>
+            
+                <tr>
+            <td><input type="checkbox" class="checkthis" /></td>
+            <td>Mohsin</td>
+            <td>Irshad</td>
+            <td>CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan</td>
+            <td><p><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+            <td><p><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
+            </tr>
+            
+            
+                <tr>
+            <td><input type="checkbox" class="checkthis" /></td>
+            <td>Mohsin</td>
+            <td>Irshad</td>
+            <td>CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan</td>
+            <td><p><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+            <td><p><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete"><span class="glyphicon glyphicon-trash"></span></button></p></td>
+            </tr>
+            
+            
+            
+                <tr>
+            <td><input type="checkbox" class="checkthis" /></td>
+            <td>Mohsin</td>
+            <td>Irshad</td>
+            <td>CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan</td>
+            <td><p><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+            <td><p><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete"><span class="glyphicon glyphicon-trash"></span></button></p></td>
+            </tr>
+            
+            
+            
+                <tr>
+            <td><input type="checkbox" class="checkthis" /></td>
+            <td>Mohsin</td>
+            <td>Irshad</td>
+            <td>CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan</td>
+            <td><p><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+            <td><p><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete"><span class="glyphicon glyphicon-trash"></span></button></p></td>
+            </tr>
+            
+            
+           
+            
+           
+            
+            </tbody>
+        
+</table>
+
+<div class="clearfix"></div>
+
+                
+        </div>
+            
+        </div>
+    </div>
+
+
+<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+      <div class="modal-dialog">
+    <div class="modal-content">
+          <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title custom_align" id="Heading">Edit Your Detail</h4>
+      </div>
+          <div class="modal-body">
+          <div class="form-group">
+        <input class="form-control " type="text" placeholder="Mohsin">
+        </div>
+        <div class="form-group">
+        
+        <input class="form-control " type="text" placeholder="Irshad">
+        </div>
+        <div class="form-group">
+        <textarea rows="2" class="form-control" placeholder="CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan"></textarea>
+    
+        
+        </div>
+      </div>
+          <div class="modal-footer ">
+        <button type="button" class="btn btn-warning btn-lg" style="width: 100%;"><span class="glyphicon glyphicon-ok-sign"></span> Update</button>
+      </div>
+        </div>
+    <!-- /.modal-content --> 
+  </div>
+      <!-- /.modal-dialog --> 
+    </div>
+    
+    
+    
+    <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+      <div class="modal-dialog">
+    <div class="modal-content">
+          <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title custom_align" id="Heading">Delete this entry</h4>
+      </div>
+          <div class="modal-body">
+       
+       <div class="alert alert-warning"><span class="glyphicon glyphicon-warning-sign"></span> Are you sure you want to delete this Record?</div>
+       
+      </div>
+        <div class="modal-footer ">
+        <button type="button" class="btn btn-success" ><span class="glyphicon glyphicon-ok-sign"></span> Yes</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> No</button>
+      </div>
+        </div>
+    <!-- /.modal-content --> 
+  </div>
+      <!-- /.modal-dialog --> 
+    </div>
         </div>
         <div class="col-md-8 admin-content" id="charts">
             <div class="col-md-3 col-offset-3"> 
@@ -183,6 +338,22 @@ $title = 'Profile | Comercio'  ;  // page title
         $('#' + target).show();
     });
 });
+
+$(document).ready(function(){
+$("#mytable #checkall").click(function () {
+        if ($("#mytable #checkall").is(':checked')) {
+            $("#mytable input[type=checkbox]").each(function () {
+                $(this).prop("checked", true);
+            });
+
+        } else {
+            $("#mytable input[type=checkbox]").each(function () {
+                $(this).prop("checked", false);
+            });
+        }
+    });
+});
+
 </script>
 
 <!-- -------------------------------------- End of page edits -------------------------------------------------- -->

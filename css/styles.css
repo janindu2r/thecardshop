@@ -537,7 +537,7 @@
 }
 .dropdown-cart ul.dropdown-menu:before {
     content: "";
-    border-bottom: 10px solid #fff;
+    /*border-bottom: 10px solid #fff;*/
     border-right: 10px solid transparent;
     border-left: 10px solid transparent;
     position: absolute;
