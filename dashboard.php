@@ -37,7 +37,7 @@ $title = 'Profile | Comercio'  ;  // page title
                     </div>
                     <div class="panel-body">
                     <div class="form-group">
-                        <form name="editProfile" action="EditProfile.php" method="post">
+                        <form name="editProfile" action="scripts/editprofile.php" method="post">
                         <label for="FirstName">First Name</label>
                         <input type="text" class="form-control" id="FirstName" name="fname" value="<?php echo $user->fName ?>" placeholder="john26769">
                     </div>
@@ -55,19 +55,19 @@ $title = 'Profile | Comercio'  ;  // page title
                     </div>
                     <div class="form-group">
                         <label for="UserName">Address Line2</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" name="add2" value="<?php echo $user->addressL2 ?>" placeholder="john26769">
+                        <input type="text" class="form-control" id="exampleInputEmail1" name="add2" value="<?php echo $user->addressL2 ?>" placeholder="john26769">
                     </div>
                     <div class="form-group">
                         <label for="UserName">Address Line3</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" name="add3" value="<?php echo $user->addressL3 ?>" placeholder="john26769">
+                        <input type="text" class="form-control" id="exampleInputEmail1" name="add3" value="<?php echo $user->addressL3 ?>" placeholder="john26769">
                     </div>
                     <div class="form-group">
                         <label for="UserName">Postal Code</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1"  name="postal" value="<?php echo $user->postalCode ?>" placeholder="john26769">
+                        <input type="number" class="form-control" id="exampleInputEmail1"  name="postal" value="<?php echo $user->postalCode ?>" placeholder="john26769">
                     </div>
                     
                     <div class="form-group pull-right">
-                        <input type="submit" class="btn btn-primary btn-success"  value="save" >
+                        <input type="submit" name="submit1" class="btn btn-primary btn-success"  value="save" >
                         <a href="#" class="btn btn-primary btn-success"><span class="glyphicon glyphicon-floppy-disk"> </span> Save</a>
                         <a href="#" class="btn btn-primary btn-danger"><span class="glyphicon glyphicon-remove"></span> Discard</a>
 
@@ -85,18 +85,19 @@ $title = 'Profile | Comercio'  ;  // page title
                     </div>
                     
                     <div class="panel-body">
+                    <form name="editProfile1" action="scripts/editprofile.php" method="post">
                     <div class="form-group">
                         <label for="UserName">User Name</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1"  value="<?php echo $user->getDispName()?>" placeholder="john26769">
+                        <input type="text" class="form-control" id="exampleInputEmail1"  name="dispName" value="<?php echo $user->getDispName()?>" placeholder="john26769">
                     </div>
                     <div class="form-group">
                         <label for="UserName">Email</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1"  value="<?php echo $user->email ?>" placeholder="john@abc.com">
+                        <input type="email" class="form-control" id="exampleInputEmail1" name="email" value="<?php echo $user->email ?>" placeholder="john@abc.com">
                     </div>
                     
                     <div class="form-group pull-right">
-                        <a href="#" class="btn btn-primary btn-success"><span class="glyphicon glyphicon-floppy-disk"></span> Save</a>
-                    </div>
+                        <a href="#" name="submit2" class="btn btn-primary btn-success" type="submit"><span class="glyphicon glyphicon-floppy-disk"></span> Save</a>
+                    </div></form>
                 </div>
                 </div><!-- /.Contact Details -->
                 <div class="panel panel-default"><!-- Contact Details -->
@@ -105,19 +106,20 @@ $title = 'Profile | Comercio'  ;  // page title
                     </div>
                     
                     <div class="panel-body">
+                    <form name="editProfile2" action="scripts/editprofile.php" method="post">
                     <div class="form-group">
                         <label for="UserName">Current Password</label>
-                        <input type="password" class="form-control" id=""  value="" placeholder="***********">
+                        <input type="password" class="form-control" name="password" id=""  value="" placeholder="***********">
                     </div>
                     <div class="form-group">
                         <label for="UserName">New Password</label>
-                        <input type="password" class="form-control" id=""  value="" placeholder="***********">
+                        <input type="password" class="form-control" name="newpassword" id=""  value="" placeholder="***********">
                     </div>
                     
                     <div class="form-group pull-right">
-                        <a href="#" class="btn btn-primary btn-success"><span class="glyphicon glyphicon-floppy-disk"></span> Save</a>
+                        <a href="#" name="submit3" class="btn btn-primary btn-success" type="submit"><span class="glyphicon glyphicon-floppy-disk"></span> Save</a>
                     </div>
-                </div>
+                </div></form>
                 </div><!-- /.Contact Details --> 
             </div>
             
