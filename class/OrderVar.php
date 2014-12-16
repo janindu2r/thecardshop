@@ -53,19 +53,19 @@ class OrderVar extends CartVar
     function varProdIni($prodId)
     {
         $this->cProduct= new Variation();
-        $this->cProduct->initializeVariation($prodId, $this->initializeVars()) ;
+        $this->cProduct->selectPhysicalProduct($prodId);
+        $this->cProduct->getAllVariations($prodId);
         return $this->cProduct;
     }
 
-    function  initializeVars()
+    function initializeVarGroup()
     {
         $varStr = null;
         $sql = 'select * from variation_order_items where varord_group = '. $this->groupId;
         $varIts = $this->db->getSelectTable($sql);
         foreach ($varIts as $row) {
-            $varStr[$row['variation_id']] = $row['variation_value'];
+            $this->cartVGroup[$this->cProduct->getVarName($row['variation_id'])] = $row['variation_value'];
         }
-        return $varStr;
     }
 
 	

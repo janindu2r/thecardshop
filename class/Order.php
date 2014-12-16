@@ -122,7 +122,7 @@ class Order
             $varPrd->orderId = $this->orderId;
             $varPrd->groupId = $row['varord_group'];
             $varPrd->varProdIni($row['product_id']);
-            $varPrd->initializeVars();
+            $varPrd->initializeVarGroup();
             $varPrd->makeVarOrderProd($varPrd->cProduct,$varPrd->cartVGroup,$row['quantity'], $row['shipping_tot'], $row['items_tot']);
             array_push($this->varProds, $varPrd);
         }

@@ -31,7 +31,7 @@ $title = 'Login' ;  // page title
                             <input type="password" name="passwd" id="key" class="form-control" placeholder="Password">
                         </div>
                         <div class="checkbox">
-                            <span class="character-checkbox" onclick="showPassword()"></span>
+                            <input type="checkbox" id="showpassword" class="character-checkbox">
                             <span class="label">Show password</span>
                         </div>
                         <input type="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" value="Log in">
@@ -60,12 +60,45 @@ $title = 'Login' ;  // page title
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-				<button type="button" class="btn btn-custom">Recovery</button>
+				<button type="button" class="btn btn-custom" id="btn-send-mail">Recovery</button>
 			</div>
 		</div> <!-- /.modal-content -->
 	</div> <!-- /.modal-dialog -->
 </div> <!-- /.modal -->
 
+		<!--- start of javascript -->
+
+
+		<script type="text/javascript">
+			$(document).ready(function()
+			{
+				$('#btn-send-mail').click(function() {
+					var mail = document.getElementsByName('recovery-email')[0].value;
+					var email = "rec_email= " + mail;
+					$.ajax({
+						type: "POST",
+						url: "/scripts/passwordrecovery.php",
+						data: email,
+						cache: false,
+						success: function(result){
+							if(result == '1')
+								alert('Check your email and change your password');
+							else
+								alert('There is an error. Please try again');
+						}
+					});
+				});
+
+				$('#showpassword').change(function() {
+					alert(this.value); //check if on
+					var element =  document.getElementsByName('passwd')[0];
+					//change element source
+				});
+
+			});
+
+
+		</script>
 
 
 <!---------------------------------------- End of page edits ---------------------------------------------------->

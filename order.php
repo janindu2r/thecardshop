@@ -17,10 +17,12 @@ if(isset($_GET['order'])){
         <?php include('header.php'); ?>
 <!-- -------------------------------------- Add Page Edits Below ----------------------------------------------- -->    
 
+
         Your order has been placed.<br>
         Order ID  - <?php echo $_GET['order'] ?> <br>
         And the order Status is - <?php echo $_GET['status'] ?><br>
 
+<<<<<<< HEAD
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -132,6 +134,9 @@ if(isset($_GET['order'])){
     	</div>
     </div>
 </div>
+=======
+
+>>>>>>> 539fe2586d5aa2c99e0d719ce8f864b79947e50c
 <!---------------------------------------- End of page edits ---------------------------------------------------->
 <?php include('footer.php'); //including the footer?>
 <!-- End of page -->
