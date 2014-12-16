@@ -85,25 +85,23 @@ class Variation extends Physical
 	
 	public function addVariations(array $assVar)
 	{
-		$newVar = $this->db->runInsertRecord("variations",$assVar);
-	try
-	{
-		if($newVar == 1)
-		{
-		$this->initialize($assVar);		
-		return $this;
+		$newVar = $this->db->runInsertRecord("variations", $assVar);
+		try {
+			if ($newVar == 1) {
+				$this->initialize($assVar);
+				return $this;
+			} else
+				return 0;
+
+		} catch (Exception $e) {
+			echo $e->getMessage();
 		}
-		else
-		return 0;
-		
 	}
-	catch(Exception $e)
+
+	function getTotalSales()
 	{
-	  echo $e->getMessage();	
-	}
-		     
-			  
-		
+		$sql = 'SELECT COUNT( order_id ) FROM  variation_order_group where product_id = '. $this->prodId .' GROUP BY product_id';
+		return $this->db->getScalar($sql);
 	}
 	
 	public function insertvalues($pId,$vNam)

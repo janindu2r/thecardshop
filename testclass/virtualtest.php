@@ -14,7 +14,8 @@ $email = new Virtual();
 $get = $email->getEmail(1000000);
 echo $get;
 
-
+$mail = $email->getEmails("bimlamadhavee@gmail.com");
+echo $mail;
 
 
 ?>

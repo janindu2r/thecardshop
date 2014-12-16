@@ -1,6 +1,9 @@
 <?php
 include('overhead.php');
 $title = 'Comercio' ; //define page title
+
+$list = new Listing();
+
 ?>
 
 <!DOCTYPE html>
@@ -73,7 +76,7 @@ $title = 'Comercio' ; //define page title
 				        <div class="row">
 				            <div class="col-md-9">
 				                <h3>
-				                    Featured Products</h3>
+				                    Top Selling Products</h3>
 				            </div>
 				            <div class="col-md-3">
 				                <!-- Controls -->
@@ -89,199 +92,34 @@ $title = 'Comercio' ; //define page title
 				            <div class="carousel-inner">
 				                <div class="item active">
 				                    <div class="row">
-
-										
-											<?php
-											$viewProd = new Product();
-											echo $viewProd->getSmallBoxItem(1000000);
-											?>
-
-										<!-- Variation Item -->
 										<?php
-										$varProd = new Variation();
-										echo $varProd->getSmallBoxItem(1000001);
+										$prd = $list->topSellProducts(0,4);
+										if($prd) {
+											foreach ($prd as $row) {
+												$viewProd = new Product();
+												if ($row['variation']) {
+													$viewProd = new Variation();
+												}
+												echo $viewProd->getSmallBoxItem($row['product_id']);
+											}
+										}
 										?>
-				                        <div class="col-sm-3">
-				                            <div class="col-item">
-				                                <div class="photo">
-				                                    <img src="http://goo.gl/h8o5mB" class="img-responsive" alt="a" />
-				                                </div>
-				                                <div class="info">
-				                                    <div class="row">
-				                                        <div class="price col-md-6">
-				                                            <h5>
-				                                                Next Sample Product</h5>
-				                                            <h5 class="price-text-color">
-				                                                $149.99</h5>
-				                                        </div>
-				                                        <div class="rating hidden-sm col-md-6">
-				                                            <i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-				                                            </i><i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-				                                            </i><i class="fa fa-star"></i>
-				                                        </div>
-				                                    </div>
-				                                    <div class="separator clear-left">
-				                                        <p class="btn-add">
-				                                            <a href="#" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span> Add to cart</a>
-				                                        <p class="btn-details">
-				                                            <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-list"></span> More details</a>
-				                                    </div>
-				                                    <div class="clearfix">
-				                                    </div>
-				                                </div>
-				                            </div>
-				                        </div>
-				                        <div class="col-sm-3">
-				                            <div class="col-item">
-				                                <div class="photo">
-				                                    <img src="http://images.sodahead.com/polls/002308443/1032261492_lenovo_ideacentre_b500_08871fu_answer_2_xlarge.png" class="img-responsive" alt="a" />
-				                                </div>
-				                                <div class="info">
-				                                    <div class="row">
-				                                        <div class="price col-md-6">
-				                                            <h5>
-				                                                Sample Product</h5>
-				                                            <h5 class="price-text-color">
-				                                                $199.99</h5>
-				                                        </div>
-				                                        <div class="rating hidden-sm col-md-6">
-				                                            <i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-				                                            </i><i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-				                                            </i><i class="fa fa-star"></i>
-				                                        </div>
-				                                    </div>
-				                                    <div class="separator clear-left">
-				                                        <p class="btn-add">
-				                                            <a href="#" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span> Add to cart</a>
-				                                        <p class="btn-details">
-				                                            <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-list"></span> More details</a>
-				                                    </div>
-				                                    <div class="clearfix">
-				                                    </div>
-				                                </div>
-				                            </div>
-				                        </div>
 				                    </div>
 				                </div>
 				                <div class="item">
 				                    <div class="row">
-				                        <div class="col-sm-3">
-				                            <div class="col-item">
-				                                <div class="photo">
-				                                    <img src="http://goo.gl/LGe8ur" class="img-responsive" alt="a" />
-				                                </div>
-				                                <div class="info">
-				                                    <div class="row">
-				                                        <div class="price col-md-6">
-				                                            <h5>
-				                                                Product with Variants</h5>
-				                                            <h5 class="price-text-color">
-				                                                $199.99</h5>
-				                                        </div>
-				                                        <div class="rating hidden-sm col-md-6">
-				                                            <i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-				                                            </i><i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-				                                            </i><i class="fa fa-star"></i>
-				                                        </div>
-				                                    </div>
-				                                    <div class="separator clear-left">
-				                                        <p class="btn-add">
-				                                            <a href="#" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span> Add to cart</a>
-				                                        <p class="btn-details">
-				                                            <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-list"></span> More details</a>
-				                                    </div>
-				                                    <div class="clearfix">
-				                                    </div>
-				                                </div>
-				                            </div>
-				                        </div>
-				                        <div class="col-sm-3">
-				                            <div class="col-item">
-				                                <div class="photo">
-				                                    <img src="http://www.mygsm.me/images/P/galaxy-camera-white.png" class="img-responsive" alt="a" />
-				                                </div>
-				                                <div class="info">
-				                                    <div class="row">
-				                                        <div class="price col-md-6">
-				                                            <h5>
-				                                                Grouped Product</h5>
-				                                            <h5 class="price-text-color">
-				                                                $249.99</h5>
-				                                        </div>
-				                                        <div class="rating hidden-sm col-md-6">
-				                                        </div>
-				                                    </div>
-				                                    <div class="separator clear-left">
-				                                        <p class="btn-add">
-				                                            <a href="#" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span> Add to cart</a>
-				                                        <p class="btn-details">
-				                                            <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-list"></span> More details</a>
-				                                    </div>
-				                                    <div class="clearfix">
-				                                    </div>
-				                                </div>
-				                            </div>
-				                        </div>
-				                        <div class="col-sm-3">
-				                            <div class="col-item">
-				                                <div class="photo">
-				                                    <img src="http://goo.gl/GtAWqN" class="img-responsive" alt="a" />
-				                                </div>
-				                                <div class="info">
-				                                    <div class="row">
-				                                        <div class="price col-md-6">
-				                                            <h5>
-				                                                Product with Variants</h5>
-				                                            <h5 class="price-text-color">
-				                                                $149.99</h5>
-				                                        </div>
-				                                        <div class="rating hidden-sm col-md-6">
-				                                            <i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-				                                            </i><i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-				                                            </i><i class="fa fa-star"></i>
-				                                        </div>
-				                                    </div>
-				                                    <div class="separator clear-left">
-				                                        <p class="btn-add">
-				                                            <a href="#" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span> Add to cart</a>
-				                                        <p class="btn-details">
-				                                            <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-list"></span> More details</a>
-				                                    </div>
-				                                    <div class="clearfix">
-				                                    </div>
-				                                </div>
-				                            </div>
-				                        </div>
-				                        <div class="col-sm-3">
-				                            <div class="col-item">
-				                                <div class="photo">
-				                                    <img src="http://goo.gl/o1411u" class="img-responsive" alt="a" />
-				                                </div>
-				                                <div class="info">
-				                                    <div class="row">
-				                                        <div class="price col-md-6">
-				                                            <h5>
-				                                                Product with Variants</h5>
-				                                            <h5 class="price-text-color">
-				                                                $199.99</h5>
-				                                        </div>
-				                                        <div class="rating hidden-sm col-md-6">
-				                                            <i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-				                                            </i><i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-				                                            </i><i class="fa fa-star"></i>
-				                                        </div>
-				                                    </div>
-				                                    <div class="separator clear-left">
-				                                        <p class="btn-add">
-				                                            <a href="#" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span> Add to cart</a>
-				                                        <p class="btn-details">
-				                                            <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-list"></span> More details</a>
-				                                    </div>
-				                                    <div class="clearfix">
-				                                    </div>
-				                                </div>
-				                            </div>
-				                        </div>
+										<?php
+										$prd = $list->topSellProducts(4,4);
+										if($prd) {
+											foreach ($prd as $row) {
+												$viewProd = new Product();
+												if ($row['variation']) {
+													$viewProd = new Variation();
+												}
+												echo $viewProd->getSmallBoxItem($row['product_id']);
+											}
+										}
+										?>
 				                    </div>
 				                </div>
 				            </div>
