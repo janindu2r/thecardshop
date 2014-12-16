@@ -155,13 +155,13 @@
 		      		<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user pull-left"></span><span class="user-name-style"> <?php echo $user->getProfile() ?></span> <span class="sr-only">(current)</span></a>
 		      		<ul class="dropdown-menu">
 			            <li><a href="/dashboard.php">Account Settings <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
-			            <li class="divider"></li>
+			            <li class="divider"></li><!-- 
 			            <li><a href="#">User stats <span class="glyphicon glyphicon-stats pull-right"></span></a></li>
 			            <li class="divider"></li>
 			            <li><a href="#">Messages <span class="badge pull-right"> 42 </span></a></li>
 			            <li class="divider"></li>
 			            <li><a href="#">Favourites Snippets <span class="glyphicon glyphicon-heart pull-right"></span></a></li>
-			            <li class="divider"></li>
+			            <li class="divider"></li> -->
 			            <li><a href="/index.php?logout=1">Sign Out <span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
           			</ul>
 		      	</li>
