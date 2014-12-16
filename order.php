@@ -22,10 +22,11 @@ if(isset($_GET['order'])){
         Order ID  - <?php echo $_GET['order'] ?> <br>
         And the order Status is - <?php echo $_GET['status'] ?><br>
 
-<<<<<<< HEAD
 <div class="container">
     <div class="row">
+
         <div class="col-md-12">
+		
     		<div class="invoice-title">
     			<h2>Invoice</h2>
     			<hr>
@@ -33,41 +34,47 @@ if(isset($_GET['order'])){
     		</div>
     		
     		<div class="row">
-    			div.col-md-
-    			<div class="col-md-6">
-    				<address>
-    				<strong>Billed To:</strong><br>
-    					John Smith<br>
-    					1234 Main<br>
-    					Apt. 4B<br>
-    					Springfield, ST 54321
-    				</address>
+    			<div class="col-md-12 alert alert-info">
+    				
+		    			<div class="col-md-6">
+		    				<address>
+		    				<strong>Billed To:</strong><br>
+		    					John Smith<br>
+		    					1234 Main<br>
+		    					Apt. 4B<br>
+		    					Springfield, ST 54321
+		    				</address>
+		    			</div>
+		    			<div class="col-md-6 text-right">
+		    				<address>
+		        			<strong>Shipped To:</strong><br>
+		    					Jane Smith<br>
+		    					1234 Main<br>
+		    					Apt. 4B<br>
+		    					Springfield, ST 54321
+		    				</address>
+		    			</div>
+    				
     			</div>
-    			<div class="col-md-6 text-right">
-    				<address>
-        			<strong>Shipped To:</strong><br>
-    					Jane Smith<br>
-    					1234 Main<br>
-    					Apt. 4B<br>
-    					Springfield, ST 54321
-    				</address>
-    			</div>
+    		<div class="col-md-12 alert alert-warning">
+	    		<div class="#">
+	    			<div class="col-md-6">
+	    				<address>
+	    					<strong>Payment Method:</strong><br>
+	    					Visa ending **** 4242<br>
+	    					jsmith@email.com
+	    				</address>
+	    			</div>
+	    			<div class="col-md-6 text-right">
+	    				<address>
+	    					<strong>Order Date:</strong><br>
+	    					March 7, 2014<br><br>
+	    				</address>
+	    			</div>
+	    		</div>
     		</div>
-    		<div class="row">
-    			<div class="col-md-6">
-    				<address>
-    					<strong>Payment Method:</strong><br>
-    					Visa ending **** 4242<br>
-    					jsmith@email.com
-    				</address>
-    			</div>
-    			<div class="col-md-6 text-right">
-    				<address>
-    					<strong>Order Date:</strong><br>
-    					March 7, 2014<br><br>
-    				</address>
-    			</div>
     		</div>
+    	
     	</div>
     </div>
     
@@ -132,11 +139,11 @@ if(isset($_GET['order'])){
     			</div>
     		</div>
     	</div>
-    </div>
-</div>
-=======
 
->>>>>>> 539fe2586d5aa2c99e0d719ce8f864b79947e50c
+    </div>
+    <a href="#" class="btn btn-block btn-lg btn-success">Done </a>
+</div>
+
 <!---------------------------------------- End of page edits ---------------------------------------------------->
 <?php include('footer.php'); //including the footer?>
 <!-- End of page -->
