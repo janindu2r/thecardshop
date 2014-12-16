@@ -81,6 +81,7 @@ $title = 'Login' ;  // page title
 						data: email,
 						cache: false,
 						success: function(result){
+							alert(result);
 							if(result == '1')
 								alert('Check your email and change your password');
 							else
