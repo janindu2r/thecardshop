@@ -82,7 +82,7 @@ if (!empty($_POST['submit2']))
 
 	header('location: /dashboard.php');
 }
-if (!empty($_POST['mailing-submit']))
+if (!empty($_POST['submit3']))
 {
 
 	$curpass = $db->escapeString(md5($_POST["password"]));

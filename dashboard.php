@@ -68,8 +68,8 @@ $title = 'Profile | Comercio'  ;  // page title
                     </div>
                     
                     <div class="form-group pull-right">
-                        <input type="submit" name="submit1" class="btn btn-primary btn-success"  value="save" >
-                        <a href="#" class="btn btn-primary btn-success"><span class="glyphicon glyphicon-floppy-disk"> </span> Save</a>
+                        <input type="submit" name="submit1" class="btn btn-primary btn-success"  value="Save" >
+                        <!-- <a href="#" class="btn btn-primary btn-success"><span class="glyphicon glyphicon-floppy-disk"> </span> Save</a> -->
                         <a href="#" class="btn btn-primary btn-danger"><span class="glyphicon glyphicon-remove"></span> Discard</a>
 
                     </div>
@@ -97,7 +97,8 @@ $title = 'Profile | Comercio'  ;  // page title
                     </div>
                     
                     <div class="form-group pull-right">
-                        <a href="#" name="submit2" class="btn btn-primary btn-success" type="submit"><span class="glyphicon glyphicon-floppy-disk"></span> Save</a>
+                        <input type="submit" name="submit2" class="btn btn-primary btn-success" value="Save">
+                        <!-- <a href="#" name="submit2" class="btn btn-primary btn-success" type="submit"><span class="glyphicon glyphicon-floppy-disk"></span> Save</a> -->
                     </div></form>
                 </div>
                 </div><!-- /.Contact Details -->
@@ -118,7 +119,8 @@ $title = 'Profile | Comercio'  ;  // page title
                     </div>
                     
                     <div class="form-group pull-right">
-                        <a href="#" name="submit3" class="btn btn-primary btn-success" type="submit"><span class="glyphicon glyphicon-floppy-disk"></span> Save</a>
+                        <input type="submit" name="submit3" class="btn btn-primary btn-success" value="Save">
+                        <!-- <a href="#" name="submit3" class="btn btn-primary btn-success" type="submit"><span class="glyphicon glyphicon-floppy-disk"></span> Save</a> -->
                     </div>
                 </div></form>
                 </div><!-- /.Contact Details --> 
