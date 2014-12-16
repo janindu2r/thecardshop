@@ -77,8 +77,7 @@ $title =   $catName.' | Category' ;  // page title
             </div>
         </div>
 
-
-        <div style="padding: 3em"> <h2> <?php echo 'End of product list' ?> </h2> </div>
+<div style="padding: 3em"> <h2> <?php echo 'End of product list' ?> </h2> </div>
 
 
         <!-- *****************************      End of page edits 	 **************************** -->

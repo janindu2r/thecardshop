@@ -18,9 +18,9 @@ class Listing
     }
 
     //getting product id from
-    public function getProdId($name, $start, $num)
+    public function getProdSearch($name, $start, $num)
     {
-        $sql = "select product_id from products where product_title like '%" .$name ."%' limit ". $start .",". $num ;
+        $sql = "select product_id, variations from products where product_title like '%" .$name ."%' limit ". $start .",". $num ;
         $result = $this->db->getSelectTable($sql);
         return $result;
     }

@@ -91,21 +91,19 @@
 		          </ul>
 		        </li>
 		      </ul>
-		      <form class="navbar-form navbar-left" role="search">
-		        
+		      <form class="navbar-form navbar-left" role="search" action="/searchresults.php" method="GET">
 		        <div class="form-group">
 		            <div id="imaginary_container"> 
 		                <div class="input-group stylish-input-group">
-		                    <input type="text" class="form-control"  placeholder="Search" >
+		                    <input type="text" class="form-control" placeholder="Search" name="search" >
 		                    <span class="input-group-addon">
 		                        <button type="submit">
 		                            <span class="glyphicon glyphicon-search"></span>
-		                        </button>  
+		                        </button>
 		                    </span>
 		                </div>
             		</div>
 		        </div>
-
 		      </form>
 		      <ul class="nav navbar-nav navbar-right">
               <?php if($logged == 1) { ?>
