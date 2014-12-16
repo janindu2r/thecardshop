@@ -301,7 +301,7 @@ $title = 'Profile | Comercio'  ;  // page title
                <div class="col-md-3 col-offset-3">
                    <div class="panel">
                        <div class="panel-body">
-                           <a href="#" class="btn btn-lg btn-info"><span class="glyphicon glyphicon-bullhorn"></span> Activate Your Shop</a>
+                           <a href="/registershop.php" class="btn btn-lg btn-info"><span class="glyphicon glyphicon-bullhorn"></span> Activate Your Shop</a>
                        </div>
                    </div>
                </div>
