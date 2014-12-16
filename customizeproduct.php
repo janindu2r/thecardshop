@@ -52,7 +52,7 @@ $custProd = $custProd->returnProduct($prodId);
                                     <div class="panel-body">
                                         <div class="form-group">
 
-                                            <form name="addproduct" method="POST" action= "/scripts/somewhere.php" enctype="multipart/form-data">
+                                            <form name="addproduct" method="POST" action= "/scripts/editProductDetails.php" enctype="multipart/form-data">
                                                 <label for="#">Product Name</label>
                                                 <input type="text" name = "pro_name" class="form-control" id="" placeholder="Shop john26769">
                                         </div>
@@ -102,7 +102,7 @@ $custProd = $custProd->returnProduct($prodId);
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <input type="submit"  class=" btn btn-primary btn-success" id="exampleSubmit" value="Add">
+                                                <input type="submit" name = "add" class=" btn btn-primary btn-success" id="exampleSubmit" value="Add">
                                                 <input type="reset" class=" btn btn-primary btn-danger" id="exampleSubmit" value="Discard">
                                                 <!--  <a href="#" class="btn btn-primary btn-success"><span class="glyphicon glyphicon-floppy-disk"></span> Add</a>
                                                 <a href="#" class="btn btn-primary btn-danger"><span class="glyphicon glyphicon-remove"></span>Discard</a> -->

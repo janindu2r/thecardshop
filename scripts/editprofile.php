@@ -6,15 +6,17 @@ $user = $_SESSION['user'];
 
 $db = new DbCon();
 
+$fname = $db->escapeString($_POST["fname"]);
+$lname = $db->escapeString($_POST["lname"]);
+$dob = $db->escapeString($_POST["dob"]);
+$add1 = $db->escapeString($_POST["add1"]);
+$add2 = $db->escapeString($_POST["add2"]);
+$add3 = $db->escapeString($_POST["add3"]);
+$postal = $db->escapeString($_POST["postal"]);
+
 if (!empty($_POST['submit1']))
 {
-	$fname = $db->escapeString($_POST["fname"]);
-	$lname = $db->escapeString($_POST["lname"]);
-	$dob = $db->escapeString($_POST["dob"]);
-	$add1 = $db->escapeString($_POST["add1"]);
-	$add2 = $db->escapeString($_POST["add2"]);
-	$add3 = $db->escapeString($_POST["add3"]);
-	$postal = $db->escapeString($_POST["postal"]);
+
 	$arr;
 	if($user->fName != $fname)
 	{
