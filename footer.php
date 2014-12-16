@@ -7,10 +7,13 @@
 
         <div class="contact-bar" id="row">
             <div class="container">
-            <div class="col-md-4"></div>
-            <div class="col-md-4">
+            <div class="col-md-4 pull-left" id="logo">
+                <img src="/img/logo.PNG">
+            </div>
+            <div class="col-md-6">
                 <div class="">
-                    <h1>For phone orders please call 1-800-0000.</h1>
+
+                    <h3>For phone orders please call 1-800-0000.</h1>
                     <p>You can also email us at <span style="font-weight:bold;">office@shop.com</span>office@shop.com</p>
                 </div>
             </div>
@@ -24,7 +27,7 @@
   <div class="clearfix">
 
    
-    <div class="footer" id="footer">
+  <!--   <div class="footer" id="footer">
         <div class="container">
             <div class="row">
                 <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
