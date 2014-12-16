@@ -296,7 +296,6 @@ $title = 'Profile | Comercio'  ;  // page title
       <!-- /.modal-dialog --> 
     </div>
         </div>
-
         <?php if(!$user->shop) { ?>
            <div class="col-md-8 admin-content" id="charts">
                <div class="col-md-3 col-offset-3">
