@@ -61,6 +61,8 @@ $title = $viewProd->proName. ' | Comercio' ;  // page title
 					<div class="product-rating"><?php echo $viewProd->getBadges(); ?> </div>
 					<hr>
                     <p>
+                    <table>
+
                     <?php
                     echo 'Category : '. $viewProd->getCategory() .'<br>' ;
                     if($viewProd->virtual)
@@ -75,6 +77,7 @@ $title = $viewProd->proName. ' | Comercio' ;  // page title
                         }
                     }
                     ?>
+                    </table>
 
 
                     </ul>
