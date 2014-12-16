@@ -2,14 +2,16 @@
 <?php
 include('/overhead.php');
 
-$prodID = 1000001;
-
 if($_GET){
     $prodID  = $_GET['product'];
 }
 
 $viewProd = new Product();
 $viewProd = $viewProd->returnProduct($prodID);
+
+if(!$viewProd->proName)
+    header('Location: /index.php');
+
 if(!$viewProd->virtual)
 {
     $tmp = new Physical();

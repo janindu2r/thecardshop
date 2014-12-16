@@ -48,14 +48,14 @@ $categories = substr($categories,1);
         <div class="carousel-inner" role="listbox">
             <div class="item active">
                 <img src="<?php echo $shop->shopSlider[0] ?>" alt="...">
-                <div class="carousel-caption" style="background-color: rgba(0,0,0,0.8); box-shadow: 0 0 2em 1em rgba(0,0,0,0.8); border-radius: 1em ">
+                <div class="carousel-caption" style="background-color: rgba(0,0,0,0.3); box-shadow: 0 0 2em 1em rgba(0,0,0,0.3); border-radius: 1em ">
                     <h2>Welcome to <?php echo $shop->shopName ?>   </h2>
                     <p><?php echo $shop->shopDesc ?></p>
                 </div>
             </div>
             <div class="item">
                 <img src="<?php echo $shop->shopSlider[1] ?>" alt="...">
-                <div class="carousel-caption" style="background-color: rgba(0,0,0,0.8); box-shadow: 0 0 2em 1em rgba(0,0,0,0.8);  border-radius: 1em ">
+                <div class="carousel-caption" style="background-color: rgba(0,0,0,0.3); box-shadow: 0 0 2em 1em rgba(0,0,0,0.3);  border-radius: 1em ">
                     <h2> <?php echo $shop->shopName ?> </h2>
                     <h4>Our Product Categories</h4>
                     <p><?php echo $categories;?></p>

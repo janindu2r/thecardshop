@@ -47,6 +47,9 @@ class OrderVar extends CartVar
                 $ad += $this->db->runInsertRecord('variation_order_items',$item);
             }
         }
+
+        $this->db->runUpdateOneValue('products', 'current_stck = current_stck - '. $this->quantity, 'product_id = '. $this->cProduct->prodId);
+
         return $ad;
     }
 

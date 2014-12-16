@@ -34,8 +34,12 @@ class OrderProd extends CartProd
         $ar['paid_to_seller']  = $this->db->escapeString('0');
         $ar['shipping_tot'] = $this->db->escapeString($this->shippingCost);
         $add = $this->db->runInsertRecord('product_order_items', $ar);
+        $this->db->runUpdateOneValue('products', 'current_stck = current_stck - '. $this->quantity, 'product_id = '. $this->cProduct->prodId);
 
-        //email the seller and make notifications if virtual?
+        if($this->cProduct->virtual)
+        {
+            //email the seller and make notifications if virtual?
+        }
 
         return $add;
     }
