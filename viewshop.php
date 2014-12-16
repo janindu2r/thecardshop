@@ -2,16 +2,16 @@
 <?php
 include('overhead.php');
 
-if($user->shop)
-{
-    $shop = new Seller($user->getRegID());
-    $shop->initiate();
-}
-else if(isset($_GET['shop']))
+if(isset($_GET['shop']))
 {
     $shop = new Seller($_GET['shop']);
     if(!$shop->initiate())
         header('Location:/index.php');
+}
+else if($user->shop)
+{
+    $shop = new Seller($user->getRegID());
+    $shop->initiate();
 }
 else
         header('Location:/index.php');
@@ -24,31 +24,7 @@ foreach($shop->categories as $key=> $val)
 
 $categories = substr($categories,1);
 
-
-
 //calling method getshoproducts
-
-$flag = $shop->getShopProducts($shop->shopId);
-
-foreach($flag as $new)
-{
-   if($new['variations'] == 1)
-   {
-       $obj = new Variation();
-   }
-    else
-    {
-        $obj = new Product();
-
-    }
-   echo  $obj->getLargeBoxItems($new['product_id']);
-   // $obj->getSmallBoxItems($new['product_id']);
-
-}
-
-
-
-
 
 ?>
 <!-- **************************** Header Start, Do not touch **************************** -->
@@ -131,247 +107,33 @@ foreach($flag as $new)
 <div id="shop-product">
     <div class="item active">
         <div class="row">
-            <div class="col-sm-3">
-                <div class="col-item">
-                    <div class="photo">
-                        <img src="http://www.techlicious.com/images/phones/samsung-galaxy-s5-blue-front-and-back-350px.jpg" class="img-responsive" alt="a" />
-                    </div>
-                    <div class="info">
-                        <div class="row">
-                            <div class="price col-md-6">
-                                <h5>
-                                    Sample Product</h5>
-                                <h5 class="price-text-color">
-                                    $199.99</h5>
-                            </div>
-                            <div class="rating hidden-sm col-md-6">
-                                <i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-                                </i><i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-                                </i><i class="fa fa-star"></i>
-                            </div>
-                        </div>
-                        <div class="separator clear-left">
-                            <p class="btn-add">
-                                <a href="#" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span> Add to cart</a>
-                            <p class="btn-details">
-                                <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-list"></span> More details</a>
-
-                        </div>
-                        <div class="clearfix">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="col-item">
-                    <div class="photo">
-                        <img src="http://www.rayashop.com/Images/Products/S7582-Black-Mti-300.png" class="img-responsive" alt="a" />
-                    </div>
-                    <div class="info">
-                        <div class="row">
-                            <div class="price col-md-6">
-                                <h5>
-                                    Product Example</h5>
-                                <h5 class="price-text-color">
-                                    $249.99</h5>
-                            </div>
-                            <div class="rating hidden-sm col-md-6">
-                            </div>
-                        </div>
-                        <div class="separator clear-left">
-                            <p class="btn-add">
-                                <a href="#" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span> Add to cart</a>
-                            <p class="btn-details">
-                                <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-list"></span> More details</a>
-                        </div>
-                        <div class="clearfix">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="col-item">
-                    <div class="photo">
-                        <img src="http://goo.gl/h8o5mB" class="img-responsive" alt="a" />
-                    </div>
-                    <div class="info">
-                        <div class="row">
-                            <div class="price col-md-6">
-                                <h5>
-                                    Next Sample Product</h5>
-                                <h5 class="price-text-color">
-                                    $149.99</h5>
-                            </div>
-                            <div class="rating hidden-sm col-md-6">
-                                <i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-                                </i><i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-                                </i><i class="fa fa-star"></i>
-                            </div>
-                        </div>
-                        <div class="separator clear-left">
-                            <p class="btn-add">
-                                <a href="#" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span> Add to cart</a>
-                            <p class="btn-details">
-                                <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-list"></span> More details</a>
-                        </div>
-                        <div class="clearfix">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="col-item">
-                    <div class="photo">
-                        <img src="http://images.sodahead.com/polls/002308443/1032261492_lenovo_ideacentre_b500_08871fu_answer_2_xlarge.png" class="img-responsive" alt="a" />
-                    </div>
-                    <div class="info">
-                        <div class="row">
-                            <div class="price col-md-6">
-                                <h5>
-                                    Sample Product</h5>
-                                <h5 class="price-text-color">
-                                    $199.99</h5>
-                            </div>
-                            <div class="rating hidden-sm col-md-6">
-                                <i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-                                </i><i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-                                </i><i class="fa fa-star"></i>
-                            </div>
-                        </div>
-                        <div class="separator clear-left">
-                            <p class="btn-add">
-                                <a href="#" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span> Add to cart</a>
-                            <p class="btn-details">
-                                <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-list"></span> More details</a>
-                        </div>
-                        <div class="clearfix">
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <?php
+            $flag = $shop->getShopProducts(0,4);
+            if($flag) {
+                foreach ($flag as $new) {
+                    $obj = new Product();
+                    if ($new['variations'] == 1)
+                        $obj = new Variation();
+                    echo $obj->getSmallBoxItem($new['product_id']);
+                }
+            }
+            ?>
         </div>
     </div>
 </div>		    <div id="shop-product">
     <div class="item active">
         <div class="row">
-            <div class="col-sm-3">
-                <div class="col-item">
-                    <div class="photo">
-                        <img src="http://www.techlicious.com/images/phones/samsung-galaxy-s5-blue-front-and-back-350px.jpg" class="img-responsive" alt="a" />
-                    </div>
-                    <div class="info">
-                        <div class="row">
-                            <div class="price col-md-6">
-                                <h5>
-                                    Sample Product</h5>
-                                <h5 class="price-text-color">
-                                    $199.99</h5>
-                            </div>
-                            <div class="rating hidden-sm col-md-6">
-                                <i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-                                </i><i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-                                </i><i class="fa fa-star"></i>
-                            </div>
-                        </div>
-                        <div class="separator clear-left">
-                            <p class="btn-add">
-                                <a href="#" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span> Add to cart</a>
-                            <p class="btn-details">
-                                <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-list"></span> More details</a>
-
-                        </div>
-                        <div class="clearfix">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="col-item">
-                    <div class="photo">
-                        <img src="http://www.rayashop.com/Images/Products/S7582-Black-Mti-300.png" class="img-responsive" alt="a" />
-                    </div>
-                    <div class="info">
-                        <div class="row">
-                            <div class="price col-md-6">
-                                <h5>
-                                    Product Example</h5>
-                                <h5 class="price-text-color">
-                                    $249.99</h5>
-                            </div>
-                            <div class="rating hidden-sm col-md-6">
-                            </div>
-                        </div>
-                        <div class="separator clear-left">
-                            <p class="btn-add">
-                                <a href="#" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span> Add to cart</a>
-                            <p class="btn-details">
-                                <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-list"></span> More details</a>
-                        </div>
-                        <div class="clearfix">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="col-item">
-                    <div class="photo">
-                        <img src="http://goo.gl/h8o5mB" class="img-responsive" alt="a" />
-                    </div>
-                    <div class="info">
-                        <div class="row">
-                            <div class="price col-md-6">
-                                <h5>
-                                    Next Sample Product</h5>
-                                <h5 class="price-text-color">
-                                    $149.99</h5>
-                            </div>
-                            <div class="rating hidden-sm col-md-6">
-                                <i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-                                </i><i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-                                </i><i class="fa fa-star"></i>
-                            </div>
-                        </div>
-                        <div class="separator clear-left">
-                            <p class="btn-add">
-                                <a href="#" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span> Add to cart</a>
-                            <p class="btn-details">
-                                <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-list"></span> More details</a>
-                        </div>
-                        <div class="clearfix">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="col-item">
-                    <div class="photo">
-                        <img src="http://images.sodahead.com/polls/002308443/1032261492_lenovo_ideacentre_b500_08871fu_answer_2_xlarge.png" class="img-responsive" alt="a" />
-                    </div>
-                    <div class="info">
-                        <div class="row">
-                            <div class="price col-md-6">
-                                <h5>
-                                    Sample Product</h5>
-                                <h5 class="price-text-color">
-                                    $199.99</h5>
-                            </div>
-                            <div class="rating hidden-sm col-md-6">
-                                <i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-                                </i><i class="price-text-color fa fa-star"></i><i class="price-text-color fa fa-star">
-                                </i><i class="fa fa-star"></i>
-                            </div>
-                        </div>
-                        <div class="separator clear-left">
-                            <p class="btn-add">
-                                <a href="#" class="btn btn-success"><span class="glyphicon glyphicon-shopping-cart"></span> Add to cart</a>
-                            <p class="btn-details">
-                                <a href="#" class="btn btn-default"><span class="glyphicon glyphicon-list"></span> More details</a>
-                        </div>
-                        <div class="clearfix">
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <?php
+            $flag = $shop->getShopProducts(4,4);
+            if($flag) {
+                foreach ($flag as $new) {
+                    $obj = new Product();
+                    if ($new['variations'] == 1)
+                        $obj = new Variation();
+                    echo $obj->getSmallBoxItem($new['product_id']);
+                }
+            }
+            ?>
         </div>
     </div>
 </div>

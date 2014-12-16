@@ -116,12 +116,11 @@
         }
 
 
-        public function getShopProducts( $shopId)
+        public function getShopProducts($limStart, $limEnd)
         {
-         $query = " select product_id, virtual from products where shop_id = ". $shopId ;
-           $res = $this->getSelectTable($query);
+            $query = " select product_id, variations from products where shop_id = " . $this->shopId . ' order by product_id desc limit ' . $limStart . ',' . $limEnd;
+            $res = $this->db->getSelectTable($query);
             return $res;
-
         }
 
 

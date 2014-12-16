@@ -221,8 +221,8 @@ class Product
 		$itemHtml  =  '<div class="col-sm-'.$col.'"><div class="col-item"><div class="photo"><img src="/content/products/prodthumbnail/';
 		$itemHtml .= $this->prodId .'.jpg" class="img-responsive" alt="a" /></div><div class="info"><div class="row">';
 		$itemHtml .= '<div class="price col-md-6"><h'.$size.'><b>'.$this->proName.'</b></h'.$size.'> by <a href="/viewshop.php?shop='.$this->shopId.'">';
-		$itemHtml .= $this->getShopName() .'</a>'. $this->getBadges().'</div><div class="rating hidden-sm col-md-6">';
-		$itemHtml .= '<h3 class="price-text-color">$'.$this->proPrice.'</h3>';
+		$itemHtml .= $this->getShopName() .'</a></div><div class="rating hidden-sm col-md-6">';
+		$itemHtml .= '<h4 class="price-text-color">$'.$this->proPrice.'<br>'.$this->getBadges().'</h4>';
 		$itemHtml .= '</div></div><div class="separator clear-left">';
 		$itemHtml .= $this->getCartButton() . '<p class="btn-details">';
 		$itemHtml .= '<a href="/viewproduct.php?product='. $this->prodId . '" class="btn btn-default">';

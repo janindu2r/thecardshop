@@ -1,5 +1,5 @@
 <?php
-class OrderVar extends CartProd
+class OrderVar extends CartVar
 {
 
 

@@ -39,33 +39,40 @@ class Order
 
         if($this->orderId)
         {
-            $this->userId = $tempCart->userId;
-            $this->totalItems = sizeof($tempCart->cartOrder);
-            $this->processed = 0;
-            $this->orderStatus = 'Placed';
-            $this->shippingTotal = $tempCart->cartEstShipping;
-            $this->billingAd[1] = $inVals['bill_add_line1'];
-            $this->billingAd[2] = $inVals['bill_add_line2'];
-            $this->billingAd[3] = $inVals['bill_add_line3'];
-            $this->billingAd[4] = $inVals['bill_postal_code'];
-            $this->shippingAd[0] = $inVals['ship_to_name'];
-            $this->shippingAd[1] =  $inVals['ship_add_line1'];
-            $this->shippingAd[2] =  $inVals['ship_add_line2'];
-            $this->shippingAd[3] =  $inVals['ship_add_line3'];
-            $this->shippingAd[4] =  $inVals['ship_postal_code'];
-            $this->buyerNote =  $inVals['buyer_note'];
-            $this->telNum = $inVals['telephone'];
-            $this->dateTime = $currentT;
-
-            $this->getOrderSimpProds($tempCart->simpleProds);
-            $this->getOrderVarProds($tempCart->varProds);
+            $this->initializeOrder();
+            $this->addOrderSimpProds($tempCart->simpleProds);
+            $this->addOrderVarProds($tempCart->varProds);
 
             return $this->orderId;
         }
     }
 
+    function initializeOrder()
+    {
+        $oVals = $this->db->getFirstRow('select * from orders where order_id = ' . $this->orderId);
+        $this->userId = $oVals['buyer_id'];
+        $this->totalItems = $oVals['tot_items_in_cart'];
+        $this->processed =  $oVals['processed_items'] ;
+        $this->orderStatus = $oVals['order_status'];
+        $this->shippingTotal = $oVals['total'];
+        $this->buyerNote = $oVals['buyer_note'];
+        $this->telNum = $oVals['telephone'];
+        $this->dateTime = $oVals['telephone'];
+        $this->billingAd[1] = $oVals['bill_add_line1'];
+        $this->billingAd[2] = $oVals['bill_add_line2'];
+        $this->billingAd[3] = $oVals['bill_add_line3'];
+        $this->billingAd[4] = $oVals['bill_postal_code'];
+        $this->shippingAd[0] = $oVals['ship_to_name'];
+        $this->shippingAd[1] =  $oVals['ship_add_line1'];
+        $this->shippingAd[2] =  $oVals['ship_add_line2'];
+        $this->shippingAd[3] =  $oVals['ship_add_line3'];
+        $this->shippingAd[4] =  $oVals['ship_postal_code'];
+        //initialize order prod items and var items
 
-    function addOrderSimpleProds(array $cartProds)
+    }
+
+
+    function addOrderSimpProds(array $cartProds)
     {
         foreach($cartProds as $obj){
             $ordPrd = new OrderProd();
@@ -83,6 +90,7 @@ class Order
         foreach($cartVars as $obj){
             $varPrd = new OrderVar();
 
+            //add to cart.
             $ad = 0;
             if($ad){
                 array_push($this->varProds, $varPrd);
@@ -92,8 +100,14 @@ class Order
 
     }
 
+    function getOrderSimpProds()
+    {
+
+    }
 
 
-	
+
+
+
 }
 ?>
