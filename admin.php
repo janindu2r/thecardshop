@@ -173,7 +173,7 @@ $owner->initiate();
 			                        <input type="number" name = "pro_price" class="form-control" id="exampleInputtext1" placeholder="john26769">
 			                    </div>
 			                    <div class="form-group">
-			                        <label for="#">Product Tag</label>
+			                        <label for="#">Product Tags</label>
 			                        <input type="text" name = "pro_tag" class="form-control" id="exampleInputtext1" placeholder="john26769">
 			                    </div>
 			                    <div class="form-group">

@@ -26,13 +26,103 @@ $custProd = $custProd->returnProduct($prodId);
     <div class="row">
         <div class="col-md-2">
             <ul class="nav nav-pills nav-stacked admin-menu">
-                <li class="active"><a href="#" data-target-id="home"><i class="fa fa-tasks fa-fw"></i>Physical</a></li>
+
+                <li class="active"><a href="#" data-target-id="home"><i class="fa fa-tasks fa-fw"></i>Edit Product</a></li>
+                <li><a href="#" data-target-id="products"><i class="fa fa-dropbox fa-fw"></i>Physical</a></li>
                 <li><a href="#" data-target-id="products"><i class="fa fa-dropbox fa-fw"></i>Virtual</a></li>
                 <li><a href="#" data-target-id="pages"><i class="fa fa-book fa-fw"></i>Variation</a></li>
                 <li><a href="#" data-target-id="charts"><i class="fa fa-pencil fa-fw"></i>Image Gallery</a></li>
             </ul>
         </div>
         <div class="col-md-8  admin-content" id="home">
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Edit Product
+                </div>
+                <div class="panel-body">
+                    <div role="tabpanel">
+
+                        <!-- Tab panes -->
+
+                        <div class="tab-content col-md-6 col-md-offset-3">
+                            <div role="tabpanel" class="tab-pane active" id="addProduct">
+
+                                <div class="panel-body">
+                                    <div class="panel-body">
+                                        <div class="form-group">
+
+                                            <form name="addproduct" method="POST" action= "/scripts/somewhere.php" enctype="multipart/form-data">
+                                                <label for="#">Product Name</label>
+                                                <input type="text" name = "pro_name" class="form-control" id="" placeholder="Shop john26769">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="#">Price</label>
+                                            <input type="number" name = "pro_price" class="form-control" id="exampleInputtext1" placeholder="john26769">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="#">Tags</label>
+                                            <input type="text" name = "pro_tag" class="form-control" id="exampleInputtext1" placeholder="john26769">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="#">Category</label>
+
+                                            <!-- <input type="text" class="form-control" id="exampleInputtext1" placeholder="john26769">-->
+
+                                            <select id="catId" name="category" class="form-control">
+                                                <option value="0">Select Category</option>
+                                                <?php if($owner->categories) {
+                                                    foreach ($owner->categories as $key => $val) { ?>
+                                                        <option value="<?php echo $key; ?>"><?php echo $val;?></option>
+                                                    <?php }
+                                                } ?>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="form-group">
+                                                <label for="#">Product description</label>
+                                                <textarea class="form-control" id="textarea" name="description"></textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="#">Selling Unit</label>
+                                                <input type="text" name = "sel_unit" class="form-control" id="exampleInputtext1" placeholder="john26769">
+                                            </div>
+                                            <!--<div class="form-group">
+                                                <label for="#">Initial Stock</label>
+                                                <input type="number" class="form-control" id="exampleInputtext1" placeholder="john26769">
+                                            </div>-->
+                                            <div class="form-group">
+                                                <label for="#">Stock</label>
+                                                <input type="number" name = "stock" class="form-control" id="exampleInputEmail1" placeholder="john26769">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label" for="fileUpload">Upload Image</label>
+                                                <div class="#">
+                                                    <input id="fileUpload" name="prodimg" class="input-file" type="file">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="submit"  class=" btn btn-primary btn-success" id="exampleSubmit" value="Add">
+                                                <input type="reset" class=" btn btn-primary btn-danger" id="exampleSubmit" value="Discard">
+                                                <!--  <a href="#" class="btn btn-primary btn-success"><span class="glyphicon glyphicon-floppy-disk"></span> Add</a>
+                                                <a href="#" class="btn btn-primary btn-danger"><span class="glyphicon glyphicon-remove"></span>Discard</a> -->
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    </div>
+                                <!--    <div role="tabpanel" class="tab-pane" id="messages">...</div>
+                                    <div role="tabpanel" class="tab-pane" id="settings">...</div> -->
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div></div>
+
+        </div>
+        <div class="col-md-8  admin-content" id="settings">
 
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -52,7 +142,7 @@ $custProd = $custProd->returnProduct($prodId);
                                         <form name="physical" method="POST" action="/script/addtophysical "  onclick="//return validateShopForm();">
                                             <label for="#">Width</label>
                                             <input type="number" name="width" class="form-control" id="exampleInputtext1" placeholder="26769">
-                                        </div>
+                                    </div>
                                     <div class="form-group">
                                         <label for="#">Height</label>
                                         <input type="number" name="height" class="form-control" id="exampleInputtext1" placeholder="26769">
@@ -65,7 +155,7 @@ $custProd = $custProd->returnProduct($prodId);
                                         <label for="#">Length</label>
 
                                         <input type="number" class="form-control" id="exampleInputtext1" placeholder="26769">
-                                        </div>
+                                    </div>
                                     <div class="form-group">
                                         <label for="#">Shipping Cost</label>
 

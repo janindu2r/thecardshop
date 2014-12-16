@@ -213,6 +213,11 @@ class Product
 		return $this->db->getScalar('select category_name from categories where category_id = ' . $this->catId);
 	}
 
+	function getTotalSales()
+	{
+		$sql = 'SELECT  COUNT( order_id ) FROM product_order_items where product_id = '. $this->prodId .' GROUP BY product_id';
+		return $this->db->getScalar($sql);
+	}
 
 	private function getThumbnailBoxItem($prodId, $col)
 	{
