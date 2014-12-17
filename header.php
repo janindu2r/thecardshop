@@ -195,7 +195,7 @@
 						              		<input type="password" class="form-control input-md" name="passwd" placeholder="Password">
 						              	</div>
 						              <button type="submit" class="btn btn-sm btn-primary pull-right">Sign in</button>
-						                <a href="#" class="btn btn-xs btn-default">Forgot Password?</a>
+						                <a href="/forgotpassword.php" class="btn btn-xs btn-default">Forgot Password?</a>
 						            </form>
 						          </div>
 						          <div class="modal-footer">

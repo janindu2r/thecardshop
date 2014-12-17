@@ -30,7 +30,7 @@ $title = 'Password Recovery' ;  // page title
 
 <!-- -------------------------------------- Add Page Edits Below ----------------------------------------------- --> 
 
-<div class="RegWrapper" id="SignUpWrapper">
+<div class="RegWrapper" id="SignUpWrapper"  style="min-height:500px;> 
 <div class="container">
 
     <div class="row">
