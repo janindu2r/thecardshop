@@ -76,8 +76,7 @@ $title = 'Profile | Comercio'  ;  // page title
                     
                     <div class="form-group pull-right">
                         <input type="submit" name="submit1" class="btn btn-primary btn-success"  value="Save" >
-                        <!-- <a href="#" class="btn btn-primary btn-success"><span class="glyphicon glyphicon-floppy-disk"> </span> Save</a> -->
-                        <a href="#" class="btn btn-primary btn-danger"><span class="glyphicon glyphicon-remove"></span> Discard</a>
+                       
 
                     </div>
                 </div>
