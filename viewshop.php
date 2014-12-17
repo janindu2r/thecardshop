@@ -120,7 +120,8 @@ $categories = substr($categories,1);
             ?>
         </div>
     </div>
-</div>		    <div id="shop-product">
+</div>
+    <div id="shop-product">
     <div class="item active">
         <div class="row">
             <?php
@@ -137,6 +138,7 @@ $categories = substr($categories,1);
         </div>
     </div>
 </div>
+    <h4><a href="/viewproductlist.php?shop=<?php echo $shop->shopId ?>" >View Complete Product List</a></h4>
 </div>
 <!-- *****************************      End of page edits 	 **************************** -->
 <?php include('footer.php'); //including the footer?>

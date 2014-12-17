@@ -154,6 +154,16 @@ class User
         $this->shop = $this->db->getScalar('select count(shop_id) from shops where shop_id = '. $this->regID);
     }
 
+    function makeUser($id)
+    {
+        $query = sprintf("SELECT * FROM account WHERE user_id = " .$id);
+        $result= $this->db->getFirstRow($query);
+        if($result != 0)
+        {
+            $this->initializeUser($result);
+        }
+    }
+
 
     private function getEmail($regId, $userFullName){
 

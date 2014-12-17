@@ -8,17 +8,18 @@
 
 $root = $_SERVER['DOCUMENT_ROOT'];
 include ($root.'/internal.php');
-include ("../class/Validate.php");
 
-Validate :: validString(" bimla ");
+Validate :: validString("bimla");
 
-Validate :: validInt(1234567);
+echo '<hr>';
 
-Validate :: emailValidte("' bimlamadhavee@gmail.com '");
+Validate :: validInt('156745');
 
+echo '<hr>';
 
-//echo $success;
+Validate :: emailValidate("bimlamadhavee@gmail.com");
+echo '<hr>';
 
-
+Validate :: validNumber('154534');
 
 ?>

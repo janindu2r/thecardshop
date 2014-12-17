@@ -58,8 +58,8 @@ $owner->initiate();
         <div class="col-md-2">
             <ul class="nav nav-pills nav-stacked admin-menu">
                 <li class="active"><a href="#" data-target-id="home"><i class="fa fa-user fa-fw"></i>Account</a></li>
-                <li><a href="#" data-target-id="products"><i class="fa fa-dropbox fa-fw"></i>Products</a></li>
-                <li><a href="/shophome.php" data-target-id="charts"><i class="fa fa-table fa-fw"></i>View Products</a></li>
+                <li><a href="#" data-target-id="products"><i class="fa fa-dropbox fa-fw"></i>Add Products</a></li>
+                <li><a href="#" data-target-id="charts"><i class="fa fa-table fa-fw"></i>All Products</a></li>
                 <li><a href="#" data-target-id="pages"><i class="fa fa-history fa-fw"></i>Order History</a></li>
                 
                 <li><a href="#" data-target-id="table"><i class="fa fa-shopping-cart fa-fw"></i>Go To Shop</a></li>
@@ -264,84 +264,41 @@ $owner->initiate();
             Pages
         </div>
         <div class="col-md-10 admin-content" id="charts">
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <!--script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script-->
 <div class="container">
     <div class="row">
         
         
         <div class="col-md-12">
-        <h4>Bootstrap Snipp for Datatable</h4>
+        <h4>Your Products</h4>
         <div class="table-responsive">
-
+        <?php $flag = $owner->getFullProductList() ; ?>
                 
               <table id="mytable" class="table table-bordred table-striped">
                    
                    <thead>
-                   
-                   <th><input type="checkbox" id="checkall" /></th>
-                   <th>First Name</th>
-                    <th>Last Name</th>
-                     <th>Address</th>
-                      <th>Edit</th>
-                       <th>Delete</th>
+                   <th>Product Id</th>
+                   <th>Product Title</th>
+                   <th>Price</th>
+                   <th>Current Stock</th>
+                   <th>Date Added</th>
+                   <th>Edit</th>
                    </thead>
     <tbody>
-    
+
+    <?php foreach($flag as $row) { ?>
+
     <tr>
-    <td><input type="checkbox" class="checkthis" /></td>
-    <td>Mohsin</td>
-    <td>Irshad</td>
-    <td>CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan</td>
-    <td><p><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-    <td><p><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
+    <td><?php echo $row['product_id'] ?></td>
+    <td><?php echo $row['product_title'] ?></td></td>
+    <td>$<?php echo $row['price'] ?></td></td>
+    <td><?php echo $row['current_stck'] ?></td>
+    <td><?php echo $row['date_added'] ?></td>
+    <td><p><a class="btn btn-primary btn-xs" data-title="Edit" href="/customizeproduct.php?product=<?php echo $row['product_id'] ?>"><span class="glyphicon glyphicon-pencil"></span></a</p></td>
     </tr>
-    
-        <tr>
-    <td><input type="checkbox" class="checkthis" /></td>
-    <td>Mohsin</td>
-    <td>Irshad</td>
-    <td>CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan</td>
-    <td><p><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-    <td><p><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
-    </tr>
-    
-    
-        <tr>
-    <td><input type="checkbox" class="checkthis" /></td>
-    <td>Mohsin</td>
-    <td>Irshad</td>
-    <td>CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan</td>
-    <td><p><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-    <td><p><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete"><span class="glyphicon glyphicon-trash"></span></button></p></td>
-    </tr>
-    
-    
-    
-        <tr>
-    <td><input type="checkbox" class="checkthis" /></td>
-    <td>Mohsin</td>
-    <td>Irshad</td>
-    <td>CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan</td>
-    <td><p><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-    <td><p><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete"><span class="glyphicon glyphicon-trash"></span></button></p></td>
-    </tr>
-    
-    
-    
-        <tr>
-    <td><input type="checkbox" class="checkthis" /></td>
-    <td>Mohsin</td>
-    <td>Irshad</td>
-    <td>CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan</td>
-    <td><p><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-    <td><p><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete"><span class="glyphicon glyphicon-trash"></span></button></p></td>
-    </tr>
-    
-    
-   
-    
-   
-    
+
+    <?php } ?>
+
     </tbody>
         
 </table>
@@ -409,6 +366,20 @@ $owner->initiate();
       <!-- /.modal-dialog --> 
     </div>
         </div>
+
+        <div class="col-md-7 admin-content" id="table">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Visit your shop
+                </div>
+                <div class="panel-body">
+                    <a href="/viewshop.php?shop=<?php echo $user->getRegID() ?>" class="btn btn-lg btn-info"><span class="glyphicon glyphicon-bullhorn"></span>View Shop Home Page</a>
+                    <a href="/viewproductlist.php?shop=<?php echo $user->getRegID() ?>" class="btn btn-lg btn-info"><span class="glyphicon glyphicon-bullhorn"></span>View Product Showcase</a>
+                </div>
+            </div>
+        </div>
+
+
         <!-- <div class="col-md-9 admin-content" id="table">
             Table
         </div>

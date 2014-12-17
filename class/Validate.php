@@ -2,105 +2,75 @@
 
 class Validate
 {
-
-public static function validImgFormat()
-{
-
-}
-
-public  static function validString($string)
-{
-    $max = 30;
-  if(!preg_match('/[a-zA-Z]/',$string))
-  {
-      echo "error";
-  }
-    $len = strlen($string);
-    if($len == 0)
+    public static function validString($string)
     {
-        echo "filed is empty";
-    }
-    if($len > $max)
-
-    {
-        echo "enter a name with less than 30 characters ";
-    }
-
-
-   // $valid = false;
-
-    //check if string is valid
-
-/*
-if($flag == true)
-{
-    echo $string;
-    return $string;
-}
-   else
-       echo"invalid name";
-  //  return $valid;*/
-}
-
-public static function validInt($val)
-{
-    $id = 5;
-    if(! preg_match("/{5}/",$val));
-    {
-        echo "enter a number with less than 5 digits"."<br>";
-    }
-
-
-
-
-
-}
-
-public static function validateDecimal($val)
-{
-//float numbers to be truncated to two decimal points
-    return $val;
-}
-
-public static function longText($txtAreaString)
-{
-//including apostrophes
-    return $txtAreaString;
-}
-
-    public  function checkEmpty($text)
-    {
-        if(empty($text))
-        {
-            echo"field is empty"."<br>";
-
+        $max = 30;
+        if (preg_match('/[a-zA-Z]/', $string) === 0) {
+            echo "Error";
         }
-        else
+        else {
+            $len = strlen($string);
+            if ($len == 0)
+                echo "Field is empty";
+            else if ($len > $max)
+                echo "Enter a name with less than 30 characters ";
+            else
+                echo "String is valid";
+        }
+    }
+
+    public static function emailValidate($string)
+    {
+        if (!filter_var($string, FILTER_VALIDATE_EMAIL)) {
+            echo "email is not valid" . "<br>";
+        } else {
+            echo "valid email" . "<br>";
+        }
+    }
+
+    public static function validInt($val)
+    {
+        if (!preg_match("/{5}/", $val) === 0) ;
+            echo "Enter a number with less than 5 digits" . "<br>";
+    }
+
+    public static function validNumber($val)
+    {
+        if (!preg_match("/[0-9]/", $val) === 0) ;
+        echo "Enter a valid number" . "<br>";
+    }
+
+    public static function checkEmpty($text)
+    {
+        if (empty($text)) {
+            echo "field is empty" . "<br>";
+
+        } else
             return $text;
     }
-    public function  checkNumeric($text)
+
+    public static function checkNumeric($text)
     {
-        if(is_numeric($text))
-        {
+        if (is_numeric($text)) {
             return $text;
-        }
-        else
-            echo"enter a number"." <br>";
+        } else
+            echo "enter a number" . " <br>";
     }
 
-public static  function emailValidte($string)
-{
-    if(!filter_var($string,FILTER_VALIDATE_EMAIL))
+
+
+    /*
+    public static function longText($txtAreaString)
     {
-        echo "email is not valid"."<br>";
+        //including apostrophes
+        return $txtAreaString;
     }
-    else
+
+    public static function validateDecimal($val)
     {
-        echo "valid email"."<br>";
-    }
-
-
-}
+        //float numbers to be truncated to two decimal points
+        return $val;
+    } */
 
 }
 

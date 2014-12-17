@@ -82,9 +82,25 @@
             return $this->db->getScalar($sql);
         }
 
-        function salesCount(){ //tobe implemented
+        function getProductList($start, $num)
+        {
+            return $this->db->getSelectTable('select product_id, variations from products where shop_id = '. $this->shopId . ' limit '. $start .','. $num);
+        }
 
-            return '10';
+        function getFullProductList()
+        {
+            return $this->db->getSelectTable('select * from products where shop_id = '. $this->shopId .' order by date_added desc' );
+        }
+
+        function salesCount()
+        {
+            $sql = 'SELECT SUM( orders )FROM ((SELECT product_id, COUNT( order_id ) AS orders FROM variation_order_group GROUP BY product_id)';
+            $sql .= 'UNION (SELECT product_id, COUNT( order_id ) AS orders FROM product_order_items GROUP BY product_id ))b JOIN products p ON';
+            $sql .= ' p.product_id = b.product_id where shop_id = '. $this->shopId .' GROUP BY p.shop_id';
+            $val =  $this->db->getScalar($sql);
+            if(!$val)
+                $val = '0';
+            return $val;
         }
 
         function initiate()

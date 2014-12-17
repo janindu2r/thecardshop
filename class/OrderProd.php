@@ -56,6 +56,11 @@ class OrderProd extends CartProd
         }
         return $this->cProduct;
     }
+
+    function calcShippingCost()
+    {
+        return round((intval($this->shippingCost) + intval($this->itemsTotal)), 2);
+    }
 	
 }
 ?>

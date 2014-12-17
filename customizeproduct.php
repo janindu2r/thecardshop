@@ -4,14 +4,15 @@ include('/overhead.php');
 
 $title = 'Customize Product' ;  // page title
 
-$prodId = 1000000;
-
 if($_GET){
     if(isset($_GET['product']))
         $prodId = $_GET['product'];
 }
 $custProd = new Product();
 $custProd = $custProd->returnProduct($prodId);
+
+$vir = $custProd->virtual;
+$var = $custProd->variation;
 
 ?>
 <!-- **************************** Header Start, Do not touch **************************** -->
@@ -28,9 +29,12 @@ $custProd = $custProd->returnProduct($prodId);
             <ul class="nav nav-pills nav-stacked admin-menu">
 
                 <li class="active"><a href="#" data-target-id="home"><i class="fa fa-tasks fa-fw"></i>Edit Product</a></li>
-                <li><a href="#" data-target-id="products"><i class="fa fa-dropbox fa-fw"></i>Physical</a></li>
-                <li><a href="#" data-target-id="products"><i class="fa fa-dropbox fa-fw"></i>Virtual</a></li>
-                <li><a href="#" data-target-id="pages"><i class="fa fa-book fa-fw"></i>Variation</a></li>
+                <?php if($custProd->virtual) { ?>
+                    <li><a href="#" data-target-id="products"><i class="fa fa-dropbox fa-fw"></i>Virtual</a></li>
+                <?php } else { ?>
+                    <li><a href="#" data-target-id="products"><i class="fa fa-dropbox fa-fw"></i>Physical</a></li>
+                    <li><a href="#" data-target-id="pages"><i class="fa fa-book fa-fw"></i>Variation</a></li>
+                <?php } ?>
                 <li><a href="#" data-target-id="charts"><i class="fa fa-pencil fa-fw"></i>Image Gallery</a></li>
             </ul>
         </div>
@@ -122,8 +126,49 @@ $custProd = $custProd->returnProduct($prodId);
                 </div></div>
 
         </div>
-        <div class="col-md-8  admin-content" id="settings">
 
+        <?php if($custProd->virtual) { ?>
+        <!-- Virtual -->     <div class="col-md-8 admin-content" id="products">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                  virtual
+                </div>
+                <div class="panel-body">
+                    <div role="tabpanel">
+
+                        <!-- Tab panes -->
+
+                        <div class="tab-content col-md-6 col-md-offset-3">
+                            <div role="tabpanel" class="tab-pane active" id="addProduct">
+
+                                <div class="panel-body">
+                                    <div class="form-group">
+
+                                        <form name="virtual" method="POST" action=" " onclick="//return validateShopForm();">
+                                            <label for="#">Download Link</label>
+                                            <input type="text" name="link" class="form-control" id="" placeholder="www.asd.com">
+                                            <div class="form-group">
+                                                <input type="submit" class="form-control btn btn-primary btn-success" id="exampleSubmit" value="Add">
+                                                <input type="reset" class="form-control btn btn-primary btn-danger" id="exampleSubmit" value="Discard">
+                                                <!--  <a href="#" class="btn btn-primary btn-success"><span class="glyphicon glyphicon-floppy-disk"></span> Add</a>
+                                                <a href="#" class="btn btn-primary btn-danger"><span class="glyphicon glyphicon-remove"></span>Discard</a> -->
+                                            </div>
+                                        </div>
+
+
+
+                                </div>
+                                <!--    <div role="tabpanel" class="tab-pane" id="messages">...</div>
+                                    <div role="tabpanel" class="tab-pane" id="settings">...</div> -->
+                            </div>
+
+                        </div>
+                    </div>
+                </div></div>
+
+        </div> <!-- /.end of widgets tab page -->
+        <?php } else { ?>
+        <!-- Physical -->  <div class="col-md-8  admin-content" id="settings">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     Physical
@@ -193,47 +238,7 @@ $custProd = $custProd->returnProduct($prodId);
                 </div></div>
 
         </div>
-        <div class="col-md-8 admin-content" id="products">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                  virtual
-                </div>
-                <div class="panel-body">
-                    <div role="tabpanel">
-
-                        <!-- Tab panes -->
-
-                        <div class="tab-content col-md-6 col-md-offset-3">
-                            <div role="tabpanel" class="tab-pane active" id="addProduct">
-
-                                <div class="panel-body">
-                                    <div class="form-group">
-
-                                        <form name="virtual" method="POST" action=" " onclick="//return validateShopForm();">
-                                            <label for="#">Download Link</label>
-                                            <input type="text" name="link" class="form-control" id="" placeholder="www.asd.com">
-                                            <div class="form-group">
-                                                <input type="submit" class="form-control btn btn-primary btn-success" id="exampleSubmit" value="Add">
-                                                <input type="reset" class="form-control btn btn-primary btn-danger" id="exampleSubmit" value="Discard">
-                                                <!--  <a href="#" class="btn btn-primary btn-success"><span class="glyphicon glyphicon-floppy-disk"></span> Add</a>
-                                                <a href="#" class="btn btn-primary btn-danger"><span class="glyphicon glyphicon-remove"></span>Discard</a> -->
-                                            </div>
-                                        </div>
-
-
-
-                                </div>
-                                <!--    <div role="tabpanel" class="tab-pane" id="messages">...</div>
-                                    <div role="tabpanel" class="tab-pane" id="settings">...</div> -->
-                            </div>
-
-                        </div>
-                    </div>
-                </div></div>
-            
-        </div> <!-- /.end of widgets tab page -->
-
-        <div class="col-md-8 admin-content" id="pages">
+        <!-- Variations -->   <div class="col-md-8 admin-content" id="pages">
 
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -339,7 +344,8 @@ $custProd = $custProd->returnProduct($prodId);
 
 
         </div>
-        <div class="col-md-8 admin-content" id="charts">
+        <?php } ?>
+        <!-- image upload -->  <div class="col-md-8 admin-content" id="charts">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     Products

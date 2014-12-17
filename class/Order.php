@@ -2,24 +2,27 @@
 class Order
 {
 
-    public  $userId;
+    public $userId;
     public $orderId;
     public $simpleProds = array();
     public $varProds = array();
     public $totalItems;
     public $processed;
     public $orderStatus;
+    public $subTotal;
     public $shippingTotal;
     public $buyerNote;
     public $telNum;
-    private $billingAd = array();
-    private $shippingAd = array();
+    public $total;
+    public $billingAd = array();
+    public $shippingAd = array();
     private  $db;
     public $dateTime;
 
 
     function __construct(){
         $this->db = new DbCon();
+        $this->subTotal = 0;
     }
 
     function insertOrder(array $inVals)
@@ -52,10 +55,11 @@ class Order
         $this->totalItems = $oVals['tot_items_in_cart'];
         $this->processed =  $oVals['processed_items'] ;
         $this->orderStatus = $oVals['order_status'];
-        $this->shippingTotal = $oVals['total'];
+        $this->shippingTotal = $oVals['shipping_tot'];
         $this->buyerNote = $oVals['buyer_note'];
         $this->telNum = $oVals['telephone'];
         $this->dateTime = $oVals['telephone'];
+        $this->total = $oVals['total'];
         $this->billingAd[1] = $oVals['bill_add_line1'];
         $this->billingAd[2] = $oVals['bill_add_line2'];
         $this->billingAd[3] = $oVals['bill_add_line3'];
@@ -65,6 +69,7 @@ class Order
         $this->shippingAd[2] =  $oVals['ship_add_line2'];
         $this->shippingAd[3] =  $oVals['ship_add_line3'];
         $this->shippingAd[4] =  $oVals['ship_postal_code'];
+        $this->dateTime = $oVals['order_dnt'];
     }
 
     function addOrderSimpProds(array $cartProds)
@@ -75,6 +80,7 @@ class Order
             $ad = $ordPrd->addToOrderItems($this->orderId);
             if($ad) {
                 array_push($this->simpleProds, $ordPrd);
+                $this->subTotal += floatval($ordPrd->itemsTotal);
                 $obj->deleteItem($obj->cProduct->prodId);
             }
         }
@@ -88,6 +94,7 @@ class Order
             $ad = $varPrd->addToOrderVarItems($this->orderId);
             if($ad > 1){
                 array_push($this->varProds, $varPrd);
+                $this->subTotal += floatval($varPrd->itemsTotal);
                 $obj->deleteCartVar($obj->groupId);
             }
         }
@@ -109,6 +116,7 @@ class Order
             $ordPrd = new OrderProd();
             $ordPrd->makeOrderProd($ordPrd->simpProdIni($row['product_id']), $row['quantity'], $row['shipping_tot'], $row['items_tot']);
             array_push($this->simpleProds, $ordPrd);
+            $this->subTotal += floatval($ordPrd->itemsTotal);
         }
 
     }
@@ -125,10 +133,13 @@ class Order
             $varPrd->initializeVarGroup();
             $varPrd->makeVarOrderProd($varPrd->cProduct,$varPrd->cartVGroup,$row['quantity'], $row['shipping_tot'], $row['items_tot']);
             array_push($this->varProds, $varPrd);
+            $this->subTotal += floatval($varPrd->itemsTotal);
         }
     }
 
-
+    function toDec($val){
+        return number_format($val, 2, '.', '');
+    }
 
 
 }
