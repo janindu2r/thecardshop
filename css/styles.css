@@ -14,7 +14,9 @@
 .clearfix { display: block; }
 /* close commented backslash hack */
 
-
+body{
+    font-family: 'Lato', sans-serif;
+}
 /*--------------Top Section--------------*/
 #navfix{
     
@@ -27,13 +29,14 @@
     margin-bottom: 10px;
 }
 #upper-header{
+    font-family: 'Lato', sans-serif;
 	width: auto;
 	height: 35px;
 	background-color: #f6f6f6;
 	line-height: 35px;
 }
 .upper-header-text{
-	font-family: OpenSans;
+	font-family: 'Lato', sans-serif;
 	font-size: 14px;
 	color: #5f5e5e;
 	margin-left: 10px;
@@ -283,6 +286,7 @@
 	display: block;
 }
 #contact-bar-color{
+    font-family: 'Lato', sans-serif;
 	height:120px;
 	background: url(/img/Patterns/pattern.png); 
 

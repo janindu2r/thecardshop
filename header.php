@@ -10,7 +10,7 @@
 		<link rel="stylesheet" type="text/css" href="/css/styles.css" />
         
         <link rel="stylesheet" type="text/css" href="css/comments.css"> <!-- styling for user comments -->
-        
+        <link href='http://fonts.googleapis.com/css?family=Lato:100,400,700,900' rel='stylesheet' type='text/css'>
 
 		<!-- JavaScripts --> <!--https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js -->
 		<script src="/js/jquery.min.js"></script>

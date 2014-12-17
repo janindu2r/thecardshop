@@ -8,6 +8,7 @@
 	margin-bottom:0; */
 	/*height:50px;*/
 	width:100%;
+	font-family: 'Lato', sans-serif;
 }
 .navbar-inverse .navbar-nav>li>a {
 color: #FFFFFF;
