@@ -1,9 +1,11 @@
 #shop-product{
+	font-family: 'Lato', sans-serif;
 	margin-top: 90px;
 	margin-bottom: 20px;
 }
 
 #coruosel{
+	font-family: 'Lato', sans-serif;
    height:300px;
    max-height: %6
 }
@@ -21,6 +23,7 @@ float:left;
 }
 
 #info_box{
+	font-family: 'Lato', sans-serif;
 padding:60px 50px 0px 10px;
 border:solid 1px #dedede;
 width:auto;
@@ -46,11 +49,13 @@ width:1150px;
 }*/
 
 #info-content{
+	font-family: 'Lato', sans-serif;
 margin-left:170px;
 width:auto;
 }
 
 #info-photos{
+	font-family: 'Lato', sans-serif;
 text-align:center;
 font-size:11px;
 padding:5px;
@@ -62,6 +67,7 @@ background-color: #fff;
 }
 
 #info-friends{
+	font-family: 'Lato', sans-serif;
 text-align:center;
 font-size:11px;
 padding:5px;

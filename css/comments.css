@@ -1,6 +1,6 @@
 body
 {
-font-family:arial;
+font-family: 'Lato', sans-serif;
 font-size:0.85em;
 }
 
@@ -66,13 +66,17 @@ padding:5px;
 
 .comment_box
 {
+	margin-left: 10%;
+	margin-right: 10%;
+	font-family: 'Lato', sans-serif;
 margin-top:10px;
 padding:10px;
-width:560px;
-border:solid 1px #aaaaaa;
+width:auto;
+border:solid 1px #9AB7BA;
 -moz-border-radius: 10px;-webkit-border-radius: 10px;border-radius: 10px;
 font-size:13px;
 overflow:auto;
+background: url(/img/Patterns/square_bg.png); 
 }
 
 .body_box
@@ -82,6 +86,7 @@ margin-left:60px;
 
 .txt
 {
+	font-family: 'Lato', sans-serif;
 margin-top:5px;
 color:#333333;
 }
