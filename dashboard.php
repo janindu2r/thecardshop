@@ -307,7 +307,7 @@ $title = 'Profile | Comercio'  ;  // page title
                </div>
            </div>
         <?php } else { ?>
-            <div class="col-md-8 admin-content" id="charts">
+            <div class="col-md-8 admin-content" id="charts" style="min-height:400px;">
                 <div class="col-md-3 col-offset-3">
                     <div class="panel">
                         <div class="panel-body">
