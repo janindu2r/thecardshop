@@ -30,11 +30,8 @@ $title = 'Login' ;  // page title
                             <label for="key" class="sr-only">Password</label>
                             <input type="password" name="passwd" id="key" class="form-control" placeholder="Password">
                         </div>
-                        <div class="checkbox">
-                            <input type="checkbox" id="showpassword" class="character-checkbox">
-                            <span class="label">Show password</span>
-                        </div>
-                        <input type="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" value="Log in">
+                       
+                        <input type="submit" id="btn-login" class="btn btn-success btn-lg btn-block" value="Log in">
                     </form>
                     <a href="javascript:;" class="forget" data-toggle="modal" data-target=".forget-modal">Forgot your password?</a>
                     <hr>

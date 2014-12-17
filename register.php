@@ -127,14 +127,7 @@ $title = 'Sign Up' ;  // page title
                     <img id="usernamemsg" src="">
                 </div>
             </div>
-            <div class="row">
-                <div class="col-xs-11 col-md-11">
-                    <input class="form-control" id="usermail" name="email" placeholder=" me@example.com " type="email" />
-                </div>
-                <div class="col-xs-1 col-md-1">
-                    <img id="usermailmsg" src="">
-                </div>
-            </div>
+            
             <div class="row">
                 <div class="col-xs-11 col-md-11">
                     <input class="form-control" id="checkmail" name="reenteremail" placeholder=" me@example.com " type="email" />

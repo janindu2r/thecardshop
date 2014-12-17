@@ -39,21 +39,21 @@ else
         <?php include('header.php'); ?>
 <!-- -------------------------------------- Add Page Edits Below ----------------------------------------------- -->    
 
-        <div style="padding: 3em">
+        <div style="padding: 3em; min-height:500px;">
 
 <?php if($afterApproval) {
     $db = new DbCon();
     $activate = $db->runUpdateOneValue('account','verified = 1','MD5( reg_id ) = "'. $regCode . '"');
 
     if($activate)
-        echo  'Your account has been approved. Please login <a href="/login.php">here</a>';
+        echo  '<div class="alert alert-danger" role="alert">Your account has been approved. <hr>Please login <a href="/login.php">here</a></div>';
 }
 
 if($afterReg){
     if($valid == false)
-        echo 'Registration failed. Please register again or contact customer care';
+        echo '<div class="alert alert-danger" role="alert">Registration failed. Please register again or contact customer care</div>';
     else
-        echo 'Registration successful. Please login to your email account and activate your accout';
+        echo '<div class="alert alert-success" role="alert">Registration successful. Please login to your email account and activate your accout</div>';
 }
 
 ?>
