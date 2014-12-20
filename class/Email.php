@@ -18,7 +18,8 @@ class Email
 		$from =  $this->getCorrectEmail($department);
 		$fromName = $this->getFromName($department);
 
-        $logo = '<html><div><img src="'.$_SERVER['DOCUMENT_ROOT'].'/img/logo/logo.png" style="width: 70px; float: left;"><h1 style=" color: #3c763d; padding: 1em;">Comercio</h1></div>';
+        $logo = '<html><div><img src="'.$_SERVER['DOCUMENT_ROOT'].'/img/logo/logo.png" style="width: 70px; display:inline-block;"><h1 style="display: inline-block; color: #3c763d;
+vertical-align: text-bottom; padding: 3px;">Comercio</h1></div>';
 
 		$mailer = new PHPMailer();
 		$mailer->IsSMTP(true);		

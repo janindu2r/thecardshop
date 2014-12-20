@@ -17,6 +17,7 @@
 		<script src="/js/bootstrap.min.js"></script>
         <script src="/js/ajax/cart.js"></script>
         <script src="/js/ajax/comments.js"></script>
+		<script src="/js/validation/functions.js"></script>
 
 		<!-- Bootstrap -->
 

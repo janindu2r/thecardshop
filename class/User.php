@@ -168,7 +168,7 @@ class User
     private function getEmail($regId, $userFullName){
 
         $email = '<div style="width: 80%; margin: 0 auto; padding: 20px;"><h2>Hello ';
-        $email .= $userFullName .'!</h2><p style="text-align: center; border-radius: 10px; color:#34495e">Welcome to Comercio! ';
+        $email .= $userFullName .'!</h2><p style="text-align: center; color:#34495e; clear: both; margin: 0.5em;">Welcome to Comercio! ';
         $email .= 'An online ecommerce platform designed to provide the customer and seller the best online service possible</p><div style="padding: 2em;">';
         $email .= '<a title="Activate" style="text-decoration: none; color:#FFFFFF; padding: 1em 1.5em 1em 1.5em; border-radius: 0.5em; font-size: 1.2em; background-color: #557da1;"';
         $email .= 'href="http://comerciotest.com/activation.php?confirm='. md5((string)$regId) ;
