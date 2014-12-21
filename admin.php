@@ -191,9 +191,6 @@ $categ = substr($categ,3);
 			                    <div class="form-group">
                                 
 
-                                <form name="addproduct" method="POST" action= "/scripts/addtoproduct.php " enctype="multipart/form-data" onclick="return validateShopForm();">
-			                        <label for="#">Product Name</label>
-			                        <input type="text" name = "pro_name" class="form-control" id="" placeholder="Shop Name">
 
                             <form name="addproduct" method="POST" action= "/scripts/addtoproduct.php " enctype="multipart/form-data"  onsubmit="return validateShopForm();">
 
