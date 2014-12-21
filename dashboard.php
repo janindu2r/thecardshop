@@ -146,7 +146,7 @@ $title = 'Dashboard | Comercio'  ;  // page title
         <div class="col-md-10 admin-content" id="pages">
 <h4>Details of you order history</h4>
     <div class="row">
-    <div class="col-md-4 col-offset-3 pull-right">
+    <div class="col-md-4 col-offset-3 hidden-xs pull-right">
 
         <div class="input-group custom-search-form">
               <input type="text" class="form-control">
@@ -156,7 +156,7 @@ $title = 'Dashboard | Comercio'  ;  // page title
              </button>
              </span>
              </div><!-- /input-group -->
-        </div>
+    </div>
     
         <div class="col-md-12">        
         
