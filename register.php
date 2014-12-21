@@ -1,9 +1,13 @@
 <?php
 
-include('overhead.php');
+include('/overhead.php');
+
 $logged = 2;
+
 if($_SESSION){
-	header('location: /index.php');
+    if (isset($_SESSION['user'])) {
+        header('location: /index.php');
+    }
 }
 
 if($_GET)
