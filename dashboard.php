@@ -44,12 +44,7 @@ $title = 'Dashboard | Comercio'  ;  // page title
              <?php } else {?>
                   <li><a href="/viewshop.php" data-target-id="charts"><i class="fa fa-suitcase fa-fw"></i> Visit Shop</a></li>
               <?php  } ?>
-                <!--<li><a href="#" data-target-id="table"><i class="fa fa-table fa-fw"></i>Table</a></li>
-                <li><a href="#" data-target-id="forms"><i class="fa fa-tasks fa-fw"></i>Forms</a></li>
-                <li><a href="#" data-target-id="calender"><i class="fa fa-calendar fa-fw"></i>Calender</a></li>
-                <li><a href="#" data-target-id="library"><i class="fa fa-book fa-fw"></i>Library</a></li>
-                <li><a href="#" data-target-id="applications"><i class="fa fa-pencil fa-fw"></i>Applications</a></li>
-                <li><a href="#" data-target-id="settings"><i class="fa fa-cogs fa-fw"></i>Settings</a></li> -->
+                
             </ul>
         </div>
         <div class="col-md-9  admin-content" id="home">
@@ -279,7 +274,7 @@ $title = 'Dashboard | Comercio'  ;  // page title
 
 
         <?php if(!$user->shop) { ?>
-           <div class="col-md-8 admin-content" id="charts">
+           <div class="col-md-8 admin-content" id="charts" style="min-height:450px;">
                <div class="col-md-3 col-offset-3">
                    <div class="panel">
                        <div class="panel-body">
@@ -289,7 +284,7 @@ $title = 'Dashboard | Comercio'  ;  // page title
                </div>
            </div>
         <?php } else { ?>
-            <div class="col-md-8 admin-content" id="charts" style="min-height:400px;">
+            <div class="col-md-8 admin-content" id="charts" style="min-height:45px;">
                 <div class="col-md-3 col-offset-3">
                     <div class="panel">
                         <div class="panel-body">
