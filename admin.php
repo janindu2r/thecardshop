@@ -192,15 +192,15 @@ $categ = substr($categ,3);
                                 
                                 <form name="addproduct" method="POST" action= "/scripts/addtoproduct.php " enctype="multipart/form-data" onclick="return validateShopForm();">
 			                        <label for="#">Product Name</label>
-			                        <input type="text" name = "pro_name" class="form-control" id="" placeholder="Shop john26769">
+			                        <input type="text" name = "pro_name" class="form-control" id="" placeholder="Shop Name">
 			                    </div>
 			                    <div class="form-group">
 			                        <label for="#">Price</label>
-			                        <input type="number" name = "pro_price" class="form-control" id="exampleInputtext1" placeholder="john26769">
+			                        <input type="number" name = "pro_price" class="form-control" id="exampleInputtext1" placeholder="Enter item price ">
 			                    </div>
 			                    <div class="form-group">
 			                        <label for="#">Product Tags</label>
-			                        <input type="text" name = "pro_tag" class="form-control" id="exampleInputtext1" placeholder="john26769">
+			                        <input type="text" name = "pro_tag" class="form-control" id="exampleInputtext1" placeholder="Enter product tags">
 			                    </div>
 			                    <div class="form-group">
 			                        <label for="#">Category</label>
@@ -245,11 +245,11 @@ $categ = substr($categ,3);
 			                    </div>
 			                    <div class="form-group">
 			                        <label for="#">Product description</label>
-			                        <textarea class="form-control" id="textarea" name="description"></textarea>
+			                        <textarea class="form-control" id="textarea" name="description" placeholder="Add the product description here"></textarea>
 			                    </div>
 			                    <div class="form-group">
 			                        <label for="#">Selling Unit</label>
-			                        <input type="text" name = "sel_unit" class="form-control" id="exampleInputtext1" placeholder="john26769">
+			                        <input type="text" name = "sel_unit" class="form-control" id="exampleInputtext1" placeholder="No of items in one package/shipment">
 			                    </div>
 			                    <!--<div class="form-group">
 			                        <label for="#">Initial Stock</label>
@@ -257,7 +257,7 @@ $categ = substr($categ,3);
 			                    </div>-->
 			                    <div class="form-group">
 			                        <label for="#">Stock</label>
-			                        <input type="number" name = "stock" class="form-control" id="exampleInputEmail1" placeholder="john26769">
+			                        <input type="number" name = "stock" class="form-control" id="exampleInputEmail1" placeholder="Add the stock amount of product">
 			                    </div>
 			                    <div class="form-group">
 			                        <label class="control-label" for="fileUpload">Upload Thumbnail Image</label>

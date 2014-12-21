@@ -314,11 +314,11 @@ $var = $custProd->variation;
                                         </div>
                                         <div class="form-group">
                                             <label for="#">Selling Unit</label>
-                                            <input type="text" name="sel_unit" class="form-control" id="exampleInputtext1" placeholder="john26769">
+                                            <input type="text" name="sel_unit" class="form-control" id="exampleInputtext1" placeholder="No of items in one package/shipment">
                                         </div>
                                         <div class="form-group">
                                             <label for="#">Stock</label>
-                                            <input type="number" name="stock" class="form-control" id="exampleInputEmail1" placeholder="john26769">
+                                            <input type="number" name="stock" class="form-control" id="exampleInputEmail1" placeholder="Add the stock amount of product">
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label" for="fileUpload">Upload Image</label>
@@ -349,7 +349,7 @@ $var = $custProd->variation;
         } //physical end ?>
 
         <!-- Product Gallery -->
-        <div class="col-md-8 admin-content" id="charts">
+        <div class="col-md-8 admin-content" id="charts" style="min-height:450px;">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     Image Gallery
@@ -376,8 +376,6 @@ $var = $custProd->variation;
                                     </div>
                                     </form>
                                 </div>
-                                <!--    <div role="tabpanel" class="tab-pane" id="messages">...</div>
-                                    <div role="tabpanel" class="tab-pane" id="settings">...</div> -->
                             </div>
 
                         </div>
