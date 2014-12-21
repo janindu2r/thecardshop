@@ -282,7 +282,7 @@ $categ = substr($categ,3);
         	</div>
         </div>
 
-        <div class="col-md-10 admin-content" id="pages">
+        <div class="col-md-10 admin-content" id="pages" style="min-height:450px;">
             <h4>Orders Recieved</h4><br>
             <div class="row">
 
@@ -367,14 +367,14 @@ $categ = substr($categ,3);
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
-                                <input class="form-control " type="text" placeholder="Mohsin">
+                                <input class="form-control " type="text" placeholder="First Name">
                             </div>
                             <div class="form-group">
 
-                                <input class="form-control " type="text" placeholder="Irshad">
+                                <input class="form-control " type="text" placeholder="Last Name">
                             </div>
                             <div class="form-group">
-                                <textarea rows="2" class="form-control" placeholder="CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan"></textarea>
+                                <textarea rows="2" class="form-control" placeholder="Address"></textarea>
                             </div>
                         </div>
                         <div class="modal-footer ">
@@ -410,7 +410,7 @@ $categ = substr($categ,3);
 
 
         </div>
-        <div class="col-md-10 admin-content" id="charts">
+        <div class="col-md-10 admin-content" id="charts" style="min-height:450px;">
         <!--script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script-->
 <div class="container">
     <div class="row">
@@ -514,7 +514,7 @@ $categ = substr($categ,3);
     </div>
         </div>
 
-        <div class="col-md-7 admin-content" id="table">
+        <div class="col-md-7 admin-content" id="table" style="min-height:450px;">
 
             <div class="panel panel-default">
                 <div class="panel-heading">
