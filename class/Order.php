@@ -106,12 +106,6 @@ class Order
         return $this->db->getScalar("select concat(fname,' ', lname) from user where reg_id = ". $this->userId );
     }
 
-    function getSimpleDetails($id)
-    {
-        $this->orderId = $id;
-        $this->initializeOrder();
-    }
-
     function getOrder($id){
         $this->orderId = $id;
         $this->initializeOrder();

@@ -294,26 +294,7 @@ $title = 'Dashboard | Comercio'  ;  // page title
                 </div>
             </div>
         <?php } ?>
-        <!--
-           <div class="col-md-9 admin-content" id="table">
-               Table
-           </div>
-           <div class="col-md-9 admin-content" id="forms">
-               Forms
-           </div>
-           <div class="col-md-9 admin-content" id="calender">
-               Calender
-           </div>
-           <div class="col-md-9 admin-content" id="library">
-               Library
-           </div>
-           <div class="col-md-9 admin-content" id="applications">
-               Applications
-           </div>
-           <div class="col-md-9 admin-content" id="settings">
-               Settings
-           </div>
-       </div>-->
+
 </div>
 </div>
 <!-- //////JavaScript for browsing tab pages////// -->

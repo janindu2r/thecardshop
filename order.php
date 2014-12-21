@@ -41,7 +41,7 @@ if($order->userId != $user->getRegID())
 		    			<div class="col-md-6">
 		    				<address>
 		    				<strong>Billed To:</strong><br>
-								<?php echo $order->getFullName() ;?>
+								<?php echo $order->getFullName() .'<br>'; ?>
 		    					<?php echo $order->billingAd[1] .'<br>'; ?>
 								<?php echo $order->billingAd[2] .'<br>'; ?>
 								<?php echo $order->billingAd[3] .'<br>'; ?>

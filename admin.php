@@ -289,7 +289,6 @@ $categ = substr($categ,3);
         <div class="col-md-10 admin-content" id="pages" style="min-height:450px;">
             <h4>Orders Recieved</h4><br>
             <div class="row">
-
                 <div class="col-md-12">
 
                     <div class="table-responsive">
@@ -302,8 +301,6 @@ $categ = substr($categ,3);
                             <th>Quantity</th>
                             <th class="text-right">Total</th>
                             <th class="text-right">Shipping</th>
-                            <th>Billing Address</th>
-                            <th>Shipping Address</th>
                             <th>Ship Item</th>
                             </thead>
                             <tbody>
@@ -313,9 +310,6 @@ $categ = substr($categ,3);
                             if($list) {
                                 foreach ($list as $row) {
                                     $ord = new Order();
-                                    $ord->getSimpleDetails($row['order_id']);
-                                    $buyer = new User();
-                                    $buyer->makeUser($ord->userId);
                                     ?>
                                     <tr>
                                         <td><?php echo $row['order_id'] ?></a></td>
@@ -327,27 +321,70 @@ $categ = substr($categ,3);
                                         <td class="text-right"><?php echo $row['items_tot'] ?> $</td>
                                         <td class="text-right"><?php echo $row['shipping_tot'] ?> $</td>
                                         <td>
-                                            <address style="font-size: 0.8em;">
-                                                <?php echo $ord->getFullName() .'<br>'. $ord->billingAd[1] .'<br>'. $ord->billingAd[2] .'<br>'. $ord->billingAd[3] .'<br>'. $ord->billingAd[4]; ?>
-                                            </address>
-                                        </td>
-                                        <td>
-                                            <address style="font-size: 0.8em;">
-                                            <?php echo $ord->shippingAd[0] .'<br>'. $ord->shippingAd[1] .'<br>'. $ord->shippingAd[2] .'<br>'. $ord->shippingAd[3] .'<br>'. $ord->shippingAd[4]; ?>
-                                            </address>
-                                        </td>
-                                        <td><p><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p>
+                                            <a href="shipitem.php?order=<?php echo $row['order_id'] ?>"><button class="btn btn-primary btn-xs" data-title="Edit"><span class="glyphicon glyphicon-pencil"></span></button></a>
                                         </td>
                                     </tr>
-
                                 <?php }
                             } else {
-                                echo "<tr></trd><td colspan='8' align='center'>No New Orders</td></tr>";
+                                echo "<tr><td colspan='8' align='center'>No New Orders</td></tr>";
                             }?>
-
                             </tbody>
 
                         </table>
+
+                        <!-------------->
+
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+
+                    <div class="table-responsive">
+
+                        <table id="mytable" class="table table-bordred table-striped">
+
+                            <thead>
+                            <th>Order</th>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th class="text-right">Total</th>
+                            <th class="text-right">Shipping</th>
+                            <th>Ship Item</th>
+                            </thead>
+                            <tbody>
+
+                            <?php
+                            $list = $owner->getAllOrderVariations();
+                            if($list) {
+                                foreach ($list as $row) {
+                                    $ord = new Order();
+                                    ?>
+                                    <tr>
+                                        <td><?php echo $row['order_id'] ?></a></td>
+                                        <td>
+                                            <?php echo $row['product_title'] ?> <br>
+                                            <span style="color: #555555; font-size: 0.8em"><?php echo $row['product_id'] ?></span>
+                                        </td>
+                                        <td><?php echo $row['quantity'] ?> </td>
+                                        <td class="text-right"><?php echo $row['items_tot'] ?> $</td>
+                                        <td class="text-right"><?php echo $row['shipping_tot'] ?> $</td>
+                                        <td>
+                                            <a href="shipitem.php?order=<?php echo $row['order_id'] ?>"><button class="btn btn-primary btn-xs" data-title="Edit"><span class="glyphicon glyphicon-pencil"></span></button></a>
+                                        </td>
+                                    </tr>
+                                <?php }
+                            } else {
+                                echo "<tr><td colspan='8' align='center'>No New Orders</td></tr>";
+                            }?>
+                            </tbody>
+
+                        </table>
+
+                        <!-------------->
+
                         <div class="clearfix"></div>
                     </div>
                 </div>
@@ -471,25 +508,6 @@ $categ = substr($categ,3);
             </div>
         </div>
 
-
-        <!-- <div class="col-md-9 admin-content" id="table">
-            Table
-        </div>
-        <div class="col-md-9 admin-content" id="forms">
-            Forms
-        </div>
-        <div class="col-md-9 admin-content" id="calender">
-            Calender
-        </div>
-        <div class="col-md-9 admin-content" id="library">
-            Library
-        </div>
-        <div class="col-md-9 admin-content" id="applications">
-            Applications
-        </div>
-        <div class="col-md-9 admin-content" id="settings">
-            Settings
-        </div> -->
     </div>
 </div>
 <!-- //////JavaScript for browsing tab pages////// -->
