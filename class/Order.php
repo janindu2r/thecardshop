@@ -114,7 +114,7 @@ class Order
         $simpProds = $this->db->getSelectTable($sql);
         if($simpProds) {
             foreach ($simpProds as $row) {
-                $ordPrd = new OrderProd();
+                $ordPrd = new OrderProd($this->orderId);
                 $ordPrd->makeOrderProd($ordPrd->simpProdIni($row['product_id']), $row['quantity'], $row['shipping_tot'], $row['items_tot']);
                 array_push($this->simpleProds, $ordPrd);
                 $this->subTotal += floatval($ordPrd->itemsTotal);
@@ -128,7 +128,7 @@ class Order
         $varProds = $this->db->getSelectTable($sql);
         if($varProds) {
             foreach ($varProds as $row) {
-                $varPrd = new OrderVar();
+                $varPrd = new OrderVar($this->orderId);
                 $varPrd->orderId = $this->orderId;
                 $varPrd->groupId = $row['varord_group'];
                 $varPrd->varProdIni($row['product_id']);
@@ -142,6 +142,14 @@ class Order
 
     function toDec($val){
         return number_format($val, 2, '.', '');
+    }
+
+    function payOrder()
+    {
+        $this->db->runUpdateOneValue('orders', 'order_status = "Paid"', 'order_id = '. $this->orderId );
+        $this->db->runUpdateOneValue('product_order_items', 'paid_to_seller = "1"', 'order_id = '. $this->orderId);
+        $this->db->runUpdateOneValue('variation_order_group', 'paid_to_seller = "1"', 'order_id = '. $this->orderId);
+
     }
 
 

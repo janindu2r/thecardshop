@@ -170,8 +170,8 @@ $title = 'Dashboard | Comercio'  ;  // page title
 <table id="mytable" class="table table-bordred table-striped">
 
                     <thead>
-                    <th>Order Id</th>
-                    <th>Date and Time</th>
+                    <th>Order ID</th>
+                    <th>View Invoice</th>
                     <th>Total Items</th>
                     <th>Processed Items</th>
                     <th>Overall Status</th>
@@ -186,16 +186,17 @@ $title = 'Dashboard | Comercio'  ;  // page title
                 foreach ($buyer->ordList as $row) { ?>
 
                     <tr>
-                        <td><a href="order.php?order=<?php echo $row['order_id'] ?>"> <?php echo $row['order_id'] ?></a></td>
-                        <td><?php echo $row['order_dnt'] ?></td>
+                        <td><?php echo $row['order_id'] ?></a></td>
+                        <td>
+                            <a href="order.php?order=<?php echo $row['order_id'] ?>"><button class="btn btn-info btn-xs" data-title="View"><span class="glyphicon glyphicon-th-list"></span></button></a>
+                        </td>
                         <td><?php echo $row['tot_items_in_cart'] ?> </td>
                         <td><?php echo $row['processed_items'] ?> </td>
                         <td><?php echo $row['order_status'] ?> </td>
                         <td>
-                            <p>
-                                <button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal"
-                                        data-target="#edit"><span class="glyphicon glyphicon-pencil"></span></button>
-                            </p>
+                            <a href="editorder.php?order=<?php echo $row['order_id'] ?>">
+                                <button class="btn btn-primary btn-xs" data-title="Edit" <?php if($row['order_status'] == 'Completed') echo 'disabled'; ?> ><span class="glyphicon glyphicon-pencil"></span></button>
+                            </a>
                         </td>
                     </tr>
 

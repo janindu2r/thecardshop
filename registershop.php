@@ -43,7 +43,7 @@ $categories =   $cat->getCategories();
 
         <div class="col-xs-12 col-sm-12 col-md-6 well well-sm col-md-offset-3" id="signUpFormContainer">
             <legend><i class="glyphicon glyphicon-globe"></i> Activate your Shop!</legend>
-            <form action="/scripts/shop.php" method="post" class="form" role="form" name ="regShop" enctype="multipart/form-data" >
+            <form action="/scripts/shop.php" method="post" class="form" role="form" name ="regShop" enctype="multipart/form-data" onsubmit="return funcValidateShopReg()">
             
             <input class="form-control" name="sname" placeholder="Shop Name" type="text" />
             <textarea class="form-control" rows="3" name="descr" placeholder="Shop Description"></textarea>

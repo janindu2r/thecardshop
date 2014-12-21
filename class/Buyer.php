@@ -18,10 +18,10 @@ class Buyer
 
 	private function getAllOrders()
 	{
+		$this->db->runUpdateOneValue('orders', 'order_status =  "Completed"', 'tot_items_in_cart = processed_items and buyer_id = '. $this->regID );
 		$sql = "select order_id, order_dnt, tot_items_in_cart, processed_items, order_status from orders WHERE buyer_id = ". $this->regID . " order by order_dnt desc";
 		$this->ordList = $this->db->getSelectTable($sql);
 	}
-
 
 }
 ?>

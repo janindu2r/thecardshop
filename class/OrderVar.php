@@ -9,8 +9,9 @@ class OrderVar extends CartVar
     public $shipLoc;
     public $itemsTotal;
 
-    function __construct(){
+    function __construct($id){
         parent::__construct();
+        $this->orderId = $id;
     }
 
     function makeVarOrderProd($prod, array $variation, $qty, $ship, $totPrc)
@@ -22,6 +23,13 @@ class OrderVar extends CartVar
         $this->itemsTotal = $totPrc;
         return $this;
     }
+
+    function getOrderDetails(){
+        $row = $this->db->getFirstRow('select * from variation_order_group where varord_group = '. $this->groupId);
+        $this->shippedDate = $row['shipped_date'];
+        $this->receivedDateTime = $row['recieved_date_time'];
+    }
+
 
     function addToOrderVarItems($ordId)
     {

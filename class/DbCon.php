@@ -121,7 +121,7 @@ class DbCon
 	
 	
 	/* Private Function : update sql statement  */    
-	private function getUpdateSql($tableName, $setValues, $whereClause )
+	public function getUpdateSql($tableName, $setValues, $whereClause )
 	{
 		$dbSetVals = "";
 		

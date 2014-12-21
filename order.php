@@ -1,6 +1,6 @@
 <!-- add session initiation and other similar necessary php stuff below -->
 <?php
-include('overhead.php');
+include('/overhead.php');
 $title = 'Order' ;  // page title
 
 if(isset($_GET['order'])){
@@ -9,9 +9,13 @@ if(isset($_GET['order'])){
 }
 if(isset($_GET['status'])) {
 	if ($_GET['status'] == 'paid') {
-		//update order status to paid, and change the value in the object here
+		$order->payOrder();
+		$order->orderStatus = 'Paid';
 	}
 }
+
+if($order->userId != $user->getRegID())
+	header('location: /index.php');
 
 ?>
 <!-- -------------------------------------- Header Start, Do not touch ----------------------------------------- -->

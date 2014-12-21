@@ -10,8 +10,9 @@ class OrderProd extends CartProd
     public  $shipLoc;
     public  $itemsTotal;
 
-    function __construct(){
+    function __construct($id){
         parent::__construct();
+        $this->orderId = $id;
     }
 
     function makeOrderProd($prod, $qty, $ship, $totPrc)
@@ -21,6 +22,12 @@ class OrderProd extends CartProd
         $this->shippingCost = $ship;
         $this->itemsTotal = $totPrc;
         return $this;
+    }
+
+    function getOrderDetails(){
+        $row = $this->db->getFirstRow('select * from product_order_items where order_id = '. $this->orderId . ' and product_id = '. $this->cProduct->prodId);
+        $this->shippedDate = $row['shipped_date'];
+        $this->receivedDateTime = $row['recieved_date_time'];
     }
 
     function addToOrderItems($ordId)
