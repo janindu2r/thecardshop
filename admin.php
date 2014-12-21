@@ -190,17 +190,17 @@ $categ = substr($categ,3);
 		                    <div class="panel-body">
 			                    <div class="form-group">
                                 
-<<<<<<< HEAD
+
                                 <form name="addproduct" method="POST" action= "/scripts/addtoproduct.php " enctype="multipart/form-data" onclick="return validateShopForm();">
 			                        <label for="#">Product Name</label>
 			                        <input type="text" name = "pro_name" class="form-control" id="" placeholder="Shop Name">
-=======
+
                             <form name="addproduct" method="POST" action= "/scripts/addtoproduct.php " enctype="multipart/form-data"  onsubmit="return validateShopForm();">
 
                                 <div class="form-group">
                                     <label for="#">Product Name</label>
-			                        <input type="text" name = "pro_name" class="form-control" id="" placeholder="Shop john26769">
->>>>>>> 9bfeed5baef57fdf3bace4b1d0fcc52148ab3e20
+			                        <input type="text" name = "pro_name" class="form-control" id="" placeholder="Product Name">
+
 			                    </div>
 			                    <div class="form-group">
 			                        <label for="#">Price</label>
