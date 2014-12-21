@@ -16,7 +16,7 @@ $list = new Listing();
         <?php include('header.php');?>
 	
     <main><!-- carousel-for-new-deals-and-adverts -->
-		<div id="carousel" class="carousel slide" data-ride="carousel" data-interval="3000">
+		<div id="carousel" class="carousel slide hidden-xs" data-ride="carousel" data-interval="3000">
 			  <!-- Indicators -->
 			  <ol class="carousel-indicators">
 			    <li data-target="#carousel" data-slide-to="0" class="active"></li>
@@ -61,7 +61,7 @@ $list = new Listing();
 			</div>
 			<!-- featured content *************************************************************-->
 			<div class="features">
-				<div class="container">
+				<div class="container visible-xs-inline-block">
 <!-- 					<div class="views">
 						<strong>Change Views</strong>
 				        <div class="btn-group">
@@ -73,12 +73,12 @@ $list = new Listing();
 				<div class="products">
 				<div class="container">
 				    <div class="row">
-				        <div class="row">
-				            <div class="col-md-9">
+				        <div class="row visible-xs-inline-block">
+				            <div class="col-md-9 col-xs-12">
 				                <h3>
 				                    Top Selling Products</h3>
 				            </div>
-				            <div class="col-md-3">
+				            <div class="col-md-3 col-xs-3">
 				                <!-- Controls -->
 				                <div class="controls pull-right hidden-xs">
 				                    <a class="left fa fa-chevron-left btn btn-default" href="#carousel-example"
@@ -87,7 +87,7 @@ $list = new Listing();
 				                </div>
 				            </div>
 				        </div>
-				        <div id="carousel-example" class="carousel slide hidden-xs" data-ride="carousel">
+				        <div id="carousel-example" class="carousel slide" data-ride="carousel">
 				            <!-- Wrapper for slides -->
 				            <div class="carousel-inner">
 				                <div class="item active">
@@ -140,7 +140,7 @@ $list = new Listing();
 				                </div>
 				            </div>
 				        </div>
-				        <div id="carousel-example-generic" class="carousel slide hidden-xs" data-ride="carousel">
+				        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 				            <!-- Wrapper for slides -->
 				            <div class="carousel-inner">
 				                <div class="item active">

@@ -59,15 +59,15 @@ $var = $custProd->variation;
                                         <form name="addproduct" method="POST" action= "/scripts/editProductDetails.php" enctype="multipart/form-data">
                                             <div class="form-group">
                                                 <label for="#">Product Name</label>
-                                                <input type="text" name = "pro_name" class="form-control" id="" placeholder="Shop john26769">
+                                                <input type="text" name = "pro_name" class="form-control" id="" placeholder="Product Name">
                                             </div>
                                             <div class="form-group">
                                                 <label for="#">Price</label>
-                                                <input type="number" name = "pro_price" class="form-control" id="exampleInputtext1" placeholder="john26769">
+                                                <input type="number" name = "pro_price" class="form-control" id="exampleInputtext1" placeholder="Product Price">
                                             </div>
                                             <div class="form-group">
                                                 <label for="#">Tags</label>
-                                                <input type="text" name = "pro_tag" class="form-control" id="exampleInputtext1" placeholder="john26769">
+                                                <input type="text" name = "pro_tag" class="form-control" id="exampleInputtext1" placeholder="Product Tag">
                                             </div>
                                             <div class="form-group">
                                                 <label for="#">Category</label>
@@ -86,15 +86,15 @@ $var = $custProd->variation;
                                             </div>
                                             <div class="form-group">
                                                 <label for="#">Product description</label>
-                                                <textarea class="form-control" id="textarea" name="description"></textarea>
+                                                <textarea class="form-control" id="textarea" name="description" placeholder="Add product description"></textarea>
                                             </div>
                                             <div class="form-group">
                                                 <label for="#">Selling Unit</label>
-                                                <input type="text" name = "sel_unit" class="form-control" id="exampleInputtext1" placeholder="john26769">
+                                                <input type="text" name = "sel_unit" class="form-control" id="exampleInputtext1" placeholder="No of items in one package/shipment">
                                             </div>
                                             <div class="form-group">
                                                 <label for="#">Stock</label>
-                                                <input type="number" name = "stock" class="form-control" id="exampleInputEmail1" placeholder="john26769">
+                                                <input type="number" name = "stock" class="form-control" id="exampleInputEmail1" placeholder="Add the stock amount of product">
                                             </div>
                                             <div class="form-group">
                                                 <label class="control-label" for="fileUpload">Upload Image</label>
@@ -177,7 +177,7 @@ $var = $custProd->variation;
         <div class="col-md-8 admin-content" id="settings">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Physical
+                    Dimentions of the product
                 </div>
                 <div class="panel-body">
                     <div role="tabpanel">
@@ -188,25 +188,25 @@ $var = $custProd->variation;
                                 <div class="panel-body">
                                     <div class="form-group">
                                             <label for="#">Width</label>
-                                            <input type="number" name="width" class="form-control" id="exampleInputtext1" placeholder="26769">
+                                            <input type="number" name="width" class="form-control" id="exampleInputtext1" placeholder="Product Width">
                                     </div>
                                     <div class="form-group">
                                         <label for="#">Height</label>
-                                        <input type="number" name="height" class="form-control" id="exampleInputtext1" placeholder="26769">
+                                        <input type="number" name="height" class="form-control" id="exampleInputtext1" placeholder="Product Height">
                                     </div>
                                     <div class="form-group">
-                                        <label for="#">weight</label>
-                                        <input type="number" name="weight" class="form-control" id="exampleInputtext1" placeholder="26769">
+                                        <label for="#">Weight</label>
+                                        <input type="number" name="weight" class="form-control" id="exampleInputtext1" placeholder="Product Weight">
                                     </div>
                                     <div class="form-group">
                                         <label for="#">Length</label>
 
-                                        <input type="number" class="form-control" id="exampleInputtext1" placeholder="26769">
+                                        <input type="number" class="form-control" id="exampleInputtext1" placeholder="Product Length">
                                     </div>
                                     <div class="form-group">
                                         <label for="#">Shipping Cost</label>
 
-                                        <input type="number" name="cost" class="form-control" id="exampleInputtext1" placeholder="26769">
+                                        <input type="number" name="cost" class="form-control" id="exampleInputtext1" placeholder="$69">
                                     </div>
                                     <div class="form-group">
                                         <div class="form-group">
@@ -261,15 +261,15 @@ $var = $custProd->variation;
                                     <form name="addproduct" method="POST" action="/scripts/addtoproduct.php ">
                                     <div class="form-group">
                                             <label for="#">Product Name</label>
-                                            <input type="text" name="pro_name" class="form-control" id="" placeholder="Shop john26769">
+                                            <input type="text" name="pro_name" class="form-control" id="" placeholder="Product Name">
                                     </div>
                                     <div class="form-group">
                                         <label for="#">Price</label>
-                                        <input type="number" name="pro_price" class="form-control" id="exampleInputtext1" placeholder="john26769">
+                                        <input type="number" name="pro_price" class="form-control" id="exampleInputtext1" placeholder="Product Price">
                                     </div>
                                     <div class="form-group">
                                         <label for="#">Product Tag</label>
-                                        <input type="text" name="pro_tag" class="form-control" id="exampleInputtext1" placeholder="john26769">
+                                        <input type="text" name="pro_tag" class="form-control" id="exampleInputtext1" placeholder="Product Tags">
                                     </div>
                                     <div class="form-group">
                                         <label for="#">Category</label>
@@ -310,7 +310,7 @@ $var = $custProd->variation;
                                         </div>
                                         <div class="form-group">
                                             <label for="#">Product description</label>
-                                            <textarea class="form-control" id="textarea" name="description"></textarea>
+                                            <textarea class="form-control" id="textarea" name="description" placeholder="Add product description"></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label for="#">Selling Unit</label>
@@ -329,8 +329,6 @@ $var = $custProd->variation;
                                         <div class="form-group">
                                             <input type="submit" class="btn btn-primary btn-success" id="exampleSubmit" value="Add">
                                             <input type="reset" class="btn btn-primary btn-danger" id="exampleSubmit" value="Discard">
-                                            <!--  <a href="#" class="btn btn-primary btn-success"><span class="glyphicon glyphicon-floppy-disk"></span> Add</a>
-                                            <a href="#" class="btn btn-primary btn-danger"><span class="glyphicon glyphicon-remove"></span>Discard</a> -->
                                         </div>
                                     </div> <!-- form group -->
                                     </form>
