@@ -3,14 +3,15 @@
 
 $db = new DbCon();
 
-$sql="Select * from comments order by comment_id desc";
+$sql="SELECT c.* , a.display_name FROM comments c JOIN account a ON c.author_id = a.reg_id JOIN product_comments p ON ";
+$sql .= "p.comment_id = c.comment_id WHERE p.prod_id = ". $viewProd->prodId . " ORDER BY c.comment_id DESC ";
 
 $command= $db->getSelectTable($sql);
 
 if ($command) {
 	foreach($command as $data)
 	{
-		$id=$data['author_id'];	
+		$id=$data['display_name'];
 		$comment=$data['comment_text'];
 		$date = $data['post_dnt'];
 

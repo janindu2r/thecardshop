@@ -10,6 +10,7 @@ if($_POST)
 {
 	$author = $user->getRegID();
 	$comment = $_POST['comment'];
+	$prodId = $_POST['prod'];
 	$date = date('Y-m-d H:i:s');
 
 	$ar['comment_text'] = "'" .$comment. "'";
@@ -20,19 +21,19 @@ if($_POST)
 
 	$id= $db->runInsertAndGetID('comments', $ar);
 	
-	$arr['comment_id'] = $id;
+/*	$arr['comment_id'] = $id;
 	$arr['buy_reg_id'] = $author;
-	$res = $db->runInsertRecord('buyer_comments', $arr);
+	$res = $db->runInsertRecord('buyer_comments', $arr); */
 
 
 	$prod['comment_id'] = $id;
-	$prod['prod_id'] = $_SESSION['product'];
+	$prod['prod_id'] = $prodId;
 	$resl = $db->runInsertRecord('product_comments', $prod);
 
 	//  displaying the new comment
 	echo "<div class='comment_box'>";
 	echo "<div class='body'>";
-	echo "<div><span><b>$author</b></span> <br/>";
+	echo "<div><span><b>".$user->getDispName()."</b></span> <br/>";
 	echo "<span>$date</span> ";
 
 	echo "<div class='txt'>$comment</div>";
