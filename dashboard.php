@@ -146,17 +146,6 @@ $title = 'Dashboard | Comercio'  ;  // page title
         <div class="col-md-10 admin-content" id="pages">
 <h4>Details of you order history</h4>
     <div class="row">
-    <div class="col-md-4 col-offset-3 pull-right">
-
-        <div class="input-group custom-search-form">
-              <input type="text" class="form-control">
-              <span class="input-group-btn">
-              <button class="btn btn-default" type="button">
-              <span class="glyphicon glyphicon-search"></span>
-             </button>
-             </span>
-             </div><!-- /input-group -->
-        </div>
     
         <div class="col-md-12">        
         
