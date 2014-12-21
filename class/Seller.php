@@ -141,9 +141,12 @@
         }
 
 
-        function  getAllOrderItems()
+        function getAllOrderItems()
         {
-
+            $sql ='SELECT o.order_id, o.product_id, p.product_title, o.quantity, o.items_tot, o.shipping_tot, o.shipped_date, o.ship_location';
+            $sql .= ' FROM product_order_items o JOIN products p ON p.product_id = o.product_id WHERE o.paid_to_seller =0 AND o.status = "Placed" ';
+            $sql .= 'AND shop_id = '. $this->shopId . ' order by o.order_id' ;
+            return $this->db->getSelectTable($sql);
         }
 
 

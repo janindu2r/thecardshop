@@ -75,7 +75,7 @@ class Order
     function addOrderSimpProds(array $cartProds)
     {
         foreach($cartProds as $obj){
-            $ordPrd = new OrderProd();
+            $ordPrd = new OrderProd($this->orderId);
             $ordPrd->makeOrderProd($obj->cProduct, $obj->quantity, $obj->calculateShippingCost(), $obj->calculateEachItemPrice());
             $ad = $ordPrd->addToOrderItems($this->orderId);
             if($ad) {
@@ -89,7 +89,7 @@ class Order
     function addOrderVarProds(array $cartVars)
     {
         foreach($cartVars as $obj){
-            $varPrd = new OrderVar();
+            $varPrd = new OrderVar($this->orderId);
             $varPrd->makeVarOrderProd($obj->cProduct, $obj->cartVGroup ,$obj->quantity, $obj->calculateShippingCost(), $obj->calculateEachItemPrice());
             $ad = $varPrd->addToOrderVarItems($this->orderId);
             if($ad > 1){
@@ -99,6 +99,17 @@ class Order
             }
         }
 
+    }
+
+    function getFullName()
+    {
+        return $this->db->getScalar("select concat(fname,' ', lname) from user where reg_id = ". $this->userId );
+    }
+
+    function getSimpleDetails($id)
+    {
+        $this->orderId = $id;
+        $this->initializeOrder();
     }
 
     function getOrder($id){

@@ -41,11 +41,7 @@ if($order->userId != $user->getRegID())
 		    			<div class="col-md-6">
 		    				<address>
 		    				<strong>Billed To:</strong><br>
-								<?php
-								$buyer = new User();
-								$buyer->makeUser($order->userId);
-								echo $buyer->getProfile();
-								?>
+								<?php echo $order->getFullName() ;?>
 		    					<?php echo $order->billingAd[1] .'<br>'; ?>
 								<?php echo $order->billingAd[2] .'<br>'; ?>
 								<?php echo $order->billingAd[3] .'<br>'; ?>
