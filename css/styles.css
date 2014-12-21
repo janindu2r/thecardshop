@@ -287,7 +287,8 @@ body{
 }
 #contact-bar-color{
     font-family: 'Lato', sans-serif;
-	height:120px;
+	min-height:120px;
+    max-height: auto;
 	background: url(/img/Patterns/pattern.png); 
 
 	margin-top: 25px; 
@@ -659,6 +660,7 @@ body{
 *********************************************/
 
 .product{
+    margin:5;
     border: 1px solid #dddddd;
     height: 321px;
 }

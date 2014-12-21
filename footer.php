@@ -7,10 +7,10 @@
 
         <div class="contact-bar" id="row">
             <div class="container">
-            <div class="col-md-4 pull-left" id="logo">
+            <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12 pull-left" id="logo">
                 <img src="/img/footer_logo.PNG">
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
                 <div class="">
 
                     <h3>For phone orders please call 1-800-0000.</h1>

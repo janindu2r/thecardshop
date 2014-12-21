@@ -73,7 +73,7 @@ $list = new Listing();
 				<div class="products">
 				<div class="container">
 				    <div class="row">
-				        <div class="row visible-xs-inline-block">
+				        <div class="row">
 				            <div class="col-md-9 col-xs-12">
 				                <h3>
 				                    Top Selling Products</h3>
