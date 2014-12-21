@@ -20,7 +20,6 @@ if(!$viewProd->virtual)
          $viewProd->getAllVariations($viewProd->prodId);
     }
 }
-$_SESSION['product'] = $viewProd->prodId;
 
 $title = $viewProd->proName. ' | Comercio' ;  // page title
 
@@ -29,7 +28,7 @@ $title = $viewProd->proName. ' | Comercio' ;  // page title
 <!DOCTYPE html>
 <html>
 	<head>
-        <link href="/css/gallery.style.css" rel="stylesheet" type="text/css" />  
+        <link href="/css/gallery.style.css" rel="stylesheet" type="text/css" />
         <script src="/Gallery/photogallery/jquery-ajax.js"> </script>
         <script src="/Gallery/photogallery/galleria-1.2.9.min.js"></script> 
         <?php include('header.php'); ?>
@@ -141,14 +140,18 @@ $title = $viewProd->proName. ' | Comercio' ;  // page title
 			</div>
 		</div><!-- end of row col-md-12 col-lg-12 -->
 
-<!-- product description, shipment details, customer reviews -->
+<!-- product description, customer reviews -->
 			<div class="container-fluid">		
 				<div class="col-md-12 product-info">
 					<ul id="myTab" class="nav nav-tabs nav_tabs">
 						
 						<li class="active"><a href="#service-one" data-toggle="tab">DESCRIPTION</a></li>
+<<<<<<< HEAD
 						<!-- <li><a href="#service-two" data-toggle="tab">PRODUCT INFO</a></li> -->
 						<li><a href="#service-three" data-toggle="tab">REVIEWS</a></li>
+=======
+						<li><a href="#service-two" data-toggle="tab">REVIEWS</a></li>
+>>>>>>> 30c9d7a580f4fcb927ca478898acb95ff5f77383
 						
 					</ul>
 					<div id="myTabContent" class="tab-content">
@@ -164,8 +167,6 @@ $title = $viewProd->proName. ' | Comercio' ;  // page title
                                <p> <?php echo $viewProd->description ?> </p>
 
                                 <?php if(!$viewProd->virtual) {  ?>
-                				<h4> Dimensions </h4>
-                <!-- condition check needed for each of these to see if the value is null. only echo if not -->
                                     <?php if($viewProd->width)
                                         echo 'Width : '. $viewProd->width . ' cm<br>';
                                         if($viewProd->height)
@@ -180,13 +181,7 @@ $title = $viewProd->proName. ' | Comercio' ;  // page title
 										  
 						</div>
 					<div class="tab-pane fade" id="service-two">
-						
-						<section class="container">
-								
-						</section>
-						
-					</div><!--  /.END OF tab-pane fade id=service-two -->
-					<div class="tab-pane fade" id="service-three">
+
                     <!-- <div class="row" style="margin-top:10px;">
                     <div class="well well-sm">
 						<div class="row" id="post-review-box" style=";">
@@ -208,11 +203,10 @@ $title = $viewProd->proName. ' | Comercio' ;  // page title
                     </div> -->
                     
                     <!--Add Comments Here-->
-                                        <?php include('comments.php');
-                                        ?>
+                                        <?php include('comments.php'); ?>
                     
-					</div><!--  /.END **OF tab-pane fade id=service-three -->
-					
+					</div><!--  /.END **OF tab-pane fade id=service-two -->
+
 					</div><!-- /.myTabContent -->
 					<hr>
 				</div><!--  /.END OF col-md-12 product-info -->

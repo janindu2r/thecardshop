@@ -236,6 +236,7 @@ class Product
 		return $itemHtml;
 	}
 
+
 }
 
 

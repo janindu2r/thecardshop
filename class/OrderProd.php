@@ -68,6 +68,11 @@ class OrderProd extends CartProd
     {
         return round((intval($this->shippingCost) + intval($this->itemsTotal)), 2);
     }
+
+    function getSeller()
+    {
+        return $this->db->getScalar('select shop_id from products where product_id = '. $this->cProduct->prodId);
+    }
 	
 }
 ?>

@@ -77,7 +77,7 @@ $title = $searchstr. ' | Comercio'  ;  // page title
             </div>
         </div>
 
-        <div style="padding: 3em"> <h2> <?php echo 'End of product list' ?> </h2> </div>
+        <br><br>
 
 <!---------------------------------------- End of page edits ---------------------------------------------------->
 <?php include('footer.php'); //including the footer?>
