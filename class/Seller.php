@@ -39,6 +39,7 @@
             }
         }
 
+
         function insertSeller($shop, $cat)
         {
             $shop['shop_id'] = $this->db->escapeString($this->shopId);
@@ -89,7 +90,7 @@
 
         function getFullProductList()
         {
-            return $this->db->getSelectTable('select * from products where shop_id = '. $this->shopId .' order by date_added desc' );
+            return $this->db->getSelectTable('select * from products where shop_id = '. $this->shopId .' order by product_id desc' );
         }
 
         function salesCount()
@@ -137,6 +138,12 @@
             $query = " select product_id, variations from products where shop_id = " . $this->shopId . ' order by product_id desc limit ' . $limStart . ',' . $limEnd;
             $res = $this->db->getSelectTable($query);
             return $res;
+        }
+
+
+        function  getAllOrderItems()
+        {
+
         }
 
 

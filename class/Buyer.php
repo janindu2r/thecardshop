@@ -5,64 +5,23 @@
 	Created : 2014-11-18
 */
 
-	class Buyer extends User
-	{
-		var $buyerID;
-		var $buyerName;
-		var $reputationPoints;
-
-		function __construct()
-		{
-			$bid = uniqid(BY, false);
-			$bid = md5($bid);
-
-			$this->buyerID = $bid;
-			$this->reputationPoints = 0;
-		}
-
-		function getBuyerID()
-		{
-			return $this->buyerID;
-		}
-
-		function setBuyerName($name)
-		{
-			$this->buyerName = $name;
-		}
-
-		function getBuyerName()
-		{
-			return $this->buyerName;
-		}
-
-		function setReputationPoints($points)
-		{
-			$this-$reputationPoints += $points;
-		}
-
-		function getReputationPoints()
-		{
-			return $this->reputationPoints;
-		}
-
-		private function purchase()
-		{
-
-		}
-
-		private function commenting()
-		{
-
-		}
-
-		private function counsel()
-		{
-
-		}
-
-		private function seekCounsel()
-		{
-
-		}
+class Buyer
+{
+	public $regID;
+	public $db;
+	public $ordList;
+	function __construct($id){
+		$this->regID = $id;
+		$this->db = new DbCon();
+		$this->getAllOrders();
 	}
+
+	private function getAllOrders()
+	{
+		$sql = "select order_id, order_dnt, tot_items_in_cart, processed_items, order_status from orders WHERE buyer_id = ". $this->regID . " order by order_dnt desc";
+		$this->ordList = $this->db->getSelectTable($sql);
+	}
+
+
+}
 ?>

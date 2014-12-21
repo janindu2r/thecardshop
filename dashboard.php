@@ -2,10 +2,25 @@
 <?php
 include('/overhead.php');
 
-if(!$_SESSION)
+if($logged != 1)
     header('location: /index.php');
 
-$title = 'Profile | Comercio'  ;  // page title
+/*
+if($_GET)
+{
+    if(isset($_GET['edited'])){
+        //password edited (or not if 0)
+        $_GET['pass'];
+
+        //email edited (or not if 0)
+        $_GET['email'];
+
+        //userdetails edited (or not if 0)
+        $_GET['user'];
+    }
+} */
+
+$title = 'Dashboard | Comercio'  ;  // page title
 
 ?>
 <!-- -------------------------------------- Header Start, Do not touch ----------------------------------------- -->
@@ -44,8 +59,8 @@ $title = 'Profile | Comercio'  ;  // page title
                         Account Details
                     </div>
                     <div class="panel-body">
+                    <form name="editProfile" action="scripts/editprofile.php" method="post">
                     <div class="form-group">
-                        <form name="editProfile" action="scripts/editprofile.php" method="post">
                         <label for="FirstName">First Name</label>
                         <input type="text" class="form-control" id="FirstName" name="fname" value="<?php echo $user->fName ?>" placeholder="john26769">
                     </div>
@@ -55,7 +70,7 @@ $title = 'Profile | Comercio'  ;  // page title
                     </div>
                     <div class="form-group">
                         <label for="DateOfBirth">Date of Birth</label>
-                        <input type="text" class="form-control" id="DateOfBirth" name="dob" value="<?php echo $user->getDob() ?>" placeholder="john26769">
+                        <input type="date" class="form-control" id="DateOfBirth" name="dob" value="<?php echo $user->getDob() ?>" placeholder="" disabled>
                     </div>
                     <div class="form-group">
                         <label for="UserName">Address Line1</label>
@@ -75,75 +90,69 @@ $title = 'Profile | Comercio'  ;  // page title
                     </div>
                     
                     <div class="form-group pull-right">
-                        <input type="submit" name="submit1" class="btn btn-primary btn-success"  value="Save" >
+                        <input type="submit" name="submitUser" class="btn btn-primary btn-success"  value="Save" >
                        
 
                     </div>
-                </div>
+
                     </form>
-                </div><!-- /.Contact Details -->
-                </form>
-            </div>
-            </form>
-            <div class="col-md-6">
-                <div class="panel panel-default"><!-- Contact Details -->
-                    <div class="panel-heading">
-                        Account Details
                     </div>
-                    
+                </div><!-- /.Contact Details -->
+            </div>
+            <div class="col-md-6">
+                <div class="panel panel-default"><!-- Login Details -->
+                    <div class="panel-heading">
+                        Login Details
+                    </div>
                     <div class="panel-body">
-                    <form name="editProfile1" action="scripts/editprofile.php" method="post">
+                    <form name="editEmail" action="scripts/editprofile.php" method="post">
                     <div class="form-group">
                         <label for="UserName">User Name</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1"  name="dispName" value="<?php echo $user->getDispName()?>" placeholder="john26769">
+                        <input type="text" class="form-control" id="exampleInputEmail1"  name="dispName" value="<?php echo $user->getDispName()?>" disabled>
                     </div>
                     <div class="form-group">
                         <label for="UserName">Email</label>
                         <input type="email" class="form-control" id="exampleInputEmail1" name="email" value="<?php echo $user->email ?>" placeholder="john@abc.com">
                     </div>
-                    
                     <div class="form-group pull-right">
-                        <input type="submit" name="submit2" class="btn btn-primary btn-success" value="Save">
+                        <input type="submit" name="submitEmail" class="btn btn-primary btn-success" value="Save">
                         <!-- <a href="#" name="submit2" class="btn btn-primary btn-success" type="submit"><span class="glyphicon glyphicon-floppy-disk"></span> Save</a> -->
-                    </div></form>
+                    </div>
+                    </form>
                 </div>
-                </div><!-- /.Contact Details -->
-                <div class="panel panel-default"><!-- Contact Details -->
+                </div><!-- /.Login Details -->
+                <div class="panel panel-default"><!-- Password Details -->
                     <div class="panel-heading">
-                        Password
+                        Credentials
                     </div>
                     
-                    <div class="panel-body">
-                    <form name="editProfile2" action="scripts/editprofile.php" method="post">
+                <div class="panel-body">
+                <form name="editPass" action="scripts/editprofile.php" method="post">
                     <div class="form-group">
                         <label for="UserName">Current Password</label>
-                        <input type="password" class="form-control" name="password" id=""  value="" placeholder="***********">
+                        <input type="password" class="form-control" name="password" id=""  value="">
                     </div>
                     <div class="form-group">
                         <label for="UserName">New Password</label>
-                        <input type="password" class="form-control" name="newpassword" id=""  value="" placeholder="***********">
+                        <input type="password" class="form-control" name="newpassword" id=""  value="">
                     </div>
-                    
                     <div class="form-group pull-right">
-                        <input type="submit" name="submit3" class="btn btn-primary btn-success" value="Save">
-                        <!-- <a href="#" name="submit3" class="btn btn-primary btn-success" type="submit"><span class="glyphicon glyphicon-floppy-disk"></span> Save</a> -->
+                        <input type="submit" name="submitPass" class="btn btn-primary btn-success" value="Save">
                     </div>
-                </div></form>
+                </form>
+                </div>
                 </div><!-- /.Contact Details --> 
             </div>
-            
-
         </div>
+
         <div class="col-md-8 admin-content" id="widgets">
-            
         </div> <!-- /.end of widgets tab page -->
 
         <div class="col-md-10 admin-content" id="pages">
-            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <h4>Details of you order history</h4>
     <div class="row">
     <div class="col-md-4 col-offset-3 pull-right">
-        
+
         <div class="input-group custom-search-form">
               <input type="text" class="form-control">
               <span class="input-group-btn">
@@ -158,76 +167,48 @@ $title = 'Profile | Comercio'  ;  // page title
         
         <div class="table-responsive">
 
-                
 <table id="mytable" class="table table-bordred table-striped">
-                   
+
                     <thead>
-                   
-                    <th><input type="checkbox" id="checkall" /></th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Address</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
-                   
+                    <th>Order Id</th>
+                    <th>Date and Time</th>
+                    <th>Total Items</th>
+                    <th>Processed Items</th>
+                    <th>Overall Status</th>
+                    <th>Update Items</th>
                    </thead>
             <tbody>
-            
-            <tr>
-            <td><input type="checkbox" class="checkthis" /></td>
-            <td>Mohsin</td>
-            <td>Irshad</td>
-            <td>CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan</td>
-            <td><p><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+
+            <?php
+            $buyer = new Buyer($user->getRegID());
+
+            if($buyer->ordList) {
+                foreach ($buyer->ordList as $row) { ?>
+
+                    <tr>
+                        <td><a href="order.php?order=<?php echo $row['order_id'] ?>"> <?php echo $row['order_id'] ?></a></td>
+                        <td><?php echo $row['order_dnt'] ?></td>
+                        <td><?php echo $row['tot_items_in_cart'] ?> </td>
+                        <td><?php echo $row['processed_items'] ?> </td>
+                        <td><?php echo $row['order_status'] ?> </td>
+                        <td>
+                            <p>
+                                <button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal"
+                                        data-target="#edit"><span class="glyphicon glyphicon-pencil"></span></button>
+                            </p>
+                        </td>
+                    </tr>
+
+                <?php }
+            } else {
+                echo "<td colspan='6' align='center'>Your Order History is Empty</td>";
+            }?>
+
+
+         <!--   <td><p><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
             <td><p><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
-            </tr>
-            
-                <tr>
-            <td><input type="checkbox" class="checkthis" /></td>
-            <td>Mohsin</td>
-            <td>Irshad</td>
-            <td>CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan</td>
-            <td><p><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-            <td><p><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete" ><span class="glyphicon glyphicon-trash"></span></button></p></td>
-            </tr>
-            
-            
-                <tr>
-            <td><input type="checkbox" class="checkthis" /></td>
-            <td>Mohsin</td>
-            <td>Irshad</td>
-            <td>CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan</td>
-            <td><p><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-            <td><p><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete"><span class="glyphicon glyphicon-trash"></span></button></p></td>
-            </tr>
-            
-            
-            
-                <tr>
-            <td><input type="checkbox" class="checkthis" /></td>
-            <td>Mohsin</td>
-            <td>Irshad</td>
-            <td>CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan</td>
-            <td><p><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-            <td><p><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete"><span class="glyphicon glyphicon-trash"></span></button></p></td>
-            </tr>
-            
-            
-            
-                <tr>
-            <td><input type="checkbox" class="checkthis" /></td>
-            <td>Mohsin</td>
-            <td>Irshad</td>
-            <td>CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan</td>
-            <td><p><button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit" ><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-            <td><p><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete"><span class="glyphicon glyphicon-trash"></span></button></p></td>
-            </tr>
-            
-            
-           
-            
-           
-            
+            -->
+
             </tbody>
         
 </table>
@@ -235,9 +216,8 @@ $title = 'Profile | Comercio'  ;  // page title
 <div class="clearfix"></div>
 
                 
-        </div>
-            
-        </div>
+       </div>
+       </div>
     </div>
 
 
@@ -268,12 +248,9 @@ $title = 'Profile | Comercio'  ;  // page title
         </div>
     <!-- /.modal-content --> 
   </div>
-      <!-- /.modal-dialog --> 
+      <!-- /.modal-dialog -->
     </div>
-    
-    
-    
-    <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
+<div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="edit" aria-hidden="true">
       <div class="modal-dialog">
     <div class="modal-content">
           <div class="modal-header">
@@ -294,7 +271,12 @@ $title = 'Profile | Comercio'  ;  // page title
   </div>
       <!-- /.modal-dialog --> 
     </div>
+
+
+
         </div>
+
+
         <?php if(!$user->shop) { ?>
            <div class="col-md-8 admin-content" id="charts">
                <div class="col-md-3 col-offset-3">

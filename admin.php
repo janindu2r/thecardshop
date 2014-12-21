@@ -4,12 +4,21 @@ include('/overhead.php');
 
 $title = 'Administrator Dashboard' ;  // page title
 
-if(!$_SESSION)
+if($logged != 1 && $user->shop != 1)
     header('location: /index.php');
 
 $owner = new Seller($user->getRegID());
 $owner->initiate();
 
+$cat = new Category();
+$categories =   $cat->getCategories();
+$owner->getCategories();
+
+$categ = "";
+foreach($owner->categories as $key=> $val)
+    $categ .= ' | '.$val;
+
+$categ = substr($categ,3);
 
 ?>
 <!-- **************************** Header Start, Do not touch **************************** -->
@@ -18,37 +27,13 @@ $owner->initiate();
 	<head>
         <?php include('/header.php'); ?>
 
-        <!-- Javascript Form Validation -->
         <script>
-            function validateShopForm() {
-
-                if (document.addproduct.pro_name.value.length == 0) {
-                    alert("please enter the product name");
-                }
-                else if (document.addproduct.pro_name.value.length > 25) {
-                    alert("use a name with less than 25 characters");
-                }
-                else if (document.addproduct.pro_price.value == 0) {
-                    alert("please enter the price");
-                }
-                else if (document.addproduct.pro_tag.value.length > 50) {
-                    alert("please enter a product tag which has less than 50 characters");
-                }
-                else if (document.addproduct.category.selectedIndex == 0) {
-                    alert("please select the category Id");
-                }
-                else if (!(document.addproduct.var[0].checked || document.addproduct.var[1].checked)) {
-                    alert("please select a button for variations");
-                }
-                else if (document.addproduct.description.value.length == 0) {
-                    alert("please enter a product description");
-                }
-                else if (document.addproduct.sel_unit.value == 0) {
-                    alert("please enter selling unit");
-                }
-                else if (document.addproduct.stock.value == 0) {
-                    alert("please enter stock");
-                }
+            function addCategory(){
+                var val = document.getElementsByName('categories')[0].value;
+                var cat = document.getElementsByName('category')[0].value;
+                if(val != "")
+                    cat = " | " + cat;
+                document.getElementsByName('categories')[0].value = document.getElementsByName('categories')[0].value + cat;
             }
         </script>
 
@@ -59,10 +44,9 @@ $owner->initiate();
             <ul class="nav nav-pills nav-stacked admin-menu">
                 <li class="active"><a href="#" data-target-id="home"><i class="fa fa-user fa-fw"></i>Account</a></li>
                 <li><a href="#" data-target-id="products"><i class="fa fa-dropbox fa-fw"></i>Add Products</a></li>
-                <li><a href="#" data-target-id="charts"><i class="fa fa-table fa-fw"></i>All Products</a></li>
-                <li><a href="#" data-target-id="pages"><i class="fa fa-history fa-fw"></i>Order History</a></li>
-                
-                <li><a href="#" data-target-id="table"><i class="fa fa-shopping-cart fa-fw"></i>Go To Shop</a></li>
+                <li><a href="#" data-target-id="charts"><i class="fa fa-shopping-cart fa-fw"></i>All Products</a></li>
+                <li><a href="#" data-target-id="pages"><i class="fa fa-table fa-fw"></i>Order History</a></li>
+                <li><a href="#" data-target-id="table"><i class="fa fa-history fa-fw"></i>Go To Shop</a></li>
                 <!-- <li><a href="#" data-target-id="forms"><i class="fa fa-tasks fa-fw"></i>Forms</a></li>
                 <li><a href="#" data-target-id="calender"><i class="fa fa-calendar fa-fw"></i>Calender</a></li>
                 <li><a href="#" data-target-id="library"><i class="fa fa-book fa-fw"></i>Library</a></li>
@@ -88,21 +72,55 @@ $owner->initiate();
                     <div class="panel-body">
                     <div class="form-group">
                         <label for="UserName">Shop Name</label>
-                        <input type="text" class="form-control" id="" placeholder="Shop john26769">
+                        <input type="text" class="form-control" id="" value="<?php echo $owner->shopName ?>" placeholder="Shop john26769">
                     </div>
                     <div class="form-group">
                         <label for="UserName">Shop Description</label>
-                        <textarea class="form-control" id="descr" name="descr"></textarea>
+                        <textarea class="form-control" id="descr" name="descr"><?php echo $owner->shopDesc ?></textarea>
+
                     </div>
+
+                        <div class="form-group">
+                            <label for="">Location</label>
+                            <select class="form-control" name="city">
+                                <option value="City" selected disabled>City</option>
+                                <option value="Colombo">Colombo</option>
+                                <option value="Galle">Galle</option>
+                                <option value="Jaffna">Jaffna</option>
+                                <option value="Anuradhapura">Anuradhapura</option>
+                                <option value="Kandy">Kandy</option>
+                                <option value="Negombo">Negombo</option>
+                                <option value="Ratnapura">Ratnapura</option>
+                            </select>
+                        </div>
+
+
                     <div class="form-group">
-                       <label class="control-label" for="selectbasic">Select</label>
-						  <div class="">
-						    <select id="selectbasic" name="selectbasic" class="form-control">
-						      <option value="1">Option one</option>
-						      <option value="2">Option two</option>
-						    </select>
-						  </div>
+                       <label class="control-label" for="selectbasic">Categories</label>
+						  <div class="form-group col-xs-6 col-md-10">
+                              <div class="col-xs-4 col-md-8">
+                                  <select class="form-control" name="category">
+                                      <option value="" selected disabled>Category</option>
+                                      <?php
+                                      if($categories){
+                                          foreach($categories as $row)
+                                              echo "<option value=". $row['category_name'] .">". $row['category_name'] ."</option>";
+                                      }
+                                      ?>
+                                  </select>
+                              </div>
+                              <div class="col-xs-2 col-md-2"> <button type="button" onclick="addCategory()">Add</button> </div>
+                        </div>
                     </div>
+
+                        <div class="form-group">
+                        <div class="">
+                            <textarea class="form-control" rows="2" name="categories" placeholder="Add your categories below"><?php echo $categ; ?></textarea>
+                        </div>
+                            </div>
+
+
+
                         <input type="submit" class=" btn btn-primary btn-success" id="exampleSubmit" value="Add">
                         <input type="reset" class=" btn btn-primary btn-danger" id="exampleSubmit" value="Discard">
                   <!--  <div class="form-group pull-right">
@@ -116,40 +134,46 @@ $owner->initiate();
 
                 <div class="panel panel-default"><!-- Contact Details -->
                     <div class="panel-heading">
-                        Account Details
+                        Shop Theme
                     </div>
-                    
+
                     <div class="panel-body">
-                    <div class="form-group">
-                        <label for="UserName">User Name</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="john26769">
-                    </div>
-                    <div class="form-group">
-                        <label for="UserName">Email</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="john@abc.com">
-                    </div>
-                        <input type="submit" class=" btn btn-primary btn-success" id="exampleSubmit" value="Save">
+                        <div class="form-group">
+                            <label for="">Upload Logo(JPG)</label>
+                                <input type="file" name="shoplogo">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">Upload Banner Images</label>
+                                <input type="file" name="banner[0]">
+                                <input type="file" name="banner[1]">
+                        </div>
+
                     <div class="form-group pull-right">
-                        <a href="#" class="btn btn-primary btn-success"><span class="glyphicon glyphicon-floppy-disk"></span> Save</a>
+                        <input type="submit" class=" btn btn-primary btn-success" id="exampleSubmit" value="Save">
                     </div>
                 </div>
                 </div><!-- /.Contact Details -->
+
+
+
                 <div class="panel panel-default"><!-- Contact Details -->
                     <div class="panel-heading">
-                        Password
+                        Payment Details
                     </div>
 
                     <div class="panel-body">
                     <div class="form-group">
-                        <label for="UserName">Current Password</label>
-                        <input type="password" class="form-control" id="" placeholder="***********">
+                        <label for="">Paypal Email</label>
+                        <input type="email" class="form-control" id="" placeholder="Paypal Email">
                     </div>
                     <div class="form-group">
-                        <label for="UserName">New Password</label>
-                        <input type="password" class="form-control" id="" placeholder="***********">
+                        <label for="">Paypal Token (Optional)</label>
+                        <input type="text" class="form-control" id="" placeholder="Paypal Token">
                     </div>
-                        <input type="submit" class=" btn btn-primary btn-success" id="exampleSubmit" value="save">
+
                     <div class="form-group pull-right">
+                        <input type="submit" class=" btn btn-primary btn-success" id="exampleSubmit" value="Save">
                        <!-- <a href="#" class="btn btn-primary btn-success"><span class="glyphicon glyphicon-floppy-disk"></span> Save</a>-->
                     </div>
                 </div>
@@ -237,7 +261,7 @@ $owner->initiate();
 			                        <input type="number" name = "stock" class="form-control" id="exampleInputEmail1" placeholder="john26769">
 			                    </div>
 			                    <div class="form-group">
-			                        <label class="control-label" for="fileUpload">Upload Image</label>
+			                        <label class="control-label" for="fileUpload">Upload Thumbnail Image</label>
 									  <div class="#">
 									    <input id="fileUpload" name="prodimg" class="input-file" type="file">
                                       </div>
@@ -368,13 +392,14 @@ $owner->initiate();
         </div>
 
         <div class="col-md-7 admin-content" id="table">
+
             <div class="panel panel-default">
                 <div class="panel-heading">
                     Visit your shop
                 </div>
                 <div class="panel-body">
-                    <a href="/viewshop.php?shop=<?php echo $user->getRegID() ?>" class="btn btn-lg btn-info"><span class="glyphicon glyphicon-bullhorn"></span>View Shop Home Page</a>
-                    <a href="/viewproductlist.php?shop=<?php echo $user->getRegID() ?>" class="btn btn-lg btn-info"><span class="glyphicon glyphicon-bullhorn"></span>View Product Showcase</a>
+                    <a href="/viewshop.php?shop=<?php echo $user->getRegID() ?>" class="btn btn-lg btn-info"><span class="glyphicon glyphicon-file "></span> View Shop Home Page</a>
+                    <a href="/viewproductlist.php?shop=<?php echo $user->getRegID() ?>" class="btn btn-lg btn-info"><span class="glyphicon glyphicon-briefcase"></span> View Product Showcase</a>
                 </div>
             </div>
         </div>

@@ -9,7 +9,8 @@ if($user->shop)
 
 $db = new DbCon();
 
-$categories =  $db->getSelectTable('select category_name from categories');
+$cat = new Category();
+$categories =   $cat->getCategories();
 
 
 ?>
@@ -24,35 +25,6 @@ $categories =  $db->getSelectTable('select category_name from categories');
         <?php include('header.php'); ?>
 
         <script>
-            function funcValidate() {
-                if (document.regShop.sname.value.length == 0) {
-                    alert("please enter a shop name");
-                    return false;
-                }
-                else if (document.regShop.sname.value.length > 30) {
-                    alert("please enter a shop name with less than 30 characters");
-                    return false;
-                }
-                else if (document.regShop.descr.value.length == 0) {
-                    alert("please enter a shop description");
-                    return false;
-                }
-                else if (document.regShop.city.selectedIndex == 0) {
-
-                    alert("please select a location");
-                    return false;
-                }
-                else if (document.regShop.category.selectedIndex == 0) {
-
-                    alert("please select a category");
-                    return false;
-                }
-                else if (document.regShop.payment.value.length == 0) {
-                    alert("please enter a payment method");
-                    return false;
-                }
-            }
-
             function addCategory(){
                 var val = document.getElementsByName('categories')[0].value;
                 var cat = document.getElementsByName('category')[0].value;
@@ -81,13 +53,13 @@ $categories =  $db->getSelectTable('select category_name from categories');
                 <div class="col-xs-4 col-md-8">
                     <select class="form-control" name="city">
                         <option value="City" selected disabled>City</option>
-                        <option value="CMB">Colombo</option>
-                        <option value="GAL">Galle</option>
-                        <option value="JAF">Jaffna</option>
-                        <option value="ANU">Anuradhapura</option>
-                        <option value="KAN">Kandy</option>
-                        <option value="NEG">Negombo</option>
-                        <option value="RAT">Ratnapura</option>
+                        <option value="Colombo">Colombo</option>
+                        <option value="Galle">Galle</option>
+                        <option value="Jaffna">Jaffna</option>
+                        <option value="Anuradhapura">Anuradhapura</option>
+                        <option value="Kandy">Kandy</option>
+                        <option value="Negombo">Negombo</option>
+                        <option value="Ratnapura">Ratnapura</option>
                     </select>
                 </div>                
             </div>

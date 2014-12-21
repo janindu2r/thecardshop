@@ -112,28 +112,31 @@ class Order
     {
         $sql = 'select * from product_order_items where order_id = '. $this->orderId ;
         $simpProds = $this->db->getSelectTable($sql);
-        foreach($simpProds as $row) {
-            $ordPrd = new OrderProd();
-            $ordPrd->makeOrderProd($ordPrd->simpProdIni($row['product_id']), $row['quantity'], $row['shipping_tot'], $row['items_tot']);
-            array_push($this->simpleProds, $ordPrd);
-            $this->subTotal += floatval($ordPrd->itemsTotal);
+        if($simpProds) {
+            foreach ($simpProds as $row) {
+                $ordPrd = new OrderProd();
+                $ordPrd->makeOrderProd($ordPrd->simpProdIni($row['product_id']), $row['quantity'], $row['shipping_tot'], $row['items_tot']);
+                array_push($this->simpleProds, $ordPrd);
+                $this->subTotal += floatval($ordPrd->itemsTotal);
+            }
         }
-
     }
 
     function getOrderVarProds()
     {
         $sql = 'select * from variation_order_group where order_id = '. $this->orderId ;
         $varProds = $this->db->getSelectTable($sql);
-        foreach ($varProds as $row) {
-            $varPrd = new OrderVar();
-            $varPrd->orderId = $this->orderId;
-            $varPrd->groupId = $row['varord_group'];
-            $varPrd->varProdIni($row['product_id']);
-            $varPrd->initializeVarGroup();
-            $varPrd->makeVarOrderProd($varPrd->cProduct,$varPrd->cartVGroup,$row['quantity'], $row['shipping_tot'], $row['items_tot']);
-            array_push($this->varProds, $varPrd);
-            $this->subTotal += floatval($varPrd->itemsTotal);
+        if($varProds) {
+            foreach ($varProds as $row) {
+                $varPrd = new OrderVar();
+                $varPrd->orderId = $this->orderId;
+                $varPrd->groupId = $row['varord_group'];
+                $varPrd->varProdIni($row['product_id']);
+                $varPrd->initializeVarGroup();
+                $varPrd->makeVarOrderProd($varPrd->cProduct, $varPrd->cartVGroup, $row['quantity'], $row['shipping_tot'], $row['items_tot']);
+                array_push($this->varProds, $varPrd);
+                $this->subTotal += floatval($varPrd->itemsTotal);
+            }
         }
     }
 

@@ -186,7 +186,7 @@ class User
     {
         $mailSuccess = false;
         $accDetails['verified'] = 0;
-        $accDetails['registration_dnt'] =  date("Y-m-d");
+        $accDetails['registration_dnt'] =  $this->db->escapeString(date("Y-m-d H:i:s"));
 
         echo $this->db->getInsertSql('account', $accDetails);
 
@@ -214,8 +214,6 @@ class User
     }
 
 
-
-
 	function updateDetails($details, $clause)
 	{
 		$result = $this->db->runUpdateRecord('user', $details, $clause);
@@ -229,6 +227,7 @@ class User
 			header('Location : update.php');
 		}
 	}
+
 	
 	
 }

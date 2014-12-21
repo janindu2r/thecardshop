@@ -7,10 +7,10 @@ if(isset($_GET['order'])){
         $order = new Order();
         $order->getOrder($_GET['order']);
 }
-
-if($_GET['status'] ==  'paid')
-{
-	//update order status to paid, and change the value in the object here
+if(isset($_GET['status'])) {
+	if ($_GET['status'] == 'paid') {
+		//update order status to paid, and change the value in the object here
+	}
 }
 
 ?>
@@ -125,7 +125,8 @@ if($_GET['status'] ==  'paid')
 									<td class="text-right"><?php echo $order->toDec($obj->shippingCost) ?> $</td>
 									<td class="text-right"><?php echo $order->toDec($obj->calcShippingCost()) ?> $</td>
 								</tr>
-							<?php } }
+							<?php } //end foreach
+							}//end if
 							if($order->varProds)
 							{
 								foreach($order->varProds as $obj){ ?>
@@ -143,7 +144,8 @@ if($_GET['status'] ==  'paid')
 									<td class="text-right"><?php echo $order->toDec($obj->shippingCost) ?> $</td>
 									<td class="text-right"><?php echo $order->toDec($obj->calcShippingCost()) ?> $</td>
 									</tr>
-							<?php	} } ?>
+							<?php	} //end foreach
+							} //end if ?>
 
 							<tr>
 								<td colspan="5" class="text-right"><h5>Subtotal</h5></td>
