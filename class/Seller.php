@@ -10,7 +10,7 @@
         public $shopId;
 		public $shopName;
 		public $shopDesc;
-		private $paypalEmail;
+		public $paypalEmail;
 		public $logoImg;
         public $shopSlider = array();
 		public $posRep;
@@ -39,6 +39,30 @@
             }
         }
 
+        function insertCategories($cat)
+        {
+            $categories = explode(" | ", $cat);
+            $catIds = array();
+
+            foreach ($categories as $val) {
+                $catId = $this->db->getScalar("select category_id from categories where category_name = " . $this->db->escapeString($val));
+                if ($catId == null) {
+                    $arr['category_name'] = $this->db->escapeString($val);
+                    $catId = $this->db->runInsertAndGetID('categories', $arr);
+                }
+                if (!in_array($catId, $catIds) && $catId != null)
+                    array_push($catIds, $catId);
+            }
+
+            $insertCat['shop_id'] = $this->shopId;
+            foreach ($catIds as $newVal) {
+                $insertCat['category_id'] = $newVal;
+                $this->db->runInsertRecord('shop_categories', $insertCat);
+            }
+            $this->initiate();
+            return 1;
+        }
+
 
         function insertSeller($shop, $cat)
         {
@@ -54,26 +78,7 @@
 
             if ($success) {
                 $_SESSION['user']->shop = 1;
-                $categories = explode(" | ", $cat);
-                $catIds = array();
-
-                foreach ($categories as $val) {
-                    $catId = $this->db->getScalar("select category_id from categories where category_name = " . $this->db->escapeString($val));
-                    if ($catId == null) {
-                        $arr['category_name'] = $this->db->escapeString($val);
-                        $catId = $this->db->runInsertAndGetID('categories', $arr);
-                    }
-                    if (!in_array($catId, $catIds) && $catId != null)
-                        array_push($catIds, $catId);
-                }
-
-                $insertCat['shop_id'] = $this->shopId;
-                foreach ($catIds as $newVal) {
-                    $insertCat['category_id'] = $newVal;
-                    $this->db->runInsertRecord('shop_categories', $insertCat);
-                }
-                $this->initiate();
-                return 1;
+                return $this->insertCategories($cat);
             }
         }
 
@@ -119,6 +124,15 @@
             $this->getCategories();
             $this->getSliderImages();
             return $shopDetails;
+        }
+
+        function getToken()
+        {
+            $token =  $this->db->getScalar('select paypal_id_token from shop where shop_id = '. $this->shopId);
+            if($token)
+                return $token;
+            else
+                return '';
         }
 
 

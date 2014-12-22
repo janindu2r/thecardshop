@@ -81,7 +81,7 @@ $categories =   $cat->getCategories();
                     <div class="col-xs-2 col-md-2"> <button type="button" onclick="addCategory()">Add</button> </div>
                 </div><div class="row">
                 <div class="col-xs-6 col-md-10">
-                    <textarea class="form-control" rows="2" name="categories" placeholder="Add your categories below"></textarea>
+                    <textarea class="form-control" rows="2" name="categories" placeholder="Add your categories from above or type them in in correct format"></textarea>
                 </div>
             </div>
             <label><input class="character-checkbox" name="moneyback" type="checkbox" value="">   Money back guarantee available</label> <br/> <br/><br /><br />

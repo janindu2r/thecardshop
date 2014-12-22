@@ -64,29 +64,34 @@ $categ = substr($categ,3);
             	</div>
             <?php }} ?>
             <div class="col-md-6">
-                <div class="panel panel-default"><!-- Contact Details -->
+                <div class="panel panel-default"><!-- Shop Details -->
+
                     <div class="panel-heading">
                         Shop Details
                     </div>
-                    
+
+                    <form name="shopDetails" method="post" action="/scripts/editshopdetails.php">
                     <div class="panel-body">
                     <div class="form-group">
                         <label for="UserName">Shop Name</label>
-                        <input type="text" class="form-control" name="shop_name" id="" value="<?php echo $owner->shopName ?>" placeholder="Shop john26769">
+                        <input type="text" class="form-control" name="sname" id="" value="<?php echo $owner->shopName ?>" placeholder="Shop john26769">
                     </div>
                     <div class="form-group">
                         <label for="UserName">Shop Description</label>
                         <textarea class="form-control" id="descr" name="descr"><?php echo $owner->shopDesc ?></textarea>
 
                     </div>
-
-                        <div class="form-group">
+                    <div class="form-group">
                             <label for="">Location</label>
-                            <input type="text" class="form-control" name="city" id="" value="<?php echo $owner->shopName ?>" placeholder="Shop john26769">
+                            <input type="text" class="form-control" name="city" id="" value="<?php echo $owner->shopLoc ?>" placeholder="Location">
                         </div>
-
                     <div class="form-group">
                        <label class="control-label" for="selectbasic">Categories</label>
+                        <div class="form-group">
+                            <div class="">
+                                <textarea class="form-control" rows="1"  placeholder="Existing Categories" disabled><?php echo $categ; ?></textarea>
+                            </div>
+                        </div>
 						  <div class="form-group col-xs-6 col-md-10">
                               <div class="col-xs-4 col-md-8">
                                   <select class="form-control" name="category">
@@ -102,23 +107,22 @@ $categ = substr($categ,3);
                               <div class="col-xs-2 col-md-2"> <button type="button" onclick="addCategory()">Add</button> </div>
                         </div>
                     </div>
-
                         <div class="form-group">
                         <div class="">
-                            <textarea class="form-control" rows="2" name="categories" placeholder="Add your categories below"><?php echo $categ; ?></textarea>
+                            <textarea class="form-control" rows="2" name="categories" placeholder="Add new categories from dropbox above"></textarea>
                         </div>
                             </div>
 
-
-
-                        <input type="submit" class=" btn btn-primary btn-success" id="exampleSubmit" value="Add">
+                        <input type="submit" name="submitShopinfo" class=" btn btn-primary btn-success" id="exampleSubmit" value="Add">
                         <input type="reset" class=" btn btn-primary btn-danger" id="exampleSubmit" value="Discard">
                   <!--  <div class="form-group pull-right">
                         <a href="#" class="btn btn-primary btn-success"><span class="glyphicon glyphicon-floppy-disk"></span> Save</a>
                         <a href="#" class="btn btn-primary btn-danger"><span class="glyphicon glyphicon-remove"></span> Discard</a>
                     </div>-->
-                </div>
-                </div><!-- /.Contact Details --> 
+
+                    </div>
+                        </form>
+                </div><!-- /.Shop Details -->
             </div>
             <div class="col-md-6">
 
@@ -128,20 +132,20 @@ $categ = substr($categ,3);
                     </div>
 
                     <div class="panel-body">
+                        <form name="shoptheme" method="post" action="/scripts/editshopdetails.php" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="">Upload Logo(JPG)</label>
                                 <input type="file" name="shoplogo">
                         </div>
-
                         <div class="form-group">
                             <label for="">Upload Banner Images</label>
                                 <input type="file" name="banner[0]">
                                 <input type="file" name="banner[1]">
                         </div>
-
-                    <div class="form-group pull-right">
-                        <input type="submit" class=" btn btn-primary btn-success" id="exampleSubmit" value="Save">
+                        <div class="form-group pull-right">
+                        <input type="submit" name="submitLayout" class=" btn btn-primary btn-success" id="exampleSubmit" value="Save">
                     </div>
+                        </form>
                 </div>
                 </div><!-- /.Contact Details -->
 
@@ -153,19 +157,23 @@ $categ = substr($categ,3);
                     </div>
 
                     <div class="panel-body">
+                        <form name="shopCredentials" method="post" action="/scripts/editshopdetails.php">
+
                     <div class="form-group">
                         <label for="">Paypal Email</label>
-                        <input type="email" class="form-control" id="" placeholder="Paypal Email">
+                        <input type="email" name="paypalemail" class="form-control" id="" placeholder="Paypal Email" value="<?php echo $owner->paypalEmail ?>">
                     </div>
                     <div class="form-group">
                         <label for="">Paypal Token (Optional)</label>
-                        <input type="text" class="form-control" id="" placeholder="Paypal Token">
+                        <input type="text" name="paypaltoken" class="form-control" id="" placeholder="Paypal Token" value="<?php echo $owner->getToken() ?>">
                     </div>
 
                     <div class="form-group pull-right">
-                        <input type="submit" class=" btn btn-primary btn-success" id="exampleSubmit" value="Save">
+                        <input type="submit" name="submitPaypal" class=" btn btn-primary btn-success" id="exampleSubmit" value="Save">
                        <!-- <a href="#" class="btn btn-primary btn-success"><span class="glyphicon glyphicon-floppy-disk"></span> Save</a>-->
                     </div>
+
+                            </form>
                 </div>
                 </div><!-- /.Contact Details --> 
             </div>
