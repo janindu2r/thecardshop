@@ -42,7 +42,7 @@ $categ = substr($categ,3);
     <div class="row">
         <div class="col-md-2">
             <ul class="nav nav-pills nav-stacked admin-menu">
-                <li class="active"><a href="#" data-target-id="home"><i class="fa fa-user fa-fw"></i>Account</a></li>
+                <li class="active"><a href="#" data-target-id="home"><i class="fa fa-tasks fa-fw"></i>Shop</a></li>
                 <li><a href="#" data-target-id="products"><i class="fa fa-dropbox fa-fw"></i>Add Products</a></li>
                 <li><a href="#" data-target-id="charts"><i class="fa fa-shopping-cart fa-fw"></i>All Products</a></li>
                 <li><a href="#" data-target-id="pages"><i class="fa fa-table fa-fw"></i>Order History</a></li>

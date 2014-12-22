@@ -8,6 +8,10 @@ if($_GET){
     if(isset($_GET['product']))
         $prodId = $_GET['product'];
 }
+else
+    header('location: /index.php');
+
+
 $custProd = new Product();
 $custProd = $custProd->returnProduct($prodId);
 
@@ -61,7 +65,7 @@ $seller->getCategories();
                                     <div class="form-group">
                                         <form name="editproduct" method="POST" action= "/scripts/editproductdetails.php" enctype="multipart/form-data">
                                             <div class="form-group">
-                                                <input type="hidden" name="prod_id" value="<?php $custProd->prodId ?>">
+                                                <input type="hidden" name="prod_id" value="<?php echo $custProd->prodId ?>">
                                                 <label for="#">Product Name</label>
                                                 <input type="text" name = "pro_name" class="form-control" id="" placeholder="Product Name" value="<?php echo $custProd->proName ?>">
                                             </div>
