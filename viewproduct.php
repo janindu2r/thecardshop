@@ -122,13 +122,8 @@ $title = $viewProd->proName. ' | Comercio' ;  // page title
                                 Add to cart
                             </button>
                                 </div>
-                    <?php } ?>
-                    <div class="btn-group wishlist">
-                        <button type="button" class="btn btn-danger">
-                            Save Item
-                        </button>
-                    </div>
-                    <?php } ?>
+                    <?php }
+                    } ?>
                     <?php if ($logged == 1 &&  $viewProd->shopId == $user->getRegID()) { ?>
                     <div class="btn-group cart">
                                 <a href="/customizeproduct.php?product=<?php echo $viewProd->prodId ?>" type="button" class="btn btn-success">
@@ -146,12 +141,7 @@ $title = $viewProd->proName. ' | Comercio' ;  // page title
 					<ul id="myTab" class="nav nav-tabs nav_tabs">
 						
 						<li class="active"><a href="#service-one" data-toggle="tab">DESCRIPTION</a></li>
-<<<<<<< HEAD
-						<!-- <li><a href="#service-two" data-toggle="tab">PRODUCT INFO</a></li> -->
-						<li><a href="#service-three" data-toggle="tab">REVIEWS</a></li>
-=======
-						<li><a href="#service-two" data-toggle="tab">REVIEWS</a></li>
->>>>>>> 30c9d7a580f4fcb927ca478898acb95ff5f77383
+
 						
 					</ul>
 					<div id="myTabContent" class="tab-content">
