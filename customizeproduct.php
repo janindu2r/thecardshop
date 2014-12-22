@@ -237,8 +237,8 @@ $seller->getCategories();
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <input type="submit"  class="btn btn-primary btn-success"  id="exampleSubmit" value="Add">
-                                            <input type="reset"  class="btn btn-primary btn-danger"  id="exampleSubmit" value="Discard">
+                                            <input type="submit"  class="btn btn-primary btn-success" name="Add" id="exampleSubmit" value="Add">
+                                            <input type="reset"  class="btn btn-primary btn-danger" name="Discard" id="exampleSubmit" value="Discard">
                                             <!--  <a href="#" class="btn btn-primary btn-success"><span class="glyphicon glyphicon-floppy-disk"></span> Add</a>
                                             <a href="#" class="btn btn-primary btn-danger"><span class="glyphicon glyphicon-remove"></span>Discard</a> -->
                                         </div>
