@@ -30,7 +30,7 @@ if($_POST) {
                 if($sc)
                 {
                     //login and update your password or whatever, redirection etc etc
-                    echo '1';
+                    header('location: /login.php');
                 }
             }
     }
