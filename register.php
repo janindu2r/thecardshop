@@ -95,14 +95,15 @@ $title = 'Sign Up' ;  // page title
             <div class="row">
                 <div class="col-xs-4 col-md-4">
                     <select class="form-control" name="month">
-                        <option value="">Month</option>
+                        <option value="" disabled>Month</option>
                         <option value="01">January</option>
                         <option value="02">February</option>
+
                     </select>
                 </div>
                 <div class="col-xs-4 col-md-4">
                     <select class="form-control" name="day">
-                        <option value="">Day</option>
+                        <option value="" disabled>Day</option>
                         <option value="01">01</option>
                         <option value="01">02</option>
                         <option value="01">03</option>
@@ -111,7 +112,7 @@ $title = 'Sign Up' ;  // page title
                 </div>
                 <div class="col-xs-4 col-md-4">
                     <select class="form-control" name="year">
-                        <option value="">Year</option>
+                        <option value="" disabled>Year</option>
                         <option value="1990">1990</option>
                         <option value="1991">1991</option>
                         <option value="1992">1992</option>

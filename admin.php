@@ -72,7 +72,7 @@ $categ = substr($categ,3);
                     <div class="panel-body">
                     <div class="form-group">
                         <label for="UserName">Shop Name</label>
-                        <input type="text" class="form-control" id="" value="<?php echo $owner->shopName ?>" placeholder="Shop john26769">
+                        <input type="text" class="form-control" name="shop_name" id="" value="<?php echo $owner->shopName ?>" placeholder="Shop john26769">
                     </div>
                     <div class="form-group">
                         <label for="UserName">Shop Description</label>
@@ -82,16 +82,7 @@ $categ = substr($categ,3);
 
                         <div class="form-group">
                             <label for="">Location</label>
-                            <select class="form-control" name="city">
-                                <option value="City" selected disabled>City</option>
-                                <option value="Colombo">Colombo</option>
-                                <option value="Galle">Galle</option>
-                                <option value="Jaffna">Jaffna</option>
-                                <option value="Anuradhapura">Anuradhapura</option>
-                                <option value="Kandy">Kandy</option>
-                                <option value="Negombo">Negombo</option>
-                                <option value="Ratnapura">Ratnapura</option>
-                            </select>
+                            <input type="text" class="form-control" name="city" id="" value="<?php echo $owner->shopName ?>" placeholder="Shop john26769">
                         </div>
 
                     <div class="form-group">
