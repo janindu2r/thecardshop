@@ -95,27 +95,36 @@ $title = 'Sign Up' ;  // page title
             <div class="row">
                 <div class="col-xs-4 col-md-4">
                     <select class="form-control" name="month">
-                        <option value="" disabled>Month</option>
+                        <option value="" disabled selected>Month</option>
                         <option value="01">January</option>
                         <option value="02">February</option>
+                        <option value="03">March</option>
+                        <option value="04">April</option>
+                        <option value="05">May</option>
+                        <option value="06">June</option>
+                        <option value="07">July</option>
+                        <option value="08">August</option>
+                        <option value="09">September</option>
+                        <option value="10">October</option>
+                        <option value="11">November</option>
+                        <option value="12">December</option>
 
                     </select>
                 </div>
                 <div class="col-xs-4 col-md-4">
                     <select class="form-control" name="day">
-                        <option value="" disabled>Day</option>
-                        <option value="01">01</option>
-                        <option value="01">02</option>
-                        <option value="01">03</option>
-                        <option value="01">04</option>
+                        <option value="" disabled selected>Day</option>
+                      <?php  for ($num=1; $num<=31; $num++){
+                            echo '<option>' .$num. '</option>'; 
+                        } ?>
                     </select>
                 </div>
                 <div class="col-xs-4 col-md-4">
                     <select class="form-control" name="year">
-                        <option value="" disabled>Year</option>
-                        <option value="1990">1990</option>
-                        <option value="1991">1991</option>
-                        <option value="1992">1992</option>
+                        <option value="" disabled selected>Year</option>
+                      <?php  for ($num=1997; $num>=1940; $num--){
+                            echo '<option>' .$num. '</option>'; 
+                        } ?>
                     </select>
                 </div>
             </div>
@@ -214,4 +223,4 @@ $title = 'Sign Up' ;  // page title
 <!---------------------------------------- End of page edits ---------------------------------------------------->
 <?php include('footer.php'); //including the footer?>
 </div> <!-- end of the wrapper -->
-<!-- End of page
+<!-- End of page -->
