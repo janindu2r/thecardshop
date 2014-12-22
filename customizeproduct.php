@@ -14,6 +14,9 @@ $custProd = $custProd->returnProduct($prodId);
 $vir = $custProd->virtual;
 $var = $custProd->variation;
 
+$seller = new Seller($custProd->shopId);
+$seller->getCategories();
+
 ?>
 <!-- **************************** Header Start, Do not touch **************************** -->
 <!DOCTYPE html>
@@ -56,18 +59,19 @@ $var = $custProd->variation;
                             <div role="tabpanel" class="tab-pane active" id="addProduct">
                                 <div class="panel-body">
                                     <div class="form-group">
-                                        <form name="addproduct" method="POST" action= "/scripts/editProductDetails.php" enctype="multipart/form-data">
+                                        <form name="editproduct" method="POST" action= "/scripts/editproductdetails.php" enctype="multipart/form-data">
                                             <div class="form-group">
+                                                <input type="hidden" name="prod_id" value="<?php $custProd->prodId ?>">
                                                 <label for="#">Product Name</label>
-                                                <input type="text" name = "pro_name" class="form-control" id="" placeholder="Product Name">
+                                                <input type="text" name = "pro_name" class="form-control" id="" placeholder="Product Name" value="<?php echo $custProd->proName ?>">
                                             </div>
                                             <div class="form-group">
                                                 <label for="#">Price</label>
-                                                <input type="number" name = "pro_price" class="form-control" id="exampleInputtext1" placeholder="Product Price">
+                                                <input type="number" name = "pro_price" class="form-control" id="exampleInputtext1" placeholder="Product Price" value="<?php echo $custProd->proPrice ?>">
                                             </div>
                                             <div class="form-group">
                                                 <label for="#">Tags</label>
-                                                <input type="text" name = "pro_tag" class="form-control" id="exampleInputtext1" placeholder="Product Tag">
+                                                <input type="text" name = "pro_tag" class="form-control" id="exampleInputtext1" placeholder="Product Tags" value="<?php echo $custProd->proTag ?>">
                                             </div>
                                             <div class="form-group">
                                                 <label for="#">Category</label>
@@ -77,24 +81,28 @@ $var = $custProd->variation;
 
                                                 <select id="catId" name="category" class="form-control">
                                                     <option value="0">Select Category</option>
-                                                    <?php if($owner->categories) {
-                                                        foreach ($owner->categories as $key => $val) { ?>
-                                                            <option value="<?php echo $key; ?>"><?php echo $val;?></option>
+                                                    <?php
+                                                        foreach ($seller->categories as $key => $val) {
+                                                            $ad = '';
+                                                            if($key == $custProd->catId)
+                                                                $ad = 'selected';
+                                                            ?>
+                                                            <option value="<?php echo $key; ?>" <?php echo $ad ?>><?php echo $val;?></option>
                                                         <?php }
-                                                    } ?>
+                                                     ?>
                                                 </select>
                                             </div>
                                             <div class="form-group">
                                                 <label for="#">Product description</label>
-                                                <textarea class="form-control" id="textarea" name="description" placeholder="Add product description"></textarea>
+                                                <textarea class="form-control" id="textarea" name="description" placeholder="Add product description"><?php echo $custProd->description ?></textarea>
                                             </div>
                                             <div class="form-group">
                                                 <label for="#">Selling Unit</label>
-                                                <input type="text" name = "sel_unit" class="form-control" id="exampleInputtext1" placeholder="No of items in one package/shipment">
+                                                <input type="text" name = "sel_unit" class="form-control" id="exampleInputtext1" placeholder="No of items in one package/shipment" value="<?php echo $custProd->sellUnit ?>">
                                             </div>
                                             <div class="form-group">
                                                 <label for="#">Stock</label>
-                                                <input type="number" name = "stock" class="form-control" id="exampleInputEmail1" placeholder="Add the stock amount of product">
+                                                <input type="number" name = "stock" class="form-control" id="exampleInputEmail1" placeholder="Add the stock amount of product" value="<?php echo $custProd->cuStock ?>">
                                             </div>
                                             <div class="form-group">
                                                 <label class="control-label" for="fileUpload">Upload Image</label>

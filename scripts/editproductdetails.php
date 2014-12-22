@@ -12,7 +12,9 @@ include ($path.'/internal.php');
 
 $db = new DbCon();
 $obj = new Product();
+$obj = $obj->returnProduct($prodId);
 
+$arr['product_id'] = $_POST["pro_id"];
 $arr['product_title'] = $_POST["pro_name"];
 $arr['price']= $_POST["pro_price"];
 $arr['product_tag'] = $_POST["pro_tag"];
