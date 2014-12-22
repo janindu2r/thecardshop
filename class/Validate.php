@@ -6,27 +6,47 @@ class Validate
     {
         $max = 30;
         if (preg_match('/[a-zA-Z]/', $string) === 0) {
-            echo "Error";
+            return "Error";
         }
         else {
             $len = strlen($string);
             if ($len == 0)
-                echo "Field is empty";
+                return "Field is empty";
             else if ($len > $max)
-                echo "Enter a name with less than 30 characters ";
+                return "Enter a name with less than 30 characters ";
             else
-                echo "String is valid";
+                return "String is valid";
         }
     }
 
     public static function emailValidate($string)
     {
-        if (!filter_var($string, FILTER_VALIDATE_EMAIL)) {
-            echo "email is not valid" . "<br>";
-        } else {
-            echo "valid email" . "<br>";
-        }
+        if (!filter_var($string, FILTER_VALIDATE_EMAIL))
+            return "Email is not valid" . "<br>";
+         else
+            return "Valid email" . "<br>";
+
     }
+
+    public static function checkEmpty($text)
+    {
+        if (empty($text))
+            return "Field is empty" . "<br>";
+        else
+            return $text;
+    }
+
+    public static function checkNumeric($text)
+    {
+        if (is_numeric($text))
+            return $text;
+        else
+            return "Enter a number" . " <br>";
+    }
+
+
+
+    /*
 
     public static function validInt($val)
     {
@@ -40,26 +60,6 @@ class Validate
         echo "Enter a valid number" . "<br>";
     }
 
-    public static function checkEmpty($text)
-    {
-        if (empty($text)) {
-            echo "field is empty" . "<br>";
-
-        } else
-            return $text;
-    }
-
-    public static function checkNumeric($text)
-    {
-        if (is_numeric($text)) {
-            return $text;
-        } else
-            echo "enter a number" . " <br>";
-    }
-
-
-
-    /*
     public static function longText($txtAreaString)
     {
         //including apostrophes
