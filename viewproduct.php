@@ -122,13 +122,8 @@ $title = $viewProd->proName. ' | Comercio' ;  // page title
                                 Add to cart
                             </button>
                                 </div>
-                    <?php } ?>
-                    <div class="btn-group wishlist">
-                        <button type="button" class="btn btn-danger">
-                            Save Item
-                        </button>
-                    </div>
-                    <?php } ?>
+                    <?php }
+                    } ?>
                     <?php if ($logged == 1 &&  $viewProd->shopId == $user->getRegID()) { ?>
                     <div class="btn-group cart">
                                 <a href="/customizeproduct.php?product=<?php echo $viewProd->prodId ?>" type="button" class="btn btn-success">
