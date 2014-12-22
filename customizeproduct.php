@@ -150,7 +150,7 @@ $seller->getCategories();
                                 <div class="panel-body">
                                     <div class="form-group">
 
-                                        <form name="virtual" method="POST" action=" " onclick="//return validateShopForm();">
+                                        <form name="virtual" method="POST" action="">
 
                                             <div class="form-group">
                                                 <label for="#">Download Link</label>
@@ -186,17 +186,19 @@ $seller->getCategories();
 
         <?php } else { ?>
         <!-- Physical -->
+            <?php   ?>
+
         <div class="col-md-8 admin-content" id="settings">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Dimentions of the product
+                    Dimensions of the shipment
                 </div>
                 <div class="panel-body">
                     <div role="tabpanel">
                         <!-- Tab panes -->
                         <div class="tab-content col-md-6 col-md-offset-3">
                             <div role="tabpanel" class="tab-pane active" id="addProduct">
-                                <form name="physical" method="POST" action="/script/addtophysical ">
+                                <form name="physical" method="POST" action="/scripts/addtophysical.php">
                                 <div class="panel-body">
                                     <div class="form-group">
                                             <label for="#">Width</label>
@@ -218,7 +220,7 @@ $seller->getCategories();
                                     <div class="form-group">
                                         <label for="#">Shipping Cost</label>
 
-                                        <input type="number" name="cost" class="form-control" id="exampleInputtext1" placeholder="$69">
+                                        <input type="number" name="cost" class="form-control" id="exampleInputtext1" placeholder="69">
                                     </div>
                                     <div class="form-group">
                                         <div class="form-group">
