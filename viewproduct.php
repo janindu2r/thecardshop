@@ -141,7 +141,7 @@ $title = $viewProd->proName. ' | Comercio' ;  // page title
 					<ul id="myTab" class="nav nav-tabs nav_tabs">
 						
 						<li class="active"><a href="#service-one" data-toggle="tab">DESCRIPTION</a></li>
-
+						<li><a href="#service-two" data-toggle="tab">REVIEWS</a></li>
 						
 					</ul>
 					<div id="myTabContent" class="tab-content">
