@@ -40,7 +40,8 @@ $seller->getCategories();
                 <li><a href="#" data-target-id="products"><i class="fa fa-dropbox fa-fw"></i>Virtual</a></li>
                 <?php } else { ?>
                     <li><a href="#" data-target-id="settings"><i class="fa fa-dropbox fa-fw"></i>Physical</a></li>
-                    <?php if ($var) { ?>
+                    <?php $var = 0; // until variation implementation
+                    if ($var) { ?>
                         <li><a href="#" data-target-id="pages"><i class="fa fa-book fa-fw"></i>Variation</a></li>
                     <?php } //variation end
                 } //physical end ?>
@@ -132,7 +133,12 @@ $seller->getCategories();
         </div> <!-- /.end of tab page -->
         <!-- End of Edit Product -->
 
-        <?php if($vir) { ?>
+        <?php if($vir) {
+
+            $down_link = '';
+            $down_link = $custProd->db->getScalar('select download_link from virtual where prod_id = ' . $custProd->prodId);
+
+            ?>
         <!-- Virtual -->
         <div class="col-md-8 admin-content" id="products">
             <div class="panel panel-default">
@@ -150,18 +156,18 @@ $seller->getCategories();
                                 <div class="panel-body">
                                     <div class="form-group">
 
-                                        <form name="virtual" method="POST" action="">
-
+                                        <form name="virtual" method="POST" action="/scripts/addtovirtual.php">
+                                            <input type="hidden" name="prod_id" value="<?php echo $custProd->prodId ?>">
                                             <div class="form-group">
                                                 <label for="#">Download Link</label>
                                                 <div class="#">
-                                                    <input type="text" name="link" class="form-control" id="" placeholder="www.asd.com">
+                                                    <input type="text" name="link" class="form-control" id="" placeholder="www.asd.com" value="<?php echo $down_link?>">
                                                 </div>
                                             </div>
 
 
                                             <div class="form-group">
-                                                <input type="submit" class="btn btn-primary btn-success" id="exampleSubmit" value="Add">
+                                                <input type="submit" class="btn btn-primary btn-success" id="exampleSubmit" value="Add" name="addVirtual">
                                                 <input type="reset" class="btn btn-primary btn-danger" id="exampleSubmit" value="Discard">
                                                 <!--  <a href="#" class="btn btn-primary btn-success"><span class="glyphicon glyphicon-floppy-disk"></span> Add</a>
                                                 <a href="#" class="btn btn-primary btn-danger"><span class="glyphicon glyphicon-remove"></span>Discard</a> -->
@@ -186,7 +192,10 @@ $seller->getCategories();
 
         <?php } else { ?>
         <!-- Physical -->
-            <?php   ?>
+            <?php
+            $db = new DbCon();
+            $phy = $db->getFirstRow('select * from physical where prod_id = '. $custProd->prodId);
+            ?>
 
         <div class="col-md-8 admin-content" id="settings">
             <div class="panel panel-default">
@@ -200,44 +209,39 @@ $seller->getCategories();
                             <div role="tabpanel" class="tab-pane active" id="addProduct">
                                 <form name="physical" method="POST" action="/scripts/addtophysical.php">
                                 <div class="panel-body">
+                                    <input type="hidden" name="prod_id" value="<?php echo $custProd->prodId ?>">
                                     <div class="form-group">
                                             <label for="#">Width</label>
-                                            <input type="number" name="width" class="form-control" id="exampleInputtext1" placeholder="Product Width">
+                                            <input type="number" name="width" class="form-control" id="exampleInputtext1" placeholder="Product Width" value="<?php if($phy) echo $phy['width']?>">
                                     </div>
                                     <div class="form-group">
                                         <label for="#">Height</label>
-                                        <input type="number" name="height" class="form-control" id="exampleInputtext1" placeholder="Product Height">
+                                        <input type="number" name="height" class="form-control" id="exampleInputtext1" placeholder="Product Height" value="<?php if($phy) echo $phy['height']?>">
                                     </div>
                                     <div class="form-group">
                                         <label for="#">Weight</label>
-                                        <input type="number" name="weight" class="form-control" id="exampleInputtext1" placeholder="Product Weight">
+                                        <input type="number" name="weight" class="form-control" id="exampleInputtext1" placeholder="Product Weight" value="<?php if($phy) echo $phy['weight']?>">
                                     </div>
                                     <div class="form-group">
                                         <label for="#">Length</label>
 
-                                        <input type="number" class="form-control" id="exampleInputtext1" placeholder="Product Length">
+                                        <input type="number" name="length" class="form-control" id="exampleInputtext1" placeholder="Product Length" value="<?php if($phy) echo $phy['length']?>">
                                     </div>
                                     <div class="form-group">
                                         <label for="#">Shipping Cost</label>
 
-                                        <input type="number" name="cost" class="form-control" id="exampleInputtext1" placeholder="69">
+                                        <input type="number" name="cost" class="form-control" id="exampleInputtext1" placeholder="69" value="<?php if($phy) echo $phy['shipping_cost']?>">
                                     </div>
                                     <div class="form-group">
                                         <div class="form-group">
-                                            <label class=" control-label" for="radios">Should shipping cost be multiplied by quantity?</label>
+
                                             <div class="">
-                                                <label class="radio-inline" for="radios-0">
-                                                    <input type="radio" name="var" id="radios-0" value="1" checked="checked">
-                                                    Yes
-                                                </label>
-                                                <label class="radio-inline" for="radios-1">
-                                                    <input type="radio" name="var" id="radios-1" value="0">
-                                                    No
-                                                </label>
+                                                <input class="character-checkbox" name="mult" type="checkbox" value="" <?php if($phy && $phy['multiply_byq']) echo 'checked'?>>
+                                                Shipping cost should be multiplied by quantity
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <input type="submit"  class="btn btn-primary btn-success" name="Add" id="exampleSubmit" value="Add">
+                                            <input type="submit"  class="btn btn-primary btn-success" name="addPhysical" id="exampleSubmit" value="Add">
                                             <input type="reset"  class="btn btn-primary btn-danger" name="Discard" id="exampleSubmit" value="Discard">
                                             <!--  <a href="#" class="btn btn-primary btn-success"><span class="glyphicon glyphicon-floppy-disk"></span> Add</a>
                                             <a href="#" class="btn btn-primary btn-danger"><span class="glyphicon glyphicon-remove"></span>Discard</a> -->
@@ -257,7 +261,9 @@ $seller->getCategories();
         </div> <!-- /.end of tab page -->
         <!-- End of Physical -->
 
-        <?php if ($var) { ?>
+        <?php
+            $var = 0; //until variation products implementation
+            if ($var) { ?>
         <!-- Variations -->
         <div class="col-md-8 admin-content" id="pages">
             <div class="panel panel-default">

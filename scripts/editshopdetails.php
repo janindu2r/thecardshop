@@ -63,19 +63,18 @@ if($_SESSION) {
                 if (isset($_FILES['shoplogo'])) {
                     list($width, $height) = getimagesize($_FILES['shoplogo']['tmp_name']);
                     if ($_FILES['shoplogo']['type'] == 'image/jpeg' && $width == $height && $_FILES['shoplogo']['size'] <= $max_logo_size) {
-                        move_uploaded_file($_FILES['shoplogo']['tmp_name'], $root . $sell->logoImg);
+                        move_uploaded_file($_FILES['shoplogo']['tmp_name'], $root . $owner->logoImg);
                         $logo = 1;
                     }
                 }
 
                 if ($_FILES['banner']) {
-                    $galleryarr['shop_id'] = $db->escapeString($sell->shopId);
                     $max_banner_size = $max_logo_size * 100000;
                     foreach ($_FILES['banner']['name'] as $num => $name) {
                         if ($_FILES['banner']['type'][$num] == 'image/jpeg') {
                             list($width, $height) = getimagesize($_FILES['banner']['tmp_name'][$num]);
                             if ($width == 1400 && $height == 300 && $_FILES['shoplogo']['size'] <= $max_banner_size) {
-                                move_uploaded_file($_FILES['banner']['tmp_name'][$num], $root . $sell->comPath . $num . ".jpg");
+                                move_uploaded_file($_FILES['banner']['tmp_name'][$num], $root . $owner->comPath . $num . ".jpg");
                                 $slider[$num] = 1;
                             }
                         }
@@ -84,15 +83,7 @@ if($_SESSION) {
 
             }
 
-            if ($logo == 0)
-                copy($root . "/content/shop/logo/default.jpg", $root . $sell->logoImg);
-            if ($slider[0] == 0)
-                copy($root . "/content/shop/slider/default.jpg", $root . $sell->comPath . '0' . ".jpg");
-            if ($slider[1] == 0)
-                copy($root . "/content/shop/slider/default.jpg", $root . $sell->comPath . '1' . ".jpg");
-
             $res = 1;
-
         }
     }
 

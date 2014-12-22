@@ -45,11 +45,41 @@ class OrderProd extends CartProd
 
         if($this->cProduct->virtual)
         {
-            //email the seller and make notifications if virtual?
+           $link = $this->db->getScalar('select download_link from virtual where prod_id = ' . $this->cProduct->prodId);
+            if($link)
+            {
+                $this->sendMail($link);
+            }
         }
 
         return $add;
     }
+
+    function sendMail($link)
+    {
+        $regMail = new Email();
+        $nUser = new User();
+        $nUser->makeUser($this->userId);
+        $mailSuccess = $regMail->sendMail($nUser->email, 'download', 'Download your product!', $this->getEmail($nUser->getProfile(), $link));
+        if($mailSuccess)
+        {
+            $array['status'] = $this->db->escapeString('Recieved');
+            $array['recieved_date_time'] = $this->db->escapeString(date("Y-m-d H:i:s"));
+            $this->db->runUpdateRecord('product_order_items', $array , 'order_id = '. $this->orderId . ' and product_id = '. $this->cProduct->prodId);
+        }
+    }
+
+    private function getEmail($userFullName, $link){
+
+        $email = '<div style="width: 80%; margin: 0 auto; padding: 20px;"><h2>Hello ';
+        $email .= $userFullName .'!</h2><p style="text-align: center; color:#34495e; clear: both; margin: 0.5em;">You purchased a product from Comercio! ';
+        $email .= 'Please click the download link below and download your virtual product</p><div style="padding: 2em;">';
+        $email .= '<a title="Download" style="text-decoration: none; color:#FFFFFF; padding: 1em 1.5em 1em 1.5em; border-radius: 0.5em; font-size: 1.2em; background-color: #557da1;"';
+        $email .= 'href="'.$link;
+        $email .= '">Download</a></div></div>';
+        return $email;
+    }
+
 
     function simpProdIni($prodId)
     {
