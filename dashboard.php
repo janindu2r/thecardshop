@@ -143,7 +143,7 @@ $title = 'Dashboard | Comercio'  ;  // page title
         <div class="col-md-8 admin-content" id="widgets">
         </div> <!-- /.end of widgets tab page -->
 
-        <div class="col-md-10 admin-content" id="pages">
+        <div class="col-md-10 admin-content" id="pages" style="min-height:450px;">
 <h4>Details of you order history</h4>
     <div class="row">
     
@@ -273,7 +273,7 @@ $title = 'Dashboard | Comercio'  ;  // page title
                </div>
            </div>
         <?php } else { ?>
-            <div class="col-md-8 admin-content" id="charts" style="min-height:45px;">
+            <div class="col-md-8 admin-content" id="charts" style="min-height:450px;">
                 <div class="col-md-3 col-offset-3">
                     <div class="panel">
                         <div class="panel-body">
