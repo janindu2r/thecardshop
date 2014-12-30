@@ -172,20 +172,6 @@
         }
 
 
-        /*
-		function manageShop($details, $category)
-		{
-			//$details stores the form data received via POST and is passed here
-			$db = new DbCon();
-			$result = $db->runInsertRecord('shops', $details);
-			if($result)
-				header('Location:  profile.php');
-			else
-				header('Location:  manageShops.php');
-			$newDetails['shopID'] = $details['shopID'];
-			$newDetails['categoryID'] = $category;
-			$newResult = $db->runInsertRecord('shop_categories', $newDetails);
-		} */
 	}
 
 ?>

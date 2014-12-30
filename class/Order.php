@@ -16,7 +16,7 @@ class Order
     public $total;
     public $billingAd = array();
     public $shippingAd = array();
-    private  $db;
+    private $db;
     public $dateTime;
 
 

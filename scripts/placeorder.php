@@ -33,6 +33,7 @@ if($_SESSION) {
     }
 }
 
+
 if($id == 0)
     header('location: /index.php');
 else

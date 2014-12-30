@@ -8,7 +8,7 @@
 
 class User
 {
-	protected $regID;
+	public $regID;
 	protected $dispName;
 	protected $password;
     private  $gender;
@@ -23,6 +23,8 @@ class User
     public  $negRep;
     public  $email;
     public $shop;
+
+    public $orderList;
 
     private $db;
 
@@ -169,7 +171,7 @@ class User
     private function getEmail($regId, $userFullName){
 
         $email = '<div style="width: 80%; margin: 0 auto; padding: 20px;"><h2>Hello ';
-        $email .= $userFullName .'!</h2><p style="text-align: center; color:#34495e; clear: both; margin: 0.5em;">Welcome to Comercio! ';
+        $email .= $userFullName .'!</h2><p style="color:#34495e; clear: both; margin: 0.5em;">Welcome to Comercio! ';
         $email .= 'An online ecommerce platform designed to provide the customer and seller the best online service possible</p><div style="padding: 2em;">';
         $email .= '<a title="Activate" style="text-decoration: none; color:#FFFFFF; padding: 1em 1.5em 1em 1.5em; border-radius: 0.5em; font-size: 1.2em; background-color: #557da1;"';
         $email .= 'href="http://comerciotest.com/activation.php?confirm='. md5((string)$regId) ;
@@ -218,19 +220,22 @@ class User
 	function updateDetails($details, $clause)
 	{
 		$result = $this->db->runUpdateRecord('user', $details, $clause);
-
 		if($result != 0)
-		{
-			header('Location : profile.php');
-		}
+			header('Location : dashboard.php');
 		else
-		{
-			header('Location : update.php');
-		}
+			header('Location : dashboard.php');
 	}
 
-	
-	
+
+    function renewOrderList()
+    {
+        $ndb = new DbCon();
+        $ndb->runUpdateOneValue('orders', 'order_status =  "Completed"', 'tot_items_in_cart = processed_items and buyer_id = ' . $this->regID);
+        $sql = "select order_id, order_dnt, tot_items_in_cart, processed_items, order_status from orders WHERE buyer_id = " . $this->regID . " order by order_status asc, order_dnt desc";
+        $this->orderList = $ndb->getSelectTable($sql);
+    }
+
+
 }
 
 ?>

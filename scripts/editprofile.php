@@ -1,6 +1,7 @@
 <?php
 $path = $_SERVER['DOCUMENT_ROOT'];
 include ($path.'/internal.php');
+//$user = new User();
 $user = $_SESSION['user'];
 
 $db = new DbCon();
@@ -80,13 +81,13 @@ if (!empty($_POST['submitPass']))
 	$upPass = 0;
 	$curpass = $db->escapeString(md5($_POST["password"]));
 	$newpass = $db->escapeString(md5($_POST["newpassword"]));
-	$dbpass = $db->escapeString($user->password);
+	$dbpass = $db->escapeString($user->getPassword());
 
 	if($dbpass == $curpass && $curpass != $newpass)
 	{
 		$arr['password'] = $newpass;
 		$upPass = $db->runUpdateRecord('account', $arr, $clause);
-		$_SESSION['user']->password = $db->getScalar('select password from account where '. $clause);
+		$_SESSION['user']->setPassword($db->getScalar('select password from account where '. $clause));
 	}
 
 	$edited = 1;
