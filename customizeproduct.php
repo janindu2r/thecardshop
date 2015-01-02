@@ -34,31 +34,13 @@ $seller->getCategories();
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
 	<head>
-        <script src="/js/ajax/variations.js" ></script>
         <?php include('/header.php'); ?>
+<!-- *****************************    Add Page Edits Below   **************************** -->
 
-        <script>
-
-            var  i = <?php echo $varCount ?> ;
-            function addVariation(){
-                if(i< 10) {
-                    var val = document.getElementsByName('categories')[i].value;
-                    var cat = document.getElementsByName('category')[i].value;
-                    if (val != "")
-                        cat = " | " + cat;
-                    document.getElementsByName('categories')[0].value = document.getElementsByName('categories')[0].value + cat;
-                    i++;
-                }
-                else
-                    alert('You cannot add more than 10 variations per product.')
-            }
-        </script>
-<!-- *****************************    Add Page Edits Below   **************************** -->    
-<div class="container" id="dasboard-page-body">
+        <div class="container" id="dasboard-page-body">
     <div class="row">
         <div class="col-md-2">
             <ul class="nav nav-pills nav-stacked admin-menu">
-
                 <li class="active"><a href="#" data-target-id="home"><i class="fa fa-tasks fa-fw"></i>Edit Product</a></li>
                 <?php if($vir) { ?>
                 <li><a href="#" data-target-id="products"><i class="fa fa-dropbox fa-fw"></i>Virtual</a></li>
@@ -70,6 +52,7 @@ $seller->getCategories();
                     <?php } //variation end
                 } //physical end ?>
                 <li><a href="#" data-target-id="charts"><i class="fa fa-pencil fa-fw"></i>Gallery</a></li>
+                <li><a href="#" data-target-id="widgets"><i class="fa fa-home fa-fw"></i>View Product</a></li>
             </ul>
         </div>
 
@@ -275,6 +258,7 @@ $seller->getCategories();
                                 </div>
                                 <!--    <div role="tabpanel" class="tab-pane" id="messages">...</div>
                                     <div role="tabpanel" class="tab-pane" id="settings">...</div> -->
+                            </form>
                             </div>
 
                         </div>
@@ -285,9 +269,7 @@ $seller->getCategories();
         </div> <!-- /.end of tab page -->
         <!-- End of Physical -->
 
-        <?php
-
-            if ($var) { ?>
+        <?php  if ($var) { ?>
         <!-- Variations -->
         <div class="col-md-8 admin-content" id="pages">
             <div class="panel panel-default">
@@ -297,13 +279,12 @@ $seller->getCategories();
                 <div class="panel-body">
                     <div role="tabpanel">
                         <!-- Tab panes -->
-                        <div class="tab-content col-md-6 col-md-offset-3">
+                        <div class="tab-content col-md-12">
                             <div role="tabpanel" class="tab-pane active" id="addProduct">
 
                                 <div class="panel-body">
-
+                                    <div id="var-collection">
                                  <?php if($varCount) {
-                                     echo '<hr>';
                                      foreach($custProd->varIdNames as $key => $val) {
 
                                          $variationString = '';
@@ -311,36 +292,42 @@ $seller->getCategories();
                                          {
                                              $variationString .= ' | '. $varVl;
                                          }
-                                            $variationString =  substr($variationString, 2);
+                                            $variationString =  substr($variationString, 3);
 
                                          ?>
+                                    <div class="col-sm-6"><div class="col-item" style="padding: 10px; margin-top: 10px;">
                                          <div class="form-group">
                                             <div class="form-group">
                                                 <label for="#">Variation Name</label>
-                                                <input type="text" value="<?php  echo $val ?>" class="form-control" id="" placeholder="Variation Name" contenteditable="false">
+                                                <input type="text" value="<?php  echo $val ?>" class="form-control" id="" placeholder="Variation Name" disabled>
                                             </div>
                                             <div class="form-group">
                                                 <label for="#">Variation Values</label>
-                                                    <textarea class="form-control" id="textarea" name="var_values[<?php echo $key ?>]" placeholder="Add Variation Values"><?php  echo $variationString; ?></textarea>
+                                                    <textarea class="form-control" id="new_var_values_<?php  echo $key ?>" placeholder="Add Variation Values"><?php  echo $variationString; ?></textarea>
                                             </div>
+                                             <div class="form-group">
+                                                 <a id="<?php echo $key ?>" class="save-variation btn btn-primary btn-success"><span class="glyphicon glyphicon-floppy-disk"></span> Add</a>
+                                             </div>
                                         </div>
-                                         <hr>
+                                        </div></div>
 
-                               <?php      }
-                                 } ?>
-
-
-                                    <div class="form-group">
+                               <?php      } } ?>
+                                    </div> </div>
+                                    <div class="form-group col-md-8 col-md-offset-2" style="margin-top: 20px">
                                         <div class="form-group">
                                             <label for="#">Variation Name</label>
-                                            <input type="text" name="var_name" class="form-control" id="" placeholder="Variation Name">
+                                            <input type="text" class="form-control" id="var_name" placeholder="Add New Variation Name">
                                         </div>
                                         <div class="form-group">
                                             <label for="#">Variation Values</label>
-                                                <textarea class="form-control" id="textarea" name="var_values" placeholder="Add Variation Values"></textarea>
+                                                <textarea class="form-control" id="var_values" placeholder="Add Variation Values"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                        <button id="add-variation" class="btn btn-primary btn-success"><span class="glyphicon glyphicon-floppy-disk"></span> Add</button>
                                         </div>
                                     </div>
-                                </div>
+
+
                                 <!--    <div role="tabpanel" class="tab-pane" id="messages">...</div>
                                     <div role="tabpanel" class="tab-pane" id="settings">...</div> -->
                             </div>
@@ -391,6 +378,12 @@ $seller->getCategories();
         </div> <!-- /.end of tab page -->
         <!-- End of Product Gallery -->
 
+        <!-- View Product -->
+        <div class="col-md-8 admin-content" id="widgets">
+            <a href="/viewproduct.php?product=<?php echo $custProd->prodId ?>">View Product</a>
+        </div> <!-- /.end of tab page -->
+        <!-- End of View Product -->
+
     </div>
 </div>
 <!-- //////JavaScript for browsing tab pages////// -->
@@ -406,13 +399,76 @@ $seller->getCategories();
     navItems.click(function(e)
     {
         e.preventDefault();
-        navListItems.removeClass('active');
-        $(this).closest('li').addClass('active');
-        
-        allWells.hide();
         var target = $(this).attr('data-target-id');
-        $('#' + target).show();
+        if(target == 'widgets')
+            window.location.href = '/viewproduct.php?product=<?php echo $custProd->prodId ?>';
+        else {
+            navListItems.removeClass('active');
+            $(this).closest('li').addClass('active');
+
+            allWells.hide();
+
+            $('#' + target).show();
+        }
     });
+
+
+<?php if($var)   { ?>
+    $('#add-variation').click(function() {
+        var varObj = {};
+        varObj['prodId'] = '<?php echo $custProd->prodId ?>';
+        varObj['varName'] = $("#var_name").val();
+        varObj['varValues'] = $("#var_values").val();
+        $.ajax({
+            type: "POST",
+            url: "/scripts/addvariations.php",
+            data: varObj,
+            cache: false,
+            success: function(result){
+                alert(result);
+                var vItem = JSON.parse(result);
+                if(vItem.success == 1)
+                {
+                    $("#var_name").val('');
+                    $("#var_values").val('');
+                    $("#var-collection").append(vItem.nContent);
+                }
+                else
+                    alert('Adding Variation Failed. Please refresh and try again!');
+            }
+        });
+    });
+
+    $('.save-variation').click(function() {
+        var varObj = {};
+        varObj['prodId'] = '<?php echo $custProd->prodId ?>';
+        varObj['varId'] = this.id.toString();
+        var textAr = document.getElementById("new_var_values_"+ this.id);
+        varObj['varValues'] = textAr.value;
+
+       $.ajax({
+            type: "POST",
+            url: "/scripts/savevariations.php",
+            data: varObj,
+            cache: false,
+            success: function(result){
+                alert(result);
+                var vItem = JSON.parse(result);
+                if(vItem.success == 1)
+                {
+                    if(vItem.changed)
+                        textAr.value = vItem.changed;
+                    else
+                        textAr.value = '';
+                }
+                else
+                    alert('Error in processing. Refresh and try again!');
+            }
+        });
+    });
+
+
+<?php } ?>
 
 });
 </script>
