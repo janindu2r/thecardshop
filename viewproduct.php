@@ -89,6 +89,7 @@ $title = $viewProd->proName. ' | Comercio' ;  // page title
 
                     <div>
                             <?php   if($viewProd->variation) {
+                                if($viewProd->varIdNames){
                                 echo '<h4>Variations</h4><table>';
                                 foreach($viewProd->varIdNames as $key => $val)
                                 {
@@ -100,7 +101,7 @@ $title = $viewProd->proName. ' | Comercio' ;  // page title
                                     }
                                     echo  '</select></td></tr>';
                                 }
-                                echo '</table>';   }   ?>
+                                echo '</table>';   }}   ?>
                     </div>
 
 					<div class="product-stock">

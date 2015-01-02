@@ -18,6 +18,14 @@ $custProd = $custProd->returnProduct($prodId);
 $vir = $custProd->virtual;
 $var = $custProd->variation;
 
+$varCount = 0;
+if ($var) {
+    $custProd = new Variation();
+    $custProd = $custProd->selectPhysicalProduct($prodId);
+    $custProd->getAllVariations($prodId);
+    $varCount = sizeof($custProd->varIdNames);
+}
+
 $seller = new Seller($custProd->shopId);
 $seller->getCategories();
 
@@ -26,9 +34,25 @@ $seller->getCategories();
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
 	<head>
+        <script src="/js/ajax/variations.js" ></script>
         <?php include('/header.php'); ?>
 
+        <script>
 
+            var  i = <?php echo $varCount ?> ;
+            function addVariation(){
+                if(i< 10) {
+                    var val = document.getElementsByName('categories')[i].value;
+                    var cat = document.getElementsByName('category')[i].value;
+                    if (val != "")
+                        cat = " | " + cat;
+                    document.getElementsByName('categories')[0].value = document.getElementsByName('categories')[0].value + cat;
+                    i++;
+                }
+                else
+                    alert('You cannot add more than 10 variations per product.')
+            }
+        </script>
 <!-- *****************************    Add Page Edits Below   **************************** -->    
 <div class="container" id="dasboard-page-body">
     <div class="row">
@@ -40,7 +64,7 @@ $seller->getCategories();
                 <li><a href="#" data-target-id="products"><i class="fa fa-dropbox fa-fw"></i>Virtual</a></li>
                 <?php } else { ?>
                     <li><a href="#" data-target-id="settings"><i class="fa fa-dropbox fa-fw"></i>Physical</a></li>
-                    <?php $var = 0; // until variation implementation
+                    <?php
                     if ($var) { ?>
                         <li><a href="#" data-target-id="pages"><i class="fa fa-book fa-fw"></i>Variation</a></li>
                     <?php } //variation end
@@ -262,7 +286,7 @@ $seller->getCategories();
         <!-- End of Physical -->
 
         <?php
-            $var = 0; //until variation products implementation
+
             if ($var) { ?>
         <!-- Variations -->
         <div class="col-md-8 admin-content" id="pages">
@@ -277,82 +301,45 @@ $seller->getCategories();
                             <div role="tabpanel" class="tab-pane active" id="addProduct">
 
                                 <div class="panel-body">
-                                    <div class="form-group">
-                                    <form name="addproduct" method="POST" action="/scripts/addtoproduct.php ">
-                                    <div class="form-group">
-                                            <label for="#">Product Name</label>
-                                            <input type="text" name="pro_name" class="form-control" id="" placeholder="Product Name">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="#">Price</label>
-                                        <input type="number" name="pro_price" class="form-control" id="exampleInputtext1" placeholder="Product Price">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="#">Product Tag</label>
-                                        <input type="text" name="pro_tag" class="form-control" id="exampleInputtext1" placeholder="Product Tags">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="#">Category</label>
 
-                                        <!-- <input type="text" class="form-control" id="exampleInputtext1" placeholder="john26769">-->
+                                 <?php if($varCount) {
+                                     echo '<hr>';
+                                     foreach($custProd->varIdNames as $key => $val) {
 
-                                        <select id="catId" name="category" class="form-control">
-                                            <option value="0">Select Category</option>
+                                         $variationString = '';
+                                         foreach($custProd->varNameValues[$val] as $varVl)
+                                         {
+                                             $variationString .= ' | '. $varVl;
+                                         }
+                                            $variationString =  substr($variationString, 2);
 
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="form-group">
-                                            <label class=" control-label" for="radios">Variations </label>
-                                            <div class="">
-                                                <label class="radio-inline" for="radios-0">
-                                                    <input type="radio" name="var" id="radios-0" value="1" checked="checked">
-                                                    Yes
-                                                </label>
-                                                <label class="radio-inline" for="radios-1">
-                                                    <input type="radio" name="var" id="radios-1" value="0">
-                                                    No
-                                                </label>
+                                         ?>
+                                         <div class="form-group">
+                                            <div class="form-group">
+                                                <label for="#">Variation Name</label>
+                                                <input type="text" value="<?php  echo $val ?>" class="form-control" id="" placeholder="Variation Name" contenteditable="false">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="#">Variation Values</label>
+                                                    <textarea class="form-control" id="textarea" name="var_values[<?php echo $key ?>]" placeholder="Add Variation Values"><?php  echo $variationString; ?></textarea>
                                             </div>
                                         </div>
+                                         <hr>
+
+                               <?php      }
+                                 } ?>
+
+
+                                    <div class="form-group">
                                         <div class="form-group">
-                                            <label class=" control-label" for="radios">Virtual </label>
-                                            <div class="">
-                                                <label class="radio-inline" for="radios-0">
-                                                    <input type="radio" name="vir" id="radios-0" value="1" checked="checked">
-                                                    Yes
-                                                </label>
-                                                <label class="radio-inline" for="radios-1">
-                                                    <input type="radio" name="vir" id="radios-1" value="0">
-                                                    No
-                                                </label>
-                                            </div>
+                                            <label for="#">Variation Name</label>
+                                            <input type="text" name="var_name" class="form-control" id="" placeholder="Variation Name">
                                         </div>
                                         <div class="form-group">
-                                            <label for="#">Product description</label>
-                                            <textarea class="form-control" id="textarea" name="description" placeholder="Add product description"></textarea>
+                                            <label for="#">Variation Values</label>
+                                                <textarea class="form-control" id="textarea" name="var_values" placeholder="Add Variation Values"></textarea>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="#">Selling Unit</label>
-                                            <input type="text" name="sel_unit" class="form-control" id="exampleInputtext1" placeholder="No of items in one package/shipment">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="#">Stock</label>
-                                            <input type="number" name="stock" class="form-control" id="exampleInputEmail1" placeholder="Add the stock amount of product">
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label" for="fileUpload">Upload Image</label>
-                                            <div class="#">
-                                                <input id="fileUpload" name="prodimg" class="input-file" type="file">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="submit" class="btn btn-primary btn-success" id="exampleSubmit" value="Add">
-                                            <input type="reset" class="btn btn-primary btn-danger" id="exampleSubmit" value="Discard">
-                                        </div>
-                                    </div> <!-- form group -->
-                                    </form>
-                                </div>
+                                    </div>
                                 </div>
                                 <!--    <div role="tabpanel" class="tab-pane" id="messages">...</div>
                                     <div role="tabpanel" class="tab-pane" id="settings">...</div> -->
