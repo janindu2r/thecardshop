@@ -27,7 +27,7 @@ if( $msg->sendMail($to, 'Testing Email Generation', $subj, $message))
 else
 	echo 'Not successful';
 ;
-
+z
 
 
 

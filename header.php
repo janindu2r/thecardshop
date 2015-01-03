@@ -63,16 +63,6 @@
 						  echo '<li><a href="/categories.php?id='.$row['category_id'].'">'.$row['category_name'].'</a></li>';
 					  }
 					  ?>
-					  <li class="divider"></li>
-		            <li><a href="/register.php">Register</a></li>
-		            <li><a href="/viewproduct.php">Single Product</a></li>
-		            <li><a href="/admin.php">Admin</a></li>
-		            <li class="divider"></li>
-		            <li><a href="/registershop.php">Register Shop</a></li>
-		            <li class="divider"></li>
-		            <li><a href="/registershop.php">Reg Shop</a></li>
-		            <li><a href="/viewshop.php">Shop</a></li>
-		            <li><a href="/checkout.php">Checkout</a></li>
 		          </ul>
 		        </li>
 		      </ul>

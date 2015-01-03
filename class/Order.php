@@ -1,4 +1,9 @@
 <?php
+/* Order Class
+by: JK;
+*/
+
+
 class Order
 {
 
@@ -16,7 +21,7 @@ class Order
     public $total;
     public $billingAd = array();
     public $shippingAd = array();
-    private  $db;
+    private $db;
     public $dateTime;
 
 

@@ -13,7 +13,7 @@ function validateShopForm() {
         alert("please enter a product tag which has less than 50 characters");
     }
     else if (document.addproduct.category.selectedIndex == 0) {
-        alert("please select the category Id");
+        alert("please select the category");
     }
     else if (!(document.addproduct.var[0].checked || document.addproduct.var[1].checked)) {
         alert("please select a button for variations");
@@ -45,11 +45,6 @@ function funcValidateShopReg() {
     else if (document.regShop.city.selectedIndex == 0) {
 
         alert("please select a location");
-        return false;
-    }
-    else if (document.regShop.category.selectedIndex == 0) {
-
-        alert("please select a category");
         return false;
     }
     else if (document.regShop.payment.value.length == 0) {

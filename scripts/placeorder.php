@@ -1,4 +1,8 @@
 <?php
+/* Order Placing Script
+by: JK
+*/
+
 
 include($_SERVER['DOCUMENT_ROOT'].'/internal.php');
 
@@ -32,6 +36,7 @@ if($_SESSION) {
         }
     }
 }
+
 
 if($id == 0)
     header('location: /index.php');

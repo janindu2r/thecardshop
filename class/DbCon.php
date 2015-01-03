@@ -31,9 +31,10 @@ class DbCon
 	/* Pass sql string as parameter, run query, return affected rows */
 	function runNonQuery($sqlstring)
 	{
+
 		$result = $this->con->prepare($sqlstring);
-		$sucess = $result->execute();
-		if($sucess)
+		$success = $result->execute();
+		if($success)
 			return $result->rowCount();
 		else
 			return 0;

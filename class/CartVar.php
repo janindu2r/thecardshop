@@ -1,8 +1,5 @@
 <?php
-/* Cart Variable Class 
-created: 2014-12-01
-by : JK;
-lastEdited: 2014-12-01
+/* Cart Variable Class
 by: JK;
 */
 

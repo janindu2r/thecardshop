@@ -18,6 +18,14 @@ $custProd = $custProd->returnProduct($prodId);
 $vir = $custProd->virtual;
 $var = $custProd->variation;
 
+$varCount = 0;
+if ($var) {
+    $custProd = new Variation();
+    $custProd = $custProd->selectPhysicalProduct($prodId);
+    $custProd->getAllVariations($prodId);
+    $varCount = sizeof($custProd->varIdNames);
+}
+
 $seller = new Seller($custProd->shopId);
 $seller->getCategories();
 
@@ -27,24 +35,24 @@ $seller->getCategories();
 <html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
 	<head>
         <?php include('/header.php'); ?>
+<!-- *****************************    Add Page Edits Below   **************************** -->
 
-
-<!-- *****************************    Add Page Edits Below   **************************** -->    
-<div class="container" id="dasboard-page-body">
+        <div class="container" id="dasboard-page-body">
     <div class="row">
         <div class="col-md-2">
             <ul class="nav nav-pills nav-stacked admin-menu">
-
                 <li class="active"><a href="#" data-target-id="home"><i class="fa fa-tasks fa-fw"></i>Edit Product</a></li>
                 <?php if($vir) { ?>
                 <li><a href="#" data-target-id="products"><i class="fa fa-dropbox fa-fw"></i>Virtual</a></li>
                 <?php } else { ?>
                     <li><a href="#" data-target-id="settings"><i class="fa fa-dropbox fa-fw"></i>Physical</a></li>
-                    <?php if ($var) { ?>
+                    <?php
+                    if ($var) { ?>
                         <li><a href="#" data-target-id="pages"><i class="fa fa-book fa-fw"></i>Variation</a></li>
                     <?php } //variation end
                 } //physical end ?>
                 <li><a href="#" data-target-id="charts"><i class="fa fa-pencil fa-fw"></i>Gallery</a></li>
+                <li><a href="#" data-target-id="widgets"><i class="fa fa-home fa-fw"></i>View Product</a></li>
             </ul>
         </div>
 
@@ -132,7 +140,12 @@ $seller->getCategories();
         </div> <!-- /.end of tab page -->
         <!-- End of Edit Product -->
 
-        <?php if($vir) { ?>
+        <?php if($vir) {
+
+            $down_link = '';
+            $down_link = $custProd->db->getScalar('select download_link from virtual where prod_id = ' . $custProd->prodId);
+
+            ?>
         <!-- Virtual -->
         <div class="col-md-8 admin-content" id="products">
             <div class="panel panel-default">
@@ -150,18 +163,18 @@ $seller->getCategories();
                                 <div class="panel-body">
                                     <div class="form-group">
 
-                                        <form name="virtual" method="POST" action="">
-
+                                        <form name="virtual" method="POST" action="/scripts/addtovirtual.php">
+                                            <input type="hidden" name="prod_id" value="<?php echo $custProd->prodId ?>">
                                             <div class="form-group">
                                                 <label for="#">Download Link</label>
                                                 <div class="#">
-                                                    <input type="text" name="link" class="form-control" id="" placeholder="www.asd.com">
+                                                    <input type="text" name="link" class="form-control" id="" placeholder="www.asd.com" value="<?php echo $down_link?>">
                                                 </div>
                                             </div>
 
 
                                             <div class="form-group">
-                                                <input type="submit" class="btn btn-primary btn-success" id="exampleSubmit" value="Add">
+                                                <input type="submit" class="btn btn-primary btn-success" id="exampleSubmit" value="Add" name="addVirtual">
                                                 <input type="reset" class="btn btn-primary btn-danger" id="exampleSubmit" value="Discard">
                                                 <!--  <a href="#" class="btn btn-primary btn-success"><span class="glyphicon glyphicon-floppy-disk"></span> Add</a>
                                                 <a href="#" class="btn btn-primary btn-danger"><span class="glyphicon glyphicon-remove"></span>Discard</a> -->
@@ -186,7 +199,10 @@ $seller->getCategories();
 
         <?php } else { ?>
         <!-- Physical -->
-            <?php   ?>
+            <?php
+            $db = new DbCon();
+            $phy = $db->getFirstRow('select * from physical where prod_id = '. $custProd->prodId);
+            ?>
 
         <div class="col-md-8 admin-content" id="settings">
             <div class="panel panel-default">
@@ -200,44 +216,39 @@ $seller->getCategories();
                             <div role="tabpanel" class="tab-pane active" id="addProduct">
                                 <form name="physical" method="POST" action="/scripts/addtophysical.php">
                                 <div class="panel-body">
+                                    <input type="hidden" name="prod_id" value="<?php echo $custProd->prodId ?>">
                                     <div class="form-group">
                                             <label for="#">Width</label>
-                                            <input type="number" name="width" class="form-control" id="exampleInputtext1" placeholder="Product Width">
+                                            <input type="number" name="width" class="form-control" id="exampleInputtext1" placeholder="Product Width" value="<?php if($phy) echo $phy['width']?>">
                                     </div>
                                     <div class="form-group">
                                         <label for="#">Height</label>
-                                        <input type="number" name="height" class="form-control" id="exampleInputtext1" placeholder="Product Height">
+                                        <input type="number" name="height" class="form-control" id="exampleInputtext1" placeholder="Product Height" value="<?php if($phy) echo $phy['height']?>">
                                     </div>
                                     <div class="form-group">
                                         <label for="#">Weight</label>
-                                        <input type="number" name="weight" class="form-control" id="exampleInputtext1" placeholder="Product Weight">
+                                        <input type="number" name="weight" class="form-control" id="exampleInputtext1" placeholder="Product Weight" value="<?php if($phy) echo $phy['weight']?>">
                                     </div>
                                     <div class="form-group">
                                         <label for="#">Length</label>
 
-                                        <input type="number" class="form-control" id="exampleInputtext1" placeholder="Product Length">
+                                        <input type="number" name="length" class="form-control" id="exampleInputtext1" placeholder="Product Length" value="<?php if($phy) echo $phy['length']?>">
                                     </div>
                                     <div class="form-group">
                                         <label for="#">Shipping Cost</label>
 
-                                        <input type="number" name="cost" class="form-control" id="exampleInputtext1" placeholder="69">
+                                        <input type="number" name="cost" class="form-control" id="exampleInputtext1" placeholder="69" value="<?php if($phy) echo $phy['shipping_cost']?>">
                                     </div>
                                     <div class="form-group">
                                         <div class="form-group">
-                                            <label class=" control-label" for="radios">Should shipping cost be multiplied by quantity?</label>
+
                                             <div class="">
-                                                <label class="radio-inline" for="radios-0">
-                                                    <input type="radio" name="var" id="radios-0" value="1" checked="checked">
-                                                    Yes
-                                                </label>
-                                                <label class="radio-inline" for="radios-1">
-                                                    <input type="radio" name="var" id="radios-1" value="0">
-                                                    No
-                                                </label>
+                                                <input class="character-checkbox" name="mult" type="checkbox" value="" <?php if($phy && $phy['multiply_byq']) echo 'checked'?>>
+                                                Shipping cost should be multiplied by quantity
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <input type="submit"  class="btn btn-primary btn-success" name="Add" id="exampleSubmit" value="Add">
+                                            <input type="submit"  class="btn btn-primary btn-success" name="addPhysical" id="exampleSubmit" value="Add">
                                             <input type="reset"  class="btn btn-primary btn-danger" name="Discard" id="exampleSubmit" value="Discard">
                                             <!--  <a href="#" class="btn btn-primary btn-success"><span class="glyphicon glyphicon-floppy-disk"></span> Add</a>
                                             <a href="#" class="btn btn-primary btn-danger"><span class="glyphicon glyphicon-remove"></span>Discard</a> -->
@@ -247,6 +258,7 @@ $seller->getCategories();
                                 </div>
                                 <!--    <div role="tabpanel" class="tab-pane" id="messages">...</div>
                                     <div role="tabpanel" class="tab-pane" id="settings">...</div> -->
+                            </form>
                             </div>
 
                         </div>
@@ -257,7 +269,7 @@ $seller->getCategories();
         </div> <!-- /.end of tab page -->
         <!-- End of Physical -->
 
-        <?php if ($var) { ?>
+        <?php  if ($var) { ?>
         <!-- Variations -->
         <div class="col-md-8 admin-content" id="pages">
             <div class="panel panel-default">
@@ -267,87 +279,55 @@ $seller->getCategories();
                 <div class="panel-body">
                     <div role="tabpanel">
                         <!-- Tab panes -->
-                        <div class="tab-content col-md-6 col-md-offset-3">
+                        <div class="tab-content col-md-12">
                             <div role="tabpanel" class="tab-pane active" id="addProduct">
 
                                 <div class="panel-body">
-                                    <div class="form-group">
-                                    <form name="addproduct" method="POST" action="/scripts/addtoproduct.php ">
-                                    <div class="form-group">
-                                            <label for="#">Product Name</label>
-                                            <input type="text" name="pro_name" class="form-control" id="" placeholder="Product Name">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="#">Price</label>
-                                        <input type="number" name="pro_price" class="form-control" id="exampleInputtext1" placeholder="Product Price">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="#">Product Tag</label>
-                                        <input type="text" name="pro_tag" class="form-control" id="exampleInputtext1" placeholder="Product Tags">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="#">Category</label>
+                                    <div id="var-collection">
+                                 <?php if($varCount) {
+                                     foreach($custProd->varIdNames as $key => $val) {
 
-                                        <!-- <input type="text" class="form-control" id="exampleInputtext1" placeholder="john26769">-->
+                                         $variationString = '';
+                                         foreach($custProd->varNameValues[$val] as $varVl)
+                                         {
+                                             $variationString .= ' | '. $varVl;
+                                         }
+                                            $variationString =  substr($variationString, 3);
 
-                                        <select id="catId" name="category" class="form-control">
-                                            <option value="0">Select Category</option>
+                                         ?>
+                                    <div class="col-sm-6"><div class="col-item" style="padding: 10px; margin-top: 10px;">
+                                         <div class="form-group">
+                                            <div class="form-group">
+                                                <label for="#">Variation Name</label>
+                                                <input type="text" value="<?php  echo $val ?>" class="form-control" id="" placeholder="Variation Name" disabled>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="#">Variation Values</label>
+                                                    <textarea class="form-control" id="new_var_values_<?php  echo $key ?>" placeholder="Add Variation Values"><?php  echo $variationString; ?></textarea>
+                                            </div>
+                                             <div class="form-group">
+                                                 <a id="<?php echo $key ?>" class="save-variation btn btn-primary btn-success"><span class="glyphicon glyphicon-floppy-disk"></span> Add</a>
+                                             </div>
+                                        </div>
+                                        </div></div>
 
-                                        </select>
+                               <?php      } } ?>
+                                    </div> </div>
+                                    <div class="form-group col-md-8 col-md-offset-2" style="margin-top: 20px">
+                                        <div class="form-group">
+                                            <label for="#">Variation Name</label>
+                                            <input type="text" class="form-control" id="var_name" placeholder="Add New Variation Name">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="#">Variation Values</label>
+                                                <textarea class="form-control" id="var_values" placeholder="Add Variation Values"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                        <button id="add-variation" class="btn btn-primary btn-success"><span class="glyphicon glyphicon-floppy-disk"></span> Add</button>
+                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                        <div class="form-group">
-                                            <label class=" control-label" for="radios">Variations </label>
-                                            <div class="">
-                                                <label class="radio-inline" for="radios-0">
-                                                    <input type="radio" name="var" id="radios-0" value="1" checked="checked">
-                                                    Yes
-                                                </label>
-                                                <label class="radio-inline" for="radios-1">
-                                                    <input type="radio" name="var" id="radios-1" value="0">
-                                                    No
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class=" control-label" for="radios">Virtual </label>
-                                            <div class="">
-                                                <label class="radio-inline" for="radios-0">
-                                                    <input type="radio" name="vir" id="radios-0" value="1" checked="checked">
-                                                    Yes
-                                                </label>
-                                                <label class="radio-inline" for="radios-1">
-                                                    <input type="radio" name="vir" id="radios-1" value="0">
-                                                    No
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="#">Product description</label>
-                                            <textarea class="form-control" id="textarea" name="description" placeholder="Add product description"></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="#">Selling Unit</label>
-                                            <input type="text" name="sel_unit" class="form-control" id="exampleInputtext1" placeholder="No of items in one package/shipment">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="#">Stock</label>
-                                            <input type="number" name="stock" class="form-control" id="exampleInputEmail1" placeholder="Add the stock amount of product">
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label" for="fileUpload">Upload Image</label>
-                                            <div class="#">
-                                                <input id="fileUpload" name="prodimg" class="input-file" type="file">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="submit" class="btn btn-primary btn-success" id="exampleSubmit" value="Add">
-                                            <input type="reset" class="btn btn-primary btn-danger" id="exampleSubmit" value="Discard">
-                                        </div>
-                                    </div> <!-- form group -->
-                                    </form>
-                                </div>
-                                </div>
+
+
                                 <!--    <div role="tabpanel" class="tab-pane" id="messages">...</div>
                                     <div role="tabpanel" class="tab-pane" id="settings">...</div> -->
                             </div>
@@ -398,6 +378,12 @@ $seller->getCategories();
         </div> <!-- /.end of tab page -->
         <!-- End of Product Gallery -->
 
+        <!-- View Product -->
+        <div class="col-md-8 admin-content" id="widgets">
+            <a href="/viewproduct.php?product=<?php echo $custProd->prodId ?>">View Product</a>
+        </div> <!-- /.end of tab page -->
+        <!-- End of View Product -->
+
     </div>
 </div>
 <!-- //////JavaScript for browsing tab pages////// -->
@@ -413,13 +399,76 @@ $seller->getCategories();
     navItems.click(function(e)
     {
         e.preventDefault();
-        navListItems.removeClass('active');
-        $(this).closest('li').addClass('active');
-        
-        allWells.hide();
         var target = $(this).attr('data-target-id');
-        $('#' + target).show();
+        if(target == 'widgets')
+            window.location.href = '/viewproduct.php?product=<?php echo $custProd->prodId ?>';
+        else {
+            navListItems.removeClass('active');
+            $(this).closest('li').addClass('active');
+
+            allWells.hide();
+
+            $('#' + target).show();
+        }
     });
+
+
+<?php if($var)   { ?>
+    $('#add-variation').click(function() {
+        var varObj = {};
+        varObj['prodId'] = '<?php echo $custProd->prodId ?>';
+        varObj['varName'] = $("#var_name").val();
+        varObj['varValues'] = $("#var_values").val();
+        $.ajax({
+            type: "POST",
+            url: "/scripts/addvariations.php",
+            data: varObj,
+            cache: false,
+            success: function(result){
+                alert(result);
+                var vItem = JSON.parse(result);
+                if(vItem.success == 1)
+                {
+                    $("#var_name").val('');
+                    $("#var_values").val('');
+                    $("#var-collection").append(vItem.nContent);
+                }
+                else
+                    alert('Adding Variation Failed. Please refresh and try again!');
+            }
+        });
+    });
+
+    $('.save-variation').click(function() {
+        var varObj = {};
+        varObj['prodId'] = '<?php echo $custProd->prodId ?>';
+        varObj['varId'] = this.id.toString();
+        var textAr = document.getElementById("new_var_values_"+ this.id);
+        varObj['varValues'] = textAr.value;
+
+       $.ajax({
+            type: "POST",
+            url: "/scripts/savevariations.php",
+            data: varObj,
+            cache: false,
+            success: function(result){
+                alert(result);
+                var vItem = JSON.parse(result);
+                if(vItem.success == 1)
+                {
+                    if(vItem.changed)
+                        textAr.value = vItem.changed;
+                    else
+                        textAr.value = '';
+                }
+                else
+                    alert('Error in processing. Refresh and try again!');
+            }
+        });
+    });
+
+
+<?php } ?>
 
 });
 </script>

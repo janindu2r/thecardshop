@@ -1,4 +1,8 @@
 <?php
+/* Email Class
+by: JK;
+*/
+
 
 class Email
 {

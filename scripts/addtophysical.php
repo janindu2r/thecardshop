@@ -5,51 +5,56 @@ include ($path.'/internal.php');
 
 $db = new DbCon();
 $obj = new Physical();
-//$obj = $obj->selectPhysicalProduct($_POST["prod_id"]);
 
 $arr = null;
 
 $res = 0;
-if (!empty($_POST['add']))
-{
-    if($obj->width != $_POST["width"])
-    {
+$new = 0;
+if (!empty($_POST['addPhysical'])) {
+    if ($db->getScalar('select count(prod_id) from physical where prod_id = ' . $_POST["prod_id"])) {
+        $obj = $obj->selectPhysicalProduct($_POST["prod_id"]);
+        if ($obj->width != $_POST["width"])
+            $arr['width'] = $db->escapeString($_POST["width"]);
+        if ($obj->height != $_POST["height"])
+            $arr['height'] = $db->escapeString($_POST["height"]);
+        if ($obj->length != $_POST["length"])
+            $arr['length'] = $db->escapeString($_POST["length"]);
+        if ($obj->weight != $_POST["weight"])
+            $arr['weight'] = $db->escapeString($_POST["weight"]);
+        if ($obj->shipCst != $_POST["cost"])
+            $arr['shipping_cost'] = $db->escapeString($_POST["cost"]);
+
+        if (isset($_POST['mult']))
+            $arr['multiply_byq'] = $db->escapeString('1');
+        else
+            $arr['multiply_byq'] = $db->escapeString('0');
+
+        $clause = "prod_id = " . $obj->prodId;
+
+        if ($arr != null)
+            $res = $db->runUpdateRecord('physical', $arr, $clause);
+
+            header('location: /customizeproduct.php?product=' . $obj->prodId . '&success=' . $res);
+    }
+    else {
+        $arr['prod_id'] = $db->escapeString($_POST["prod_id"]);
         $arr['width'] = $db->escapeString($_POST["width"]);
-    }
-    if($obj->height != $_POST["height"])
-    {
         $arr['height'] = $db->escapeString($_POST["height"]);
-    }
-    if($obj->length != $_POST["length"])
-    {
         $arr['length'] = $db->escapeString($_POST["length"]);
-    }
-    if($obj->weight != $_POST["weight"])
-    {
         $arr['weight'] = $db->escapeString($_POST["weight"]);
-    }
-    if($obj->shipCst != $_POST["cost"])
-    {
         $arr['shipping_cost'] = $db->escapeString($_POST["cost"]);
-    }
-    if($obj->multiByq != $_POST["var"])
-    {
-        $arr['multiply_byq'] = $db->escapeString($_POST["var"]);
-    }
-    $clause = "prod_id = ". $obj->prodId;
-    if($arr != null)
-        $res = $db->runUpdateRecord('physical',$arr, $clause);
-    if($res)
-    {
-        header('location: /admin.php?product='.$obj->prodId);
+
+        if (isset($_POST['mult']))
+            $arr['multiply_byq'] = $db->escapeString('1');
+        else
+            $arr['multiply_byq'] = $db->escapeString('0');
+
+        $new = $db->runInsertRecord("physical", $arr);
+
+            header('location: /customizeproduct.php?product=' . $obj->prodId . '&success=' . $new);
     }
 }
-else
-    $new = $db->runInsertRecord("physical",$arr);
-if($new)
-{
-    echo "successfull";
-}
+
 
 
 ?>

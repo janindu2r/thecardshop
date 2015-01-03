@@ -1,4 +1,8 @@
 <?php
+/* Order Variable Class
+by: JK;
+*/
+
 class OrderVar extends CartVar
 {
     public $orderId;

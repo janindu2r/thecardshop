@@ -89,6 +89,7 @@ $title = $viewProd->proName. ' | Comercio' ;  // page title
 
                     <div>
                             <?php   if($viewProd->variation) {
+                                if($viewProd->varIdNames){
                                 echo '<h4>Variations</h4><table>';
                                 foreach($viewProd->varIdNames as $key => $val)
                                 {
@@ -100,7 +101,7 @@ $title = $viewProd->proName. ' | Comercio' ;  // page title
                                     }
                                     echo  '</select></td></tr>';
                                 }
-                                echo '</table>';   }   ?>
+                                echo '</table>';   }}   ?>
                     </div>
 
 					<div class="product-stock">
@@ -145,16 +146,16 @@ $title = $viewProd->proName. ' | Comercio' ;  // page title
 						
 					</ul>
 					<div id="myTabContent" class="tab-content">
-						<div class="tab-pane fade in active" id="service-one">
+						<div class="tab-pane fade in active" id="service-one" style="color:##000000;" >
 						 
-							<section class="container product-info">
+							<section class="container product-info" style="color:#000000;">
 
-                                <p>Product By <b><?php echo $viewProd->getShopName() ?></b>
+                                <p style="color:#000000;">Product By <b><?php echo $viewProd->getShopName() ?></b>
                                 <a href="/viewshop.php?shop=<?php echo $viewProd->shopId?>" type="button" class="btn btn-success">
                                     Visit Shop
                                 </a> </p>
 
-                               <p> <?php echo $viewProd->description ?> </p>
+                               <p style="color:#000000;"> <?php echo $viewProd->description ?> </p>
 
                                 <?php if(!$viewProd->virtual) {  ?>
                                     <?php if($viewProd->width)

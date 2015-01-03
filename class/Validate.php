@@ -1,4 +1,9 @@
 <?php
+/* Validate Class
+by: bmla
+*/
+
+
 
 class Validate
 {

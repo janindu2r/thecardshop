@@ -1,9 +1,6 @@
 <?php
-/* Cart Products Class 
-created: 2014-12-01
+/* Cart Products Class
 by : JK;
-lastEdited: 2014-12-01
-by: JK;
 */
 
 class CartProd{

@@ -1,10 +1,6 @@
-<?php 
-/*
-product class
-
- last-Edited-on 2014-12-2
- by bmla
-
+<?php
+/* Product Class
+by: Bmla & JK
 */
 class Product
 {

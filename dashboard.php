@@ -5,6 +5,8 @@ include('/overhead.php');
 if($logged != 1)
     header('location: /index.php');
 
+$user->renewOrderList();
+
 /*
 if($_GET)
 {
@@ -164,10 +166,10 @@ $title = 'Dashboard | Comercio'  ;  // page title
             <tbody>
 
             <?php
-            $buyer = new Buyer($user->getRegID());
 
-            if($buyer->ordList) {
-                foreach ($buyer->ordList as $row) { ?>
+
+            if($user->orderList) {
+                foreach ($user->orderList as $row) { ?>
 
                     <tr>
                         <td><?php echo $row['order_id'] ?></a></td>
