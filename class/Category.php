@@ -1,5 +1,7 @@
 <?php
-
+/*
+ created by Bmla
+ */
 class Category{
     private $db;
 

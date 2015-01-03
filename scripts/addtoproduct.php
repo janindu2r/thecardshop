@@ -1,4 +1,7 @@
 <?php
+/*
+ created by  JK & JK
+ */
 $root = $_SERVER['DOCUMENT_ROOT'];
 include ($root.'/internal.php');
 

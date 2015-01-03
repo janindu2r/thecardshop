@@ -1,5 +1,7 @@
 <?php
-
+/*
+ created by  Bmla
+ */
 $path = $_SERVER['DOCUMENT_ROOT'];
 include ($path.'/internal.php');
 

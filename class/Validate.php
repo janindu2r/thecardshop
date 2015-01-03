@@ -51,31 +51,7 @@ class Validate
 
 
 
-    /*
 
-    public static function validInt($val)
-    {
-        if (!preg_match("/{5}/", $val) === 0) ;
-            echo "Enter a number with less than 5 digits" . "<br>";
-    }
-
-    public static function validNumber($val)
-    {
-        if (!preg_match("/[0-9]/", $val) === 0) ;
-        echo "Enter a valid number" . "<br>";
-    }
-
-    public static function longText($txtAreaString)
-    {
-        //including apostrophes
-        return $txtAreaString;
-    }
-
-    public static function validateDecimal($val)
-    {
-        //float numbers to be truncated to two decimal points
-        return $val;
-    } */
 
 }
 

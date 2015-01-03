@@ -93,11 +93,7 @@ class Product
 	}
 
 
-	public function deleteAll()
-	{
-		$del = $this->db->runNonQuery("update products set deleted = '1' where deleted = '0'");
-		return $del;
-	}
+
 
 
 	public function updateProduct(array $setValue, $wheres)

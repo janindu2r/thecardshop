@@ -18,7 +18,7 @@ echo $success->proName."<br>";
 
 //deleting a record
 $delRecord = new product();
-$success = $delRecord->deleteProduct(7);
+$success = $delRecord->deleteProduct(1000015);
 if($success == 1)
 {
 echo "yeah we removed"."<br>";
@@ -56,15 +56,8 @@ else
 
 echo "not working"."<br>";
 
-//delete all
-$delAll = new Product();
-$flag = $delAll->deleteAll();
-if($flag == 1)
-{
-echo "done"."<br>";	
-}
-else
-echo " couldnt "."<br>";
+
+
 
 
 //calling the getProductId function
