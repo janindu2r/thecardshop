@@ -82,7 +82,7 @@ class DbCon
 	/*-------- Insert related functions --------*/
 		
 	/* Private Function : create insert sql statement  */
-    public function getInsertSql($tableName, $fields) 
+    private function getInsertSql($tableName, $fields)
 	{	
 		$dbfields ="";
 		$dbvalues = "";	
@@ -122,7 +122,7 @@ class DbCon
 	
 	
 	/* Private Function : update sql statement  */    
-	public function getUpdateSql($tableName, $setValues, $whereClause )
+	private function getUpdateSql($tableName, $setValues, $whereClause )
 	{
 		$dbSetVals = "";
 		
