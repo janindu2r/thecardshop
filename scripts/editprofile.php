@@ -1,4 +1,9 @@
 <?php
+/*
+	Edit profile script
+	Author : Aslam
+*/
+
 $path = $_SERVER['DOCUMENT_ROOT'];
 include ($path.'/internal.php');
 //$user = new User();

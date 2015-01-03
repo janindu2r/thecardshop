@@ -1,4 +1,9 @@
 <?php
+/*
+	Comments loading script
+	Author : Aslam
+*/
+
 //include($_SERVER['DOCUMENT_ROOT']."/class/dbcon.php");
 
 $db = new DbCon();

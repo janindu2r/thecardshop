@@ -1,4 +1,8 @@
 <?php
+/*
+	Comments saving script
+	Author : Aslam
+*/
 
 include($_SERVER['DOCUMENT_ROOT']."/internal.php");
 

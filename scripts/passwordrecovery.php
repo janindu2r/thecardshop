@@ -1,6 +1,6 @@
 <?php
 /*
-	Registration script
+	Password recovery script
 	author: Aslam
 	Date: 2014/11/14
 */
