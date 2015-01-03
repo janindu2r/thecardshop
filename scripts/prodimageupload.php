@@ -1,8 +1,6 @@
 <?php
 /*
-	Registration script
-	author: Aslam
-	Date: 2014/11/14
+
 */
 
 $root = $_SERVER['DOCUMENT_ROOT'];

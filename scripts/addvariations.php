@@ -1,4 +1,9 @@
 <?php
+/* Variation Adding Script
+by: JK
+*/
+
+
 $path = $_SERVER['DOCUMENT_ROOT'];
 include($path.'/internal.php');
 

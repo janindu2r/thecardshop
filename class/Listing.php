@@ -1,4 +1,9 @@
 <?php
+/* Listing Class
+by: JK & bmla
+*/
+
+
 class Listing
 {
     public $db;

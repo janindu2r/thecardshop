@@ -1,4 +1,8 @@
 <?php
+/* Order Product Class
+by: JK;
+*/
+
 class OrderProd extends CartProd
 {
 

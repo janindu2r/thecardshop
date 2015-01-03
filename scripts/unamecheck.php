@@ -1,8 +1,8 @@
 <?php
 /*
-	Registration script
-	author: Aslam
-	Date: 2014/11/14
+	Ajax Validation
+by: JK
+
 */
 
 include($_SERVER['DOCUMENT_ROOT'].'/internal.php');

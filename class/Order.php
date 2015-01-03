@@ -1,4 +1,9 @@
 <?php
+/* Order Class
+by: JK;
+*/
+
+
 class Order
 {
 

@@ -1,4 +1,8 @@
 <?php
+/* Order Placing Script
+by: JK
+*/
+
 
 include($_SERVER['DOCUMENT_ROOT'].'/internal.php');
 

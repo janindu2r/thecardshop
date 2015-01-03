@@ -1,5 +1,7 @@
 <?php
-/* Updated */
+/* Variation Class
+by: JK & bmla
+*/
 
 
 class Variation extends Physical
