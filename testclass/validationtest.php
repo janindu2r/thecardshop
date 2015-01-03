@@ -1,9 +1,7 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: User
- * Date: 12/15/2014
- * Time: 12:58 AM
+ * Validation Check
+ * by : Bmla
  */
 
 $root = $_SERVER['DOCUMENT_ROOT'];
