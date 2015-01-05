@@ -191,7 +191,6 @@ class User
         $accDetails['verified'] = 0;
         $accDetails['registration_dnt'] =  $this->db->escapeString(date("Y-m-d H:i:s"));
 
-        echo $this->db->getInsertSql('account', $accDetails);
 
         $getId = $this->db->runInsertAndGetID('account', $accDetails);
 
@@ -200,7 +199,6 @@ class User
         $userDetails['pos_rep_pnts'] = 0;
         $userDetails['neg_rep_pnts'] = 0;
 
-            echo $this->db->getInsertSql('user', $userDetails);
 
         $success = $this->db->runInsertRecord('user', $userDetails);
 
