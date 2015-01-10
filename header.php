@@ -20,7 +20,11 @@
 		<script src="/js/validation/functions.js"></script>
 
 		<!-- Bootstrap -->
-
+		<script type="text/javascript">
+    $('.dropdown-menu').click(function(e) {
+          e.stopPropagation();
+    });
+</script>
    		<link href="/css/bootstrap.css" rel="stylesheet">
    		<link href="/css/bootstrap.min.css" rel="stylesheet">
 	</head>
@@ -101,7 +105,7 @@
 		      <ul class="nav navbar-nav navbar-right">
               <?php if($logged == 1) { ?>
 		      	<li class="dropdown">
-		      		<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user pull-left"></span><span class="user-name-style"> <?php echo $user->getProfile() ?></span> <span class="sr-only">(current)</span></a>
+		      		<a href="#" class="dropdown-toggle" data-toggle=""><span class="glyphicon glyphicon-user pull-left"></span><span class="user-name-style"> <?php echo $user->getProfile() ?></span> <span class="sr-only">(current)</span></a>
 		      		<ul class="dropdown-menu">
 			            <li><a href="/dashboard.php">Account Settings <span class="glyphicon glyphicon-stats pull-right"></span></a></li>
 			            <li class="divider"></li>
