@@ -1,6 +1,7 @@
 $(document).ready(function() {
 
-    $(document).on('click', '#update-portable-cart', function () {
+    $(document).on('click', '#update-portable-cart', function (e) {
+        e.stopPropagation();
         var ar = {};
         ar['type'] = 'refresh';
         $.ajax({

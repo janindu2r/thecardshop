@@ -133,7 +133,7 @@
 															<h5><span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart</h5>
 														</div>
 														<div class="col-xs-6">
-															<a href="/cart.php" type="button" class="btn btn-primary btn-md btn-block">
+															<a href="#" type="button" class="btn btn-primary btn-md btn-block">
 																<span class="glyphicon glyphicon-share-alt"></span> Continue shopping
 															</a>
 														</div>
