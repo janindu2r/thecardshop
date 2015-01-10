@@ -8,7 +8,7 @@ include '/class/Variation.php';
 include '/class/cartitems.php';
 include '/class/cart.php'; */
 
-include ('/internal.php');
+include ($_SERVER['DOCUMENT_ROOT']. '/internal.php');
 
 $logged = 0; //boolean variable to check if logged in or not
 $user = new User();
