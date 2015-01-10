@@ -21,10 +21,12 @@
 
 		<!-- Bootstrap -->
 		<script type="text/javascript">
-    $('.dropdown-menu').click(function(e) {
-          e.stopPropagation();
-    });
-</script>
+	    $('.dropdown-menu input button').on({
+		"click":function(e){
+	      e.stopPropagation();
+	    }
+		});
+		</script>
    		<link href="/css/bootstrap.css" rel="stylesheet">
    		<link href="/css/bootstrap.min.css" rel="stylesheet">
 	</head>
@@ -105,7 +107,7 @@
 		      <ul class="nav navbar-nav navbar-right">
               <?php if($logged == 1) { ?>
 		      	<li class="dropdown">
-		      		<a href="#" class="dropdown-toggle" data-toggle=""><span class="glyphicon glyphicon-user pull-left"></span><span class="user-name-style"> <?php echo $user->getProfile() ?></span> <span class="sr-only">(current)</span></a>
+		      		<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user pull-left"></span><span class="user-name-style"> <?php echo $user->getProfile() ?></span> <span class="sr-only">(current)</span></a>
 		      		<ul class="dropdown-menu">
 			            <li><a href="/dashboard.php">Account Settings <span class="glyphicon glyphicon-stats pull-right"></span></a></li>
 			            <li class="divider"></li>
@@ -126,7 +128,7 @@
 		        <li class="dropdown-cart">
 		        	<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-shopping-cart"></i><span class="cart-text">$
                             <label id="portable-total-a"><?php echo  $cart->toDec($cart->cartTotal); ?></label></span></a>
-		        		<ul class="dropdown-menu" style="width: 600px">
+		        		<ul class="dropdown-menu"  id="myDropdown" style="width: 600px">
 								<div class="row">
 									<div class="col-md-12">
 										<div class="panel panel-info">
