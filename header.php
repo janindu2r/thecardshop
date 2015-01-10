@@ -20,13 +20,7 @@
 		<script src="/js/validation/functions.js"></script>
 
 		<!-- Bootstrap -->
-		<script type="text/javascript">
-	    $('.dropdown-menu input button').on({
-		"click":function(e){
-	      e.stopPropagation();
-	    }
-		});
-		</script>
+
    		<link href="/css/bootstrap.css" rel="stylesheet">
    		<link href="/css/bootstrap.min.css" rel="stylesheet">
 	</head>
