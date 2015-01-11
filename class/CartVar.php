@@ -136,7 +136,7 @@ class CartVar extends CartProd{
         $itemHtml .= $this->cProduct->proPrice . '<span class="text-muted">x</span></strong></h6> </div> <div class="col-xs-5">' ;
         $itemHtml .= '<input type="number" class="form-control input-sm output-qty-cart" id="1-'. $this->groupId.'" value="';
         $itemHtml .= $this->quantity. '" min="1" max="999"> </div> ' ;
-        $itemHtml .= '<div class="col-xs-1"> <button type="button" class="btn btn-link btn-xs delete-cart-itm" id="1-'. $this->groupId ;
+        $itemHtml .= '<div class="col-xs-1"> <button type="button" onclick="delFunc(this.id);" class="btn btn-xs delete-cart-itm" id="1-'. $this->groupId ;
         $itemHtml .= '"><span class="glyphicon glyphicon-trash"> </span> </button> </div> </div> </div> <hr>' ;
         return $itemHtml;
 

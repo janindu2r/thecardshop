@@ -1,3 +1,28 @@
+function delFunc(id)
+{
+    var ar = {};
+    ar['type'] = 'delete';
+    var st = id;
+    ar['relId']= st.substr(2);
+    ar['isVar']= st.substr(0,1);
+    $.ajax({
+        type: "POST",
+        url: "/scripts/cart.php",
+        data: ar,
+        cache: false,
+        success: function(result){
+            var cItem = JSON.parse(result);
+            if(cItem.success == 1)
+                $("#update-portable-cart").click();
+            else
+                alert('Item Delete Failed. Try Again!');
+        },
+        error:function() {
+            alert('Item Delete Failed. Try Again!');
+        }
+    });
+}
+
 $(document).ready(function() {
 
     $(document).on('click', '#update-portable-cart', function (e) {
@@ -74,7 +99,7 @@ $(document).ready(function() {
         });
     });
 
-
+/*
     $(document).on("click", '.delete-cart-itm',function(){
         var ar = {};
         ar['type'] = 'delete';
@@ -97,6 +122,6 @@ $(document).ready(function() {
                 alert('Item Delete Failed. Try Again!');
             }
         });
-    });
+    }); */
 
 });
