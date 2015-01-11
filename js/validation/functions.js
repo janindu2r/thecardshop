@@ -29,7 +29,7 @@ function validateShopForm() {
     }
 }
 
-function funcValidateShopReg() {
+function validateShopReg() {
     if (document.regShop.sname.value.length == 0) {
         alert("please enter a shop name");
         return false;

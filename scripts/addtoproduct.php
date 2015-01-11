@@ -1,6 +1,6 @@
 <?php
 /*
- created by  JK & JK
+ created by  JK & Bmla
  */
 $root = $_SERVER['DOCUMENT_ROOT'];
 include ($root.'/internal.php');
