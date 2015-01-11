@@ -413,7 +413,7 @@ $categ = substr($categ,3);
                    </thead>
     <tbody>
 
-    <?php foreach($flag as $row) { ?>
+    <?php if ($flag) { foreach($flag as $row) { ?>
 
     <tr>
     <td><?php echo $row['product_id'] ?></td>
@@ -424,7 +424,7 @@ $categ = substr($categ,3);
     <td><p><a class="btn btn-primary btn-xs" data-title="Edit" href="/customizeproduct.php?product=<?php echo $row['product_id'] ?>"><span class="glyphicon glyphicon-pencil"></span></a</p></td>
     </tr>
 
-    <?php } ?>
+    <?php } } ?>
 
     </tbody>
         

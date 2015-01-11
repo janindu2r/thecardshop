@@ -101,8 +101,8 @@ class CartProd{
         $itemHtml .= $this->cProduct->proPrice . '<span class="text-muted">x</span></strong></h6> </div> <div class="col-xs-5">' ;
         $itemHtml .= '<input type="number" onclick=" event.stopPropagation();" class="form-control input-sm output-qty-cart" id="0-'. $this->cProduct->prodId.'" value="';
         $itemHtml .= $this->quantity. '" min="1" max="999"> </div> ' ;
-        $itemHtml .= '<div class="col-xs-1"> <button type="button" class="btn btn-link btn-xs delete-cart-itm" id="0-'. $this->cProduct->prodId ;
-        $itemHtml .= '"><span class="glyphicon glyphicon-trash"> </span> </button> </div> </div> </div> <hr>' ;
+        $itemHtml .= '<div class="col-xs-1"> <a href="#" class="btn btn-link btn-xs delete-cart-itm" id="0-'. $this->cProduct->prodId ;
+        $itemHtml .= '"><span class="glyphicon glyphicon-trash"> </span> </a> </div> </div> </div> <hr>' ;
         return $itemHtml;
     }
 
