@@ -237,7 +237,7 @@ $seller->getCategories();
                                     <div class="form-group">
                                         <label for="#">Shipping Cost</label>
 
-                                        <input type="number" name="cost" class="form-control" id="exampleInputtext1" placeholder="69" value="<?php if($phy) echo $phy['shipping_cost']?>">
+                                        <input type="number" name="cost" class="form-control" id="exampleInputtext1" placeholder="" value="<?php if($phy) echo $phy['shipping_cost']?>">
                                     </div>
                                     <div class="form-group">
                                         <div class="form-group">

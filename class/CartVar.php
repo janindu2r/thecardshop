@@ -128,7 +128,7 @@ class CartVar extends CartProd{
 
         $desc .= '<tr><td><b>Shipping</b></td><td> $'.  $shipPrice . '</div></td></tr></tbody></table>';
 
-        $itemHtml = '<div class="row"> <div class="col-xs-2"> <img class="img-responsive" src="/content/products/prodthumbnail/' ;
+        $itemHtml = '<div class="row" onclick=" event.stopPropagation();"> <div class="col-xs-2"> <img class="img-responsive" src="/content/products/prodthumbnail/' ;
         $itemHtml .=  $this->cProduct->prodId.'.jpg"> </div><div class="col-xs-4"> <h4 class="product-name"><strong>' ;
         $itemHtml .= '<a href="/viewproduct.php?product=' . $this->cProduct->prodId . '">';
         $itemHtml .= $this->cProduct->proName.'</a></strong></h4><h4><small> ' .  $desc ;

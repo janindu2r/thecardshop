@@ -53,7 +53,7 @@ if (!empty($_POST['addPhysical'])) {
 
         $new = $db->runInsertRecord("physical", $arr);
 
-            header('location: /customizeproduct.php?product=' . $obj->prodId . '&success=' . $new);
+            header('location: /customizeproduct.php?product=' . $_POST["prod_id"] . '&success=' . $new);
     }
 }
 
