@@ -25,7 +25,7 @@ include($_SERVER['DOCUMENT_ROOT'].'/internal.php');
  //add a record
  
  $rec = new Variation();
- $flag = $rec->insertValues("1000000","Color");
+ $flag = $rec->insertVarValue("1000000","Color");
   if( $flag == 1)
   {
   echo "record inserted";

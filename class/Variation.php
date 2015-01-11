@@ -106,17 +106,13 @@ class Variation extends Physical
 		return $this->db->getScalar($sql);
 	}
 	
-	public function insertvalues($pId,$vNam)
+	public function insertVarValue($pId,$vNam)
 	{
-
 		$variation['prod_id'] = $this->db->escapeString($pId);
 		//$variation['variation_id'] = $this->db->escapeString($vId);
 				//$variation['variation_id'] = max($variation['variation_id'] + 1);
 		$variation['var_name'] = $this->db->escapeString($vNam); 
 		return $this->addVariations($variation);
-		
-		
-		
 	}
 	
 	public function initialize(array $assArr)
