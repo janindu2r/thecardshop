@@ -452,7 +452,6 @@ $seller->getCategories();
             data: varObj,
             cache: false,
             success: function(result){
-                alert(result);
                 var vItem = JSON.parse(result);
                 if(vItem.success == 1)
                 {
