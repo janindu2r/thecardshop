@@ -31,6 +31,7 @@ class User
     function __construct()
     {
         $this->db = new DbCon();
+        $this->renewOrderList();
     }
 
 

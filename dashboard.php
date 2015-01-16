@@ -5,7 +5,10 @@ include('/overhead.php');
 if($logged != 1)
     header('location: /index.php');
 
-$user->renewOrderList();
+$userId = $user->getRegID();
+$user =  null;
+$user = new User();
+$user->makeUser($userId);
 
 /*
 if($_GET)
