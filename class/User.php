@@ -31,7 +31,6 @@ class User
     function __construct()
     {
         $this->db = new DbCon();
-        $this->renewOrderList();
     }
 
 
@@ -160,11 +159,12 @@ class User
 
     function makeUser($id)
     {
-        $query = sprintf("SELECT * FROM account WHERE user_id = " .$id);
+        $query = sprintf("SELECT * FROM account WHERE reg_id = " .$id);
         $result= $this->db->getFirstRow($query);
         if($result != 0)
         {
             $this->initializeUser($result);
+            $this->renewOrderList();
         }
     }
 
