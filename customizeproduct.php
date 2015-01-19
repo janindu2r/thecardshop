@@ -147,7 +147,7 @@ $seller->getCategories();
 
             ?>
         <!-- Virtual -->
-        <div class="col-md-8 admin-content" id="products">
+        <div class="col-md-8 admin-content" id="products" style="min-height: 450px">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     Virtual
