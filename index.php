@@ -23,42 +23,9 @@ $list = new Listing();
 			    <li data-target="#carousel" data-slide-to="1"></li>
 			    <li data-target="#carousel" data-slide-to="2"></li>
 			  </ol>
+		</div>
 
 
-			<!-- Wrapper for slides -->
-			  <div class="carousel-inner" role="listbox">
-			    <div class="item active">
-			      <img src="img/first.jpg" alt="...">
-			      <div class="carousel-caption">
-
-			      </div>
-			    </div>
-			    <div class="item">
-			      <img src="img/second.jpg" alt="...">
-			      <div class="carousel-caption">
-
-			      </div>
-			    </div>
-			    <div class="item">
-			      <img src="img/third.jpg" alt="...">
-			      <div class="carousel-caption">
-
-			      </div>
-			    </div>
-
-			  </div>
-
-			  <!-- Controls -->
-			  <a class="left carousel-control" href="#carousel" role="button" data-slide="prev">
-			    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-			    <span class="sr-only">Previous</span>
-			  </a>
-			  <a class="right carousel-control" href="#carousel" role="button" data-slide="next">
-			    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-			    <span class="sr-only">Next</span>
-			  </a>
-			  <div class="clearfix"></div>
-			</div>
 			<!-- search -->
 			<div class="row">
 				<form class="card-search" role="search" action="/searchresults.php" method="GET">
@@ -78,83 +45,22 @@ $list = new Listing();
 			</div>
 
 			<!-- featured content *************************************************************-->
+			<div class="row">
+
+			</div>
 			<div class="features">
-				<div class="container visible-xs-inline-block">
-<!-- 					<div class="views">
-						<strong>Change Views</strong>
-				        <div class="btn-group">
-				            <a href="#" id="list" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-th-list">
-				            </span>List</a> <a href="#" id="grid" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-th"></span>Grid</a>
-				        </div>
-					</div> -->
-				</div><!-- end of views-conatiner -->
 				<div class="products">
-				<div class="container">
-				    <div class="row">
-				        <div class="row">
-				            <div class="col-md-9 col-xs-12">
-				                <h3>
-				                    Top Selling Products</h3>
-				            </div>
-				            <div class="col-md-3 col-xs-3">
-				                <!-- Controls -->
-				                <div class="controls pull-right hidden-xs">
-				                    <a class="left fa fa-chevron-left btn btn-default" href="#carousel-example"
-				                        data-slide="prev"></a><a class="right fa fa-chevron-right btn btn-default" href="#carousel-example"
-				                            data-slide="next"></a>
-				                </div>
-				            </div>
-				        </div>
-				        <div id="carousel-example" class="carousel slide" data-ride="carousel">
-				            <!-- Wrapper for slides -->
-				            <div class="carousel-inner">
-				                <div class="item active">
-				                    <div class="row">
-										<?php
-										$prd = $list->topSellProducts(0,4);
-										if($prd) {
-											foreach ($prd as $row) {
-												$viewProd = new Product();
-												if ($row['variation']) {
-													$viewProd = new Variation();
-												}
-												echo $viewProd->getSmallBoxItem($row['product_id']);
-											}
-										}
-										?>
-				                    </div>
-				                </div>
-				                <div class="item">
-				                    <div class="row">
-										<?php
-										$prd = $list->topSellProducts(4,4);
-										if($prd) {
-											foreach ($prd as $row) {
-												$viewProd = new Product();
-												if ($row['variation']) {
-													$viewProd = new Variation();
-												}
-												echo $viewProd->getSmallBoxItem($row['product_id']);
-											}
-										}
-										?>
-				                    </div>
-				                </div>
-				            </div>
-				        </div>
-				    </div>
+					<div class="container">
 				    <div class="row">
 				        <div class="row">
 				            <div class="col-md-9">
-				                <h3>
-				                    Recent Products</h3>
+				                <h3>Recent Products</h3>
 				            </div>
 				            <div class="col-md-3">
 				                <!-- Controls -->
 				                <div class="controls pull-right hidden-xs">
-				                    <a class="left fa fa-chevron-left btn btn-default" href="#carousel-example-generic"
-				                        data-slide="prev"></a><a class="right fa fa-chevron-right btn btn-default" href="#carousel-example-generic"
-				                            data-slide="next"></a>
+				                    <a class="left fa fa-chevron-left btn btn-default" href="#carousel-example-generic" data-slide="prev"></a>
+														<a class="right fa fa-chevron-right btn btn-default" href="#carousel-example-generic" data-slide="next"></a>
 				                </div>
 				            </div>
 				        </div>
@@ -163,34 +69,34 @@ $list = new Listing();
 				            <div class="carousel-inner">
 				                <div class="item active">
 				                    <div class="row">
-										<?php
-										$prd = $list->getRecentProducts(0,3);
-										if($prd) {
-											foreach ($prd as $row) {
-												$viewProd = new Product();
-												if ($row[1]) {
-													$viewProd = new Variation();
-												}
-												echo $viewProd->getLargeBoxItem($row['product_id']);
-											}
-										}
-										?>
-				                    </div>
-				                </div>
-				                <div class="item">
-				                    <div class="row">
-										<?php
-										$prd = $list->getRecentProducts(3,3);
-										if($prd) {
-											foreach ($prd as $row) {
-												$viewProd = new Product();
-												if ($row[1]) {
-													$viewProd = new Variation();
-												}
-												echo $viewProd->getLargeBoxItem($row['product_id']);
-											}
-										}
-										?>
+																<?php
+																$prd = $list->getRecentProducts(0,3);
+																if($prd) {
+																	foreach ($prd as $row) {
+																		$viewProd = new Product();
+																		if ($row[1]) {
+																			$viewProd = new Variation();
+																		}
+																		echo $viewProd->getLargeBoxItem($row['product_id']);
+																	}
+																}
+																?>
+										                    </div>
+										                </div>
+										                <div class="item">
+										                    <div class="row">
+																<?php
+																$prd = $list->getRecentProducts(3,3);
+																if($prd) {
+																	foreach ($prd as $row) {
+																		$viewProd = new Product();
+																		if ($row[1]) {
+																			$viewProd = new Variation();
+																		}
+																		echo $viewProd->getLargeBoxItem($row['product_id']);
+																	}
+																}
+																?>
 				                    </div>
 				                </div>
 				            </div>
