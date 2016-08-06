@@ -1,0 +1,79 @@
+#shop-product{
+	font-family: 'Lato', sans-serif;
+	margin-top: 90px;
+	margin-bottom: 20px;
+}
+
+#coruosel{
+	font-family: 'Lato', sans-serif;
+   height:300px;
+   max-height: %6
+}
+
+#profile_img{
+background-color: #FFFFFF;
+border: 1px solid #DEDEDE;
+border-radius: 10px;
+margin-left: 100px;
+margin-top: -80px;
+position: absolute;
+width: 160px;
+height: 160px;
+float:left;
+}
+
+#info_box{
+	font-family: 'Lato', sans-serif;
+padding:60px 50px 0px 10px;
+border:solid 1px #dedede;
+width:auto;
+background-color:#fcfcfc;
+margin-top:200px;
+}
+.avatar_img{
+padding:3px;
+}
+
+
+#info-box{
+margin-left:115px;
+margin-top: -50px;
+position: absolute;
+}
+
+/*#info-name{
+float:left;
+overflow:hidden;
+word-wrap: break-word;
+width:1150px;
+}*/
+
+#info-content{
+	font-family: 'Lato', sans-serif;
+margin-left:170px;
+width:auto;
+}
+
+#info-photos{
+	font-family: 'Lato', sans-serif;
+text-align:center;
+font-size:11px;
+padding:5px;
+float:left;
+width:80px;
+border:solid 1px #eeeeee;
+background-color: #fff;
+-moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;
+}
+
+#info-friends{
+	font-family: 'Lato', sans-serif;
+text-align:center;
+font-size:11px;
+padding:5px;
+margin-left:100px;
+border:solid 1px #eeeeee;
+width:80px;
+background-color: #fff;
+-moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;
+}
