@@ -15,6 +15,7 @@ $list = new Listing();
     <!-- include header -->
     <?php include('header.php');?>
 		<?php include('carousel.php');?>
+		<?php include('welcome-heading.php');?>
     <main>
 			<!-- search -->
 			<div class="container">
