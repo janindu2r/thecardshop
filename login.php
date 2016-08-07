@@ -12,8 +12,10 @@ $title = 'Login' ;  // page title
 <!DOCTYPE html>
 <html>
 	<head>
-        <?php include('header.php'); ?>
-<!---------------------------------------- Add Page Edits Below ----------------------------------------------- -->    
+		<!-- include header -->
+		<?php include('header.php');?>
+		<?php include('carousel.php');?>
+<!---------------------------------------- Add Page Edits Below ----------------------------------------------- -->
 
 <section id="login">
     <div class="container">
@@ -30,7 +32,7 @@ $title = 'Login' ;  // page title
                             <label for="key" class="sr-only">Password</label>
                             <input type="password" name="passwd" id="key" class="form-control" placeholder="Password">
                         </div>
-                       
+
                         <input type="submit" id="btn-login" class="btn btn-success btn-lg btn-block" value="Log in">
                     </form>
                     <a href="javascript:;" class="forget" data-toggle="modal" data-target=".forget-modal">Forgot your password?</a>

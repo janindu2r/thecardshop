@@ -16,10 +16,19 @@
 
 body{
     font-family: 'Lato', sans-serif;
+    background-image: url(/img/wavegrid.png);
+    background-repeat: repeat;
 }
+
+/*Normalize*/
+.ml0-mr0{
+  margin-left: 0;
+  margin-right: 0;
+}
+
 /*--------------Top Section--------------*/
 #navfix{
-    
+
     width:auto;
     border-radius: 0;
     margin-right: auto;
@@ -43,13 +52,13 @@ body{
 }
 
 .shadow{
-    border: solid #ddd; 
-    border-width: 1px 0 0; 
-    clear: both; 
+    border: solid #ddd;
+    border-width: 1px 0 0;
+    clear: both;
     /*margin: 22px 0 21px; */
-    height: 0; 
+    height: 0;
     margin-top: 0;
-    margin-bottom: 0; 
+    margin-bottom: 0;
 
 }
 
@@ -57,11 +66,11 @@ body{
     margin-top:20%;
   }
 .stylish-input-group .input-group-addon{
-    background: white !important; 
+    background: white !important;
 }
 .stylish-input-group .form-control{
-	border-right:0; 
-	box-shadow:0 0 0; 
+	border-right:0;
+	box-shadow:0 0 0;
 	border-color:#ccc;
 }
 .stylish-input-group button{
@@ -82,10 +91,10 @@ body{
 	text-align: center;
 }
 .dropdown {
-    
+
 /*    border:1px solid #ccc;*/
 /*    border-radius:4px;*/
-    width:auto;    
+    width:auto;
 }
 .dropdown-menu>li>a {
     color:#428bca;
@@ -125,7 +134,7 @@ body{
     padding-top: 5px;
     padding-bottom: 5px;
     margin-right:20px;
-    
+
 }
 #loginBtn a{
     font:#FFFFFF;
@@ -145,7 +154,7 @@ body{
     position:relative;
     overflow:hidden;
 }
- 
+
 .caption {
     position:absolute;
     top:-100%;
@@ -277,7 +286,7 @@ body{
 }
 
 .full {
-    width: 100%;	
+    width: 100%;
 }
 .gap {
 	height: 30px;
@@ -289,9 +298,9 @@ body{
     font-family: 'Lato', sans-serif;
 	min-height:120px;
     max-height: auto;
-	background: url(/img/Patterns/pattern.png); 
+	background: url(/img/Patterns/pattern.png);
 
-	margin-top: 25px; 
+	margin-top: 25px;
 }
 #contact-bar-color h3, p{
     color:#FFFFFF;
@@ -418,9 +427,6 @@ body{
 }
 .footer-bottom {
 	background: #101010;
-	
-	padding-top: 10px;
-	padding-bottom: 10px;
 }
 .footer-bottom p{
     color:#FFFFFF;
@@ -434,7 +440,7 @@ body{
 	padding-top: 6px;
 }
 .payments {
-	font-size: 1.5em;	
+	font-size: 1.5em;
 }
 
 /* CSS Page Wrapper */
@@ -532,7 +538,7 @@ body{
 #SignUpWrapper{
     background-color: #e5e5e5;
     background:url(/img/Patterns/geometry.png);
-    
+
 }
 
 
@@ -545,8 +551,8 @@ body{
 /*    border:1px solid #ccc;*/
 /*    border-radius:4px;*/
     width:auto;
-    margin-right: 30px;  
-    height:50px;  
+    margin-right: 30px;
+    height:50px;
 }
 .dropdown-cart-menu>li>a {
     color:#428bca;
@@ -728,7 +734,7 @@ body{
 }
 
 /*********************************************
-                ITEM 
+                ITEM
 *********************************************/
 
 .service1-items {

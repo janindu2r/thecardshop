@@ -5,3 +5,34 @@
 */
 
 /*the-card-shop-style-sheet*/
+
+.navbar{
+  position: relative;
+  z-index: 10;
+  background-image: url(/img/wavegrid.png);
+  background-repeat: repeat;
+  border: 0;
+  height: 120px;
+  margin-bottom: 0;
+}
+
+.navbar-brand{
+  min-height: 120px;
+  background-color: #0194d9;
+  margin-left: 25px;
+}
+
+.navbar-brand img{
+  height: 85px;
+}
+
+/*-carousel-*/
+.card-carousel{
+  display: block;
+  position: relative;
+  margin-top: -13px;
+  z-index: 16;
+  min-height: 250px;
+  background-size: contain;
+  background-image: url(/img/carousel.png);
+}

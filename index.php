@@ -12,36 +12,28 @@ $list = new Listing();
 		<meta name="description" content="Comercio, Yeah it's yours!" />
 		<meta name="keywords" content="comercio, e-commerce, buy, sell" />
 		<meta name="author" content="EliteCoders" />
-        <!-- include header -->
-        <?php include('header.php');?>
-
-    <main><!-- carousel-for-new-deals-and-adverts -->
-		<div id="carousel" class="carousel slide hidden-xs" data-ride="carousel" data-interval="3000">
-			  <!-- Indicators -->
-			  <ol class="carousel-indicators">
-			    <li data-target="#carousel" data-slide-to="0" class="active"></li>
-			    <li data-target="#carousel" data-slide-to="1"></li>
-			    <li data-target="#carousel" data-slide-to="2"></li>
-			  </ol>
-		</div>
-
-
+    <!-- include header -->
+    <?php include('header.php');?>
+		<?php include('carousel.php');?>
+    <main>
 			<!-- search -->
-			<div class="row">
-				<form class="card-search" role="search" action="/searchresults.php" method="GET">
-					<div class="form-group">
-							<div id="imaginary_container">
-									<div class="input-group stylish-input-group">
-											<input type="text" class="form-control" placeholder="Search" name="search" >
-											<span class="input-group-addon">
-													<button type="submit">
-															<span class="glyphicon glyphicon-search"></span>
-													</button>
-											</span>
-									</div>
-							</div>
-					</div>
-				</form>
+			<div class="container">
+				<diiv class="row">
+					<form class="card-search" role="search" action="/searchresults.php" method="GET">
+						<div class="form-group">
+								<div id="imaginary_container">
+										<div class="input-group stylish-input-group">
+												<input type="text" class="form-control" placeholder="Search" name="search" >
+												<span class="input-group-addon">
+														<button type="submit">
+																<span class="glyphicon glyphicon-search"></span>
+														</button>
+												</span>
+										</div>
+								</div>
+						</div>
+					</form>
+				</div>
 			</div>
 
 			<!-- featured content *************************************************************-->
